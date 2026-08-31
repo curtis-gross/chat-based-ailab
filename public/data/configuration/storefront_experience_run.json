@@ -1,0 +1,68 @@
+{
+  "personaId": "ea-usr-02885",
+  "personaName": "Cruyff_Pro_915",
+  "storefront": {
+    "announcement": "Reset Your Momentum in Weekend League • Claim 12,000 FC Points + TOTY Campaign Hero Pack • Instant Squad Reinforcement",
+    "searchPlaceholder": "Search for 12,000 FC Points Vault, TOTY Packs, Direct Counter Tactics...",
+    "hero": {
+      "title": "Break The Slump. Command The Pitch.",
+      "subtitle": "Fuel your 90 OVR squad with high-octane Manchester City counter-attacking firepower and dominate your Weekend League Qualifiers with tactical precision.",
+      "ctaText": "Reinforce Squad Now",
+      "heroImagePrompt": "Cinematic promotional hero banner for EA SPORTS FC video game, Manchester City superstars executing an explosive lightning-fast counter attack under electric Tokyo stadium floodlights, emerald green and cybernetic cyan laser geometric graphics, photorealistic 8k render, 16:9 aspect ratio",
+      "heroThemeColor": "from-sky-950/90 via-slate-900/90 to-emerald-950/80"
+    },
+    "chicletSectionTitle": "Weekend League Recovery & Squad Reinforcements",
+    "chiclets": [
+      {
+        "id": "chiclet-1",
+        "title": "EA SPORTS FC 27 Ultimate Edition",
+        "categoryName": "Full Game + 7-Day Early Access",
+        "fragranceNotes": "4,600 FC Points, Guaranteed Campaign Hero Item, 7 Days Early Access",
+        "offer": "$99.99 (Pre-Order)",
+        "badge": "COMPETITIVE EDGE",
+        "primaryCta": "Pre-Order Ultimate",
+        "imagePrompt": "Official game cover packaging for EA SPORTS FC 27 Ultimate Edition featuring elite international stars with glowing emerald and sky-blue geometric accents on dark premium studio backdrop, 3:4 aspect ratio video game packshot cover art"
+      },
+      {
+        "id": "chiclet-2",
+        "title": "12,000 FC Points Elite Vault",
+        "categoryName": "Ultimate Team Digital Currency",
+        "fragranceNotes": "Instant Account Credit, 3x Bonus Ultimate Draft Tokens, Priority Weekend League Pack Unlocks",
+        "offer": "$99.99 Bundle",
+        "badge": "BEST VALUE",
+        "primaryCta": "Unlock Vault",
+        "imagePrompt": "Digital Ultimate Team 12,000 FC Points vault pack glowing with radiant gold and neon emerald triangular energy on a sleek dark carbon fiber background, 3:4 aspect ratio"
+      },
+      {
+        "id": "chiclet-3",
+        "title": "TOTY Campaign Hero Player Pick Pack",
+        "categoryName": "Elite Player Pack",
+        "fragranceNotes": "1 of 4 Untradeable 90+ OVR TOTY Heroes, Direct Counter PlayStyle+ Boost, 5-Match Momentum Restorer",
+        "offer": "2,500 FC Points",
+        "badge": "SLUMP BUSTER",
+        "primaryCta": "Claim Player Pick",
+        "imagePrompt": "Futuristic glowing holographic TOTY Campaign Hero player card pack hovering with electric cyan and gold particle effects on dark stadium tunnel background, 3:4 aspect ratio"
+      },
+      {
+        "id": "chiclet-4",
+        "title": "Manchester City Tactical & Stadium Identity Pack",
+        "categoryName": "Club Customization Bundle",
+        "fragranceNotes": "Official Etihad Stadium Tifo, Dynamic Crowd Chants, 4-3-3 Direct Counter Preset Playbook",
+        "offer": "$14.99 Bundle",
+        "badge": "CLUB AFFINITY",
+        "primaryCta": "Add to Squad",
+        "imagePrompt": "Manchester City official licensed kits, custom sky blue tifo banner, and tactical strategy board under dramatic stadium floodlights, 3:4 aspect ratio"
+      }
+    ],
+    "personaMatchReason": "Tailored for Cruyff_Pro_915 to immediately break their 5-match qualifier slump with high-yield FC Point vaults, meta Manchester City tactical counter-attack packs, and high-OVR player picks designed to elevate their 90-rated squad back into the win column.",
+    "timestamp": "8/18/2026, 8:29:03 AM"
+  },
+  "chicletImages": {
+    "chiclet-1": "/api/content-audit/image/gen_image_1787066951883_326.jpg?companyName=EA%20Games%20FC",
+    "chiclet-2": "/api/content-audit/image/gen_image_1787066946408_417.jpg?companyName=EA%20Games%20FC",
+    "chiclet-3": "/api/content-audit/image/gen_image_1787066947204_296.jpg?companyName=EA%20Games%20FC",
+    "chiclet-4": "/api/content-audit/image/gen_image_1787066947005_940.jpg?companyName=EA%20Games%20FC"
+  },
+  "heroImage": "/api/content-audit/image/gen_image_1787066947761_345.jpg?companyName=EA%20Games%20FC",
+  "timestamp": "8/18/2026, 8:29:41 AM"
+}

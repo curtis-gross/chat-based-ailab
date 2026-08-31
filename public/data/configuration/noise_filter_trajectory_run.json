@@ -1,0 +1,244 @@
+{
+  "crossReleaseEvolution": [
+    {
+      "feature": "DirectX 12 Stability & Anti-Cheat Driver Initialization",
+      "category": "Anti-Cheat & Security",
+      "fc24Sentiment": 32,
+      "fc25Sentiment": 28,
+      "fc26Sentiment": 22,
+      "fc27Sentiment": 58,
+      "trajectory": "critical",
+      "keyDrivers": [
+        "EA Anti-Cheat kernel false positives and boot failure",
+        "Infinite loading screen stall on match launch",
+        "Steam Deck and non-standard OS compatibility blocks"
+      ],
+      "fc27ActionableMandate": "Refactor kernel anti-cheat startup handshake and implement automated background shader pre-caching to eliminate cold-boot lockups.",
+      "riskIfIgnored": "Mass PC refund requests and sub-30% Steam review aggregates upon release day.",
+      "summary": "Kernel-level anti-cheat overhead and startup launch crashes consistently cripple PC stability, necessitating architectural engine refactoring."
+    },
+    {
+      "feature": "Rush 5v5 Mode Architecture & Match Pacing",
+      "category": "Rush Mode",
+      "fc24Sentiment": 50,
+      "fc25Sentiment": 78,
+      "fc26Sentiment": 82,
+      "fc27Sentiment": 86,
+      "trajectory": "improving",
+      "keyDrivers": [
+        "High engagement praise for fast-paced 5v5 gameplay loops",
+        "Drop-in matchmaking squad balance improvements",
+        "Seamless tactical play without stamina over-penalization"
+      ],
+      "fc27ActionableMandate": "Expand dedicated Rush ranked ladders and introduce specialized dynamic small-sided tactical roles.",
+      "riskIfIgnored": "Stagnation of the most universally praised new game mode since Volta.",
+      "summary": "Rush Mode remains the breakout positive innovation across recent cycles, driving significant player retention and casual social engagement."
+    },
+    {
+      "feature": "Player Career Mode Transfer Logic & Contract Realism",
+      "category": "Career Mode",
+      "fc24Sentiment": 44,
+      "fc25Sentiment": 26,
+      "fc26Sentiment": 24,
+      "fc27Sentiment": 52,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Zero transfer fee club switching exploit",
+        "Unrealistic board objectives dictating player progression",
+        "Removal of legacy immersion mechanics in player agency"
+      ],
+      "fc27ActionableMandate": "Completely overhaul Player Career contract negotiation mechanics, market valuation math, and wage dynamics.",
+      "riskIfIgnored": "Alienation of core offline single-player community and narrative mode disengagement.",
+      "summary": "Unrealistic club transfers with zero financial friction severely undermine single-player immersion in Career Mode."
+    },
+    {
+      "feature": "Manager Career UI Responsiveness & Strategy Freezes",
+      "category": "Career Mode",
+      "fc24Sentiment": 48,
+      "fc25Sentiment": 35,
+      "fc26Sentiment": 33,
+      "fc27Sentiment": 62,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Team sheet menu hard locks and freeze on tactics adjustment",
+        "Cutscene bloat during transfer negotiations and weekly planning",
+        "Asymmetric AI simulation variance on quick match calculations"
+      ],
+      "fc27ActionableMandate": "Decouple Career Mode UI rendering from backend save-file parsing to eliminate menu lockups.",
+      "riskIfIgnored": "Long-term save file abandonment due to persistent tactical screen hard freezes.",
+      "summary": "Deep-rooted UI hangs in tactical team sheets turn managerial simulation into a frustrating technical bottleneck."
+    },
+    {
+      "feature": "Locomotion Deceleration & Ice-Skating Response",
+      "category": "Controls & Input Latency",
+      "fc24Sentiment": 36,
+      "fc25Sentiment": 31,
+      "fc26Sentiment": 29,
+      "fc27Sentiment": 55,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Unnatural player inertia and ice-skating visual slides",
+        "Controller deadzone delays during rapid jockey-to-sprint transitions",
+        "Input dropouts during high-density midfield possession"
+      ],
+      "fc27ActionableMandate": "Recalibrate foot-planting IK constraints and reduce turn-rate animation transition latencies to sub-50ms.",
+      "riskIfIgnored": "Competitive player migration away from simulation mechanics toward arcade stick-flicking exploits.",
+      "summary": "Floaty player locomotion and exaggerated turn transitions create an unresponsive disconnect between controller inputs and pitch execution."
+    },
+    {
+      "feature": "Manual Defensive Interceptions & Recovery Speed",
+      "category": "Defensive Balance",
+      "fc24Sentiment": 41,
+      "fc25Sentiment": 34,
+      "fc26Sentiment": 30,
+      "fc27Sentiment": 60,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Unrealistic speed catchup mechanics favoring attacking recovery",
+        "Clean manual tackles deflecting straight back to the attacker",
+        "Inconsistent referee disciplinary decisions on sliding challenges"
+      ],
+      "fc27ActionableMandate": "Reward manual interception timing with contextual ball-retention magnetics while lowering recovery acceleration of beaten defenders.",
+      "riskIfIgnored": "Erosion of the defensive skill ceiling in top-tier competitive play.",
+      "summary": "Manual defending feels unrewarding when successful standing tackles consistently ricochet directly back into the attacking runner's path."
+    },
+    {
+      "feature": "Passing Ball Physics & Ground Deceleration Authenticity",
+      "category": "Passing & Ball Physics",
+      "fc24Sentiment": 52,
+      "fc25Sentiment": 45,
+      "fc26Sentiment": 43,
+      "fc27Sentiment": 65,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Scripted momentum perception during targeted ground passes",
+        "Unnatural rolling friction on standard pass weightings",
+        "High success rates on contested outside-of-foot trivelas"
+      ],
+      "fc27ActionableMandate": "Deploy true 3D volumetric turf drag modeling and tighten pass error cones for off-balance distributions.",
+      "riskIfIgnored": "Persistent player complaints regarding pre-determined passing trajectories and match scripting.",
+      "summary": "Rigid passing trajectories and ping-pong transition speeds reduce midfield battles into predictable scripted corridors."
+    },
+    {
+      "feature": "Cross-Region Matchmaking & Netcode Latency Compensation",
+      "category": "Matchmaking & Netcode",
+      "fc24Sentiment": 40,
+      "fc25Sentiment": 33,
+      "fc26Sentiment": 28,
+      "fc27Sentiment": 59,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Intercontinental matchmaking routing European and South American players together",
+        "Rollback-induced visual jitter and sluggish one-touch responses",
+        "Inadequate ping-filter enforcement in competitive divisions"
+      ],
+      "fc27ActionableMandate": "Enforce strict geo-fenced matchmaking caps (<35ms ping ceiling) and implement client-side server relay routing options.",
+      "riskIfIgnored": "Competitive abandonment in non-central server regions.",
+      "summary": "Erratic cross-region routing inflicts heavy input latency, invalidating competitive match outcomes for distant players."
+    },
+    {
+      "feature": "FUT Untradeable Duplicates & Economy Friction",
+      "category": "FUT Economy & SBCs",
+      "fc24Sentiment": 46,
+      "fc25Sentiment": 38,
+      "fc26Sentiment": 35,
+      "fc27Sentiment": 61,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "SBC discard fatigue caused by unassigned untradeable duplicates",
+        "Perceived pay-to-win inflation in elite division team rosters",
+        "Overly aggressive pack untradeable ratios versus market liquidity"
+      ],
+      "fc27ActionableMandate": "Integrate an expanded multi-slot untradeable duplicate storage locker directly into the squad builder interface.",
+      "riskIfIgnored": "Player burnout in daily engagement loops and drop-off in active Squad Building Challenge participation.",
+      "summary": "Punitive untradeable duplicate mechanics choke out casual squad progression and create severe menu management fatigue."
+    },
+    {
+      "feature": "Goalkeeper Artificial Intelligence & Near-Post Coverage",
+      "category": "Goalkeeping & AI",
+      "fc24Sentiment": 45,
+      "fc25Sentiment": 39,
+      "fc26Sentiment": 35,
+      "fc27Sentiment": 58,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Near-post animation collapses on acute-angle shots",
+        "Erratic rushing animations causing unnatural penalty concessions",
+        "Asymmetric teammate AI awareness during loose-ball scrambles"
+      ],
+      "fc27ActionableMandate": "Rebuild keeper near-post positioning heuristics and dynamic body-barrier reaction branches.",
+      "riskIfIgnored": "Persistent exploitation of predictable near-post shooting angles across competitive gameplay.",
+      "summary": "Goalkeeper animation glitches and robotic positioning leave teams vulnerable to exploit goals from improbable shooting angles."
+    },
+    {
+      "feature": "National Team & Regional League Licensing Authenticity",
+      "category": "Audio & Visual Presentation",
+      "fc24Sentiment": 55,
+      "fc25Sentiment": 42,
+      "fc26Sentiment": 38,
+      "fc27Sentiment": 64,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Omission of Brazil, Japan, Mexico, and Switzerland national teams",
+        "Absence of authentic domestic leagues like Liga MX and Brazilian Serie A",
+        "Generic player likenesses on emerging top-flight talent"
+      ],
+      "fc27ActionableMandate": "Recapture key international federations and implement dynamic crowd chants for authentic South American and Asian licenses.",
+      "riskIfIgnored": "Total detachment from international football culture and regional user acquisition attrition.",
+      "summary": "Gaps in authentic national teams and South American leagues strip core realism from global tournament modes."
+    },
+    {
+      "feature": "PC Frame Pacing, UI Stutter & Display Setting Freezes",
+      "category": "Performance & Crashes",
+      "fc24Sentiment": 39,
+      "fc25Sentiment": 30,
+      "fc26Sentiment": 25,
+      "fc27Sentiment": 66,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Mid-game crashes to desktop during cinematic set-piece cuts",
+        "Display configuration lockups on 144Hz+ high refresh rate monitors",
+        "High CPU utilization spikes during simple main menu navigation"
+      ],
+      "fc27ActionableMandate": "Implement fully asynchronous UI rendering and isolated display driver mode switches to prevent graphics pipeline crashes.",
+      "riskIfIgnored": "Permanent loss of the expanding PC and handheld performance demographic.",
+      "summary": "Severe micro-stutters and display freezes across menus ruin what is otherwise competitive gameplay on modern PC hardware."
+    },
+    {
+      "feature": "Set Piece Trajectory Precision & Green Timed Finishing",
+      "category": "Gameplay Mechanics",
+      "fc24Sentiment": 62,
+      "fc25Sentiment": 68,
+      "fc26Sentiment": 70,
+      "fc27Sentiment": 74,
+      "trajectory": "improving",
+      "keyDrivers": [
+        "Consistent positive reception toward free-kick curled aiming",
+        "High skill-gap satisfaction for mastering green timed shooting",
+        "Clear visual feedback on dead-ball trajectory arcs"
+      ],
+      "fc27ActionableMandate": "Standardize green timed strike consistency across volatile online network ping conditions.",
+      "riskIfIgnored": "Compression of the competitive skill gap in high-stakes finishing situations.",
+      "summary": "Set-piece aiming mechanics and green-timed execution deliver strong competitive satisfaction and technical depth."
+    },
+    {
+      "feature": "Referee Strictness & Disciplinary Logic Consistency",
+      "category": "Gameplay Mechanics",
+      "fc24Sentiment": 47,
+      "fc25Sentiment": 36,
+      "fc26Sentiment": 32,
+      "fc27Sentiment": 57,
+      "trajectory": "stable",
+      "keyDrivers": [
+        "Severe sliding tackles yielding verbal warnings rather than red cards",
+        "Aerial collision fouls triggering inadvertent penalties without tackle inputs",
+        "Lax off-the-ball obstruction enforcement"
+      ],
+      "fc27ActionableMandate": "Rebalance physics-impact contact severity thresholds to enforce decisive red and yellow card distributions.",
+      "riskIfIgnored": "Proliferation of aggressive tackling exploits designed to injure playmakers without disciplinary consequences.",
+      "summary": "Inconsistent foul evaluation turns reckless sliding tackles into an unpunished strategy that disrupts organic gameplay flow."
+    }
+  ],
+  "totalPillars": 14,
+  "savedAt": "2026-08-19T16:25:24.496Z"
+}

@@ -1,0 +1,89 @@
+{
+  "type": "abcd",
+  "videoId": "Wcua0DMG3mw",
+  "first_mention": {
+    "seconds": 0,
+    "method": "logo shown and name mentioned in jingle",
+    "result": "Pass"
+  },
+  "abcd_scores": {
+    "attract": {
+      "score": 9.2,
+      "observation": "Immediately captures attention with high-energy kinetic typography, rhythmic musical pacing, and crisp macro food/beverage photography featuring condensation and effervescent pouring."
+    },
+    "brand": {
+      "score": 10,
+      "observation": "Uncompromising brand immersion; the Dr Pepper can, logo, signature maroon color palette, and 'Dr Pepper Baby' jingle are omnipresent from 0:00 to 0:15."
+    },
+    "connect": {
+      "score": 8.5,
+      "observation": "Connects directly to the craving and sensory satisfaction of enjoying Dr Pepper through catchy user-generated musical creation and mouthwatering fizz visuals."
+    },
+    "direct": {
+      "score": 7.8,
+      "observation": "Closes strongly with the brand platform tagline 'IT'S A PEPPER THING' and displays the full product lineup (Original, Diet, Zero Sugar)."
+    }
+  },
+  "branding_timeline": [
+    {
+      "time_segment": "0s - 4s",
+      "presence_percent": 100,
+      "action": "Close-up of chilled Dr Pepper can with kinetic typography lyrics and vocal jingle."
+    },
+    {
+      "time_segment": "4s - 8s",
+      "presence_percent": 100,
+      "action": "Pouring Dr Pepper into a glass with ice, brand name on can and on-screen text."
+    },
+    {
+      "time_segment": "8s - 11s",
+      "presence_percent": 100,
+      "action": "Extreme macro of fizzing carbonation with bold Dr Pepper kinetic text overlay."
+    },
+    {
+      "time_segment": "11s - 15s",
+      "presence_percent": 100,
+      "action": "End card displaying Diet Dr Pepper, Regular Dr Pepper, and Dr Pepper Zero Sugar with tagline 'IT'S A PEPPER THING'."
+    }
+  ],
+  "observations": [
+    {
+      "category": "Visuals",
+      "notes": "Rich maroon color grading, crisp condensation droplets, dynamic pouring action, and rhythmic bold typography synchronized with the beat."
+    },
+    {
+      "category": "Audio",
+      "notes": "Catchy R&B/soul-styled vocal jingle 'Dr Pepper Baby, it's good and nice' created by @romeosshow, layered over satisfying soda fizz sound effects."
+    },
+    {
+      "category": "Pacing",
+      "notes": "Fast-paced 15-second social-first editing style tailored for high digital engagement and maximum retention."
+    }
+  ],
+  "takeaways": [
+    "Leveraging creator-generated audio jingles fosters authentic, viral brand engagement.",
+    "Showcasing the entire portfolio (Regular, Diet, Zero Sugar) simultaneously broadens consumer appeal across dietary preferences."
+  ],
+  "summary": "This 15-second spot brilliantly leverages viral social creator audio from @romeosshow paired with premium appetite-appeal beverage visuals. Highlighting rich carbonation, ice-cold pours, and dynamic kinetic typography, the ad reinforces Dr Pepper's irresistible taste and modern brand positioning with the tagline 'IT'S A PEPPER THING'.",
+  "gemini_summary": "This 15-second spot brilliantly leverages viral social creator audio from @romeosshow paired with premium appetite-appeal beverage visuals. Highlighting rich carbonation, ice-cold pours, and dynamic kinetic typography, the ad reinforces Dr Pepper's irresistible taste and modern brand positioning with the tagline 'IT'S A PEPPER THING'.",
+  "word_cloud": [
+    "Pepper",
+    "Soda",
+    "Bubbles",
+    "Flavor",
+    "Refreshing",
+    "Jingle",
+    "Zero",
+    "Sugar",
+    "Diet",
+    "Authentic",
+    "Ice",
+    "Pour",
+    "Delicious",
+    "Crisp",
+    "Effervescent",
+    "Original"
+  ],
+  "timestamp": "2026-08-25T21:46:51.740Z",
+  "videoUrl": "https://www.youtube.com/watch?v=Wcua0DMG3mw"
+}

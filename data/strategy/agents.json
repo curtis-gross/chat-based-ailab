@@ -1,0 +1,154 @@
+[
+  {
+    "id": "intake",
+    "name": "Intake Agent",
+    "sub": "Natural Language Parser",
+    "color": "from-blue-500/10 to-indigo-500/10 text-blue-600 border-blue-200/60",
+    "description": "Intercepts raw conversational marketing directives. Employs Gemini 3.5 Flash to parse semantic category bounds, flight timelines, and specific division criteria.",
+    "inputs": "Raw text brief from brand manager, client context headers",
+    "outputs": "Structured Campaign Parameters JSON payload",
+    "toolsNeeded": [
+      "Gemini 3.5 Flash Model",
+      "JSON parser stubs"
+    ],
+    "dataNeeded": [
+      "Category taxonomy hierarchies",
+      "Retail fragrance & body care divisions dictionary"
+    ]
+  },
+  {
+    "id": "feasibility",
+    "name": "Feasibility Agent",
+    "sub": "Audience & Reach Inspector",
+    "color": "from-emerald-500/10 to-teal-500/10 text-emerald-600 border-emerald-250/60",
+    "description": "Calculates feasibility limits and contact boundaries. Evaluates Rolling week cap rules and prevents high shopper frequency overlaps.",
+    "inputs": "Structured Campaign Parameters JSON",
+    "outputs": "Estimated target cohort reach size",
+    "toolsNeeded": [
+      "Exclusions counting algorithms",
+      "Cohort evaluator stubs"
+    ],
+    "dataNeeded": [
+      "C360 Opt-in lists",
+      "Shopper rolling contact frequency counters"
+    ]
+  },
+  {
+    "id": "prioritization",
+    "name": "Prioritization Agent",
+    "sub": "Conflict & Queue Ranking Manager",
+    "color": "from-rose-500/10 to-purple-500/10 text-rose-600 border-rose-250/60",
+    "description": "Resolves priority overlaps when multiple campaign concepts clash. Evaluates Super Admin weights and loyalty multipliers.",
+    "inputs": "Estimated cohort stats, prioritization rules weights",
+    "outputs": "Ranked campaign schedule, adjusted priority scores",
+    "toolsNeeded": [
+      "Rules prioritization sorting engine"
+    ],
+    "dataNeeded": [
+      "Active campaign registries",
+      "Customer loyalty tier multipliers"
+    ]
+  },
+  {
+    "id": "research",
+    "name": "Research Agent",
+    "sub": "Market Trends Grounding",
+    "color": "from-blue-500/10 to-sky-500/10 text-blue-600 border-blue-200/60",
+    "description": "Performs real-time search grounding to validate proposed campaigns. Benchmarks pricing and concepts against seasonal retail catalogs and fragrance trend indicators.",
+    "inputs": "Theme objectives, target items, competitor exclusion briefs",
+    "outputs": "Market validation logs, trend alignment scores",
+    "toolsNeeded": [
+      "Google Search Grounding API",
+      "External portal scraper"
+    ],
+    "dataNeeded": [
+      "Retail competitive benchmark indices",
+      "Consumer fragrance trend indices"
+    ]
+  },
+  {
+    "id": "creative",
+    "name": "Creative Gen Agent",
+    "sub": "Copywriter & Asset Compiler",
+    "color": "from-purple-500/10 to-pink-500/10 text-purple-600 border-purple-250/60",
+    "description": "Assembles display banners and marketing copy templates. Triggers Vertex AI Image Generation for WebP banner files and saves them to GCS.",
+    "inputs": "Approved concept specs, tone options (e.g. Friendly, Savings-oriented)",
+    "outputs": "WebP Banners (GCS URL references) + Display copies",
+    "toolsNeeded": [
+      "Gemini 3.5 Flash (Text copy)",
+      "Gemini 3.1 Image generation API",
+      "GCS SDK connector"
+    ],
+    "dataNeeded": [
+      "Google Cloud Storage buckets",
+      "Layout templates, product stock photos"
+    ]
+  },
+  {
+    "id": "validation",
+    "name": "Validation Agent",
+    "sub": "Compliance Safety Auditor",
+    "color": "from-cyan-500/10 to-blue-500/10 text-cyan-600 border-cyan-200/60",
+    "description": "Reviews all generated copies and display layouts. Compares text strings and image attributes against legal rules, trademark lists, and competitive exclusions.",
+    "inputs": "Draft banner images, copy variations, brand guidelines",
+    "outputs": "Compliance checklist report, trademark match triggers",
+    "toolsNeeded": [
+      "Regulatory lookup parser",
+      "Vertex safety guardrails"
+    ],
+    "dataNeeded": [
+      "Trademark registries",
+      "Corporate compliance rule books"
+    ]
+  },
+  {
+    "id": "integration",
+    "name": "Integration Agent",
+    "sub": "Dispatch Gateway Transit",
+    "color": "from-teal-500/10 to-emerald-500/10 text-teal-600 border-teal-250/60",
+    "description": "Validates double supervisor electronic signatures, seals finalized payloads, and delivers verified packages directly to marketing channel routers.",
+    "inputs": "Completed campaign assets + verified manager signoff keys",
+    "outputs": "Signed outbound REST payload transfer packet",
+    "toolsNeeded": [
+      "Signatures check validation helper",
+      "HTTP JSON transit controller"
+    ],
+    "dataNeeded": [
+      "Channel API endpoint records",
+      "Outbound security key vault"
+    ]
+  },
+  {
+    "id": "model",
+    "name": "Model Agent",
+    "sub": "Adaptive Machine Learning Evaluator",
+    "color": "from-indigo-500/10 to-violet-500/10 text-indigo-600 border-indigo-250/60",
+    "description": "Monitors campaign performance analytics. Identifies conversion prediction drops to automatically recommend and cue new custom models on top of BigQuery data.",
+    "inputs": "Historical conversion logs, data requests frequency, prediction errors",
+    "outputs": "Machine learning model recommendations, training queue triggers",
+    "toolsNeeded": [
+      "BigQuery ML automation api",
+      "Predictive accuracy tracker"
+    ],
+    "dataNeeded": [
+      "Conversion results database",
+      "Shopper behavior training features"
+    ]
+  },
+  {
+    "id": "judge",
+    "name": "Judge Agent",
+    "sub": "Campaign Critic & Strategist",
+    "color": "from-amber-500/10 to-orange-500/10 text-amber-700 border-amber-200/60",
+    "description": "Examines final campaign strategy, creatives, feasibility, and compliance to identify gaps, pros/cons, and analytics insights.",
+    "inputs": "Cumulative preceding agent inputs, logs, and artifacts",
+    "outputs": "HTML Judgement and Critic Report",
+    "toolsNeeded": [
+      "Gemini 3.5 Flash Model",
+      "Campaign Critic Evaluator"
+    ],
+    "dataNeeded": [
+      "All preceding campaign artifacts"
+    ]
+  }
+]

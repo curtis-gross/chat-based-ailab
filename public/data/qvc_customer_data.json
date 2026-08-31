@@ -1,0 +1,140 @@
+{
+  "customer_profile": {
+    "contact_information": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.j@example.com",
+      "phone": "610-555-0842",
+      "address": "456 West Chester Pike, West Chester PA 19380",
+      "loyalty_tier": "QVC QCard Holder - Gold Status"
+    },
+    "shopping_preferences": {
+      "preferred_brands": [
+        "Isaac Mizrahi Live!",
+        "Dyson",
+        "Philosophy",
+        "KitchenAid"
+      ],
+      "sizes": {
+        "apparel_size": "Medium / 10",
+        "shoe_size": "8.5 Wide"
+      },
+      "style_archetype": "The Home Curator & Fashion Enthusiast",
+      "style_goals": "Elevated everyday classics, high-performance home appliances, and prestige beauty"
+    },
+    "purchase_overview": {
+      "lifetime_spend": 12850,
+      "annual_spend": 3200,
+      "recent_purchases": [
+        {
+          "type": "Fashion",
+          "brand": "Isaac Mizrahi Live!",
+          "name": "Pima Cotton Elbow Sleeve Top",
+          "price": 44.50,
+          "date": "2026-03-15"
+        },
+        {
+          "type": "Home",
+          "brand": "Dyson",
+          "name": "V15 Detect Cordless Vacuum",
+          "price": 749.99,
+          "date": "2026-02-28"
+        },
+        {
+          "type": "Kitchen",
+          "brand": "KitchenAid",
+          "name": "Pro 500 Series 5-Quart Stand Mixer",
+          "price": 399.99,
+          "date": "2026-02-10"
+        }
+      ]
+    },
+    "upcoming_events": [
+      {
+        "event_name": "Isaac Mizrahi Live! 15th Anniversary Special",
+        "target_date": "2026-04-12",
+        "notes": "Looking for anniversary collection items and exclusive show prices."
+      },
+      {
+        "event_name": "Spring Beauty Event",
+        "target_date": "2026-03-25",
+        "notes": "Restocking Philosophy 3-in-1 shower gel and looking for new Philosophy skincare."
+      }
+    ],
+    "interaction_history": {
+      "concierge_logs": [
+        {
+          "phase": "Live Show Chat",
+          "queries": [
+            "Are the Isaac Mizrahi pants true to size?",
+            "When is the next Dyson Daily Special Value?",
+            "Does this KitchenAid mixer come with the pouring shield?"
+          ]
+        },
+        {
+          "phase": "Order Support",
+          "queries": [
+            "Where is my Dyson vacuum? Tracking says it's in Philly.",
+            "Can I apply my Easy Pay to this purchase?",
+            "How do I return the mixer if the color doesn't match my kitchen?"
+          ]
+        },
+        {
+          "phase": "Customer",
+          "queries": [
+            "Hi, I'm looking for a gift for my daughter's housewarming.",
+            "Do you have any specials on Air Fryers today?",
+            "How do I update my QCard billing address?"
+          ]
+        }
+      ],
+      "digital_behavior": {
+        "web_visits": [
+          {
+            "timestamp": "2026-03-18T10:00:00Z",
+            "url": "https://www.qvc.com/isaac-mizrahi-live",
+            "source": "Direct"
+          },
+          {
+            "timestamp": "2026-03-17T14:22:00Z",
+            "url": "https://www.qvc.com/daily-special-value",
+            "source": "Organic Search"
+          },
+          {
+            "timestamp": "2026-03-16T20:45:00Z",
+            "url": "https://www.qvc.com/kitchenaid-mixers",
+            "source": "Email Click"
+          }
+        ],
+        "app_usage": [
+          {
+            "timestamp": "2026-03-18T08:30:00Z",
+            "feature": "Watch Live",
+            "action": "Watched 15 mins of Fashion Night In"
+          },
+          {
+            "timestamp": "2026-03-17T11:15:00Z",
+            "feature": "Easy Pay Tracker",
+            "action": "Checked remaining payments"
+          },
+          {
+            "timestamp": "2026-03-16T16:45:00Z",
+            "feature": "Product Reviews",
+            "action": "Read 5 reviews for Dyson V15"
+          }
+        ],
+        "email_engagement": [
+          {
+            "timestamp": "2026-03-16T18:05:00Z",
+            "subject": "Sarah, Your Isaac Mizrahi Favorites are on Sale!",
+            "status": "Clicked"
+          },
+          {
+            "timestamp": "2026-03-15T09:00:00Z",
+            "subject": "Today's Special Value: KitchenAid Mixer!",
+            "status": "Opened"
+          }
+        ]
+      }
+    }
+  }
+}

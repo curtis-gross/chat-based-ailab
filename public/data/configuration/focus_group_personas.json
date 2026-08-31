@@ -1,0 +1,28 @@
+[
+  {
+    "id": "persona_fragrance_enthusiast",
+    "name": "The Signature Scent Collector",
+    "bio": "A dedicated home fragrance and self-care lover who relies on Bath & Body Works for an uplifting, aromatic lifestyle. From setting the mood with iconic 3-wick candles to maintaining a daily self-care routine with nourishing scented body care and hand soaps, they prioritize relaxation, seasonal fragrance updates, and indulgence.",
+    "demographics": "Ages 22-50, Suburban & Urban Lifestyle Consumers",
+    "details": {
+      "lifestyle_tags": [
+        "3-Wick Candle Loyalist",
+        "Body Care Connoisseur",
+        "Bath & Body Works Rewards Member"
+      ]
+    }
+  },
+  {
+    "id": "persona_gift_shopper",
+    "name": "The Thoughtful Gifting Expert",
+    "bio": "A social connector focused on sharing joy through beautifully packaged gift sets, soothing hand soaps, and trending seasonal aromas. They rely on Bath & Body Works for effortless, crowd-pleasing presents and quick everyday luxuries that brighten friends' and family members' homes.",
+    "demographics": "Ages 25-55, Family-Oriented & Social Shoppers",
+    "details": {
+      "lifestyle_tags": [
+        "Seasonal Gifting Fan",
+        "Hand Soap Stockist",
+        "Omnichannel Shopper"
+      ]
+    }
+  }
+]

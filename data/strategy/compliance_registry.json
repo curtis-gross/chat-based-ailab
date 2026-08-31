@@ -1,0 +1,24 @@
+{
+  "disclaimerRequired": {
+    "Citrus & Carbonated Soft Drinks": "Squirt is a naturally flavored grapefruit soda with real citrus concentrate. Caffeine-free.",
+    "Zero Sugar & Low Calorie": "Squirt Zero Sugar contains 0 calories and 0g total sugars per 12 fl oz serving.",
+    "Cocktail Mixers & Alcoholic Pairings": "Please drink responsibly. Cocktails containing tequila are intended exclusively for adults of legal drinking age (21+).",
+    "Multi-Pack & Grocery Bundles": "Promotional discounts valid while supplies last at participating grocery and mass retail locations."
+  },
+  "prohibitedWords": [
+    "medicinal hangover cure",
+    "energy drink replacement",
+    "weight loss miracle",
+    "alcohol contained inside can",
+    "FDA medical approval"
+  ],
+  "trademarkExclusions": [
+    "Coca-Cola",
+    "Pepsi",
+    "Sprite",
+    "Fresca",
+    "Jarritos",
+    "Fanta",
+    "Mountain Dew"
+  ]
+}

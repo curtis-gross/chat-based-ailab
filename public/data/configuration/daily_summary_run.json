@@ -1,0 +1,82 @@
+{
+  "title": "Daily Brief: FC 26 Executive Overview",
+  "generatedAt": "Today • 24-Hour Horizon",
+  "durationSeconds": 90,
+  "audioScript": "Good morning, EA Games FC Marketing. Over the last 7 days, our live tracking for 'FC 26' across YouTube creator reviews, live viewer comments, and Steam verified player feedback indicates an overall sentiment of 12%. Community discourse is currently dominated by severe friction surrounding gameplay responsiveness—specifically defensive tackle rebounds that bounce directly back to attackers, inconsistent passing targeting, and heavy input delay during peak Weekend League hours. On Steam, verified purchasers with hundreds of hours highlight extreme menu lag, PC launcher anti-cheat conflicts, and fatigue over more than 60 rapid Ultimate Team promos devaluing squads within days. On YouTube, audience sentiment sits at 8% positive, with top comments criticizing arcade mechanics, high-scoring blowouts, and pay-to-win microtransactions. However, offline Career Mode logic, Lengthy acceleration tuning, and competitive tackle recovery presets continue to receive strong positive commendations from single-player enthusiasts. Immediate live-ops stabilization of menu performance and tackle physics is strongly recommended.",
+  "audioKeyTakeaways": [
+    "YouTube audience comments reflect an 8% positive score, citing frustration with high-scoring games (8-6, 7-4), pay-to-win mechanics, and visual bugs like Calafiori's face scan.",
+    "Steam reviews show 17% positive sentiment, with players criticizing UI menu freezes, DDA mechanics, and promo hyper-inflation while praising deep-sale Career Mode value.",
+    "Grounded Google Trends indicate favorable reception for Competitive Presets and Career Mode logic rework, contrasted by critical reports on tackle rebounds and server latency."
+  ],
+  "sentimentPulse": {
+    "overallPositive": 12,
+    "dodDelta": "+1%",
+    "activeVolume": "85 verified items",
+    "channels": [
+      {
+        "channel": "YouTube Creator Reviews",
+        "sentiment": "8% Positive",
+        "status": "critical"
+      },
+      {
+        "channel": "YouTube Audience Comments",
+        "sentiment": "8% Positive",
+        "status": "critical"
+      },
+      {
+        "channel": "Steam Player Reviews",
+        "sentiment": "17% Positive",
+        "status": "critical"
+      },
+      {
+        "channel": "Google News Grounding",
+        "sentiment": "4 Active 7-Day Feeds",
+        "status": "favorable"
+      }
+    ]
+  },
+  "topics": [
+    {
+      "id": "topic-fc-26",
+      "title": "FC 26 Verified Community Discourse",
+      "tag": "LIVE VERIFIED",
+      "sentiment": "negative",
+      "summary": "Multi-channel synthesis of verified FC 26 discussions across YouTube, Steam, and Google News trends highlighting core friction points and isolated offline praise.",
+      "creatorClips": [
+        {
+          "title": "EA SPORTS FC 26 Official Gameplay Deep Dive & Community Impressions",
+          "url": "https://www.youtube.com/watch?v=hrNnKGWUxQs"
+        }
+      ],
+      "topCommentThreads": [
+        {
+          "author": "@D_LizardKing",
+          "comment": "I just want an good version of manager mode.",
+          "platform": "YouTube"
+        },
+        {
+          "author": "@CharleyCoug",
+          "comment": "The first few weeks were terrible imo. Granted, I play solo, but I kept having matches end like 8-6, 7-4, 6-1, etc.",
+          "platform": "YouTube"
+        },
+        {
+          "author": "@AyedeLuizVania-ee5il",
+          "comment": "Worst game ever. Pure lottery. Fisrt minute of game you already know who will have the win... Casinoooooo.",
+          "platform": "YouTube"
+        },
+        {
+          "author": "Steam Verified Player (585 hrs on record)",
+          "comment": "FC 26 is one of the most unoptimized games I've ever touched. The game is even LAGGY IN THE MENUS... THERE HAVE BEEN MORE THAN 60 PROMOS IN FC 26.",
+          "platform": "Steam"
+        },
+        {
+          "author": "Steam Verified Player (189 hrs on record)",
+          "comment": "It works—Ultimate Team is shir, but Career Mode works better than in previous game; it's actually been fleshed out a bit and feels more interesting to play.",
+          "platform": "Steam"
+        }
+      ]
+    }
+  ],
+  "audioUrl": "/audio/generated/podcast_1787000394245.wav",
+  "voiceName": "Zephyr"
+}

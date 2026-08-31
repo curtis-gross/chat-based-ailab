@@ -1,0 +1,11 @@
+campaign_id,name,channel,objective,target_segment
+f7409bb6-0eda-4cbb-ac82-f019a4ca505a,Spring CPG Promo 0,Display,Winback,Premium/Organic Shopper
+e3485424-d8ae-4456-9f29-1d9f616a9b84,Summer CPG Promo 1,Display,Acquisition,Premium/Organic Shopper
+d262398c-8ac9-4474-8f1d-0ed804abf7cb,Spring CPG Promo 2,Email,Winback,Premium/Organic Shopper
+52f74d2d-4a6c-4a87-bc92-2ea46e0f6fb8,Spring CPG Promo 3,Social,Acquisition,Bargain Hunter
+bafbf00d-7cad-456e-bfd0-0d8fc60045f0,Holiday CPG Promo 4,Email,Winback,Bargain Hunter
+e148960b-0a5c-47df-886e-8bad521c67e3,Spring CPG Promo 5,Social,Winback,Loyal Family Shopper
+f34e887b-3b97-404f-8d78-ad0afc507961,Summer CPG Promo 6,Email,Retention,Premium/Organic Shopper
+201afec1-2724-4348-9d4e-7bd1455ff916,Holiday CPG Promo 7,Email,Acquisition,Premium/Organic Shopper
+acc96de1-b5a9-4a0c-944a-6644d8486600,Winter CPG Promo 8,Social,Retention,Loyal Family Shopper
+23055d04-c67c-4d6c-9691-00192bd576fa,Holiday CPG Promo 9,Social,Winback,Bargain Hunter

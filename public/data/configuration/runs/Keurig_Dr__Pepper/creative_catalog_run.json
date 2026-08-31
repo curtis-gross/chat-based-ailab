@@ -1,0 +1,284 @@
+{
+  "companyName": "Keurig Dr. Pepper",
+  "lastUpdated": "2026-08-31T15:07:45.889Z",
+  "items": [
+    {
+      "id": "asset_1788188865518_114",
+      "url": "/api/content-audit/image/creative_upload_1788188857935_717.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "type": "upload",
+      "mediaType": "image",
+      "timestamp": "08:07 AM",
+      "isoDate": "2026-08-31T15:07:45.519Z",
+      "query": "images.jpg",
+      "aspectRatio": "auto",
+      "metadata": {
+        "coreContent": "A yellow can of Squirt Grapefruit Soda covered in condensation droplets, centered against a vibrant yellow and green abstract background with the text 'REFRESHINGLY UNIQUE'.",
+        "style": "Vibrant Graphic Illustration, Commercial Advertising, High-Contrast Vector Art",
+        "dominantColors": [
+          "Yellow",
+          "Green",
+          "Red"
+        ],
+        "tags": [
+          "Squirt",
+          "Grapefruit Soda",
+          "Beverage",
+          "Soda Can",
+          "Advertisement",
+          "Citrus"
+        ],
+        "sizing": "auto",
+        "additionalDetails": "Features the text 'REFRESHINGLY UNIQUE' in a bold green font at the top. The can includes the classic red Squirt logo, 'caffeine free', 'Thirst Quencher', and 'Grapefruit Soda' labels, covered in realistic water droplets."
+      }
+    },
+    {
+      "id": "asset_1788188850274_328",
+      "url": "/api/content-audit/image/creative_upload_1788188842213_963.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "type": "upload",
+      "mediaType": "image",
+      "timestamp": "08:07 AM",
+      "isoDate": "2026-08-31T15:07:30.274Z",
+      "query": "PHM0424PF04-scaled.jpg",
+      "aspectRatio": "auto",
+      "metadata": {
+        "coreContent": "A vintage-style embossed metal sign featuring the classic 'Little Squirt' cartoon mascot hugging a green glass bottle of Squirt soda beneath a yellow 'DRINK Squirt' header.",
+        "style": "Studio product photography of a vintage embossed metal sign, clean white background, glossy finish.",
+        "dominantColors": [
+          "#FCE300",
+          "#008037",
+          "#E31B23",
+          "#FFFFFF"
+        ],
+        "tags": [
+          "vintage sign",
+          "Squirt soda",
+          "mascot",
+          "retro advertising",
+          "embossed metal",
+          "beverage memorabilia"
+        ],
+        "sizing": "auto",
+        "additionalDetails": "Features the text 'DRINK Squirt' in stylized red and black lettering on a yellow background at the top, with the mascot 'Little Squirt' holding a green glass bottle with a yellow splash label."
+      }
+    },
+    {
+      "id": "asset_1787942014979_690",
+      "url": "/api/content-audit/image/creative_upload_1787758369554_495.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "type": "upload",
+      "mediaType": "image",
+      "timestamp": "11:33 AM",
+      "isoDate": "2026-08-28T18:33:34.979Z",
+      "query": "image1.png",
+      "aspectRatio": "auto",
+      "metadata": {
+        "coreContent": "Four 7Up soda cans, featuring two regular Lemon Lime and two Zero Sugar variants, are depicted floating at dynamic angles against a solid, vibrant green background.",
+        "style": "Commercial Studio, Vibrant Minimalist, Photorealistic with condensation droplets.",
+        "dominantColors": [
+          "Vibrant Green",
+          "Dark Green",
+          "White",
+          "Red"
+        ],
+        "tags": [
+          "7Up",
+          "Soda Can",
+          "Zero Sugar",
+          "Lemon Lime",
+          "Beverage",
+          "Condensation",
+          "Product Shot",
+          "Floating Cans"
+        ],
+        "sizing": "auto",
+        "additionalDetails": "The image showcases two standard green 7Up Lemon Lime cans and two dark green/black 7Up Zero Sugar cans. All cans are covered in realistic water droplets to convey coldness and freshness."
+      }
+    },
+    {
+      "id": "asset_1787860718465_350",
+      "url": "/api/content-audit/image/creative_upload_1787711213411_856.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "type": "upload",
+      "mediaType": "image",
+      "timestamp": "12:58 PM",
+      "isoDate": "2026-08-27T19:58:38.465Z",
+      "query": "images-3.jpg",
+      "aspectRatio": "auto",
+      "metadata": {
+        "coreContent": "Two hands holding up cans of Dr. Pepper and Dr. Pepper Zero Sugar in a toast, set against a blurred football stadium background at night.",
+        "style": "Commercial advertising photography with a shallow depth of field, dramatic stadium lighting, and bold graphic overlays.",
+        "dominantColors": [
+          "Maroon",
+          "Black",
+          "Dark Blue",
+          "White"
+        ],
+        "tags": [
+          "Dr. Pepper",
+          "Zero Sugar",
+          "Football",
+          "Stadium",
+          "Toast",
+          "Beverage",
+          "Commercial",
+          "Sports Marketing"
+        ],
+        "sizing": "auto",
+        "additionalDetails": "Features the slogan 'IT'S A pepper THING™' with a football graphic, along with the Dr. Pepper and College Football Playoff logos in the bottom right."
+      }
+    },
+    {
+      "id": "omni_sb_1787858659284_801",
+      "url": "/videos/generated/spin_1787858651473_660.mp4",
+      "type": "omni_storyboard_video",
+      "mediaType": "video",
+      "timestamp": "12:24 PM",
+      "isoDate": "2026-08-27T19:24:19.285Z",
+      "query": "A high-octane sensory journey showcasing the unique 23 flavors bursting into life, culminating in an electrifying refreshment moment.",
+      "aspectRatio": "16:9",
+      "parentAssetUrl": "/api/content-audit/image/creative_upload_1787843415858_456.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "metadata": {
+        "coreContent": "A classic 2D line art illustration of the 7Up mascot, Fido Dido, posing dynamically with both hands pointing up, set against a plain white background with the 7Up logo.",
+        "style": "2D Cartoon Line Art, Retro Mascot Illustration, Minimalist Black and White with Spot Color",
+        "dominantColors": [
+          "#FFFFFF",
+          "#000000",
+          "#007A33",
+          "#E4002B"
+        ],
+        "tags": [
+          "7Up",
+          "Fido Dido",
+          "Mascot",
+          "Line Art",
+          "Retro Cartoon",
+          "Beverage Brand"
+        ],
+        "sizing": "16:9",
+        "additionalDetails": "Features the classic 7Up logo in green and red, with handwritten text 'Fido Dido' and an arrow pointing to the character."
+      }
+    },
+    {
+      "id": "omni_sb_1787858561692_842",
+      "url": "/videos/generated/spin_1787858554296_97.mp4",
+      "type": "omni_storyboard_video",
+      "mediaType": "video",
+      "timestamp": "12:22 PM",
+      "isoDate": "2026-08-27T19:22:41.692Z",
+      "query": "A high-octane sensory journey showcasing the unique 23 flavors bursting into life, culminating in an electrifying refreshment moment.",
+      "aspectRatio": "16:9",
+      "parentAssetUrl": "/api/content-audit/image/creative_upload_1787843415858_456.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "metadata": {
+        "coreContent": "A classic 2D line-art illustration of the 7Up mascot, Fido Dido, posing dynamically on a plain white background with the 7Up logo in the top left.",
+        "style": "Minimalist 2D Cartoon Line Art, Retro Mascot Illustration, Clean White Background",
+        "dominantColors": [
+          "White",
+          "Black",
+          "Green",
+          "Red"
+        ],
+        "tags": [
+          "7Up",
+          "Fido Dido",
+          "Mascot",
+          "Line Art",
+          "Retro Cartoon",
+          "Beverage Brand"
+        ],
+        "sizing": "16:9",
+        "additionalDetails": "Includes the official 7Up logo with its green font and red circle, alongside handwritten text reading 'Fido Dido' with an arrow pointing to the character."
+      }
+    },
+    {
+      "id": "omni_sb_1787858245582_215",
+      "url": "/videos/generated/spin_1787858237690_113.mp4",
+      "type": "omni_storyboard_video",
+      "mediaType": "video",
+      "timestamp": "12:17 PM",
+      "isoDate": "2026-08-27T19:17:25.582Z",
+      "query": "A high-octane sensory journey showcasing the unique 23 flavors bursting into life, culminating in an electrifying refreshment moment.",
+      "aspectRatio": "16:9",
+      "parentAssetUrl": "/api/content-audit/image/creative_upload_1787843415858_456.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "metadata": {
+        "coreContent": "The classic 7Up cartoon mascot, Fido Dido, depicted in black and white line art pointing upwards, set against a plain white background next to the 7Up logo.",
+        "style": "Minimalist Cartoon Line Art, 90s Advertising Illustration, Clean White Background",
+        "dominantColors": [
+          "White",
+          "Black",
+          "Green",
+          "Red"
+        ],
+        "tags": [
+          "7Up",
+          "Fido Dido",
+          "Mascot",
+          "Cartoon Illustration",
+          "90s Nostalgia",
+          "Line Art"
+        ],
+        "sizing": "16:9",
+        "additionalDetails": "Includes the 7Up logo with green text and a red circle, and handwritten text reading 'Fido Dido' with a small arrow pointing to the character."
+      }
+    },
+    {
+      "id": "omni_vid_1787843918852_270",
+      "url": "/videos/generated/spin_1787843911452_568.mp4",
+      "type": "image_to_video",
+      "mediaType": "video",
+      "timestamp": "08:18 AM",
+      "isoDate": "2026-08-27T15:18:38.853Z",
+      "query": "Fido Dido in a hand drawn city finds a glass 7up bottle on a billboard advertisement where the 7up is in color and the rest is black and white, climbs the building to get to the 7up, and opens it to drink.",
+      "aspectRatio": "16:9",
+      "parentAssetUrl": "/api/content-audit/image/creative_upload_1787843415858_456.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "metadata": {
+        "coreContent": "A black and white hand-drawn line art illustration of the classic cartoon mascot Fido Dido pointing upwards, positioned beneath a vibrant, colored 7up logo.",
+        "style": "2D Line Art, Hand-Drawn Cartoon, Minimalist Sketch with Spot Color",
+        "dominantColors": [
+          "White",
+          "Black",
+          "Green",
+          "Red"
+        ],
+        "tags": [
+          "Fido Dido",
+          "7up",
+          "Mascot",
+          "Line Art",
+          "Cartoon",
+          "Retro Illustration",
+          "Beverage"
+        ],
+        "sizing": "16:9",
+        "additionalDetails": "Includes the handwritten text 'Fido Dido' with a small arrow pointing to the character, alongside the classic green and red 7up logo."
+      }
+    },
+    {
+      "id": "asset_1787857037251_808",
+      "url": "/api/content-audit/image/creative_upload_1787843415858_456.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "type": "upload",
+      "mediaType": "image",
+      "timestamp": "11:57 AM",
+      "isoDate": "2026-08-27T18:57:17.251Z",
+      "query": "fido-dido-the-random-90s-7up-commercial-dude-v0-n7c9ptsowb8a1.webp",
+      "aspectRatio": "auto",
+      "metadata": {
+        "coreContent": "A classic 90s illustration of the cartoon mascot Fido Dido pointing upwards, set against a plain white background with the vintage 7Up logo.",
+        "style": "2D Cartoon Illustration, Retro 90s Line Art, Minimalist Graphic Design",
+        "dominantColors": [
+          "White",
+          "Black",
+          "Green",
+          "Red"
+        ],
+        "tags": [
+          "Fido Dido",
+          "7Up",
+          "90s Mascot",
+          "Retro Advertising",
+          "Cartoon Character",
+          "Line Art"
+        ],
+        "sizing": "auto",
+        "additionalDetails": "Features the classic 7Up logo in green and red, with hand-drawn text 'Fido Dido' and an arrow pointing to the character."
+      }
+    }
+  ]
+}

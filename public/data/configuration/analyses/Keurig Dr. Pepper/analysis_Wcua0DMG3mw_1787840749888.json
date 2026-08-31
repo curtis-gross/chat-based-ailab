@@ -1,0 +1,790 @@
+{
+  "videoId": "Wcua0DMG3mw",
+  "videoUrl": "https://www.youtube.com/watch?v=Wcua0DMG3mw",
+  "overall_sentiment_score": "6.4",
+  "summary": "This high-energy 15-second spot successfully bridges viral social culture and broadcast-quality appetite appeal by featuring creator @romeosshow's catchy 'Dr Pepper Jingle' alongside dynamic product cinematography. Audience reception is overwhelmingly positive, with viewers actively searching for the commercial, praising its authentic creator-led soundtrack over generic or AI audio, and reinforcing strong brand loyalty. Minimal negative sentiment is largely limited to standard soda category detractors and isolated competitor preferences, confirming the creative strategy is highly effective.",
+  "alignment": {
+    "status": "Aligned",
+    "explanation": "The video's upbeat, unpretentious, and infectious energy directly matches the audience's enthusiastic reception. Viewers actively mirror the video's core catchphrases ('DR PEPPER BAAAAABY', 'GOOD AND NICE') and celebrate the authentic partnership with an organic social creator.",
+    "creator_stance": "Delivering an energetic, viral, and refreshing brand anthem highlighting flavor satisfaction and Dr Pepper's multi-product portfolio.",
+    "audience_consensus": "Extremely receptive and engaged, celebrating the catchy jingle, actively seeking out the ad for repeat viewing, and expressing strong brand loyalty."
+  },
+  "strategic_takeaways": [
+    {
+      "priority": "High",
+      "area": "Creator Partnerships",
+      "recommendation": "Scale creator-led co-creation models where organic social audio and authentic personalities are elevated into flagship paid media campaigns.",
+      "impact": "Drives higher ad memorability, repeat organic search behavior, and positive brand affinity over synthetic or corporate-sounding assets."
+    },
+    {
+      "priority": "Medium",
+      "area": "Social Activation & Audio Branding",
+      "recommendation": "Package the 'Dr Pepper Jingle' audio into official TikTok and YouTube Shorts sound bites to encourage user-generated duet and lip-sync trends.",
+      "impact": "Amplifies organic reach and viral replay value across Gen Z and millennial target demographics at minimal additional production cost."
+    },
+    {
+      "priority": "Medium",
+      "area": "Product Innovation & Portfolio Promotion",
+      "recommendation": "Capitalize on commenter interest in specialty flavors (e.g., Creamy Coconut) by pairing future high-energy kinetic ad treatments with limited-time-offer announcements.",
+      "impact": "Translates high creative engagement into immediate trial, basket building, and retail velocity for innovation SKUs."
+    }
+  ],
+  "video_sentiment": {
+    "sentiment": {
+      "positive": [
+        "Extremely catchy, rhythmic musical jingle created by social creator @romeosshow that sticks in viewers' minds.",
+        "High-appetite-appeal visuals with frosty condensation on cans, dynamic pouring over ice, and fizzy carbonation bubbles.",
+        "Prominent display of the complete core product line: Original Dr Pepper, Diet Dr Pepper, and Dr Pepper Zero Sugar.",
+        "Memorable and energetic brand tagline 'It's a Pepper Thing'."
+      ],
+      "negative": [
+        "Fast-paced and repetitive lyrics may feel overly simplistic or hyperactive to some viewers."
+      ],
+      "neutral": [
+        "Standard legal and trademark disclosures visible at the bottom of the end card."
+      ]
+    },
+    "timeline": [
+      {
+        "timestamp": "0:00",
+        "sentiment": "positive",
+        "note": "Immediate brand recognition with a frosty, condensing can of Dr Pepper and engaging vocals."
+      },
+      {
+        "timestamp": "0:04",
+        "sentiment": "positive",
+        "note": "Appetizing macro shot of Dr Pepper pouring smoothly over ice with bubbling effervescence."
+      },
+      {
+        "timestamp": "0:08",
+        "sentiment": "positive",
+        "note": "Dynamic close-up on fizzing foam and popping soda bubbles delivering high sensory satisfaction."
+      },
+      {
+        "timestamp": "0:12",
+        "sentiment": "positive",
+        "note": "Clean presentation of the trio of Dr Pepper variants (Diet, Regular, Zero Sugar) alongside the slogan 'It's a Pepper Thing'."
+      }
+    ],
+    "summary": "This short, high-energy 15-second spot leverages viral creator audio by @romeosshow ('Dr Pepper Jingle') synchronized with bold kinetic typography and irresistible appetite-appeal cinematography. The commercial effectively highlights Dr Pepper's 23 flavors, refreshing carbonation, and the breadth of its portfolio including Diet and Zero Sugar varieties.",
+    "products": [
+      {
+        "name": "Dr Pepper (Original)",
+        "description": "The classic 23-flavor blend Dr Pepper shown in an ice-cold can with condensation and poured over ice.",
+        "timestamp": "0:01"
+      },
+      {
+        "name": "Diet Dr Pepper",
+        "description": "Dr Pepper's zero-calorie classic variant featured in a white can in the lineup.",
+        "timestamp": "0:12"
+      },
+      {
+        "name": "Dr Pepper Zero Sugar",
+        "description": "Zero sugar formulation in the black and burgundy can featured in the end lineup.",
+        "timestamp": "0:12"
+      }
+    ],
+    "themes": [
+      {
+        "name": "Sensory Refreshment & Indulgence",
+        "description": "Showcasing cold, effervescent, delicious soda pouring over ice to trigger immediate thirst and craving."
+      },
+      {
+        "name": "Creator & Social-First Brand Culture",
+        "description": "Integrating an authentic, catchy fan-made jingle by @romeosshow directly into official advertising."
+      },
+      {
+        "name": "It's a Pepper Thing",
+        "description": "Reinforcing the unique pride, distinctive 23 flavors, and dedicated fandom of Dr Pepper drinkers."
+      }
+    ],
+    "characters": [
+      {
+        "name": "Hand / Pourer",
+        "role_description": "Unseen person pouring a cold can of Dr Pepper into a glass filled with ice.",
+        "appearance_timestamp": "0:04"
+      }
+    ],
+    "music": [
+      {
+        "description": "Acapella / beatbox-infused soulful vocal jingle 'Dr Pepper Jingle' by @romeosshow featuring rhythmic repetitions of 'Dr Pepper baby, it's good and nice'.",
+        "vibe": "Catchy, upbeat, soulful, energetic, playful",
+        "duration": "0:00 - 0:15"
+      }
+    ],
+    "talking_points": [
+      {
+        "point": "'DR PEPPER BAAAAABY'",
+        "speaker": "Singer / On-Screen Text",
+        "timestamp": "0:01"
+      },
+      {
+        "point": "'IT'S GOOD AND NICE'",
+        "speaker": "Singer / On-Screen Text",
+        "timestamp": "0:02"
+      },
+      {
+        "point": "Iconic 23 Flavors Seal visual highlight on can",
+        "speaker": "On-Screen Visual",
+        "timestamp": "0:03"
+      },
+      {
+        "point": "'DR PEPPER BAAAAABY' as soda pours over ice",
+        "speaker": "Singer / On-Screen Text",
+        "timestamp": "0:04"
+      },
+      {
+        "point": "'GOOD AND NICE' while foam fizzes to the rim",
+        "speaker": "Singer / On-Screen Text",
+        "timestamp": "0:07"
+      },
+      {
+        "point": "'DR PEPPER BAAAAAAAABY'",
+        "speaker": "Singer / On-Screen Text",
+        "timestamp": "0:09"
+      },
+      {
+        "point": "'IT'S GOOD AND NICE'",
+        "speaker": "Singer / On-Screen Text",
+        "timestamp": "0:11"
+      },
+      {
+        "point": "'IT'S A PEPPER THING' showcase featuring Diet Dr Pepper, Dr Pepper Regular, and Dr Pepper Zero Sugar",
+        "speaker": "On-Screen Text / End Card",
+        "timestamp": "0:12"
+      }
+    ],
+    "word_cloud": [
+      "Pepper",
+      "Refreshing",
+      "Bubbles",
+      "Flavors",
+      "Jingle",
+      "Ice",
+      "Pour",
+      "Delicious",
+      "Diet",
+      "ZeroSugar",
+      "Cold",
+      "Authentic",
+      "Catchy",
+      "Foam",
+      "Fizz",
+      "Crisp",
+      "Smooth",
+      "Thirst"
+    ]
+  },
+  "comments_sentiment": {
+    "counts": {
+      "positive": 50,
+      "negative": 4,
+      "neutral": 46
+    },
+    "trends": {
+      "positive": [
+        "High praise for the catchy viral song and ad slogan",
+        "Appreciation for the authentic creator rather than AI",
+        "Strong brand loyalty and preference over competitors",
+        "Enthusiasm for special editions like Creamy Coconut",
+        "Actively searching for and rewatching the commercial"
+      ],
+      "negative": [
+        "Direct dislike or rejection of the soda taste",
+        "Health or allergy complaints linked to consumption",
+        "Expressed preference for competing brands like Coca-Cola",
+        "Inappropriate or derogatory remarks directed at the creator"
+      ],
+      "neutral": [
+        "Mentions of viral TikTok trends and influencers",
+        "Inquiries about regional availability and lyrics",
+        "Timestamps, meme formatting, and reaction symbols",
+        "Cross-lingual commentary across multiple languages",
+        "General acknowledgements and viewing notes"
+      ]
+    },
+    "summary": "Overall comments sentiment is overwhelmingly positive, driven by high engagement with the viral user-generated ad campaign, catchy music, and brand loyalty, alongside a large volume of neutral cross-lingual and influencer-related discussion and very minimal negative feedback.",
+    "breakdown": [
+      {
+        "text": "Я знаю кто это пел",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Dr Pepper is trash",
+        "sentiment": "negative"
+      },
+      {
+        "text": "I got ts after drinking dr.pepper, is this a sign for a 2nd can?",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Is this why my cousin likes Dr Pepper?",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "GOOD AND NICE",
+        "sentiment": "positive"
+      },
+      {
+        "text": "i remember ts",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤😮😊😊",
+        "sentiment": "positive"
+      },
+      {
+        "text": "This is the first ad o search ever best ad",
+        "sentiment": "positive"
+      },
+      {
+        "text": "That is a girl songs",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "This is made by a girl she sadly passed away ty Coca Cola for making her dream come true 🕊🕊🕊",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Oh i see this pub is a girl do this",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Ts got me allergic so imma dislike",
+        "sentiment": "negative"
+      },
+      {
+        "text": "I read the title as \"Dr pepper had a baby\"",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I love the fact the actually a real person that made actually sing it not big AI robot",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I m sending this to my friends.",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Bro when i turn on caption it says \"Dr. Peppea\" 💀💀💀",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Iklan datang sendiri❌\nIklan dicari✅\ndan aku tidak melewatkannya bahkan setelah beberapa kali aku memutarnya😂",
+        "sentiment": "positive"
+      },
+      {
+        "text": "She did a really good job, man-",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Fantastic content as always.",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Instant like from me.",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Why did I drink Fanta?",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Love that she got her Credit🫶",
+        "sentiment": "positive"
+      },
+      {
+        "text": "The song from romeo",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I stopped drinking soda but if I have to drink one it be seven up and. Dr Pepper sugar free",
+        "sentiment": "positive"
+      },
+      {
+        "text": "No that is what I call a commercial",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Plot twist: I came for one minute and watched the whole thing.",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Dr Pepper babyyyy good nice dodo",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Excellent job.",
+        "sentiment": "positive"
+      },
+      {
+        "text": "bro just skip the ad\n\n\n\n\n\nthe ad:",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "DC PEPPER BAAAAAAAABABABAABABABA ITS GOODD WITH YOUR SIGMA RIZZ😊",
+        "sentiment": "positive"
+      },
+      {
+        "text": "They r many drinks I have never tried but I rlly want to drink Dr Pepper",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I’ve never tried Dr Pepper",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Hey dr pepper they also have a vita coco ad",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "WAIT HOW DID A GIRL MAKE A DR PEPPER AD SONG",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "0:15",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Dr pepper actually made it",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Dr Pepper, please reply. Is she kidnapped?",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I just saw this on TikTok, and this made me cry",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Good job btw",
+        "sentiment": "positive"
+      },
+      {
+        "text": "They listen to her",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Deuces when you don’t want kids in the room",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "И это все всего из одноготлишь тиктока",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "It’s that girl that make the song",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Who saw the original👇",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "The best ad",
+        "sentiment": "positive"
+      },
+      {
+        "text": "\"What's the music you use for cleanup?\"\n\n\"Yes.\"",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "닼터ㅓ@ㅌ 펰ㅋ퍼 붸ㅔㅔ~이베ㅔ ㅇㅣㅊ 굿ㅌ 엔 나이슷ㅅㅅㅅ 두루둡",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Z,,z,x,z",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I love",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I’m drinking Dr Pepper. It’s kind of sick. I love Dr Pepper.",
+        "sentiment": "positive"
+      },
+      {
+        "text": "it’s a good add 0:00",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Dr Pepper yummy it’s really really good",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I love the song",
+        "sentiment": "positive"
+      },
+      {
+        "text": "ICE ❤",
+        "sentiment": "positive"
+      },
+      {
+        "text": "BB!",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "PP",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "quem veio da Giuliana Mafra?",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "갑자기 알고리즘에 ㄴ와",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "전설의 노래..ㄷㄷ",
+        "sentiment": "positive"
+      },
+      {
+        "text": "This is the best thing ever",
+        "sentiment": "positive"
+      },
+      {
+        "text": "You’re better than Coca-Cola",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I can t wait for the next upload.",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Babyyyy",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "NO WAY ITS OFICIAL XD",
+        "sentiment": "positive"
+      },
+      {
+        "text": "wait i know the song i seen a black🤎 girl and she says the song too😳😳",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I made one for Olipop :D",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "\"Is good and nice dododo\" 🎉",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I love it!",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I love the Dr\n Pepper Creamy Coconut. Limited Edition!  Hopefully keep making it!",
+        "sentiment": "positive"
+      },
+      {
+        "text": "❤",
+        "sentiment": "positive"
+      },
+      {
+        "text": "They finally added her song",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "初めて広告見た… やっぱりこの曲は最高！！",
+        "sentiment": "positive"
+      },
+      {
+        "text": "한국인 없제?",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Why no Dr Pepper in Saudi Arabia",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "IMMA MAKE A ANIMATION WITH THIS SONG-",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Bring bad Dr Pepper Cherry god damnit!",
+        "sentiment": "positive"
+      },
+      {
+        "text": "W ad",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Alguém ta aqui por caus da nossa Giuliana Mafra 👇",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I like this song😊",
+        "sentiment": "positive"
+      },
+      {
+        "text": "W romeo",
+        "sentiment": "positive"
+      },
+      {
+        "text": "You copied the doctor paper like someone said Dr. paper is good and nice",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I appreciate the effort behind this.",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Is that it is that it 0:15",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "…",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "the only docter I trust (just a joke btw)❤",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I know somebody do this. Somebody said this for Dr Pepper.",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "The only ad i searched 😅",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I love dr pepper",
+        "sentiment": "positive"
+      },
+      {
+        "text": "𝙳𝚁. 𝙿𝙴𝙿𝙿𝙴𝚁 𝙱𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙰𝙱𝚈 𝙸𝚃'𝚂 𝙶𝙾𝙾𝙳 𝙰𝙽𝙳 𝙽𝙸𝙲𝙴 𝙳𝙾 𝙳𝙾 𝙳𝙾",
+        "sentiment": "positive"
+      },
+      {
+        "text": "That woman did good",
+        "sentiment": "positive"
+      },
+      {
+        "text": "I prefer coke",
+        "sentiment": "negative"
+      },
+      {
+        "text": "앞강냉이 개벌어진 흑인뚱녀 생각만 남 ㅋㅋㅋㅋㅋㅋㅋ",
+        "sentiment": "negative"
+      },
+      {
+        "text": "Can’t claim false advertising in any way, Dr. Pepper is indeed good and nice",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Eyy encontra la publicidad !! 👏👏",
+        "sentiment": "positive"
+      },
+      {
+        "text": "노래 좋네",
+        "sentiment": "positive"
+      },
+      {
+        "text": "Quem vê Giuliana Mafra vai entender kkkkkkkkkkkkkk",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I know that girl who did it",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "I love it",
+        "sentiment": "positive"
+      },
+      {
+        "text": "OK guys my daddy drink Dr Pepper",
+        "sentiment": "neutral"
+      },
+      {
+        "text": "Yooo😭",
+        "sentiment": "neutral"
+      }
+    ]
+  },
+  "raw_comments_count": 100,
+  "sample_comments": [
+    {
+      "id": "UgxpMVdngyqgdSTceJx4AaABAg",
+      "author": "@Tukanobanano",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/i4QqMi6fB9bMIxo3Izwp6R3nQj3uk6r7Ms98arY-2sxmKsvOzB7YqR8EQ5SbNi7AeqMz1Vm9=s48-c-k-c0x00ffffff-no-rj",
+      "text": "Я знаю кто это пел",
+      "likeCount": 0,
+      "publishedAt": "2026-08-27T11:23:54Z"
+    },
+    {
+      "id": "Ugw75bgDicD_y4-jZOF4AaABAg",
+      "author": "@uziii1317",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/ytc/AIdro_lD_ypsCyxblvBwjl1q7aOrh_bKpJSqnXajZQPbt52EIso64rs9I94PkYHOWxw2wPixxA=s48-c-k-c0x00ffffff-no-rj",
+      "text": "Dr Pepper is trash",
+      "likeCount": 0,
+      "publishedAt": "2026-08-27T09:49:45Z"
+    },
+    {
+      "id": "UgwuyPm5RUZjWIn30od4AaABAg",
+      "author": "@swan-filled-river",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/juq1zRfvu9OXM1RLS2F1Kr1QRGblk2pV2AqQE33929isrt9WOiZyVOirfIDQKxdFLU3QATdseA=s48-c-k-c0x00ffffff-no-rj",
+      "text": "I got ts after drinking dr.pepper, is this a sign for a 2nd can?",
+      "likeCount": 0,
+      "publishedAt": "2026-08-27T05:02:42Z"
+    },
+    {
+      "id": "Ugw30wPhQsc53RKMJh14AaABAg",
+      "author": "@jaitzagonzalez5805",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/QcFOu84mA_ZJH_yjZKQcHjNSjI2kgDtrf-iikSrCjUeHLlM0ndk4JUs3Zb-JaiPbtq1139--9w=s48-c-k-c0x00ffffff-no-rj",
+      "text": "Is this why my cousin likes Dr Pepper?",
+      "likeCount": 0,
+      "publishedAt": "2026-08-27T03:58:30Z"
+    },
+    {
+      "id": "UgxbWpqvVU6qVYJd0_x4AaABAg",
+      "author": "@JRXD1726",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/o_KIfaSS66tvcetdoHHa-DhMpT1B2hy6_MWLIxBTo3hbH4yzNzwNWcn98CVeEeZ38lFFJHG_=s48-c-k-c0x00ffffff-no-rj",
+      "text": "GOOD AND NICE",
+      "likeCount": 0,
+      "publishedAt": "2026-08-27T02:08:37Z"
+    },
+    {
+      "id": "Ugz2Kfyd-ZtMagFzT4t4AaABAg",
+      "author": "@sanzburger55",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/gc8Mnd9POWnwtE2XPb2ldu4b_d9467TqMeEEPihI3HwfPAMA1ffR13BGptpDr6Vf1gidS3TH=s48-c-k-c0x00ffffff-no-rj",
+      "text": "i remember ts",
+      "likeCount": 1,
+      "publishedAt": "2026-08-27T01:09:29Z"
+    },
+    {
+      "id": "UgyEqlohvceJ0oRuGI94AaABAg",
+      "author": "@EstrellaAlvarez-v9s",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/ytc/AIdro_n7o6KuemnfocAFaVKGOO0G8E2eQbMjcjXSttDxqTRWE1zv-z3-5uaDYxqQtOPRSSj_KA=s48-c-k-c0x00ffffff-no-rj",
+      "text": "❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤😮😊😊",
+      "likeCount": 0,
+      "publishedAt": "2026-08-27T01:04:26Z"
+    },
+    {
+      "id": "UgzFiBuT_9jn2ZyYzpN4AaABAg",
+      "author": "@OsageStar",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/uk3UQjZsDAm5qSZ3EkSE01JcNtx8A8uBn-uoFnc7Wu6ESyfn3fUK0SW1vCOExeRSc1Ss6tSjKQ=s48-c-k-c0x00ffffff-no-rj",
+      "text": "This is the first ad o search ever best ad",
+      "likeCount": 0,
+      "publishedAt": "2026-08-27T00:48:06Z"
+    },
+    {
+      "id": "Ugxf1BVKns_D2Ab0nr54AaABAg",
+      "author": "@tonyasmith8874",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/OsNInXjmpw50UB16TKN2I7dxwo7xmGuCvXx-69faNGeEtpmoyvupenKCv7YdYXmQx1i25KM4zw=s48-c-k-c0x00ffffff-no-rj",
+      "text": "That is a girl songs",
+      "likeCount": 0,
+      "publishedAt": "2026-08-27T00:39:44Z"
+    },
+    {
+      "id": "UgwYMIbEG_y089C3INZ4AaABAg",
+      "author": "@stevealexander2813",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/V8SAKSjRrdkAKYdcOX7YVYm6-9RwtXdmvZMwqIPY1Fsm14wuY_3Ox98l51_DVyF0VgXtOpSB=s48-c-k-c0x00ffffff-no-rj",
+      "text": "This is made by a girl she sadly passed away ty Coca Cola for making her dream come true 🕊🕊🕊",
+      "likeCount": 0,
+      "publishedAt": "2026-08-26T22:33:42Z"
+    }
+  ],
+  "counts": {
+    "positive": 50,
+    "negative": 4,
+    "neutral": 46
+  },
+  "trends": {
+    "positive": [
+      "High praise for the catchy viral song and ad slogan",
+      "Appreciation for the authentic creator rather than AI",
+      "Strong brand loyalty and preference over competitors",
+      "Enthusiasm for special editions like Creamy Coconut",
+      "Actively searching for and rewatching the commercial"
+    ],
+    "negative": [
+      "Direct dislike or rejection of the soda taste",
+      "Health or allergy complaints linked to consumption",
+      "Expressed preference for competing brands like Coca-Cola",
+      "Inappropriate or derogatory remarks directed at the creator"
+    ],
+    "neutral": [
+      "Mentions of viral TikTok trends and influencers",
+      "Inquiries about regional availability and lyrics",
+      "Timestamps, meme formatting, and reaction symbols",
+      "Cross-lingual commentary across multiple languages",
+      "General acknowledgements and viewing notes"
+    ]
+  },
+  "talking_points": [
+    {
+      "point": "'DR PEPPER BAAAAABY'",
+      "speaker": "Singer / On-Screen Text",
+      "timestamp": "0:01"
+    },
+    {
+      "point": "'IT'S GOOD AND NICE'",
+      "speaker": "Singer / On-Screen Text",
+      "timestamp": "0:02"
+    },
+    {
+      "point": "Iconic 23 Flavors Seal visual highlight on can",
+      "speaker": "On-Screen Visual",
+      "timestamp": "0:03"
+    },
+    {
+      "point": "'DR PEPPER BAAAAABY' as soda pours over ice",
+      "speaker": "Singer / On-Screen Text",
+      "timestamp": "0:04"
+    },
+    {
+      "point": "'GOOD AND NICE' while foam fizzes to the rim",
+      "speaker": "Singer / On-Screen Text",
+      "timestamp": "0:07"
+    },
+    {
+      "point": "'DR PEPPER BAAAAAAAABY'",
+      "speaker": "Singer / On-Screen Text",
+      "timestamp": "0:09"
+    },
+    {
+      "point": "'IT'S GOOD AND NICE'",
+      "speaker": "Singer / On-Screen Text",
+      "timestamp": "0:11"
+    },
+    {
+      "point": "'IT'S A PEPPER THING' showcase featuring Diet Dr Pepper, Dr Pepper Regular, and Dr Pepper Zero Sugar",
+      "speaker": "On-Screen Text / End Card",
+      "timestamp": "0:12"
+    }
+  ],
+  "word_cloud": [
+    "Pepper",
+    "Refreshing",
+    "Bubbles",
+    "Flavors",
+    "Jingle",
+    "Ice",
+    "Pour",
+    "Delicious",
+    "Diet",
+    "ZeroSugar",
+    "Cold",
+    "Authentic",
+    "Catchy",
+    "Foam",
+    "Fizz",
+    "Crisp",
+    "Smooth",
+    "Thirst"
+  ],
+  "music": [
+    {
+      "description": "Acapella / beatbox-infused soulful vocal jingle 'Dr Pepper Jingle' by @romeosshow featuring rhythmic repetitions of 'Dr Pepper baby, it's good and nice'.",
+      "vibe": "Catchy, upbeat, soulful, energetic, playful",
+      "duration": "0:00 - 0:15"
+    }
+  ],
+  "timestamp": "2026-08-27T14:25:49.888Z"
+}

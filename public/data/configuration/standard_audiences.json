@@ -1,0 +1,62 @@
+[
+  {
+    "id": "default_optimist",
+    "name": "Optimist",
+    "personaName": "Joy Sun",
+    "bio": "Always looks on the bright side. Enjoys social get-togethers, sunny outdoor afternoons, and crisp, thirst-quenching citrus beverages.",
+    "demographics": "Ages 20-35, $45k - $70k annual income",
+    "whyPerfect": "Quench your thirst and brighten your day with the crisp, natural citrus burst of Squirt Original Grapefruit Soda. Bursting with real grapefruit flavor, it's the ultimate refreshing pick-me-up and perfect for mixing an authentic Paloma.",
+    "description": "Ice-cold 12 oz can of Squirt Original Grapefruit Soda with real citrus juice, light fizzy carbonation, and caffeine-free daytime refreshment.",
+    "imagePrompt": "Portrait of a smiling, cheerful young woman in her 20s holding an ice-cold can of Squirt grapefruit soda at a sunny patio gathering, bright natural lighting.",
+    "imageUrl": "/audimages/aud1.jpg",
+    "isDefault": true,
+    "isStandard": true,
+    "details": {
+      "age": 27,
+      "job_title": "Event & Community Coordinator",
+      "bio": "Joy is energetic, loves hosting friends for taco nights, and seeks bright, natural flavors. She loves Squirt both on its own over ice and mixed with tequila for fresh Palomas.",
+      "income": "$55,000",
+      "lifestyle_tags": ["Refreshing", "Citrus Lover", "Social Host", "Paloma Crafter"]
+    }
+  },
+  {
+    "id": "default_pessimist",
+    "name": "Pessimist",
+    "personaName": "Arthur Vance",
+    "bio": "Highly skeptical of overly sweet soda and synthetic diet claims. Expects artificial aftertastes and demands genuine, tart citrus quality.",
+    "demographics": "Ages 45-60, $50k - $80k annual income",
+    "whyPerfect": "No cloying sweetness or watered-down fizz. Squirt Zero Sugar delivers the authentic, tart grapefruit bite you love with zero sugar, zero calories, and zero compromises.",
+    "description": "Squirt Zero Sugar 12-pack (12 oz cans) crafted with real grapefruit concentrate for an uncompromisingly crisp, tart citrus refreshment.",
+    "imagePrompt": "Portrait of a discerning man in his 50s inspecting a zero-sugar soda can, clean modern kitchen, crisp natural lighting.",
+    "imageUrl": "/audimages/aud2.jpg",
+    "isDefault": true,
+    "isStandard": true,
+    "details": {
+      "age": 52,
+      "job_title": "Senior Quality Inspector",
+      "bio": "Arthur monitors his sugar intake closely and despises artificial sweetener taste. He chose Squirt Zero Sugar because its genuine grapefruit bite cuts through thirst without tasting synthetic.",
+      "income": "$75,000",
+      "lifestyle_tags": ["Zero Sugar", "Discerning Taste", "Health Conscious", "Quality First"]
+    }
+  },
+  {
+    "id": "default_generalist",
+    "name": "Regular",
+    "personaName": "Sam Taylor",
+    "bio": "Everyday casual consumer who drinks what is convenient and familiar. Balances price, taste, and accessibility across grocery stores, gas stations, and drive-thrus.",
+    "demographics": "Ages 28-48, $45k - $80k annual income",
+    "whyPerfect": "The reliable, thirst-quenching citrus refresher that is easy to grab for the whole family during weekend cookouts, road trips, and daily lunches.",
+    "description": "Squirt Original Grapefruit Soda 12-pack cans and 20 oz grab-and-go bottles with dependable tart citrus fizz.",
+    "imagePrompt": "Portrait of a friendly casual 35-year-old consumer in comfortable weekend casual attire enjoying a cold Squirt soda, relaxed setting.",
+    "imageUrl": "/audimages/aud3.jpg",
+    "isDefault": true,
+    "isStandard": true,
+    "details": {
+      "age": 35,
+      "job_title": "Project Supervisor",
+      "bio": "Sam looks for convenience and reliable family-pleasing taste. He grabs 12-packs on supermarket sale and 20 oz cold bottles on road trips.",
+      "income": "$62,000",
+      "lifestyle_tags": ["Convenience", "Everyday Refreshment", "Family Friendly", "Thirst Quencher"]
+    }
+  }
+]

@@ -1,0 +1,84 @@
+{
+  "branding": {
+    "companyName": "Keurig Dr. Pepper",
+    "logo": "/images/screenshot_2026_08_25_at_7.46.34_am.png",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#111827",
+      "accent": "#1A73E8"
+    },
+    "metaTitle": "Brand Sentiment and Reputation Monitoring",
+    "logoHeight": 128,
+    "industryType": "Retail"
+  },
+  "navigation": [
+    {
+      "id": "HOME",
+      "label": "Home",
+      "icon": "Home"
+    },
+    {
+      "id": "INSIGHTS",
+      "label": "Insights",
+      "icon": "Film"
+    },
+    {
+      "id": "PERSONALIZE_CONTENT",
+      "label": "Personalize Coms",
+      "icon": "Palette"
+    },
+    {
+      "id": "AUDIT",
+      "label": "Audit",
+      "icon": "ShieldCheck"
+    }
+  ],
+  "pages": {
+    "MARKETING_BRIEF": {
+      "defaultGoal": "To re-acquire the 18-34 year old demographic.",
+      "heroImage": "/images/generated/brief_hero.webp"
+    },
+    "CONTENT_STUDIO": {
+      "primaryProductImage": "/images/screenshot_2026_08_11_at_2.54.07_pm.png",
+      "secondaryStyleReference": "",
+      "multiImageReferences": [
+        "/images/screenshot_2026_04_29_at_2.57.49_pm.png"
+      ],
+      "contentVersioningReference": "/images/download.jpg",
+      "productSpinReferences": [
+        "/images/download_1.jpg",
+        "/images/download_2.jpg"
+      ],
+      "sketchToRealityReference": "/images/gapsketch.png",
+      "disabledTabs": [
+        "NEW_PRODUCT",
+        "YOUTUBE_BANNER",
+        "MULTI_IMAGE",
+        "PERSONALIZATION"
+      ],
+      "youtubeBannerTemplate": "/images/screenshot_2026_04_29_at_7.39.51_am.png",
+      "multiImagePersona": "younger social entertainer in their late 20s",
+      "multiImageProduct": "Squirt Grapefruit Soda can",
+      "multiImageLocations": [
+        "On a sunny backyard patio table next to street tacos and fresh limes",
+        "In an ice-filled cooler at an outdoor gathering",
+        "On a kitchen bar counter prepared for Paloma cocktails"
+      ]
+    }
+  },
+  "adAnalysisVideos": [
+    {
+      "id": "MrJOCtA_w68",
+      "title": "Squirt Citrus Refreshment Campaign",
+      "url": "https://www.youtube.com/watch?v=MrJOCtA_w68",
+      "description": "Analysis of Squirt market trends, Paloma cocktail culture, and beverage consumer behavior."
+    },
+    {
+      "id": "QVhwdWr1i-Y",
+      "title": "Keurig Dr Pepper Brand Spotlight",
+      "url": "https://www.youtube.com/watch?v=QVhwdWr1i-Y",
+      "description": "Analysis of Keurig Dr Pepper advertising using YouTube ABCD Framework."
+    }
+  ],
+  "metadataVideos": []
+}

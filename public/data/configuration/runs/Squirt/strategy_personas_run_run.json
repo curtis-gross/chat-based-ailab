@@ -1,0 +1,108 @@
+{
+  "companyName": "Squirt",
+  "personas": [
+    {
+      "id": "squirt_gen_traditionalist",
+      "name": "The Cultural Traditionalist",
+      "personaName": "Mateo Alvarez",
+      "status": "Core Anchor: Cultural Traditionalist",
+      "lifeEvent": "Multi-generational Family Cookouts & Heritage Celebrations",
+      "location": "El Paso, TX (Bilingual Metro)",
+      "financialHealth": "$40,000 – $85,000 (Value-Conscious Household)",
+      "ageRange": "21–45",
+      "incomeRange": "$40,000 – $85,000",
+      "familySize": "Multi-generational Household (5)",
+      "coreValues": "Cultural continuity, family gathering, authentic heritage",
+      "whatTheyWant": "Familiar, authentic staples that pair naturally with traditional food and family celebrations",
+      "competitorBrands": ["Jarritos Toronja", "Fresca", "Peñafiel"],
+      "recommendedProducts": ["Squirt Original (2L, 12-pack cans)", "Mexican Squirt (glass bottle with real sugar)"],
+      "keyCharacteristics": "High brand loyalty, high household penetration in Hispanic communities, pantry staple",
+      "brandEngagement": "High",
+      "bioLifestyleNeeds": "Mateo is a 32-year-old warehouse supervisor living in a multi-generational home. For Sunday carne asadas and family gatherings, Squirt is an indispensable staple. Values cultural continuity, family gatherings, and authentic heritage. Needs value-pack bulk availability and cultural resonance. Treats Squirt as an essential staple that pairs naturally with traditional food.",
+      "nba": "Promote multi-pack value deals, Hispanic heritage cookout co-promotions, and Mexican glass bottle displays at local grocers.",
+      "imagePrompt": "Photorealistic warm portrait headshot of a smiling 32-year-old Hispanic man holding a chilled glass bottle of Mexican Squirt at a sunny backyard family barbecue cookout, natural sunlight, 4k commercial photography.",
+      "psychographics": {
+        "personalityTraits": [
+          "Family Anchor",
+          "Heritage Foodie",
+          "Loyal Purchaser",
+          "Social Host"
+        ],
+        "beverageRituals": "Pantry-stocks 12-packs and 2-liter bottles for weekend cookouts; enjoys an ice-cold Mexican Squirt with lime alongside spicy homemade meals.",
+        "flavorAffinity": "Mexican Squirt (Real Sugar Glass Bottle), Squirt Original Grapefruit Soda",
+        "sugarPreference": "Original Full Sugar",
+        "shoppingValues": "Bulk multi-buy value, authentic glass packaging, and consistent real citrus taste.",
+        "mediaHabits": "Facebook family groups, Spanish-language radio, YouTube cooking channels"
+      }
+    },
+    {
+      "id": "squirt_gen_mixologist",
+      "name": "The Modern Mixologist",
+      "personaName": "Sofia Ramirez",
+      "status": "Trend Elevator: Modern Mixologist",
+      "lifeEvent": "Aesthetic Hosting & Home Cocktail Discovery",
+      "location": "Austin, TX (Urban / Sunbelt)",
+      "financialHealth": "$75,000 – $140,000+ (Discretionary Spender)",
+      "ageRange": "24–38",
+      "incomeRange": "$75,000 – $140,000+",
+      "familySize": "Young Professional Couple",
+      "coreValues": "Elevating social experiences, culinary discovery, aesthetic hosting",
+      "whatTheyWant": "Premium yet unpretentious mixer with real grapefruit bite for cocktails (e.g., Palomas)",
+      "competitorBrands": ["Fever-Tree Pink Grapefruit", "Q Mixers", "Topo Chico", "Fresca Mixed"],
+      "recommendedProducts": ["Squirt Zero Sugar", "Ruby Red Squirt", "Squirt 7.5 oz mini-cans"],
+      "keyCharacteristics": "High digital engagement, social sharer (TikTok/Instagram), cocktail-led consumption",
+      "brandEngagement": "Medium (High potential via automated dynamic creative)",
+      "bioLifestyleNeeds": "Sofia is a 28-year-old creative director and urban socializer who loves aesthetic hosting and DIY home bartending. Seeks to elevate social experiences through culinary discovery and aesthetic hosting. Needs cocktail recipes, sleek packaging, and bar-cart aesthetics. Uses Squirt Zero Sugar and Ruby Red as a premium yet unpretentious mixer with real grapefruit bite for handcrafted Palomas.",
+      "nba": "Deploy dynamic cocktail video ads, 7.5 oz mini-can bar cart bundles, and influencer Paloma masterclasses on Instagram and TikTok.",
+      "imagePrompt": "Chic photorealistic portrait of a stylish 28-year-old woman garnishing an artisanal iced Squirt Paloma cocktail with a fresh ruby grapefruit slice on a modern sunlit patio bar, cinematic aesthetic, golden hour glow.",
+      "psychographics": {
+        "personalityTraits": [
+          "Social Explorer",
+          "Cocktail Enthusiast",
+          "Aesthetic Creator",
+          "Digital Trendsetter"
+        ],
+        "beverageRituals": "Friday night happy hours and weekend rooftop cocktail gatherings; shakes or builds Palomas with Squirt Zero Sugar, fresh lime, and sea salt rims.",
+        "flavorAffinity": "Squirt Zero Sugar, Squirt Ruby Red, Squirt 7.5 oz Mini-Cans",
+        "sugarPreference": "Zero Sugar (Loves flavor without caloric load)",
+        "shoppingValues": "Sleek mini-can packaging, premium mixology credentials, and visual bar-cart appeal.",
+        "mediaHabits": "Instagram Reels, TikTok food & drink trends, Spotify curated playlists"
+      }
+    },
+    {
+      "id": "squirt_gen_purist",
+      "name": "The Nostalgic Flavor Purist",
+      "personaName": "Gary Miller",
+      "status": "Brand Loyalist: Nostalgic Purist",
+      "lifeEvent": "Routine-Driven Everyday Refreshment",
+      "location": "Columbus, OH (Midwest Suburban)",
+      "financialHealth": "$45,000 – $95,000 (Practical Budgeter)",
+      "ageRange": "35–60+",
+      "incomeRange": "$45,000 – $95,000",
+      "familySize": "Married with Grown Children",
+      "coreValues": "Comfort in timeless taste, anti-trend reliability, no-nonsense refreshment",
+      "whatTheyWant": "Crisp, tart, thirst-quenching citrus flavor that stays consistent over decades",
+      "competitorBrands": ["Fresca", "Sun Drop", "Mountain Dew", "Sprite"],
+      "recommendedProducts": ["Squirt Original", "Squirt Zero Sugar (12-pack, 20 oz bottles)"],
+      "keyCharacteristics": "Moderate media consumption, habitual repeat purchaser in traditional retail",
+      "brandEngagement": "High",
+      "bioLifestyleNeeds": "Gary is a 49-year-old facilities manager and practical, routine-driven consumer who has enjoyed Squirt for over 30 years. Seeks comfort in timeless taste, anti-trend reliability, and no-nonsense refreshment. Needs reliable local distribution in supermarkets and C-stores for crisp, tart, thirst-quenching citrus flavor that stays consistent over decades.",
+      "nba": "Reinforce reliable retail distribution in supermarkets and convenience store cold coolers, with straightforward multi-pack pricing.",
+      "imagePrompt": "Photorealistic portrait of a friendly 49-year-old man taking a refreshing sip from an ice-cold can of Squirt Original next to his pickup truck after yard work on a sunny afternoon, honest authentic commercial style.",
+      "psychographics": {
+        "personalityTraits": [
+          "Pragmatic Loyalist",
+          "Anti-Trend",
+          "Routine-Driven",
+          "Quality-First"
+        ],
+        "beverageRituals": "Cracks a cold can from the garage fridge after work or grabs a 20 oz bottle at the local convenience store during road trips.",
+        "flavorAffinity": "Squirt Original Grapefruit Soda, Squirt Zero Sugar (12-Packs & 20 oz)",
+        "sugarPreference": "Original Full Sugar (Occasional Zero Sugar)",
+        "shoppingValues": "Dependable supermarket availability, straightforward pricing, and classic unchanged taste.",
+        "mediaHabits": "Local news broadcasts, Major League Baseball, automotive forums"
+      }
+    }
+  ],
+  "savedAt": "2026-08-31T15:00:00.000Z"
+}

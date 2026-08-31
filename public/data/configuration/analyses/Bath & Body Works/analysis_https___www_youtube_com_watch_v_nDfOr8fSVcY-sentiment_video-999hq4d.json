@@ -1,0 +1,348 @@
+{
+  "sentiment": {
+    "positive": [
+      "Highly enthusiastic reaction to the Banana Blend scent, praising it as the perfect banana-candy-to-milky-creamy balance.",
+      "Strong appreciation for the elevated product packaging, including the colorful ombre bottles, soft-touch caps, and decorative matching fruit charms.",
+      "Extreme excitement over the choice of Hilary Duff as the collection's brand ambassador, which deeply resonates with millennial nostalgia.",
+      "Praise for the new, lightweight, fast-absorbing body lotion formula, which is noted as perfect for summer without feeling heavy or greasy.",
+      "Praise for the All Day Moisture Body Wash, specifically noting its superior moisturizing properties and impressive lathering (suds)."
+    ],
+    "negative": [
+      "Critique that the scents in the collection generally run lighter and have less performance/longevity compared to typical Bath & Body Works body mists.",
+      "Disappointment with the Berry Bliss and Watermelon Whirl scents, describing them as plain, unexciting, or smelling like simple berry yogurt.",
+      "Frustration with the release timing, noting that launching a major summer fruit collection alongside fall and Halloween rollouts creates store clutter and dilutes marketing focus.",
+      "Critique of the new rectangular hand sanitizer sprays, pointing out they contain significantly less product (0.48 oz) than previous formats."
+    ],
+    "neutral": [
+      "Observation that the overall collection seems visually and aromatically geared toward a younger Gen-Z audience, despite having a millennial spokesperson.",
+      "The realization that the collection's aesthetic is heavily inspired by early 2000s 'Limited Too' nostalgia.",
+      "Acknowledgment that the body products utilize a different, more hydrating formula compared to the brand's standard line."
+    ]
+  },
+  "timeline": [
+    {
+      "timestamp": "0:01",
+      "sentiment": "positive",
+      "note": "Enthusiastic introduction of the new Bath & Body Works releases."
+    },
+    {
+      "timestamp": "0:13",
+      "sentiment": "positive",
+      "note": "Visually showcases the colorful Fruit Fusion collection packaging and matching fruit charms."
+    },
+    {
+      "timestamp": "0:26",
+      "sentiment": "negative",
+      "note": "Expresses concern that the collection is competing directly with simultaneous Halloween and Fall releases in stores."
+    },
+    {
+      "timestamp": "0:39",
+      "sentiment": "positive",
+      "note": "Joyful reaction to Hilary Duff being announced as the official spokesperson for the campaign."
+    },
+    {
+      "timestamp": "1:34",
+      "sentiment": "positive",
+      "note": "Shows extensive in-store visual displays featuring Hilary Duff's campaign imagery."
+    },
+    {
+      "timestamp": "2:34",
+      "sentiment": "positive",
+      "note": "Shows all four scents side-by-side, highlighting the variety of sizes (2.5 oz and 8 oz)."
+    },
+    {
+      "timestamp": "2:44",
+      "sentiment": "neutral",
+      "note": "Notes that the collection's simple fruity profile seems targeted at a younger crowd."
+    },
+    {
+      "timestamp": "2:59",
+      "sentiment": "positive",
+      "note": "Appreciates the early 2000s 'Limited Too' nostalgia of the design."
+    },
+    {
+      "timestamp": "3:20",
+      "sentiment": "positive",
+      "note": "Praises the inclusion of matching fruit key charms on each bottle."
+    },
+    {
+      "timestamp": "5:00",
+      "sentiment": "positive",
+      "note": "Raves about the Banana Blend scent, calling it the banana fragrance she has been searching for."
+    },
+    {
+      "timestamp": "6:15",
+      "sentiment": "negative",
+      "note": "Points out that the fragrance performance is lighter and less long-lasting than standard mists."
+    },
+    {
+      "timestamp": "7:12",
+      "sentiment": "positive",
+      "note": "Shows off a massive personal haul of the Banana Blend products."
+    },
+    {
+      "timestamp": "7:50",
+      "sentiment": "negative",
+      "note": "Notes that the Banana body cream smells slightly watered down compared to the mist."
+    },
+    {
+      "timestamp": "8:05",
+      "sentiment": "positive",
+      "note": "Highlights the return of body lotions instead of just tube creams."
+    },
+    {
+      "timestamp": "8:28",
+      "sentiment": "negative",
+      "note": "Reiterates that the lotion's scent fades relatively quickly."
+    },
+    {
+      "timestamp": "8:45",
+      "sentiment": "positive",
+      "note": "Praises the Banana Blend body wash for its incredible lather and hydrating feel."
+    },
+    {
+      "timestamp": "9:39",
+      "sentiment": "neutral",
+      "note": "Introduces the Watermelon Whirl scent."
+    },
+    {
+      "timestamp": "10:00",
+      "sentiment": "negative",
+      "note": "Expresses that Watermelon Whirl is a bit generic and not the most exciting watermelon scent."
+    },
+    {
+      "timestamp": "11:18",
+      "sentiment": "positive",
+      "note": "Reads the bottle callouts praising the new non-greasy, quick-absorbing lotion formula."
+    },
+    {
+      "timestamp": "11:34",
+      "sentiment": "positive",
+      "note": "Introduces Tangerine Twirl and praises its realistic, fresh citrus peel scent."
+    },
+    {
+      "timestamp": "12:26",
+      "sentiment": "negative",
+      "note": "Reviews Berry Bliss, calling it her least favorite and describing it as smelling like plain berry yogurt."
+    },
+    {
+      "timestamp": "13:21",
+      "sentiment": "positive",
+      "note": "Displays the cute matching watermelon coin purse accessory."
+    },
+    {
+      "timestamp": "13:45",
+      "sentiment": "positive",
+      "note": "Shows the miniature lip oil with its matching cherry charm."
+    },
+    {
+      "timestamp": "14:00",
+      "sentiment": "negative",
+      "note": "Critiques the new flat, rectangular hand sanitizer spray packaging for containing less product."
+    },
+    {
+      "timestamp": "14:23",
+      "sentiment": "positive",
+      "note": "Showcases the colorful braided wristlet holder for the hand sanitizer."
+    },
+    {
+      "timestamp": "15:42",
+      "sentiment": "positive",
+      "note": "Concludes with high praise for the Banana Blend scent and the overall collection."
+    },
+    {
+      "timestamp": "16:20",
+      "sentiment": "positive",
+      "note": "Shares excitement that Hilary Duff personally liked her Instagram post about the campaign."
+    }
+  ],
+  "summary": "The overall sentiment is highly positive, driven by intense millennial nostalgia for brand ambassador Hilary Duff and rave reviews for the standout 'Banana Blend' fragrance. While there are minor complaints regarding the fast-fading longevity of the lightweight formulas and the reduced volume of the new hand sanitizers, the collection's packaging, hydrating performance, and fun early-2000s aesthetic make it a major crowd-pleaser.",
+  "products": [
+    {
+      "name": "Banana Blend Perfume Mist",
+      "description": "A fruit-forward body and hair mist with notes of whipped banana, smooth vanilla, and radiant amber, housed in a bright yellow ombre bottle with a banana charm.",
+      "timestamp": "0:13"
+    },
+    {
+      "name": "Watermelon Whirl Perfume Mist",
+      "description": "A fresh and dewy watermelon fragrance with notes of sugared watermelon, fresh juice, and soft musk, featuring a matching watermelon slice charm.",
+      "timestamp": "0:18"
+    },
+    {
+      "name": "Tangerine Twirl Perfume Mist",
+      "description": "A realistic, tart citrus scent with notes of bright tangerine, juicy citrus, and solar bursts, complete with an orange charm.",
+      "timestamp": "0:15"
+    },
+    {
+      "name": "Berry Bliss Perfume Mist",
+      "description": "A sweet, tart berry fragrance with notes of sweet berry, tart pomegranate, and sheer wood, complete with a strawberry charm.",
+      "timestamp": "0:17"
+    },
+    {
+      "name": "Banana Blend Smooth & Soothe Body Cream",
+      "description": "A lightweight, whipped body moisturizer designed to hydrate the skin with a subtle banana-vanilla scent.",
+      "timestamp": "7:21"
+    },
+    {
+      "name": "Banana Blend Daily Moisturizing Body Lotion",
+      "description": "A fast-absorbing, non-greasy body lotion packaged in a bright yellow squeeze bottle.",
+      "timestamp": "8:03"
+    },
+    {
+      "name": "Banana Blend All Day Moisture Body Wash",
+      "description": "A highly conditioning body wash formulated with vitamin E, aloe, coconut oil, shea, and cocoa butter.",
+      "timestamp": "8:45"
+    },
+    {
+      "name": "Watermelon Coin Purse",
+      "description": "A small, silicone zipper pouch shaped like a watermelon slice with an attached clip for keys or bags.",
+      "timestamp": "13:27"
+    },
+    {
+      "name": "Fruit Fusion Lip Oil",
+      "description": "A glossy, hydrating lip oil featuring a miniature design with an attached fruit charm and doe-foot applicator.",
+      "timestamp": "13:46"
+    },
+    {
+      "name": "Fruit Fusion PocketSpray Hand Sanitizer",
+      "description": "An anti-bacterial hand spray in flat, rectangular pastel-colored plastic packaging.",
+      "timestamp": "14:01"
+    },
+    {
+      "name": "PocketSpray Holder",
+      "description": "A pastel pink protective sleeve for the rectangular sanitizer spray, featuring a colorful braided fabric wristlet.",
+      "timestamp": "14:21"
+    }
+  ],
+  "themes": [
+    {
+      "name": "Fruit Fusion",
+      "description": "A vibrant, fruit-forward summer body care collection focused on fresh scents, lightweight hydration, and playful early-2000s styling."
+    },
+    {
+      "name": "Y2K Nostalgia",
+      "description": "A campaign aesthetic heavily channeling early 2000s youth culture, reminiscent of 'Limited Too' accessories, pastel color blocks, and retro charms."
+    },
+    {
+      "name": "Consumer First Hydration",
+      "description": "A product formulation transition prioritizing quick-absorbing, skin-nourishing ingredients like hyaluronic acid, aloe, and natural butters without heavy residue."
+    }
+  ],
+  "characters": [
+    {
+      "name": "Leah Janae",
+      "role_description": "Beauty influencer, fragrance reviewer, and passionate Bath & Body Works enthusiast who guides the audience through her first impressions and in-store haul.",
+      "appearance_timestamp": "0:00"
+    },
+    {
+      "name": "Hilary Duff",
+      "role_description": "Cultural icon, singer, and actress serving as the official brand ambassador and creative partner, heavily featured on in-store marketing displays.",
+      "appearance_timestamp": "1:34"
+    }
+  ],
+  "music": [
+    {
+      "description": "Upbeat, light pop-synth background music matching the bright, energetic, and youthful theme of the review.",
+      "vibe": "Energetic, cheerful, modern, bright",
+      "duration": "0:00 - 17:22"
+    }
+  ],
+  "talking_points": [
+    {
+      "point": "It is a fun-filled Bath & Body Works week, you guys! We have so many new releases to talk about.",
+      "speaker": "Leah Janae",
+      "timestamp": "0:01"
+    },
+    {
+      "point": "They got my favorite girl to be the spokesperson: Miss Hilary Duff herself! Are you kidding me?",
+      "speaker": "Leah Janae",
+      "timestamp": "0:39"
+    },
+    {
+      "point": "I went in store today; she was everywhere! This was front and center, taking up three tables with her face on it.",
+      "speaker": "Leah Janae",
+      "timestamp": "1:36"
+    },
+    {
+      "point": "I feel like this collection is a little bit geared towards the younger crowd, so I was surprised to see Hilary as the spokesperson.",
+      "speaker": "Leah Janae",
+      "timestamp": "2:44"
+    },
+    {
+      "point": "I think they were going for early 2000s vibes, like something you would find at Limited Too back in the day.",
+      "speaker": "Leah Janae",
+      "timestamp": "2:58"
+    },
+    {
+      "point": "Trust, this did deliver on the scent. It is so good! This is the banana scent I have been looking for.",
+      "speaker": "Leah Janae",
+      "timestamp": "5:00"
+    },
+    {
+      "point": "I do think they are a little on the light side performance-wise. They seem lighter than their typical body mists.",
+      "speaker": "Leah Janae",
+      "timestamp": "6:16"
+    },
+    {
+      "point": "I cannot believe the suds on this body wash. This suds up even more than their typical formula, and it felt so moisturizing.",
+      "speaker": "Leah Janae",
+      "timestamp": "9:01"
+    },
+    {
+      "point": "Watermelon Whirl is pretty fresh and dewy. It's not a super sweet Jolly Rancher watermelon; it reminds me of a fresh slice dripping in water.",
+      "speaker": "Leah Janae",
+      "timestamp": "9:58"
+    },
+    {
+      "point": "The bottle says: 'Say yes to quick absorption, lightweight feel, skin feeling soft and smooth. Say no to tackiness, greasiness, and heaviness.'",
+      "speaker": "Leah Janae",
+      "timestamp": "11:18"
+    },
+    {
+      "point": "Tangerine Twirl is such a nice, fresh tangerine. It's like tangerine peel, very realistic and fresh.",
+      "speaker": "Leah Janae",
+      "timestamp": "11:43"
+    },
+    {
+      "point": "Berry Bliss is my least favorite. It smells exactly like a plain berry yogurt, very tart and fresh.",
+      "speaker": "Leah Janae",
+      "timestamp": "12:31"
+    },
+    {
+      "point": "They have these new sanitizer sprays in rectangular packaging. It holds a lot less product—only 0.48 ounces.",
+      "speaker": "Leah Janae",
+      "timestamp": "14:01"
+    },
+    {
+      "point": "I posted my reel on Instagram, and Hilary Duff actually liked my post! That made my entire day.",
+      "speaker": "Leah Janae",
+      "timestamp": "16:20"
+    }
+  ],
+  "word_cloud": [
+    "Nostalgia",
+    "Banana",
+    "Hydration",
+    "Spokesperson",
+    "Lather",
+    "Lightweight",
+    "Watermelon",
+    "Tangerine",
+    "Berry",
+    "Summer",
+    "Charms",
+    "Ombre",
+    "Y2K",
+    "Moisturizing",
+    "Nostalgic",
+    "Lotion",
+    "Fruity",
+    "Juicy",
+    "Limited-Too",
+    "Youthful"
+  ],
+  "type": "sentiment_video",
+  "videos": [
+    "GPizdD_WGNs"
+  ]
+}

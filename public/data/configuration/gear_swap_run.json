@@ -1,0 +1,96 @@
+{
+  "basePlayerImage": "/assets/gear_swap_base_player.jpg",
+  "outfits": [
+    {
+      "id": "gear-casual-1",
+      "category": "Casual City Wear",
+      "title": "Parisian Tech Fleece & Tactical Cargo",
+      "description": "Oversized minimalist grey tech fleece hoodie, black cargo joggers, and retro white leather high-tops.",
+      "outfitPrompt": "High-end commercial fashion product flatlay photography of a men's stylish Parisian streetwear outfit: oversized matte grey tech fleece hoodie, relaxed black cargo joggers with tactical straps, and pristine retro white leather high-top sneakers arranged neatly on a dark concrete studio surface, clean studio lighting, 1:1 aspect ratio",
+      "tryOnPrompt": "Commercial fashion photoshoot of Kylian Mbappé wearing a stylish oversized grey tech fleece hoodie, black cargo joggers, and retro white sneakers, standing confident on a trendy Paris boulevard at twilight, photorealistic, 4K, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_casual_1_1787068135176_16.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068153512_36.jpg?companyName=EA%20Games%20FC"
+    },
+    {
+      "id": "gear-casual-2",
+      "category": "Casual City Wear",
+      "title": "Cyber Volt Bomber & Relaxed Chinos",
+      "description": "Sleek obsidian satin bomber jacket with subtle neon volt accents, crisp white tee, and olive relaxed chinos.",
+      "outfitPrompt": "High-end commercial fashion flatlay of a men's outfit: luxury black satin bomber jacket with subtle neon green volt lining, crisp crewneck white tee, olive green tailored chinos, and low-profile suede sneakers on a minimalist dark studio floor, 1:1 aspect ratio",
+      "tryOnPrompt": "Commercial lifestyle portrait of Kylian Mbappé wearing a black satin bomber jacket with volt accents, white t-shirt, and olive chinos, leaning against an illuminated glass architectural wall in Tokyo, cinematic urban lighting, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_casual_2_1787068136033_161.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068157750_194.jpg?companyName=EA%20Games%20FC"
+    },
+    {
+      "id": "gear-casual-3",
+      "category": "Casual City Wear",
+      "title": "Monochromatic Cashmere Knit & Indigo Denim",
+      "description": "Cream textured ribbed cashmere crewneck sweater, dark raw selvedge denim, and brown suede Chelsea boots.",
+      "outfitPrompt": "Studio fashion flatlay photography of a men's luxury casual outfit: heavy cream textured ribbed cashmere sweater, dark indigo raw denim jeans, and dark brown suede Chelsea boots neatly laid out on a dark slate background, 1:1 aspect ratio",
+      "tryOnPrompt": "Editorial lifestyle portrait of Kylian Mbappé wearing a luxury cream ribbed knit sweater and dark indigo denim jeans, warm natural cafe lighting in Madrid, relaxed confident pose, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_casual_3_1787068135352_967.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068154683_217.jpg?companyName=EA%20Games%20FC"
+    },
+    {
+      "id": "gear-fancy-1",
+      "category": "Fancy Clothing",
+      "title": "Midnight Navy Velvet Bespoke Tuxedo",
+      "description": "Midnight navy velvet dinner jacket with black silk shawl lapel, pleated dress shirt, and black bow tie.",
+      "outfitPrompt": "Luxury menswear product photography flatlay: bespoke midnight navy velvet tuxedo jacket with black silk satin shawl lapel, white pleated tuxedo shirt, black silk bow tie, gold cufflinks, and polished patent leather oxford shoes on dark marble, 1:1 aspect ratio",
+      "tryOnPrompt": "Red carpet gala portrait of Kylian Mbappé wearing a tailored midnight navy velvet tuxedo with black silk shawl lapel and bow tie, holding an award, elegant gala ballroom background with champagne chandeliers, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_fancy_1_1787068135924_810.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068156664_249.jpg?companyName=EA%20Games%20FC"
+    },
+    {
+      "id": "gear-fancy-2",
+      "category": "Fancy Clothing",
+      "title": "Haute Couture Double-Breasted Gala Suit",
+      "description": "Sharp jet-black double-breasted structured blazer with peak lapels and tailored wool dress trousers.",
+      "outfitPrompt": "Editorial menswear flatlay: luxury jet-black double-breasted structured blazer with peak lapels, tailored tapered black trousers, silk dress shirt, and Italian leather dress shoes on clean obsidian backdrop, 1:1 aspect ratio",
+      "tryOnPrompt": "High-fashion magazine cover shoot of Kylian Mbappé wearing a structured double-breasted black-tie suit with crisp open collar, dramatic spotlighting in a minimalist luxury architectural loft, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_fancy_2_1787068137068_218.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068157433_921.jpg?companyName=EA%20Games%20FC"
+    },
+    {
+      "id": "gear-fancy-3",
+      "category": "Fancy Clothing",
+      "title": "Bordeaux Satin Evening Cocktail Suit",
+      "description": "Rich bordeaux wine satin-finish evening suit with matching slim trousers and a black silk turtleneck.",
+      "outfitPrompt": "High-fashion product flatlay: rich burgundy bordeaux satin tailored suit jacket, black fine-gauge silk turtleneck, matching slim trousers, and black velvet loafers on dark velvet surface, 1:1 aspect ratio",
+      "tryOnPrompt": "VIP evening portrait of Kylian Mbappé wearing a tailored bordeaux wine satin suit with black silk turtleneck, luxury VIP lounge overlooking night skyline, atmospheric warm amber lighting, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_fancy_3_1787068137135_919.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068157905_731.jpg?companyName=EA%20Games%20FC"
+    },
+    {
+      "id": "gear-soccer-1",
+      "category": "Soccer Gear",
+      "title": "Real Madrid 2026/27 Gold Champions Kit",
+      "description": "Official Real Madrid all-white matchday kit with gold championship stripes, shorts, and Predator boots.",
+      "outfitPrompt": "Official EA SPORTS FC 27 football kit flatlay: Real Madrid white matchday kit jersey with gold trim and Champions League sleeve badge, matching white shorts, white match socks, and gold metallic football cleats on stadium grass turf, 1:1 aspect ratio",
+      "tryOnPrompt": "Full-body dynamic football portrait of Kylian Mbappé wearing the Real Madrid white and gold matchday jersey and shorts, standing proudly on the Santiago Bernabéu pitch under radiant floodlights, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_soccer_1_1787068138988_605.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068165845_991.jpg?companyName=EA%20Games%20FC"
+    },
+    {
+      "id": "gear-soccer-2",
+      "category": "Soccer Gear",
+      "title": "VOLTA Neon Cyber Street 5v5 Kit",
+      "description": "Electric cyberpunk blackout jersey with neon volt geometric patterns, compression tights, and turf boots.",
+      "outfitPrompt": "Futuristic EA FC VOLTA street football apparel flatlay: blackout athletic jersey with glowing neon green volt fractal patterns, athletic compression shorts, and neon street turf boots on a wet asphalt surface with neon reflections, 1:1 aspect ratio",
+      "tryOnPrompt": "Cyberpunk street football portrait of Kylian Mbappé wearing a neon volt and blackout VOLTA street soccer kit, holding a neon glowing soccer ball on a Tokyo rooftop cage pitch at night, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_soccer_2_1787068139600_639.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068171433_503.jpg?companyName=EA%20Games%20FC"
+    },
+    {
+      "id": "gear-soccer-3",
+      "category": "Soccer Gear",
+      "title": "Retro Galáctico Heritage Match Kit",
+      "description": "Iconic retro-inspired vintage Real Madrid tribute jersey with polo collar, gold crest, and captain's armband.",
+      "outfitPrompt": "Vintage heritage football kit product flatlay: classic retro cream-white football jersey with navy polo collar, embroidered heritage club crest, gold captain armband, and classic leather football boots on vintage wooden locker bench, 1:1 aspect ratio",
+      "tryOnPrompt": "Cinematic stadium tunnel portrait of Kylian Mbappé wearing a retro-inspired cream white football jersey with navy polo collar and captain armband, walking out toward the roaring championship stadium crowd, 1:1 square portrait",
+      "outfitImage": "/api/content-audit/image/outfit_gear_soccer_3_1787068139771_857.jpg?companyName=EA%20Games%20FC",
+      "tryOnImage": "/api/content-audit/image/gen_ref_1787068170433_133.jpg?companyName=EA%20Games%20FC"
+    }
+  ],
+  "timestamp": "2026-08-18T15:49:32.253Z"
+}

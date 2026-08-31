@@ -1,0 +1,38 @@
+{
+  "editions": [
+    {
+      "id": "edition_default_mbappe",
+      "name": "Default",
+      "starPlayer": "Kylian Mbappé",
+      "teamOrClub": "Real Madrid & France",
+      "whyPerfect": "Showcases world superstar Kylian Mbappé in his official Real Madrid kit standing atop the world's football capitals.",
+      "description": "EA SPORTS FC 27 Global Edition delivers next-gen volumetric HypermotionV+ realism, full UEFA Champions League licensing, and authentic matchday atmospheres from the Bernabéu to Wembley.",
+      "regionalPerks": [
+        "Untradeable 91-rated Kylian Mbappé Ultimate Team Loan Item (25 Matches)",
+        "4,600 FC Points (Ultimate Edition Pre-Order)",
+        "Founder Status Stadium Kit & Tifo",
+        "Signature PlayStyle+ Rapid Dribbler Perk"
+      ],
+      "image": "/images/fc27_default_cover.jpg",
+      "isDefault": true
+    },
+    {
+      "id": "edition_1787176408237_brasil",
+      "name": "brasil",
+      "starPlayer": "Vinícius Jr.",
+      "teamOrClub": "Brazil National Team",
+      "whyPerfect": "Vinícius Jr. embodies the vibrant flair, joyful Joga Bonito, and unstoppable passion of Brazilian football.",
+      "description": "Experience the pulse of Brazilian football in EA SPORTS FC 27 with cutting-edge HyperMotionV+ delivering true Samba rhythm and dynamic ball physics. Enjoy authentic Portuguese commentary alongside fully licensed domestic showdowns at iconic stadiums like the legendary Maracanã. Master the pitch with electrifying skill moves and unmatched flair that define the beautiful game.",
+      "regionalPerks": [
+        "Untradeable 89-Rated Vinícius Jr. Ultimate Team Loan Item (20 Matches)",
+        "Brazilian Football Legend Icon Loan Pick Pack",
+        "4,600 FC Points for Ultimate Team squad building",
+        "Signature 'Trickster+' PlayStyle unlock for Clubs and Career Mode"
+      ],
+      "image": "/api/content-audit/image/gen_ref_1787176407571_526.jpg?companyName=EA%20Games%20FC",
+      "isDefault": false
+    }
+  ],
+  "selectedEditionId": "edition_1787176408237_brasil",
+  "timestamp": "8/19/2026, 2:53:28 PM"
+}

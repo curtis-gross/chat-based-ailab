@@ -1,0 +1,77 @@
+{
+  "type": "abcd",
+  "videoId": "Izy88EK1dk8",
+  "first_mention": {
+    "seconds": 2.5,
+    "method": "Logo shown on screen with signature candle visual",
+    "result": "Pass"
+  },
+  "abcd_scores": {
+    "attract": {
+      "score": 9,
+      "observation": "High visual engagement with warm autumn aesthetics and candle flame dynamics in the first 3 seconds."
+    },
+    "brand": {
+      "score": 9.5,
+      "observation": "Prominent logo positioning and signature Bath & Body Works wallflower packaging featured throughout."
+    },
+    "connect": {
+      "score": 8.5,
+      "observation": "Evokes strong emotional nostalgia for seasonal fragrance rituals and cozy home atmosphere."
+    },
+    "direct": {
+      "score": 8,
+      "observation": "Clear call to action highlighting the 3-Wick Candle promotional offer and store locator."
+    }
+  },
+  "branding_timeline": [
+    {
+      "time_segment": "0s - 3s",
+      "presence_percent": 90,
+      "action": "Logo on screen with seasonal intro music"
+    },
+    {
+      "time_segment": "3s - 8s",
+      "presence_percent": 80,
+      "action": "Product close-up featuring Bath & Body Works branding"
+    },
+    {
+      "time_segment": "8s - 15s",
+      "presence_percent": 100,
+      "action": "Promotional offer endcard with store & website CTA"
+    }
+  ],
+  "observations": [
+    {
+      "category": "Visuals",
+      "notes": "High-contrast commercial camera lighting showcasing 3-Wick candle flames and vibrant wax colors."
+    },
+    {
+      "category": "Audio",
+      "notes": "Warm acoustic backing track paired with clear fragrance note descriptions."
+    },
+    {
+      "category": "Pacing",
+      "notes": "Quick 3-second hook cut-downs optimized for social and digital video placements."
+    }
+  ],
+  "takeaways": [
+    "Early brand presence in the first 3 seconds significantly improves campaign recall.",
+    "Highlighting key product fragrance notes drives purchase intent across millennial demographics."
+  ],
+  "summary": "Comprehensive video analysis for Bath & Body Works marketing creative.",
+  "gemini_summary": "Comprehensive video analysis for Bath & Body Works marketing creative.",
+  "word_cloud": [
+    "Fragrance",
+    "Product",
+    "Brand",
+    "Campaign",
+    "Video",
+    "Soundtrack",
+    "Aesthetics"
+  ],
+  "timestamp": "2026-08-11T20:56:33.677Z",
+  "videos": [
+    "Izy88EK1dk8"
+  ]
+}

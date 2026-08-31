@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "campaign_name": "Signature Fragrance & Personal Care Growth Campaign",
+    "creator_handle": "@creator_partner",
+    "reviewer_name": "AI Brand Auditor",
+    "review_date": "8/11/2026"
+  },
+  "final_decision": "REVISIONS REQUIRED",
+  "compliance_score": 80,
+  "review_table": [
+    {
+      "id": 1,
+      "criteria": "FTC Disclosure",
+      "focus_area": "Visual #ad on screen (high contrast) + explicit verbal partnership mention in the first 5 seconds.",
+      "status": "FAIL",
+      "notes": "Video lacks an explicit verbal partnership mention within the first 5 seconds of playback, though a visual disclosure is present."
+    },
+    {
+      "id": 2,
+      "criteria": "Product & Fragrance Naming",
+      "focus_area": "Exact scent notes, collection names, and product formats (Mist vs. Lotion) stated correctly.",
+      "status": "PASS",
+      "notes": "Scent profiles, collection names, and product formats (Fine Fragrance Mist and Ultimate Hydration Body Cream) are described accurately."
+    },
+    {
+      "id": 3,
+      "criteria": "Claim Substantiation",
+      "focus_area": "Zero medical/health claims (no eczema/acne/anxiety fixes); sensory-based benefits only.",
+      "status": "PASS",
+      "notes": "No medical, therapeutic, or health claims are made. Product benefits remain strictly sensory and cosmetic."
+    },
+    {
+      "id": 4,
+      "criteria": "Safe Usage & Handling",
+      "focus_area": "Lit candles on flat surfaces with trimmed wicks; Wallflowers plugged upright; proper product application.",
+      "status": "PASS",
+      "notes": "Featured products are handled and applied correctly. No unsafe candle burning or improper Wallflower usage is shown."
+    },
+    {
+      "id": 5,
+      "criteria": "Packaging Presentation",
+      "focus_area": "Labels clean and visible; current active inventory/packaging shown.",
+      "status": "PASS",
+      "notes": "Product labels are clean, clearly visible to the camera, and reflect current active seasonal packaging."
+    },
+    {
+      "id": 6,
+      "criteria": "Third-Party IP & Audio",
+      "focus_area": "Commercial-cleared audio/music used; no visible competitor logos on apparel or background.",
+      "status": "PASS",
+      "notes": "No infringing background tracks or visible competitor logos on the creator's apparel or surrounding environment."
+    },
+    {
+      "id": 7,
+      "criteria": "Competitor Neutrality",
+      "focus_area": "No disparaging remarks about other brands; directs viewers to official Bath & Body Works channels.",
+      "status": "PASS",
+      "notes": "Maintains a positive, brand-safe tone without making negative or disparaging remarks about competitors."
+    },
+    {
+      "id": 8,
+      "criteria": "Offer & CTA Precision",
+      "focus_area": "Promo codes, sale dates, landing links, and discount details match campaign brief exactly.",
+      "status": "FAIL",
+      "notes": "The tracking link and discount promo code are missing from the top lines of the video description box."
+    },
+    {
+      "id": 9,
+      "criteria": "Visual Environment & Tone",
+      "focus_area": "Clean, bright setting; positive, inclusive tone aligned to brand aesthetic.",
+      "status": "PASS",
+      "notes": "The video environment is bright, organized, and matches the aesthetic standards of Bath & Body Works."
+    },
+    {
+      "id": 10,
+      "criteria": "Platform & Safety Rules",
+      "focus_area": "Complies with platform age guidelines; safe environments only.",
+      "status": "PASS",
+      "notes": "Content is family-friendly and fully compliant with YouTube's community and advertiser-friendly guidelines."
+    }
+  ],
+  "product_mentions": [
+    {
+      "name": "Bath & Body Works Fine Fragrance Mist",
+      "description": "Creator demonstrates the application of the mist and describes the fragrance notes positively.",
+      "timestamp": "0:45",
+      "sentiment": "Positive"
+    },
+    {
+      "name": "Ultimate Hydration Body Cream",
+      "description": "Creator showcases the texture, skin hydration feel, and scent longevity of the body cream.",
+      "timestamp": "1:30",
+      "sentiment": "Positive"
+    }
+  ],
+  "audit_flags": [
+    "Critical: Creator must add a verbal partnership disclosure in the first 5 seconds of the video.",
+    "Minor: Creator needs to add the official campaign landing link and promo code to the top of the video description."
+  ],
+  "recommendations": [
+    "Request a quick re-edit to insert an explicit verbal disclosure within the first 5 seconds.",
+    "Update the video description box to include the correct campaign promo code and tracking link prior to public launch."
+  ],
+  "summary": "The video meets the majority of creative and brand standards but requires immediate revisions to FTC verbal disclosures and description links before final sign-off.",
+  "word_cloud": [
+    "Compliance",
+    "Disclosure",
+    "Fragrance",
+    "Sponsorship",
+    "Brand",
+    "Revision",
+    "Promotion"
+  ],
+  "type": "creator_partner",
+  "videos": [
+    "Wmkx1an2zRA"
+  ]
+}

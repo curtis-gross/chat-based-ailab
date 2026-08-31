@@ -1,0 +1,205 @@
+{
+  "summary": "Bath & Body Works exhibits a severely depressed customer sentiment profile on Trustpilot, reflected in its overall TrustScore of 1.5 out of 5 across 1,645 reviews. While customers continue to express high admiration for product quality, fragrance formulations, candles, and promotional coupon flexibilities in physical stores, operational systemic failures in e-commerce drastically undermine brand perception. Core friction points stem from online payment charges occurring without order generation or confirmation emails, severe shipping delays, leaking/damaged Wallflower shipments due to poor packaging, unfulfilled refunds, and inconsistent in-store staff behavior across retail locations.",
+  "counts": {
+    "positive": 165,
+    "negative": 1431,
+    "neutral": 49
+  },
+  "star_distribution": {
+    "star_5": 99,
+    "star_4": 66,
+    "star_3": 49,
+    "star_2": 82,
+    "star_1": 1349
+  },
+  "sentiment_score": 18,
+  "retail_dimensions": [
+    {
+      "dimension": "Customer Service & In-Store Staff",
+      "sentiment": "Mixed",
+      "score": 42,
+      "summary": "In-store experiences vary dramatically by store location. While some stores excel with accommodating staff and coupon grace period honors, others suffer from disruptive greeting behavior and undertrained cashiers.",
+      "strengths": [
+        "Accommodating staff willing to honor expired coupon grace periods in select stores",
+        "Prompt customer service resolution when phone agents are successfully reached"
+      ],
+      "pain_points": [
+        "Overly loud or disruptive greeting tactics creating uncomfortable store atmospheres",
+        "Inexperienced cashiers and lack of store-level training",
+        "Inconsistent customer treatment across different geographic locations"
+      ]
+    },
+    {
+      "dimension": "Order Fulfillment, Shipping & Delivery Timeliness",
+      "sentiment": "Negative",
+      "score": 20,
+      "summary": "E-commerce fulfillment is heavily impacted by extended dispatch times, delayed standard delivery exceeding promised SLAs, and inadequate liquid protection leading to leaking Wallflower shipments.",
+      "strengths": [
+        "Comprehensive item availability during online promotional events"
+      ],
+      "pain_points": [
+        "Packages failing to arrive weeks past promised estimated delivery dates",
+        "Damaged products due to liquid Wallflowers leaking in transit onto customer floors",
+        "Lack of delivery tracking updates once orders exceed estimated SLAs"
+      ]
+    },
+    {
+      "dimension": "Product Quality, Selection & Authenticity",
+      "sentiment": "Positive",
+      "score": 82,
+      "summary": "Merchandise appeal remains the primary brand strength. Fragrance throw, signature scents, Wallflower plugs, and seasonal candles continue to receive high marks from loyal shoppers.",
+      "strengths": [
+        "Top-notch fragrance variety and scent formulation",
+        "High customer affection for signature candle lines and seasonal plug-ins",
+        "Products generally meet high quality expectations when received undamaged"
+      ],
+      "pain_points": [
+        "Liquid leaks during bulk shipment of Wallflower refills",
+        "Stockouts on popular online promotional items"
+      ]
+    },
+    {
+      "dimension": "Pricing, Value & Price Matching",
+      "sentiment": "Mixed",
+      "score": 58,
+      "summary": "Shoppers appreciate store-level coupon flexibility and major sales, but express frustration when technical glitches charge cards without locking in promotional pricing or placing orders.",
+      "strengths": [
+        "Store policies honoring coupon grace periods (e.g., 3-day post-expiration)",
+        "High perceived value during seasonal promotional tier sales"
+      ],
+      "pain_points": [
+        "Discrepancies in checkout totals vs bank charges during online sales"
+      ]
+    },
+    {
+      "dimension": "Returns, Exchanges & Refund Processing",
+      "sentiment": "Negative",
+      "score": 15,
+      "summary": "Customer service struggles to efficiently issue refunds for failed or unfulfilled online orders, leading to severe claims of withholding funds for cancelled or unprocessed stock.",
+      "strengths": [
+        "In-store exchange capability for physically undamaged items"
+      ],
+      "pain_points": [
+        "Failure to issue prompt refunds when orders fail to process or go out of stock",
+        "Customers forced to initiate disputes with financial institutions for unfulfilled transactions"
+      ]
+    },
+    {
+      "dimension": "Website, App & Checkout Experience",
+      "sentiment": "Negative",
+      "score": 22,
+      "summary": "Technical instability at checkout causes bank charges to execute without generating order numbers or email confirmations, leaving shoppers in limbo.",
+      "strengths": [
+        "Intuitive catalog browsing and product search functionality"
+      ],
+      "pain_points": [
+        "Credit/debit cards charged without generating order confirmation emails or numbers",
+        "Inventory drops mid-checkout leading to unfulfilled payments"
+      ]
+    }
+  ],
+  "reviews": {
+    "positive": [
+      "The scents are top notch. Love the candles. Also a fan of their customer service. So prompt.",
+      "Bath & Body Works at University Village in Fort Worth, TX is awesome. They are so helpful not pushy like the BBW on Chisholm Trail.",
+      "They honored a 20% off coupon due to the 3 day grace period on expiration.",
+      "Great scents and prompt customer service.",
+      "Delivery took ages- around 1 week from dispatch, however products as advised.",
+      "Awesome store experience and coupon honor."
+    ],
+    "negative": [
+      "They'll take your money without processing your order (theft!) And then when you call to get help with getting the refund because now suddenly those items are sold out...",
+      "Purchased the fragrance plug ins through an online order January 17, 2026. Was told I'd receive my order by January 29. Here it is February 4th no order.",
+      "I noticed some brown substance leaking out on to the floor... Surprising leaking wallflowers shipment.",
+      "Early this morning I placed an order with BBW - Items were only available for shipping - I hit place order and I got charged. No email confirmation, but bank charge notification was received.",
+      "As you enter the store, the greeter is loud welcoming you into the store, making everyone in the store turn around to look at who she yelling at. The cashiers lack training...",
+      "Charged without email confirmation, but bank charge notification was received."
+    ],
+    "neutral": [
+      "Delivery took ages- around 1 week from dispatch, however products as advised.",
+      "Early this morning I placed an order... Items were only available for shipping... got charged with no immediate email confirmation.",
+      "Store experience depends entirely on location—University Village was great compared to Chisholm Trail."
+    ]
+  },
+  "strategic_recommendations": [
+    {
+      "priority": "High",
+      "area": "E-Commerce Payment & Order Synchronization",
+      "recommendation": "Deploy strict atomic transactions on checkout ensuring payment authorization only commits if an order ID and automated confirmation email are successfully dispatched.",
+      "expected_impact": "Eliminates phantom payment authorizations, reduces theft accusations, and drastically lowers call center volume."
+    },
+    {
+      "priority": "High",
+      "area": "Fulfillment & Packaging Standard Operating Procedures",
+      "recommendation": "Redesign fulfillment packaging protocols for liquid products like Wallflowers, implementing leak-proof seals and absorbent box liners.",
+      "expected_impact": "Prevents product damage in transit, reduces property damage claims, and saves cost on re-shipments."
+    },
+    {
+      "priority": "High",
+      "area": "Automated Refund & Inventory Re-stocking Workflows",
+      "recommendation": "Implement automated reverse billing that immediately releases pre-authorizations or triggers same-day refunds if an item goes out of stock post-checkout.",
+      "expected_impact": "Restores customer trust and decreases 1-star billing complaints on review platforms."
+    },
+    {
+      "priority": "Medium",
+      "area": "In-Store Staff Experience & Greeting Guidelines",
+      "recommendation": "Issue revised nation-wide retail store customer engagement guidelines focused on welcoming shoppers without disruptive noise, coupled with mandatory cashier system training.",
+      "expected_impact": "Standardizes associate demeanor across retail stores and improves store-level CSAT scores."
+    },
+    {
+      "priority": "Medium",
+      "area": "Proactive Order Delay Communication System",
+      "recommendation": "Configure automated triggered emails/SMS notifications whenever an order shipment breaches its initial estimated arrival window.",
+      "expected_impact": "Sets realistic consumer expectations and reduces WISMO ('Where Is My Order?') inquiries."
+    },
+    {
+      "priority": "Medium",
+      "area": "Unified Coupon & Grace Period Policy Standardization",
+      "recommendation": "Formalize the coupon 3-day grace period rule in store POS systems across all franchise/corporate locations to eliminate regional customer dissatisfaction.",
+      "expected_impact": "Drives store customer retention and consistent policy execution nationwide."
+    }
+  ],
+  "word_cloud": [
+    "Wallflowers",
+    "Candles",
+    "Fragrance",
+    "Leaking Shipment",
+    "Order Fulfillment",
+    "Bank Charge",
+    "No Confirmation Email",
+    "Shipping Delays",
+    "Refund Failure",
+    "Unprocessed Order",
+    "Harlem Store",
+    "Fort Worth Store",
+    "Cashier Training",
+    "Greeter Noise",
+    "Coupon Grace Period",
+    "Plug Ins",
+    "Customer Service",
+    "Store Experience",
+    "Online Ordering",
+    "Product Quality",
+    "Stock Out",
+    "Prompt Service",
+    "Packaging Defects",
+    "Delivery SLA",
+    "Retail Staff",
+    "Discount Policy",
+    "Payment Glitch",
+    "TrustScore"
+  ],
+  "business_info": {
+    "domain": "www.bathandbodyworks.com",
+    "name": "Bath & Body Works",
+    "url": "https://www.trustpilot.com/review/www.bathandbodyworks.com",
+    "trustScore": "1.5",
+    "rating": "Bad",
+    "reviewCount": 1645,
+    "logo": "https://cdn.trustpilot.net/brand-assets/4.3.0/favicons/apple-touch-icon.png"
+  },
+  "type": "trustpilot_sentiment",
+  "videos": [
+    "https://www.trustpilot.com/review/www.bathandbodyworks.com"
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "type": "VIDEO_TEST_SESSION",
+  "id": "video_test_1786546322547",
+  "videoId": "FkqtgipZj3o",
+  "videoTitle": "Video (FkqtgipZj3o)",
+  "timestamp": "2026-08-12T14:52:02.547Z",
+  "results": [
+    {
+      "personaId": "u_The_Seasonal_Scent_Enthusiast_1786546160905_0",
+      "personaName": "Jessica Taylor",
+      "sentiment": "Positive",
+      "feedback": "The high-energy water visuals and bright color packaging make me excited to swap out my heavy autumn decor for fresh, fruity summer scents. I love seeing the full collection lined up at the end so I know exactly what to look for on my next store run.",
+      "visualAppeal": 8,
+      "messageClarity": 9
+    },
+    {
+      "personaId": "u_The_Seasonal_Scent_Enthusiast_1786546160905_1",
+      "personaName": "Marcus Vance",
+      "sentiment": "Neutral",
+      "feedback": "The commercial is overwhelmingly bright, wet, and fruity, which doesn't really connect with my preference for rich, moody woodsmoke notes. However, the production quality is high and clearly signals a major seasonal shift for the brand.",
+      "visualAppeal": 6,
+      "messageClarity": 7
+    },
+    {
+      "personaId": "u_The_Seasonal_Scent_Enthusiast_1786546160905_2",
+      "personaName": "Aaliyah Patel",
+      "sentiment": "Positive",
+      "feedback": "As someone who meticulously matches body care to the season, this Fruit Fusion line looks like the ultimate refreshing summer staple. Seeing the spray, lotion, and body wash displayed together makes me want to buy the complete coordinated set.",
+      "visualAppeal": 9,
+      "messageClarity": 9
+    },
+    {
+      "personaId": "u_The_Seasonal_Scent_Enthusiast_1786546160905_3",
+      "personaName": "Brian K. Schmidt",
+      "sentiment": "Positive",
+      "feedback": "The vibrant energy and clear product lineup at the end immediately caught my attention for my next bulk restock. I always appreciate when Bath & Body Works clearly showcases their new collections so I can plan my purchases around upcoming promotions.",
+      "visualAppeal": 7,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_The_Seasonal_Scent_Enthusiast_1786546160905_4",
+      "personaName": "Elena Rostova",
+      "sentiment": "Neutral",
+      "feedback": "The high-energy dance and water splashing feel a bit too frantic for my usual soothing aromatherapy relaxation routine. Still, the fruit scents look vibrant and refreshing for anyone looking to energize their morning self-care ritual.",
+      "visualAppeal": 6,
+      "messageClarity": 7
+    },
+    {
+      "personaId": "u_The_Modern_Grooming_Explorer_1786546167930_0",
+      "personaName": "Marcus Vance",
+      "sentiment": "Neutral",
+      "feedback": "The high-energy shower scenes and bright neon pink accents lean heavily into traditional women's body care marketing. While the water and freshness themes are appealing after a trail run, the specific product formulas shown don't quite fit my grooming routine.",
+      "visualAppeal": 6,
+      "messageClarity": 7
+    },
+    {
+      "personaId": "u_The_Modern_Grooming_Explorer_1786546167930_1",
+      "personaName": "Julian Thorne",
+      "sentiment": "Neutral",
+      "feedback": "The aesthetic is extremely stylized with bright water splashes and neon highlights, which feels a bit too theatrical for my minimalist design sensibilities. I prefer clean typography and sophisticated woodsy profiles over ultra-fruity summer campaigns.",
+      "visualAppeal": 5,
+      "messageClarity": 6
+    },
+    {
+      "personaId": "u_The_Modern_Grooming_Explorer_1786546167930_2",
+      "personaName": "Kyle Henderson",
+      "sentiment": "Positive",
+      "feedback": "The intense workout and shower imagery really speaks to the active, high-sweat lifestyle I live as a fitness coach. If these body washes offer heavy-duty freshness and lasting scent, it looks like a fun post-workout option.",
+      "visualAppeal": 8,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_The_Modern_Grooming_Explorer_1786546167930_3",
+      "personaName": "Derrick Vance",
+      "sentiment": "Positive",
+      "feedback": "The energetic water sprays and vibrant fruit visuals look like an absolute wake-up call for early morning routines. It makes me want a crisp, invigorating shower gel to clear my head before sitting down at the desk.",
+      "visualAppeal": 7,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_The_Modern_Grooming_Explorer_1786546167930_4",
+      "personaName": "Ethan Brooks",
+      "sentiment": "Neutral",
+      "feedback": "While I appreciate straightforward fruit and citrus notes for my workspace, this commercial leans into an intense pop-music aesthetic that isn't really my vibe. However, the final product lineup makes it very clear what Fruit Fusion is offering.",
+      "visualAppeal": 6,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_The_Clean_Aesthetic_Seeker_1786546174841_0",
+      "personaName": "Elena Rostova",
+      "sentiment": "Neutral",
+      "feedback": "While the high-contrast white and water aesthetics feel clean, the neon-colored packaging of the Fruit Fusion line at the end clashes a bit with my preference for neutral-toned minimalism. However, the sensory focus on body washes and mists is definitely appealing.",
+      "visualAppeal": 6,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_The_Clean_Aesthetic_Seeker_1786546174841_1",
+      "personaName": "Marcus Vance",
+      "sentiment": "Positive",
+      "feedback": "The dramatic water splashes and shower scenes effectively convey the refreshing and spa-like qualities I look for to unwind after a long corporate day. It successfully highlights the hydrating body care products.",
+      "visualAppeal": 8,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_The_Clean_Aesthetic_Seeker_1786546174841_2",
+      "personaName": "Amina Patel",
+      "sentiment": "Positive",
+      "feedback": "I love how crisp and revitalizing the water imagery looks; it makes me immediately think of stepping into a refreshing shower after a draining hospital shift. The product lineup at the conclusion clearly shows soothing options.",
+      "visualAppeal": 8,
+      "messageClarity": 9
+    },
+    {
+      "personaId": "u_The_Clean_Aesthetic_Seeker_1786546174841_3",
+      "personaName": "Jordan Thorne",
+      "sentiment": "Neutral",
+      "feedback": "The slow-motion water droplets and sleek model make for great visual content, though the brightly colored bottles might not fit cleanly onto my pastel-coordinated shelves without careful placement.",
+      "visualAppeal": 7,
+      "messageClarity": 7
+    },
+    {
+      "personaId": "u_The_Clean_Aesthetic_Seeker_1786546174841_4",
+      "personaName": "Sora Takahashi",
+      "sentiment": "Positive",
+      "feedback": "The energetic water spray and botanical-adjacent fruit themes feel very refreshing and clean. It definitely makes me want to grab a fruit-infused body lotion to stay fresh on the go.",
+      "visualAppeal": 8,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_Optimist_1786546180968_0",
+      "personaName": "Jessica Taylor",
+      "sentiment": "Positive",
+      "feedback": "This commercial is so bright, joyful, and full of energy! The splashing water and upbeat vibe make every day feel like a fresh start, and I'd love to bring those cheerful fruit scents into my home.",
+      "visualAppeal": 9,
+      "messageClarity": 9
+    },
+    {
+      "personaId": "u_Optimist_1786546180968_1",
+      "personaName": "Marcus Vance",
+      "sentiment": "Positive",
+      "feedback": "I love the vibrant, dynamic visuals and the splash of color at the end! It has such an upbeat, creative morning routine energy that completely puts me in a good mood.",
+      "visualAppeal": 9,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_Optimist_1786546180968_2",
+      "personaName": "Amara Patel",
+      "sentiment": "Positive",
+      "feedback": "Such a radiant, high-energy spot! The joyful attitude and refreshing fruity scents make it feel like the ultimate treat to reward yourself with after a huge win.",
+      "visualAppeal": 9,
+      "messageClarity": 9
+    },
+    {
+      "personaId": "u_Optimist_1786546180968_3",
+      "personaName": "Tyler Brooks",
+      "sentiment": "Positive",
+      "feedback": "The high-energy workout aesthetic combined with the powerful water splashes is super motivating. It looks like the ultimate refreshing kickstart for an active morning!",
+      "visualAppeal": 9,
+      "messageClarity": 9
+    },
+    {
+      "personaId": "u_Optimist_1786546180968_4",
+      "personaName": "Sofia Ramirez",
+      "sentiment": "Positive",
+      "feedback": "The commercial has such a lively, inspiring rhythm. Watching the water dance and capturing those vibrant fruit scents sparks all kinds of creative, feel-good inspiration for daily routines.",
+      "visualAppeal": 9,
+      "messageClarity": 8
+    },
+    {
+      "personaId": "u_Pessimist_1786546187127_0",
+      "personaName": "Arthur Vance",
+      "sentiment": "Negative",
+      "feedback": "All that flashing strobe lighting and water spraying around just gave me a pounding headache before I even saw the product. I wouldn't touch those artificial fruity chemical sprays with a ten-foot pole; they're just guaranteed to empty wallets and trigger sinus migraines.",
+      "visualAppeal": 3,
+      "messageClarity": 4
+    },
+    {
+      "personaId": "u_Pessimist_1786546187127_1",
+      "personaName": "Brenda Gallagher",
+      "sentiment": "Negative",
+      "feedback": "The commercial spends all its time showing a soaked woman posing in slow motion rather than showing actual ingredient lists or seals of quality. I'd want to check the return policy immediately because I bet that lotion separates into watery grease the second you open it.",
+      "visualAppeal": 4,
+      "messageClarity": 3
+    },
+    {
+      "personaId": "u_Pessimist_1786546187127_2",
+      "personaName": "Gerald Thorne",
+      "sentiment": "Negative",
+      "feedback": "This is just another flashy gimmick designed to trick impulse shoppers into buying neon plastic bottles they don't actually need. They rely on high-energy music and flashing lights instead of offering any real value or practical information about what's inside.",
+      "visualAppeal": 5,
+      "messageClarity": 3
+    },
+    {
+      "personaId": "u_Pessimist_1786546187127_3",
+      "personaName": "Helena Rostova",
+      "sentiment": "Negative",
+      "feedback": "Not a single word about natural extracts or transparent sourcing—just heavy synthetic fragrances blasted straight into the air and onto skin. I refuse to buy anything without thoroughly analyzing the fine print on the back label, which this ad completely hides.",
+      "visualAppeal": 3,
+      "messageClarity": 2
+    },
+    {
+      "personaId": "u_Pessimist_1786546187127_4",
+      "personaName": "Marcus Vance",
+      "sentiment": "Negative",
+      "feedback": "Classic corporate marketing manipulation designed to hook trend-chasers with glossy production value. They flash four fruity scents at the very end like it's some kind of limited-time jackpot, hoping people will rush out and waste money on overpriced scented water.",
+      "visualAppeal": 4,
+      "messageClarity": 5
+    }
+  ]
+}

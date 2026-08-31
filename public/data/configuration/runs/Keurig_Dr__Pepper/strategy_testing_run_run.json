@@ -1,0 +1,80 @@
+{
+  "run": {
+    "question": "What flavor of Squirt brand drinks do you like best, and why?",
+    "summary": "The focus group panel exhibited strong brand affinity centered around Squirt's signature grapefruit profile, though distinct splits emerged regarding product variants. Traditionalists and purists firmly favor Original Citrus (especially Mexican cane sugar formulations) for its unmatched pairing with hearty food and honest thirst-quenching bite. Modern hosts and health-conscious consumers lean toward Ruby Red and Zero Sugar for cocktail mixing and cleaner nutritional profiles, while skeptics demand more real fruit juice and less artificial sweetener across the line.",
+    "consensusPoints": [
+      "Squirt's crisp, tart grapefruit profile is universally recognized as superior to standard overly sweet lemon-lime sodas.",
+      "The brand is viewed as the definitive citrus base for pairing with Mexican cuisine and crafting authentic Palomas.",
+      "Packaging matters heavily across use cases, ranging from glass bottles for heritage authenticity to mini-cans for cocktail freshness."
+    ],
+    "divergentPoints": [
+      "Traditional cane sugar vs. Zero Sugar formulas: Purists insist high-fructose corn syrup or artificial sweeteners ruin the genuine taste, whereas modern hosts actively prefer Zero Sugar to avoid sugar crashes.",
+      "Original Citrus vs. Ruby Red: Gary and Mateo remain strictly committed to the yellow Original profile, while Sofia and Joy embrace the fruitier, berry-citrus notes of Ruby Red.",
+      "Real juice content: Arthur is critical of the low actual juice percentage, while everyday consumers like Sam prioritize convenience and price over ingredient purity."
+    ],
+    "responses": [
+      {
+        "personaId": "p1",
+        "personaName": "Mateo Alvarez",
+        "archetype": "The Cultural Traditionalist",
+        "isStandardDefault": false,
+        "answer": "For me and my family, nothing beats the Original Citrus Mexican Squirt in the glass bottles with real cane sugar. When we're serving carnitas, barbacoa, or green chile stews on the weekend, that genuine citrus bite cuts through the richness like nothing else. The standard 2-liters work great for large crowds, but that glass bottle formula is the heritage taste we grew up on.",
+        "sentiment": "enthusiastic",
+        "favoriteFlavorMentioned": "Original Citrus (Mexican Glass Bottle / Cane Sugar)",
+        "keyReason": "Heritage authenticity and the perfect acidity to balance rich, traditional Mexican foods."
+      },
+      {
+        "personaId": "p2",
+        "personaName": "Sofia Ramirez",
+        "archetype": "The Modern Mixologist",
+        "isStandardDefault": false,
+        "answer": "I’m torn between Squirt Zero Sugar and Ruby Red, but Ruby Red mini-cans win for my cocktail nights. The tart-sweet balance and vibrant color make an incredible artisanal Paloma paired with craft blanco tequila and a Tajín rim. Plus, the 7.5 oz cans ensure every drink gets fresh carbonation without wasting half a large bottle.",
+        "sentiment": "enthusiastic",
+        "favoriteFlavorMentioned": "Squirt Ruby Red",
+        "keyReason": "Elevated cocktail aesthetic, distinct berry-grapefruit balance, and convenient mini-can sizing."
+      },
+      {
+        "personaId": "p3",
+        "personaName": "Gary Miller",
+        "archetype": "The Nostalgic Flavor Purist",
+        "isStandardDefault": false,
+        "answer": "Original Squirt, hands down. I’ve been drinking it from ice-cold 12-pack cans for over thirty years after working in the yard. I don't care for the trendy berry spins or diet aftertastes; the original has that clean, tart grapefruit snap that actually kills your thirst instead of coating your mouth in syrup like regular colas.",
+        "sentiment": "positive",
+        "favoriteFlavorMentioned": "Original Squirt Citrus",
+        "keyReason": "Uncompromising decades-long flavor consistency and straightforward thirst-quenching tartness."
+      },
+      {
+        "personaId": "default_optimist",
+        "personaName": "Joy Sun",
+        "archetype": "The Enthusiastic Optimist",
+        "isStandardDefault": true,
+        "answer": "I absolutely love Squirt Ruby Red! It’s so bright, fruity, and fun for summer spritzers and backyard get-togethers with friends. It brings such an energetic, cheerful pop of flavor and color to any drink, and it just instantly puts me in a sunny patio mood.",
+        "sentiment": "enthusiastic",
+        "favoriteFlavorMentioned": "Squirt Ruby Red",
+        "keyReason": "Vibrant, uplifting flavor profile that enhances social gatherings and warm-weather drinks."
+      },
+      {
+        "personaId": "default_pessimist",
+        "personaName": "Arthur Vance",
+        "archetype": "The Skeptical Critic",
+        "isStandardDefault": true,
+        "answer": "If I have to pick, Squirt Zero Sugar is the only tolerable option because I refuse to drink 40 grams of liquid sugar. But let's be honest: they need to use more actual grapefruit juice concentrate instead of masking everything with artificial flavors and chemical sweeteners. It's decent for a soda, but the ingredient quality could be far better for the price.",
+        "sentiment": "skeptical",
+        "favoriteFlavorMentioned": "Squirt Zero Sugar",
+        "keyReason": "Avoids massive sugar crashes, though critical of low juice content and artificial ingredients."
+      },
+      {
+        "personaId": "default_generalist",
+        "personaName": "Sam Taylor",
+        "archetype": "The Mainstream Generalist",
+        "isStandardDefault": true,
+        "answer": "I stick with the standard Original Squirt. Whenever I'm grabbing a cold 20 oz at a gas station or picking up a fridge pack on sale at the grocery store, it's a solid, reliable alternative to regular lemon-lime sodas. It tastes refreshing, the price is usually fair, and I know exactly what I'm getting every time.",
+        "sentiment": "neutral",
+        "favoriteFlavorMentioned": "Original Squirt Citrus",
+        "keyReason": "Widespread retail availability, dependable flavor, and good value."
+      }
+    ],
+    "timestamp": "08:02 AM"
+  },
+  "savedAt": "2026-08-31T15:02:00.054Z"
+}

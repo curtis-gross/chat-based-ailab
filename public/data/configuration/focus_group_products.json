@@ -1,0 +1,30 @@
+[
+  {
+    "id": "squirt_original_12pack",
+    "name": "Squirt Original Grapefruit Soda (12-Pack)",
+    "description": "Crisp, tart, and wildly refreshing. Light, fizzy, caffeine-free naturally flavored grapefruit soda made with real citrus juice. Perfect ice-cold from the can or mixed in an authentic Mexican Paloma.",
+    "price": "$6.99",
+    "category": "Citrus Soda"
+  },
+  {
+    "id": "squirt_zero_sugar",
+    "name": "Squirt Zero Sugar Grapefruit Soda (12-Pack)",
+    "description": "All the bright, bold citrus punch of classic Squirt with zero calories and zero sugar. Crisp hydration that satisfies intense thirst without any sugar crash.",
+    "price": "$6.99",
+    "category": "Zero Sugar Soda"
+  },
+  {
+    "id": "squirt_ruby_red",
+    "name": "Squirt Ruby Red Citrus Soda (2-Liter)",
+    "description": "Bursting with sweet, tangy ruby red grapefruit flavor and a splash of citrus zest. Ideal for family cookouts, taco fiestas, and party punch bowls.",
+    "price": "$2.49",
+    "category": "Citrus Soda"
+  },
+  {
+    "id": "squirt_paloma_mixer_pack",
+    "name": "Squirt Paloma Cocktail Party Pack",
+    "description": "The quintessential authentic mixer bundle for craft Palomas. Includes two 12-packs of Squirt, artisanal chili-lime cocktail salt, and recipe card for the perfect Mexican Paloma.",
+    "price": "$14.99",
+    "category": "Beverage & Mixers"
+  }
+]

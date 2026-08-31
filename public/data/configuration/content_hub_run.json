@@ -1,0 +1,140 @@
+{
+  "variants": [
+    {
+      "id": "var_email_1",
+      "type": "Email",
+      "title": "Ultimate Team Post-World Cup Squad Booster",
+      "primaryText": "Subject: Keep the World Cup fever alive! Build your ultimate post-tournament squad now.",
+      "offer": "Get 2,200 FIFA Points + 1 Rare Gold Pack on your next login.",
+      "targetCategory": "Ultimate Team Power Buyers",
+      "imagePrompt": "Photorealistic close-up of a modern soccer player celebrating under stadium lights, captured with high-speed sports photography, golden confetti falling, glowing digital holographic stats card overlay, unreal engine 5 render, highly detailed.",
+      "image": "/api/content-audit/image/content_hub_var_email_1_1786554379015_392.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 9,
+        "reasoning": "The image successfully captures the premium, celebratory aesthetic of EA Sports FC Ultimate Team by integrating authentic-feeling in-game UI overlays directly into a high-energy, photorealistic match scenario without relying on generic device mockups.",
+        "metadata": "Cinematic sports broadcast style featuring an ecstatic footballer holding a futuristic holographic in-game stats card ('Match Winner') amidst falling confetti in a packed stadium, utilizing a deep blue, gold, and white color palette."
+      }
+    },
+    {
+      "id": "var_email_2",
+      "type": "Email",
+      "title": "Unlock Ultimate Performance on Next-Gen Hardware",
+      "primaryText": "Subject: Push your PC to the limit: Experience EA Sports FC at 144Hz+ in 4K.",
+      "offer": "Save 15% on EA Sports FC Ultimate Edition & unlock advanced graphics settings.",
+      "targetCategory": "Competitive Hardware Enthusiasts",
+      "imagePrompt": "High-end liquid-cooled gaming PC rig glowing with futuristic neon blue and purple RGB lights, displaying an ultra-smooth, high-frame-rate football gameplay scene on a curved ultra-wide monitor, photorealistic, cinematic studio lighting.",
+      "image": "/api/content-audit/image/content_hub_var_email_2_1786554376205_167.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 10,
+        "reasoning": "Flawlessly aligns with the campaign by showcasing an elite hardware setup running EA Sports FC 24 with premium visual fidelity and authentic branding.",
+        "metadata": "High-end liquid-cooled custom PC tower, curved ultra-wide gaming monitor displaying EA Sports FC 24, mechanical keyboard, and mouse on a dark wooden desk against a moody gaming setup background featuring PlayStation and Xbox branding."
+      }
+    },
+    {
+      "id": "var_email_3",
+      "type": "Email",
+      "title": "The Journey Doesn't End Here: Discover Post-Cup DLCs",
+      "primaryText": "Subject: 100% completion awaits. Explore the massive new World Tour expansion campaigns.",
+      "offer": "Get 30% off all Campaign Add-ons and Expansion Bundles.",
+      "targetCategory": "Content Completionists & DLC Explorers",
+      "imagePrompt": "A sleek game room shelf filled with various trophy cases, game cases, and interactive holographic maps of global football stadiums, soft ambient lighting, cinematic, hyper-detailed, warm color palette.",
+      "image": "/api/content-audit/image/content_hub_var_email_3_1786554376491_5.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 10,
+        "reasoning": "Exceptional alignment with the 'Content Completionists & DLC Explorers' campaign, utilizing premium gaming memorabilia and immersive holographic stadium displays to brilliantly reinforce that the football journey extends far beyond the main game.",
+        "metadata": "Wooden shelving unit with integrated warm LED strip lighting, displaying collector trophies, EA Sports FC 24 game cases, holographic stadium models (Santiago Bernabéu and Camp Nou), football memorabilia, and a living room setup with a large gaming screen in the background playing a soccer match. Key color palettes include warm wood tones, vibrant blue/white hologram glows, and green from the TV screen."
+      }
+    },
+    {
+      "id": "var_sms_1",
+      "type": "SMS",
+      "title": "Ultimate Team Flash Point Drop",
+      "primaryText": "The post-World Cup season is here! Secure your Limited Edition Icon Player Pack today. Redeem now: https://ea.games/fc-worldcup-drop",
+      "offer": "POSTCUPICON",
+      "targetCategory": "Ultimate Team Power Buyers",
+      "imagePrompt": "A metallic dark chrome football jersey with glowing gold circuitry lines, clean studio shot, professional product photography, 8k resolution.",
+      "image": "/api/content-audit/image/content_hub_var_sms_1_1786554376085_526.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 9,
+        "reasoning": "High compliance score; the sleek cyberpunk aesthetic, premium gold-and-black color palette, and high-tech digital styling seamlessly capture the high-value, exclusive energy of the Ultimate Team Flash Point Drop campaign.",
+        "metadata": "Futuristic black athletic jersey featuring glowing gold circuit board traces, a prominent '88' number graphic on the chest, a stylized V-neck collar, subtle brand logos including a lightning bolt icon and Nike swoosh, displayed against a dark studio background with a illuminated circular platform beneath."
+      }
+    },
+    {
+      "id": "var_sms_2",
+      "type": "SMS",
+      "title": "Hardware Performance Upgrades Alert",
+      "primaryText": "Dominate the pitch with zero lag. Download the EA Sports FC PC Performance Update & claim your frame-rate booster: https://ea.games/fc-pro-hardware",
+      "offer": "144HZPITCH",
+      "targetCategory": "Competitive Hardware Enthusiasts",
+      "imagePrompt": "Close-up of a high-performance mechanical gaming keyboard with custom keycaps illuminated in bright neon green and white, dynamic action, photorealistic.",
+      "image": "/api/content-audit/image/content_hub_var_sms_2_1786554378888_263.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 8,
+        "reasoning": "The image strongly conveys high-performance competitive gaming hardware through dynamic action and branded aesthetic cues, perfectly supporting the hardware upgrades campaign context.",
+        "metadata": "Motion blur hands typing on a mechanical gaming keyboard with bright green LED backlighting, metallic chassis, and a monitor displaying a game in the background with a dark desktop setting."
+      }
+    },
+    {
+      "id": "var_sms_3",
+      "type": "SMS",
+      "title": "Completer's Expansion Pack Discount",
+      "primaryText": "Unfinished business? Complete 100% of the tournament road with the New Era DLC Pack. Use your exclusive link: https://ea.games/fc-dlc-complete",
+      "offer": "COMPLETIONIST",
+      "targetCategory": "Content Completionists & DLC Explorers",
+      "imagePrompt": "A golden trophy with intricate engravings of global football stadiums, sitting on a dark polished wooden table, dramatic side-lighting, photorealistic 3D render.",
+      "image": "/api/content-audit/image/content_hub_var_sms_3_1786554377277_773.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 9,
+        "reasoning": "The image powerfully captures the elite completionist ethos with a premium, tangible gold trophy that rewards dedication, perfectly aligning with the DLC Explorers campaign without relying on generic device mockups.",
+        "metadata": "Golden trophy centered on a wooden table, featuring an engraved soccer ball on top, ornate handles, stadium engravings, and a 'Global Stadium Championship' plaque against a dark, warm-toned blurred background."
+      }
+    },
+    {
+      "id": "var_web_1",
+      "type": "Web",
+      "title": "Ultimate Team Squad Hero Banner",
+      "primaryText": "The Tournament is Over, but the Glory is Yours. Build the Dream Team.",
+      "offer": "Buy EA Sports FC and get 4,600 FC Points Instantly",
+      "targetCategory": "Ultimate Team Power Buyers",
+      "imagePrompt": "A dynamic composition showing three diverse superstar football players in action, wearing premium sleek futuristic kits, dramatic stadium lighting, volumetric fog, dynamic action shot, photorealistic sports photography.",
+      "image": "/api/content-audit/image/content_hub_var_web_1_1786554380065_908.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 9,
+        "reasoning": "The image captures a premium, high-energy football atmosphere that strongly aligns with the competitive and dynamic aesthetic of EA Games FC Ultimate Team campaigns.",
+        "metadata": "High-octane football action shot featuring three dynamic players in branded kits on a lush stadium pitch, dramatic smoke and stadium lighting, sleek typography branding 'Aura Strike' and 'Join The Future', dark blue/cyan and maroon color palettes."
+      }
+    },
+    {
+      "id": "var_web_2",
+      "type": "Web",
+      "title": "Pro Hardware Performance Banner",
+      "primaryText": "Experience True Next-Gen. Real-Time Ray Tracing. 120 FPS. Zero Compromise.",
+      "offer": "Download the Next-Gen PC Demo & Get 10% Off Full Game",
+      "targetCategory": "Competitive Hardware Enthusiasts",
+      "imagePrompt": "A split-screen visual displaying the incredible contrast between standard graphics and ray-traced, ultra-high-definition grass, player sweat, and stadium lighting details, ultra-realistic, 8k resolution, cinematic.",
+      "image": "/api/content-audit/image/content_hub_var_web_2_1786554380241_815.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 9,
+        "reasoning": "High compliance score; effectively highlights hardware performance capabilities with stark, high-contrast visual fidelity comparisons tailored for competitive hardware enthusiasts.",
+        "metadata": "Split-screen comparison showcasing a soccer player on a muddy pitch versus a lush, ray-traced grass pitch; primary objects are the soccer player in a blue kit, soccer ball, and stadium environment; color palettes feature muted earth tones on the left and vibrant greens, bright stadium lighting, and deep blues on the right."
+      }
+    },
+    {
+      "id": "var_web_3",
+      "type": "Web",
+      "title": "Complete World Tour DLC Banner",
+      "primaryText": "Unlock Every Stadium. Master Every League. Achieve 100% Greatness.",
+      "offer": "Get the Complete World Tour DLC Bundle - Now 25% Off",
+      "targetCategory": "Content Completionists & DLC Explorers",
+      "imagePrompt": "A vibrant digital map of the world with glowing connections between various major football hubs and stadiums, interactive UI overlays showing completion badges and achievement medals, cinematic, clean vector-style photorealism.",
+      "image": "/api/content-audit/image/content_hub_var_web_3_1786554381356_800.jpg?companyName=EA%20Games%20FC",
+      "auditResult": {
+        "score": 8,
+        "reasoning": "The image strongly aligns with the 'Content Completionists & DLC Explorers' campaign by gamifying global stadium exploration with progress trackers and badges, effectively avoiding generic device mockups while maintaining a premium EA Sports feel.",
+        "metadata": "Dark futuristic UI theme with glowing cyan and gold holographic world map, connection arc paths, stadium pins, floating achievement badges, and bold typography matching EA FC brand aesthetics."
+      }
+    }
+  ],
+  "timestamp": "8/18/2026, 8:47:58 AM"
+}

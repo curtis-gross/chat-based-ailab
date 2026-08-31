@@ -1,0 +1,233 @@
+{
+  "personas": [
+    {
+      "name": "Paloma Cocktail Crafters",
+      "personaName": "Mateo Rodriguez",
+      "status": "Loyal Customer",
+      "lifeEvent": "Summer Entertaining Season",
+      "location": "Urban Sunbelt",
+      "financialHealth": "Splurger",
+      "familySize": "Single / Partner",
+      "bioLifestyleNeeds": "Home mixologist and social entertainer who refuses to make a Paloma with anything other than authentic Squirt soda and 100% agave tequila.",
+      "nba": "Offer cross-promotional coupons pairing Squirt 12-packs with premium tequila and fresh limes",
+      "coreValues": "Authenticity, hospitality, and craft beverage quality",
+      "imagePrompt": "Realistic portrait of a stylish Hispanic man in his late 20s smiling in a bright modern kitchen with fresh citrus and a cocktail shaker.",
+      "imageUrl": "/images/default-pot.png",
+      "details": {
+        "name": "Mateo Rodriguez",
+        "age": 28,
+        "job_title": "UX Designer & Home Mixologist",
+        "bio": "Weekends at my place mean fresh tacos on the plancha and handcrafted Palomas. Squirt is the undisputed king of grapefruit sodas—nothing else has that real citrus tartness to balance good blanco tequila.",
+        "income": "$88,000",
+        "net_worth": "$52,000",
+        "household_size": "2",
+        "lifestyle_tags": [
+          "Paloma Crafter",
+          "Foodie & Cook",
+          "Backyard Host",
+          "Citrus Enthusiast",
+          "Cocktail Connoisseur"
+        ],
+        "preferred_products": [
+          "Squirt Original 12-Pack (12 oz Cans)",
+          "Squirt Paloma Mixer Party Pack",
+          "Premium 100% Agave Tequila Blanco",
+          "Artisanal Chili-Lime Salt"
+        ],
+        "pain_points": [
+          "Bars serving Palomas with grapefruit juice and simple syrup instead of authentic bubbly Squirt",
+          "Local stores running out of 12-pack cans before holiday weekends"
+        ],
+        "goals": [
+          "Master authentic Southwestern and Mexican cocktail recipes",
+          "Keep the home bar stocked with premium mixers and cold Squirt cans"
+        ],
+        "charts": {
+          "brand_affinity": {
+            "labels": [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec"
+            ],
+            "data": [
+              78,
+              80,
+              85,
+              92,
+              96,
+              98,
+              99,
+              97,
+              91,
+              86,
+              84,
+              88
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "Zero Sugar Citrus Hydrators",
+      "personaName": "Sarah Jenkins",
+      "status": "Active Brand Advocate",
+      "lifeEvent": "Active Lifestyle Refresh",
+      "location": "Suburban",
+      "financialHealth": "Value Conscious",
+      "familySize": "Couple",
+      "bioLifestyleNeeds": "Fitness enthusiast and busy professional seeking bold, tart flavor without sugar, calories, or artificial syrup aftertaste.",
+      "nba": "Highlight Zero Sugar multi-pack pantry stocking discounts and chilled grab-and-go convenience",
+      "coreValues": "Health balance, vibrant energy, and crisp refreshment",
+      "imagePrompt": "Realistic portrait of a vibrant woman in her early 30s in activewear holding a chilled can of citrus soda outdoors.",
+      "imageUrl": "/images/default-pot.png",
+      "details": {
+        "name": "Sarah Jenkins",
+        "age": 32,
+        "job_title": "Marketing Account Manager",
+        "bio": "I switched away from sugary sodas years ago, but most diet drinks taste flat or artificial. Squirt Zero Sugar keeps that sharp, punchy grapefruit bite that actually satisfies afternoon thirst without ruining my workout goals.",
+        "income": "$74,000",
+        "net_worth": "$65,000",
+        "household_size": "2",
+        "lifestyle_tags": [
+          "Zero Sugar Drinker",
+          "Midday Refresher",
+          "Active Wellness",
+          "Pickleball Player",
+          "Mindful Consumer"
+        ],
+        "preferred_products": [
+          "Squirt Zero Sugar 12-Pack (12 oz Cans)",
+          "Squirt Zero Sugar 2-Liter Bottle",
+          "Squirt Ruby Red Citrus Soda"
+        ],
+        "pain_points": [
+          "Limited shelf space for zero-sugar citrus varieties in some grocery stores",
+          "Afternoon caffeine jitters from standard energy drinks"
+        ],
+        "goals": [
+          "Stay hydrated and refreshed during long workdays without sugar crashes",
+          "Find zero-calorie sodas with genuine tart fruit flavor"
+        ],
+        "charts": {
+          "brand_affinity": {
+            "labels": [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec"
+            ],
+            "data": [
+              70,
+              72,
+              75,
+              82,
+              88,
+              92,
+              95,
+              93,
+              89,
+              84,
+              80,
+              78
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "Southwest Taco & BBQ Grillmasters",
+      "personaName": "Carlos Ramirez",
+      "status": "High-Volume Household Shopper",
+      "lifeEvent": "Family Milestone Cookouts",
+      "location": "Southwestern Metro",
+      "financialHealth": "Balanced Household",
+      "familySize": "Family of 4+",
+      "bioLifestyleNeeds": "Passionate weekend griller and family gathering organizer who always pairs grilled meats and spicy salsas with ice-cold Squirt.",
+      "nba": "Offer family cookout bundle savings pairing Squirt 2-liters and 12-packs with grilling staples",
+      "coreValues": "Family tradition, culinary passion, and generous hospitality",
+      "imagePrompt": "Realistic portrait of a warm Hispanic father in his 40s wearing a grill apron standing by an outdoor patio grill.",
+      "imageUrl": "/images/default-pot.png",
+      "details": {
+        "name": "Carlos Ramirez",
+        "age": 44,
+        "job_title": "Logistics Operations Manager",
+        "bio": "In our family, you cannot have carne asada or carnitas without ice-cold Squirt on the table. That crisp grapefruit flavor cuts through the rich spices and smoky grill flavor like nothing else. It has been a family tradition since I was a kid.",
+        "income": "$92,000",
+        "net_worth": "$115,000",
+        "household_size": "5",
+        "lifestyle_tags": [
+          "Grillmaster",
+          "Family Anchor",
+          "Heritage Shopper",
+          "Cookout Host",
+          "Flavor Traditionalist"
+        ],
+        "preferred_products": [
+          "Squirt Original 12-Pack Multi-Case Deals",
+          "Squirt 2-Liter Bottles",
+          "Squirt Ruby Red Citrus Soda",
+          "Carne Asada Marinades & Street Taco Fixings"
+        ],
+        "pain_points": [
+          "Running out of cans during large Sunday family dinners",
+          "Small store formats lacking multi-pack case savings"
+        ],
+        "goals": [
+          "Host memorable family gatherings with delicious homemade food and favorite beverages",
+          "Ensure the pantry is always stocked with cold drinks everyone loves"
+        ],
+        "charts": {
+          "brand_affinity": {
+            "labels": [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec"
+            ],
+            "data": [
+              85,
+              87,
+              90,
+              93,
+              95,
+              98,
+              99,
+              97,
+              94,
+              91,
+              89,
+              92
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "context": "Squirt is an iconic naturally flavored grapefruit and citrus soda brand owned by Keurig Dr Pepper. Renowned for its crisp, tart, and wildly refreshing flavor, caffeine-free recipe, and heritage as the essential authentic mixer for Mexican Palomas.",
+  "audienceTargets": "Citrus soda drinkers, craft Paloma mixologists, Zero-sugar wellness consumers, and Southwestern family cookout shoppers"
+}

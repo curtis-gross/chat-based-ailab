@@ -1,0 +1,17 @@
+{
+  "messages": [
+    {
+      "id": "user_1787669296343",
+      "sender": "user",
+      "timestamp": "07:48 AM",
+      "text": "hi"
+    },
+    {
+      "id": "assistant_1787669344017",
+      "sender": "assistant",
+      "timestamp": "07:49 AM",
+      "text": "I have synthesized the latest insights for \"hi\". You can also paste any YouTube commercial URL to generate an ABCD report or run bulk insights."
+    }
+  ],
+  "savedAt": "2026-08-25T14:49:04.017Z"
+}

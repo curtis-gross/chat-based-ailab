@@ -1,0 +1,26 @@
+[
+  {
+    "id": "offer_paloma_bundle",
+    "title": "Squirt Paloma Party Starter",
+    "description": "Stock up on authentic Squirt grapefruit soda cans for weekend taco fiestas and craft Paloma cocktails.",
+    "discount": "Buy 2 12-Packs, Get 1 Free"
+  },
+  {
+    "id": "offer_zero_sugar_coupon",
+    "title": "Squirt Zero Sugar Digital Coupon",
+    "description": "Experience bold, tart grapefruit refreshment with 0 calories and 0 sugar. Instant digital coupon.",
+    "discount": "$2.00 Off Any 12-Pack"
+  },
+  {
+    "id": "offer_cookout_bundle",
+    "title": "Southwestern Taco & Cookout Bundle",
+    "description": "Pair your favorite grilling meats and Mexican meals with ice-cold Squirt 2-liter bottles and cans.",
+    "discount": "Save $3 on 3 Multi-Packs"
+  },
+  {
+    "id": "offer_kdp_rewards",
+    "title": "Keurig Dr Pepper Thirst Rewards",
+    "description": "Join our beverage rewards program to earn points on every Squirt, Dr Pepper, and citrus purchase.",
+    "discount": "$5 Off Your Next Purchase"
+  }
+]

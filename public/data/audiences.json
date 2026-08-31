@@ -1,0 +1,34 @@
+[
+  {
+    "id": "default_standard",
+    "name": "Standard View",
+    "whyPerfect": "Crisp, tart, and wildly refreshing. The iconic naturally flavored grapefruit soda that quenches your thirst with real citrus flavor.",
+    "description": "Squirt Original Grapefruit Soda (12-Pack of 12 oz Cans). Light, fizzy, caffeine-free, and bursting with citrus flavor. Perfect ice-cold on its own or mixed into a classic Mexican Paloma.",
+    "image": "/images/default-pot.png",
+    "isDefault": true
+  },
+  {
+    "id": "audience_bbq_tacos",
+    "name": "Backyard BBQ & Taco Night",
+    "whyPerfect": "The ultimate sweet-and-tart citrus pairing that cuts through rich, savory grilled meats, street tacos, and spicy salsas.",
+    "description": "Pair your carne asada, carnitas tacos, and grilled summer cookouts with ice-cold cans of Squirt. The genuine grapefruit flavor cleanses the palate and keeps the energy high all evening.",
+    "image": "/images/default-pot.png",
+    "isDefault": false
+  },
+  {
+    "id": "audience_paloma_mixers",
+    "name": "Authentic Paloma Cocktail Crafters",
+    "whyPerfect": "The essential authentic mixer for Mexico's beloved Paloma cocktail. Skip the triple sec and artificial syrups.",
+    "description": "Craft the perfect Paloma in seconds: 2 oz premium blanco tequila, half a fresh lime squeezed, a pinch of salt, and topped generously with bubbly Squirt grapefruit soda over crushed ice.",
+    "image": "/images/default-pot.png",
+    "isDefault": false
+  },
+  {
+    "id": "audience_zero_sugar",
+    "name": "Zero Sugar Afternoon Refresher",
+    "whyPerfect": "All the bright, bold citrus punch of classic Squirt with zero sugar and zero calories.",
+    "description": "Squirt Zero Sugar delivers 100% genuine grapefruit taste for guilt-free hydration. Ideal for midday workday breaks, post-workout cooling down, and mindful wellness routines.",
+    "image": "/images/default-pot.png",
+    "isDefault": false
+  }
+]

@@ -1,0 +1,336 @@
+{
+  "userProfile": {
+    "name": "David Miller",
+    "birthdate": "1980-05-15",
+    "gender": "Male",
+    "email": "david.miller@example.com",
+    "phone": "555-0123",
+    "address": "123 Maple Avenue, Austin, TX 78701",
+    "militaryAffiliation": "Father served in the US Marines",
+    "spouse": {
+      "name": "Sarah Miller",
+      "birthdate": "1982-08-22",
+      "gender": "Female",
+      "email": "sarah.miller@example.com"
+    },
+    "children": [
+      {
+        "name": "Emma Miller",
+        "birthdate": "2012-03-10",
+        "gender": "Female"
+      },
+      {
+        "name": "Liam Miller",
+        "birthdate": "2015-11-05",
+        "gender": "Male"
+      }
+    ]
+  },
+  "businessProfile": {
+    "name": "David Miller",
+    "title": "CEO",
+    "company": "Miller Tech Solutions",
+    "loyalty_status": "Platinum",
+    "contact": {
+      "email": "david.miller@millertech.com",
+      "phone": "+1 (555) 019-8234"
+    },
+    "business_details": {
+      "type": "Technology Services",
+      "employees": 45,
+      "annual_revenue": "$5.5M"
+    },
+    "account_manager": "Sarah Jenkins",
+    "preferences": [
+      "Prefers text communication for updates",
+      "Annual review in October",
+      "Interested in Cyber Risk expansion"
+    ],
+    "active_policies": [
+      {
+        "name": "Commercial General Liability",
+        "policy_number": "AON-GL-2026-0045",
+        "coverage": "$2,000,000"
+      },
+      {
+        "name": "Cyber Risk & Data Breach",
+        "policy_number": "AON-CY-2026-0982",
+        "coverage": "$1,000,000"
+      },
+      {
+        "name": "Commercial Property Insurance",
+        "policy_number": "AON-CP-2026-1134",
+        "coverage": "$500,000"
+      }
+    ],
+    "past_claims": [
+      {
+        "title": "Water Damage - Office",
+        "date": "2025-06-12",
+        "status": "Settled",
+        "amount": "$4,500"
+      },
+      {
+        "title": "Phishing Incident",
+        "date": "2025-11-05",
+        "status": "Closed",
+        "amount": "$12,000"
+      }
+    ]
+  },
+  "financialSummary": {
+    "netWorth": 1150000,
+    "totalAssets": 1550000,
+    "totalLiabilities": 400000,
+    "annualIncome": 285000,
+    "federalTaxBracket": "24%",
+    "filingStatus": "Married Filing Jointly"
+  },
+  "income": [
+    {
+      "source": "Tech Solutions Inc.",
+      "type": "Salary",
+      "amount": 160000,
+      "frequency": "Yearly",
+      "owner": "David"
+    },
+    {
+      "source": "Creative Designs LLC",
+      "type": "Salary",
+      "amount": 110000,
+      "frequency": "Yearly",
+      "owner": "Sarah"
+    },
+    {
+      "source": "Tech Solutions Inc.",
+      "type": "Bonus",
+      "amount": 15000,
+      "frequency": "Yearly",
+      "owner": "David"
+    }
+  ],
+  "accounts": [
+    {
+      "id": "acc_1",
+      "name": "Gemini Advisors Brokerage Account",
+      "type": "Asset",
+      "subtype": "Brokerage",
+      "balance": 150000,
+      "holdings": [
+        {
+          "ticker": "SPY",
+          "name": "S&P 500 Index Fund",
+          "shares": 100,
+          "price": 658.45,
+          "value": 65845
+        },
+        {
+          "ticker": "VXUS",
+          "name": "Total International ESG ETF",
+          "shares": 200,
+          "price": 75.95,
+          "value": 15190
+        },
+        {
+          "ticker": "GOOG",
+          "name": "Alphabet Inc. Cl A",
+          "shares": 50,
+          "price": 289.20,
+          "value": 14460
+        },
+        {
+          "ticker": "BND",
+          "name": "Total Bond Market ETF",
+          "shares": 62,
+          "price": 73.26,
+          "value": 4542.12
+        }
+      ],
+      "institution": "Gemini Advisors"
+    },
+    {
+      "id": "acc_2",
+      "name": "David's 401(k)",
+      "type": "Asset",
+      "subtype": "Retirement",
+      "balance": 320000,
+      "holdings": [
+        {
+          "ticker": "VFIAX",
+          "name": "500 Index Fund Admiral Shares",
+          "shares": 640,
+          "price": 500.00,
+          "value": 320000
+        }
+      ],
+      "institution": "Gemini Advisors"
+    },
+    {
+      "id": "acc_3",
+      "name": "Sarah's IRA",
+      "type": "Asset",
+      "subtype": "Retirement",
+      "balance": 180000,
+      "holdings": [
+        {
+          "ticker": "VTSAX",
+          "name": "Total Stock Market Index Fund Admiral Shares",
+          "shares": 1500,
+          "price": 120.00,
+          "value": 180000
+        }
+      ],
+      "institution": "Gemini Advisors"
+    },
+    {
+      "id": "acc_4",
+      "name": "Joint Checking",
+      "type": "Asset",
+      "subtype": "Cash",
+      "balance": 25000,
+      "institution": "Chase"
+    },
+    {
+      "id": "acc_5",
+      "name": "Emergency Fund (HYSA)",
+      "type": "Asset",
+      "subtype": "Cash",
+      "balance": 50000,
+      "institution": "Ally Bank",
+      "apy": 0.0425
+    },
+    {
+      "id": "acc_6",
+      "name": "Emma's 529 Plan",
+      "type": "Asset",
+      "subtype": "Education",
+      "balance": 45000,
+      "institution": "Gemini Advisors"
+    },
+    {
+      "id": "acc_7",
+      "name": "Liam's 529 Plan",
+      "type": "Asset",
+      "subtype": "Education",
+      "balance": 30000,
+      "institution": "Gemini Advisors"
+    },
+    {
+      "id": "acc_8",
+      "name": "Primary Residence",
+      "type": "Asset",
+      "subtype": "Real Estate",
+      "balance": 750000,
+      "institution": "Market Value"
+    }
+  ],
+  "liabilities": [
+    {
+      "id": "liab_1",
+      "name": "Primary Mortgage",
+      "type": "Liability",
+      "subtype": "Mortgage",
+      "balance": 385000,
+      "interestRate": 0.0325,
+      "subType": "30-Year Fixed",
+      "monthlyPayment": 2100,
+      "lender": "Wells Fargo"
+    },
+    {
+      "id": "liab_2",
+      "name": "Auto Loan (Tesla Model Y)",
+      "type": "Liability",
+      "subtype": "Auto Loan",
+      "balance": 15000,
+      "interestRate": 0.045,
+      "monthlyPayment": 650,
+      "lender": "Tesla Finance"
+    }
+  ],
+  "creditCards": [
+    {
+      "id": "cc_1",
+      "type": "Credit Card",
+      "name": "Sapphire Preferred",
+      "provider": "Chase",
+      "creditLimit": 25000,
+      "currentBalance": 1250,
+      "apr": 0.1899,
+      "status": "Active",
+      "rewardsBalance": 85000
+    },
+    {
+      "id": "cc_2",
+      "type": "Credit Card",
+      "name": "Amex Gold",
+      "provider": "American Express",
+      "creditLimit": 35000,
+      "currentBalance": 3200,
+      "apr": 0.2199,
+      "status": "Active",
+      "rewardsBalance": 120000
+    }
+  ],
+  "loans": [
+    {
+      "id": "loan_1",
+      "type": "Personal Loan",
+      "provider": "SoFi",
+      "balance": 12000,
+      "interestRate": 0.075,
+      "monthlyPayment": 350,
+      "originalAmount": 20000,
+      "status": "In Repayment"
+    }
+  ],
+  "goals": [
+    {
+      "id": "goal_1",
+      "title": "Retirement at 60",
+      "targetAmount": 4000000,
+      "currentAmount": 950000,
+      "targetDate": "2040-05-15",
+      "priority": "High",
+      "status": "On Track"
+    },
+    {
+      "id": "goal_2",
+      "title": "College Funding (Emma)",
+      "targetAmount": 150000,
+      "currentAmount": 45000,
+      "targetDate": "2030-08-01",
+      "priority": "Medium",
+      "status": "Needs Attention"
+    },
+    {
+      "id": "goal_3",
+      "title": "College Funding (Liam)",
+      "targetAmount": 150000,
+      "currentAmount": 30000,
+      "targetDate": "2033-08-01",
+      "priority": "Medium",
+      "status": "On Track"
+    },
+    {
+      "id": "goal_4",
+      "title": "Vacation Home Down Payment",
+      "targetAmount": 100000,
+      "currentAmount": 0,
+      "targetDate": "2028-06-01",
+      "priority": "Low",
+      "status": "Not Started"
+    }
+  ],
+  "taxInfo": {
+    "lastYearReturn": {
+      "year": 2024,
+      "adjustedGrossIncome": 275000,
+      "totalTax": 58000,
+      "effectiveRate": "21.1%",
+      "refund": 1200
+    },
+    "carryforwards": {
+      "capitalLoss": 3000
+    }
+  }
+}

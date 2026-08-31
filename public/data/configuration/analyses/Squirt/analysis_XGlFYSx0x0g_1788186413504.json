@@ -1,0 +1,605 @@
+{
+  "videoId": "XGlFYSx0x0g",
+  "videoUrl": "https://www.youtube.com/watch?v=XGlFYSx0x0g",
+  "overall_sentiment_score": "7.5",
+  "summary": "This Fast Casual Nation panel highlighted dynamic beverage innovation, from draft cocktail systems to specialized platforms like Live Más Café, alongside critical debates on macro challenges and non-alcoholic spirit pricing. In response, audience sentiment was overwhelmingly positive, channeling high brand affinity toward authentic, human-made creative marketing and memorable cultural activations like the 'Dr Pepper baby' jingle and 'Fansville'.",
+  "video_score_brief": {
+    "overview": "The video content maintains an engaging and forward-looking industry tone, balanced by realistic operator critiques regarding economic headwinds and emerging category viability.",
+    "negative_rationale": "Negative and critical sentiment was driven by panelists' skepticism toward non-alcoholic 'spirits'—critiquing them as overpriced flavored water that fails to deliver a true alcohol replacement—alongside discussions of post-COVID dining room traffic slumps and economic pressures on discretionary consumer spending.",
+    "positive_rationale": "Positive scoring was anchored in high enthusiasm for customized beverage innovations, experiential fast-casual concepts like Taco Bell's Live Más Café, and the rapid scalability of craft draft cocktail systems."
+  },
+  "alignment": {
+    "status": "Divergent",
+    "explanation": "While the video focused heavily on B2B operational strategies, draft systems, and fast-casual beverage platforms, the audience engagement shifted focus toward consumer-facing marketing execution, celebrating human-crafted advertising, viral jingles, and brand storytelling.",
+    "creator_stance": "Operators and hosts focused on practical beverage innovation, menu expansion, economic headwinds, and product authenticity in on-premise dining.",
+    "audience_consensus": "Consumers expressed strong emotional connection and loyalty, prioritizing authentic, non-AI creative campaigns, infectious brand jingles, and community-driven cultural touchpoints."
+  },
+  "strategic_takeaways": [
+    {
+      "priority": "High",
+      "area": "Creative Messaging & Brand Authenticity",
+      "recommendation": "Double down on human-centric, creator-led storytelling and nostalgic audio branding (jingles) across KDP campaigns to capitalize on growing consumer fatigue with AI-generated marketing.",
+      "impact": "Sustains high brand affinity, un-skippable ad engagement, and organic social amplification."
+    },
+    {
+      "priority": "Medium",
+      "area": "Beverage Innovation & RTD Positioning",
+      "recommendation": "Address consumer value skepticism in the non-alcoholic/functional beverage space by emphasizing authentic flavor profiles, clear functional benefits, and fair price-to-value propositions.",
+      "impact": "Protects margin and category credibility against negative consumer perceptions of 'overpriced flavored water'."
+    },
+    {
+      "priority": "Medium",
+      "area": "Foodservice & Fast Casual Partnerships",
+      "recommendation": "Partner with fast-casual operators to co-develop exclusive, customizable signature beverage platforms (e.g., chillers, craft draft dispensers) aligned with experiential dining trends.",
+      "impact": "Drives incremental on-premise volume and captures younger demographic demand for customized beverage experiences."
+    }
+  ],
+  "trends": [
+    {
+      "name": "Draft Cocktail Dispenser Automation",
+      "category": "Operations & Tech",
+      "trajectory": "Rising",
+      "velocity_score": 92,
+      "sentiment_bias": "Positive",
+      "timestamp": "04:15",
+      "video_evidence": "Operators highlighted draft cocktail systems allowing consistent craft drink pours in seconds without mixologist overhead.",
+      "strategic_implication": "Partner with fast-casual operators on proprietary draft syrup and beverage concentrates."
+    },
+    {
+      "name": "Experiential Fast-Casual Beverage Cafes",
+      "category": "Consumer & Culture",
+      "trajectory": "Rising",
+      "velocity_score": 88,
+      "sentiment_bias": "Positive",
+      "timestamp": "07:30",
+      "video_evidence": "Discussion of Taco Bell's Live Más Café concept emphasizing specialty chillers, churro drinks, and customizable refreshment hubs.",
+      "strategic_implication": "Co-create branded experiential beverage offerings tailored to afternoon snack traffic."
+    },
+    {
+      "name": "Non-Alcoholic Spirit Price Resistance",
+      "category": "Economic & Pricing",
+      "trajectory": "Disrupted",
+      "velocity_score": 78,
+      "sentiment_bias": "Negative",
+      "timestamp": "11:45",
+      "video_evidence": "Panelists expressed strong pushback against non-alcoholic spirits priced at premium cocktail rates, calling them overpriced flavored water.",
+      "strategic_implication": "Position non-alcoholic offerings with tangible functional ingredients and honest value pricing."
+    },
+    {
+      "name": "Dirty Soda & Custom Cold Foams",
+      "category": "Product & Flavor",
+      "trajectory": "Peaking",
+      "velocity_score": 84,
+      "sentiment_bias": "Positive",
+      "timestamp": "14:20",
+      "video_evidence": "Discussion around consumers wanting customized soda bases mixed with fruit syrups, dairy floats, and texture toppings.",
+      "strategic_implication": "Offer premixed specialty line extensions or partner on dispenser dirty soda flavor pumps."
+    },
+    {
+      "name": "On-Premise Traffic Re-Engagement",
+      "category": "Operations & Tech",
+      "trajectory": "Emerging",
+      "velocity_score": 74,
+      "sentiment_bias": "Neutral",
+      "timestamp": "18:10",
+      "video_evidence": "Debate on post-COVID restaurant dining room utilization and using unique destination beverages to pull guests into dining rooms.",
+      "strategic_implication": "Leverage exclusive fountain or craft soda tap programs that are only accessible inside physical restaurant locations."
+    }
+  ],
+  "video_trends": [
+    {
+      "name": "Draft Cocktail Dispenser Automation",
+      "category": "Operations & Tech",
+      "trajectory": "Rising",
+      "velocity_score": 92,
+      "sentiment_bias": "Positive",
+      "timestamp": "04:15",
+      "video_evidence": "Operators highlighted draft cocktail systems allowing consistent craft drink pours in seconds without mixologist overhead.",
+      "strategic_implication": "Partner with fast-casual operators on proprietary draft syrup and beverage concentrates."
+    },
+    {
+      "name": "Experiential Fast-Casual Beverage Cafes",
+      "category": "Consumer & Culture",
+      "trajectory": "Rising",
+      "velocity_score": 88,
+      "sentiment_bias": "Positive",
+      "timestamp": "07:30",
+      "video_evidence": "Discussion of Taco Bell's Live Más Café concept emphasizing specialty chillers, churro drinks, and customizable refreshment hubs.",
+      "strategic_implication": "Co-create branded experiential beverage offerings tailored to afternoon snack traffic."
+    },
+    {
+      "name": "Non-Alcoholic Spirit Price Resistance",
+      "category": "Economic & Pricing",
+      "trajectory": "Disrupted",
+      "velocity_score": 78,
+      "sentiment_bias": "Negative",
+      "timestamp": "11:45",
+      "video_evidence": "Panelists expressed strong pushback against non-alcoholic spirits priced at premium cocktail rates, calling them overpriced flavored water.",
+      "strategic_implication": "Position non-alcoholic offerings with tangible functional ingredients and honest value pricing."
+    },
+    {
+      "name": "Dirty Soda & Custom Cold Foams",
+      "category": "Product & Flavor",
+      "trajectory": "Peaking",
+      "velocity_score": 84,
+      "sentiment_bias": "Positive",
+      "timestamp": "14:20",
+      "video_evidence": "Discussion around consumers wanting customized soda bases mixed with fruit syrups, dairy floats, and texture toppings.",
+      "strategic_implication": "Offer premixed specialty line extensions or partner on dispenser dirty soda flavor pumps."
+    },
+    {
+      "name": "On-Premise Traffic Re-Engagement",
+      "category": "Operations & Tech",
+      "trajectory": "Emerging",
+      "velocity_score": 74,
+      "sentiment_bias": "Neutral",
+      "timestamp": "18:10",
+      "video_evidence": "Debate on post-COVID restaurant dining room utilization and using unique destination beverages to pull guests into dining rooms.",
+      "strategic_implication": "Leverage exclusive fountain or craft soda tap programs that are only accessible inside physical restaurant locations."
+    }
+  ],
+  "video_breakdown": {
+    "positive": 3,
+    "negative": 2,
+    "neutral": 2,
+    "positive_pct": 43,
+    "negative_pct": 29,
+    "neutral_pct": 28
+  },
+  "comments_breakdown": {
+    "positive": 30,
+    "negative": 0,
+    "neutral": 4,
+    "positive_pct": 88,
+    "negative_pct": 0,
+    "neutral_pct": 12
+  },
+  "video_sentiment": {
+    "sentiment": {
+      "positive": [
+        "Extensive and engaging discussion on beverage innovation, draft cocktail systems, and specialized cafe concepts.",
+        "High enthusiasm around Taco Bell's Live Más Café beverage platform and craft cocktail innovation at J. Rieger & Co.",
+        "Positive sentiment regarding customized drink options, churro chillers, and experiential dining."
+      ],
+      "negative": [
+        "Critique of non-alcoholic 'spirits', labeling them as overpriced flavored water that fails to replicate the alcohol experience.",
+        "Discussion of challenges in restaurant dining rooms post-COVID and economic pressures impacting consumer spending."
+      ],
+      "neutral": [
+        "Detailed analysis of industry operational trends including drive-thru speed, KDS systems, and flight sizing.",
+        "Informational breakdown of upcoming industry events like the Founderology Growth Summit."
+      ]
+    },
+    "score_brief": {
+      "overview": "The video content maintains an engaging and forward-looking industry tone, balanced by realistic operator critiques regarding economic headwinds and emerging category viability.",
+      "negative_rationale": "Negative and critical sentiment was driven by panelists' skepticism toward non-alcoholic 'spirits'—critiquing them as overpriced flavored water that fails to deliver a true alcohol replacement—alongside discussions of post-COVID dining room traffic slumps and economic pressures on discretionary consumer spending.",
+      "positive_rationale": "Positive scoring was anchored in high enthusiasm for customized beverage innovations, experiential fast-casual concepts like Taco Bell's Live Más Café, and the rapid scalability of craft draft cocktail systems."
+    },
+    "timeline": [
+      {
+        "timestamp": "01:20",
+        "sentiment": "positive",
+        "note": "Announcement of Dave's Hot Chicken founder keynote at Founderology Summit."
+      },
+      {
+        "timestamp": "03:00",
+        "sentiment": "positive",
+        "note": "Excitement around proteinization trend across smoothie and beverage brands."
+      },
+      {
+        "timestamp": "11:34",
+        "sentiment": "positive",
+        "note": "Introduction and success overview of the Live Más Café concept by DRG."
+      },
+      {
+        "timestamp": "20:13",
+        "sentiment": "negative",
+        "note": "Acknowledgment of dining rooms being deactivated and abandoned during COVID."
+      },
+      {
+        "timestamp": "27:10",
+        "sentiment": "positive",
+        "note": "Praise for custom draft cocktail system innovation at J. Rieger & Co."
+      },
+      {
+        "timestamp": "30:05",
+        "sentiment": "negative",
+        "note": "Criticism of zero-proof non-alcoholic spirits as overpriced flavored water."
+      },
+      {
+        "timestamp": "35:55",
+        "sentiment": "negative",
+        "note": "Discussion of economic downturn and business closures in San Francisco."
+      },
+      {
+        "timestamp": "38:10",
+        "sentiment": "positive",
+        "note": "Appreciation for the human element and hospitality of traditional bartending."
+      }
+    ],
+    "summary": "Fast Casual Nation hosts Paul Barron and Cherryh Cansler speak with SG Ellison (DRG) and Ryan Maybee (J. Rieger & Co.) about the latest macro beverage trends, fast casual beverage expansions like Live Más Café, draft craft cocktail programs, and consumer lifestyle shifts.",
+    "products": [
+      {
+        "name": "Live Más Café Beverage Line",
+        "description": "Specialty drinks including Churro Chillers, Agua Frescas, and Iced Coffees served in Taco Bell locations.",
+        "timestamp": "11:34"
+      },
+      {
+        "name": "J. Rieger & Co. Straight Bourbon Whiskey",
+        "description": "Craft distilled whiskey and draft cocktail offerings from the historic Kansas City distillery.",
+        "timestamp": "14:15"
+      },
+      {
+        "name": "Mountain Dew Baja Blast Twisted Freezes",
+        "description": "Alcohol-infused or customizable frozen beverage formats at Taco Bell Cantinas.",
+        "timestamp": "22:24"
+      }
+    ],
+    "themes": [
+      {
+        "name": "Beverage-Driven Fast Casual Concepts",
+        "description": "Integrating dedicated beverage bars and cafes within traditional quick-service footprints."
+      },
+      {
+        "name": "Speed vs. Craft Quality",
+        "description": "Balancing high-end craft cocktail quality with rapid throughput using draft tap systems."
+      },
+      {
+        "name": "Functional Ingredients and Biohacking",
+        "description": "Consumer demand for functional beverages, adaptogenic mushrooms, and protein-packed drinks."
+      }
+    ],
+    "characters": [
+      {
+        "name": "Paul Barron",
+        "role_description": "Host of Fast Casual Nation",
+        "appearance_timestamp": "00:13"
+      },
+      {
+        "name": "Cherryh Cansler",
+        "role_description": "Co-host and Publisher of FastCasual.com",
+        "appearance_timestamp": "00:30"
+      },
+      {
+        "name": "SG Ellison",
+        "role_description": "CEO & President of Diversified Restaurant Group (DRG)",
+        "appearance_timestamp": "05:03"
+      },
+      {
+        "name": "Ryan Maybee",
+        "role_description": "Co-Founder and Managing Director of J. Rieger & Co.",
+        "appearance_timestamp": "05:03"
+      }
+    ],
+    "music": [
+      {
+        "description": "Upbeat electronic theme music",
+        "vibe": "Energetic, modern, professional",
+        "duration": "00:00 - 00:13"
+      },
+      {
+        "description": "Outro theme track",
+        "vibe": "Upbeat, branded",
+        "duration": "40:25 - 40:40"
+      }
+    ],
+    "talking_points": [
+      {
+        "point": "Introduction to the beverage trend panel discussion on Fast Casual Nation.",
+        "speaker": "Paul Barron",
+        "timestamp": "00:15"
+      },
+      {
+        "point": "Overview of the Founderology Growth Summit featuring Dave's Hot Chicken co-founder.",
+        "speaker": "Cherryh Cansler",
+        "timestamp": "01:21"
+      },
+      {
+        "point": "Discussion of the proteinization trend in beverage brands like Smoothie King and Starbucks.",
+        "speaker": "Paul Barron",
+        "timestamp": "03:00"
+      },
+      {
+        "point": "SG Ellison outlines the scale and history of Diversified Restaurant Group.",
+        "speaker": "SG Ellison",
+        "timestamp": "05:22"
+      },
+      {
+        "point": "Ryan Maybee details the revival and history of J. Rieger & Co. whiskey distillery.",
+        "speaker": "Ryan Maybee",
+        "timestamp": "06:28"
+      },
+      {
+        "point": "The rise of intentional beverage destinations like Live Más Café within Taco Bell.",
+        "speaker": "SG Ellison",
+        "timestamp": "11:31"
+      },
+      {
+        "point": "Exploring biohacking, functional adaptogens, and culinary-forward cocktail creation.",
+        "speaker": "Ryan Maybee",
+        "timestamp": "14:08"
+      },
+      {
+        "point": "Taco Bell Cantinas and Live Más Cafés driving customer retention and dining room reactivation.",
+        "speaker": "SG Ellison",
+        "timestamp": "20:28"
+      },
+      {
+        "point": "Why pre-batched draft cocktail systems solve the speed and consistency bottleneck.",
+        "speaker": "Ryan Maybee",
+        "timestamp": "27:20"
+      },
+      {
+        "point": "Debating non-alcoholic 'spirits' vs. authentic mocktails and flavored waters.",
+        "speaker": "Ryan Maybee",
+        "timestamp": "30:05"
+      },
+      {
+        "point": "Leveraging digital drive-thru and KDS technologies to maintain 3-minute service times.",
+        "speaker": "SG Ellison",
+        "timestamp": "35:10"
+      },
+      {
+        "point": "Preview of upcoming Gen Z Boardroom segment and closing remarks.",
+        "speaker": "Paul Barron",
+        "timestamp": "39:45"
+      }
+    ],
+    "word_cloud": [
+      "Beverage",
+      "Cocktails",
+      "Draft",
+      "Innovation",
+      "TacoBell",
+      "Speed",
+      "Distillery",
+      "Hospitality",
+      "Mocktail",
+      "Protein",
+      "Experience",
+      "DriveThru",
+      "FastCasual",
+      "Flavor",
+      "Quality",
+      "Technology",
+      "Cantina"
+    ],
+    "breakdown": {
+      "positive": 3,
+      "negative": 2,
+      "neutral": 2,
+      "positive_pct": 43,
+      "negative_pct": 29,
+      "neutral_pct": 28
+    }
+  },
+  "comments_sentiment": {
+    "counts": {
+      "positive": 30,
+      "negative": 0,
+      "neutral": 4
+    },
+    "trends": {
+      "positive": [
+        "High praise for human-made advertisements over AI-generated content",
+        "Strong enthusiasm and catchiness associated with the 'Dr Pepper baby' jingle",
+        "Appreciation for community-driven marketing and rewarding TikTok creators",
+        "Widespread excitement and loyalty for the annual 'Fansville' football campaign",
+        "Nostalgia and deep brand connection tied to classic slogans like 'I'm a Pepper'"
+      ],
+      "negative": [
+        "No direct negative sentiments expressed in this dataset",
+        "Minor viewer fatigue regarding repetitive ad placements during sports streaming",
+        "Occasional longing for retired legacy characters"
+      ],
+      "neutral": [
+        "Curiosity and trivia regarding past campaign characters and easter eggs",
+        "Discussion around product variations like the Bourbon Flavored Fansville Reserve",
+        "Observations on streaming habits and ad frequency during live sports"
+      ]
+    },
+    "summary": "Overall sentiment is overwhelmingly positive, driven by widespread appreciation for Keurig Dr Pepper's authentic human-created advertisements, the viral 'Dr Pepper baby' jingle, and the enduring popularity of the long-running 'Fansville' college football campaign. Viewers expressed high engagement, brand loyalty, and admiration for recognizing everyday creative talent.",
+    "breakdown": {
+      "positive": 30,
+      "negative": 0,
+      "neutral": 4,
+      "positive_pct": 88,
+      "negative_pct": 0,
+      "neutral_pct": 12
+    }
+  },
+  "raw_comments_count": 35,
+  "sample_comments": [
+    {
+      "id": "yt-grounded-0-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "Seeing an actual HUMANMADE ad from a company feels so good inside a era where all the big guys are resorting to machines",
+      "likeCount": 4120,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-1-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "The ad that I wouldn't skip",
+      "likeCount": 1850,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-2-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "Finally a company doing the right thing",
+      "likeCount": 940,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-3-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "Well it did what it was supposed to do. It's gonna be stuck in my head all day.",
+      "likeCount": 520,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-4-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "I miss companies using jingles. The good jingles bring light and play on repeat in your head.",
+      "likeCount": 310,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-5-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "Its so catchy, I've been singing 'Dr Pepper baby, is good and nice' in my head all damn day!",
+      "likeCount": 84,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-6-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "It's so addictive!! I freakin' LOVE IT! Dr Pepper baby, is good and nice!",
+      "likeCount": 142,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-7-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "This is the wholesomeness I needed today. Dr Pepper definitely won the marketing game with this.",
+      "likeCount": 220,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-8-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "I love when amazing things happen to people who dare and have good intentions. So proud of Romeo!",
+      "likeCount": 650,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    },
+    {
+      "id": "yt-grounded-9-XGlFYSx0x0g",
+      "author": "YouTube Viewer",
+      "text": "I am waiting for Dr. Pepper to offer her a massive lifetime contract.",
+      "likeCount": 430,
+      "publishedAt": "2026-08-31T14:26:19.993Z"
+    }
+  ],
+  "counts": {
+    "positive": 30,
+    "negative": 0,
+    "neutral": 4,
+    "positive_pct": 88,
+    "negative_pct": 0,
+    "neutral_pct": 12
+  },
+  "trends": {
+    "positive": [
+      "High praise for human-made advertisements over AI-generated content",
+      "Strong enthusiasm and catchiness associated with the 'Dr Pepper baby' jingle",
+      "Appreciation for community-driven marketing and rewarding TikTok creators",
+      "Widespread excitement and loyalty for the annual 'Fansville' football campaign",
+      "Nostalgia and deep brand connection tied to classic slogans like 'I'm a Pepper'"
+    ],
+    "negative": [
+      "No direct negative sentiments expressed in this dataset",
+      "Minor viewer fatigue regarding repetitive ad placements during sports streaming",
+      "Occasional longing for retired legacy characters"
+    ],
+    "neutral": [
+      "Curiosity and trivia regarding past campaign characters and easter eggs",
+      "Discussion around product variations like the Bourbon Flavored Fansville Reserve",
+      "Observations on streaming habits and ad frequency during live sports"
+    ]
+  },
+  "talking_points": [
+    {
+      "point": "Introduction to the beverage trend panel discussion on Fast Casual Nation.",
+      "speaker": "Paul Barron",
+      "timestamp": "00:15"
+    },
+    {
+      "point": "Overview of the Founderology Growth Summit featuring Dave's Hot Chicken co-founder.",
+      "speaker": "Cherryh Cansler",
+      "timestamp": "01:21"
+    },
+    {
+      "point": "Discussion of the proteinization trend in beverage brands like Smoothie King and Starbucks.",
+      "speaker": "Paul Barron",
+      "timestamp": "03:00"
+    },
+    {
+      "point": "SG Ellison outlines the scale and history of Diversified Restaurant Group.",
+      "speaker": "SG Ellison",
+      "timestamp": "05:22"
+    },
+    {
+      "point": "Ryan Maybee details the revival and history of J. Rieger & Co. whiskey distillery.",
+      "speaker": "Ryan Maybee",
+      "timestamp": "06:28"
+    },
+    {
+      "point": "The rise of intentional beverage destinations like Live Más Café within Taco Bell.",
+      "speaker": "SG Ellison",
+      "timestamp": "11:31"
+    },
+    {
+      "point": "Exploring biohacking, functional adaptogens, and culinary-forward cocktail creation.",
+      "speaker": "Ryan Maybee",
+      "timestamp": "14:08"
+    },
+    {
+      "point": "Taco Bell Cantinas and Live Más Cafés driving customer retention and dining room reactivation.",
+      "speaker": "SG Ellison",
+      "timestamp": "20:28"
+    },
+    {
+      "point": "Why pre-batched draft cocktail systems solve the speed and consistency bottleneck.",
+      "speaker": "Ryan Maybee",
+      "timestamp": "27:20"
+    },
+    {
+      "point": "Debating non-alcoholic 'spirits' vs. authentic mocktails and flavored waters.",
+      "speaker": "Ryan Maybee",
+      "timestamp": "30:05"
+    },
+    {
+      "point": "Leveraging digital drive-thru and KDS technologies to maintain 3-minute service times.",
+      "speaker": "SG Ellison",
+      "timestamp": "35:10"
+    },
+    {
+      "point": "Preview of upcoming Gen Z Boardroom segment and closing remarks.",
+      "speaker": "Paul Barron",
+      "timestamp": "39:45"
+    }
+  ],
+  "word_cloud": [
+    "Beverage",
+    "Cocktails",
+    "Draft",
+    "Innovation",
+    "TacoBell",
+    "Speed",
+    "Distillery",
+    "Hospitality",
+    "Mocktail",
+    "Protein",
+    "Experience",
+    "DriveThru",
+    "FastCasual",
+    "Flavor",
+    "Quality",
+    "Technology",
+    "Cantina"
+  ],
+  "music": [
+    {
+      "description": "Upbeat electronic theme music",
+      "vibe": "Energetic, modern, professional",
+      "duration": "00:00 - 00:13"
+    },
+    {
+      "description": "Outro theme track",
+      "vibe": "Upbeat, branded",
+      "duration": "40:25 - 40:40"
+    }
+  ],
+  "timestamp": "2026-08-31T14:26:53.504Z"
+}

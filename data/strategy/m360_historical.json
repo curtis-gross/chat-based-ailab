@@ -1,0 +1,65 @@
+[
+  {
+    "campaignName": "Semi-Annual Sale Fine Body Care Blowout",
+    "divisionId": "Fine Body Care",
+    "openRate": 0.48,
+    "clickRate": 0.24,
+    "clipRate": 0.19,
+    "redemptionRate": 0.18,
+    "conversionScore": 9.4
+  },
+  {
+    "campaignName": "3-Wick Candle Weekend BOGO Event",
+    "divisionId": "Home Fragrance & 3-Wick Candles",
+    "openRate": 0.52,
+    "clickRate": 0.28,
+    "clipRate": 0.25,
+    "redemptionRate": 0.22,
+    "conversionScore": 9.6
+  },
+  {
+    "campaignName": "Wallflowers $3.95 Refill Flash Sale",
+    "divisionId": "Wallflowers & Plug-Ins",
+    "openRate": 0.56,
+    "clickRate": 0.31,
+    "clipRate": 0.28,
+    "redemptionRate": 0.26,
+    "conversionScore": 9.8
+  },
+  {
+    "campaignName": "Aromatherapy Stress Relief Wellness Launch",
+    "divisionId": "Aromatherapy & Wellness",
+    "openRate": 0.41,
+    "clickRate": 0.19,
+    "clipRate": 0.14,
+    "redemptionRate": 0.12,
+    "conversionScore": 8.8
+  },
+  {
+    "campaignName": "Fall Bakery Gourmand Candle Drop",
+    "divisionId": "Home Fragrance & 3-Wick Candles",
+    "openRate": 0.44,
+    "clickRate": 0.22,
+    "clipRate": 0.17,
+    "redemptionRate": 0.15,
+    "conversionScore": 9.1
+  },
+  {
+    "campaignName": "Foaming Hand Soap 5-for-$27 Bundle",
+    "divisionId": "Hand Soaps & Sanitizers",
+    "openRate": 0.39,
+    "clickRate": 0.17,
+    "clipRate": 0.15,
+    "redemptionRate": 0.14,
+    "conversionScore": 8.5
+  },
+  {
+    "campaignName": "Holiday Gift Crate & Basket Early Access",
+    "divisionId": "Gift Sets & Accessories",
+    "openRate": 0.46,
+    "clickRate": 0.23,
+    "clipRate": 0.18,
+    "redemptionRate": 0.16,
+    "conversionScore": 9.0
+  }
+]

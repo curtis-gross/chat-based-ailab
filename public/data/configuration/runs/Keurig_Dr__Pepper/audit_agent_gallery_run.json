@@ -1,0 +1,77 @@
+{
+  "items": [
+    {
+      "id": "audit_1787942051397",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787756254074_409.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-3.jpg",
+      "score": 9.2,
+      "verdict": "PASSED",
+      "timestamp": "11:34 AM"
+    },
+    {
+      "id": "audit_1787841468435",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787678042432_870.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "Competitor & Retail Benchmark - Asset",
+      "score": 8.7,
+      "verdict": "PASSED",
+      "timestamp": "07:37 AM"
+    },
+    {
+      "id": "audit_1787841428703",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787678042432_870.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "Strict FTC & Legal Compliance - Asset",
+      "score": 8.7,
+      "verdict": "PASSED",
+      "timestamp": "07:37 AM"
+    },
+    {
+      "id": "audit_1787841406389",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787678042432_870.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-2.jpg",
+      "score": 9.2,
+      "verdict": "PASSED",
+      "timestamp": "07:36 AM"
+    },
+    {
+      "id": "audit_1787841329491",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787678042432_870.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-2.jpg",
+      "score": 9.2,
+      "verdict": "PASSED",
+      "timestamp": "07:35 AM"
+    },
+    {
+      "id": "audit_1787757723431",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787756254074_409.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "Strict FTC & Legal Compliance - Asset",
+      "score": 8.7,
+      "verdict": "PASSED",
+      "timestamp": "08:22 AM"
+    },
+    {
+      "id": "audit_1787756273366",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787756254074_409.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "Audited Marketing Asset",
+      "score": 9.2,
+      "verdict": "PASSED",
+      "timestamp": "07:57 AM"
+    },
+    {
+      "id": "audit_1787756261835",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787756254074_409.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-3.jpg",
+      "score": 9.2,
+      "verdict": "PASSED",
+      "timestamp": "07:57 AM"
+    },
+    {
+      "id": "audit_1787678049124",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1787678042432_870.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-2.jpg",
+      "score": 9.2,
+      "verdict": "PASSED",
+      "timestamp": "10:14 AM"
+    }
+  ],
+  "updatedAt": "2026-08-28T18:34:11.398Z"
+}

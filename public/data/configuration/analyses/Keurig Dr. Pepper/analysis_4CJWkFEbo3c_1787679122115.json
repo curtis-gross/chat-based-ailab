@@ -1,0 +1,101 @@
+{
+  "type": "abcd",
+  "videoId": "4CJWkFEbo3c",
+  "first_mention": {
+    "seconds": 0.5,
+    "method": "Visual can held by delivery driver and dialogue mention of Dr Pepper Zero Sugar",
+    "result": "Pass"
+  },
+  "abcd_scores": {
+    "attract": {
+      "score": 9,
+      "observation": "Immediately hooks the viewer with a relatable, humorous encounter between a delivery driver and an elderly cat-lover over shared beverage affinity."
+    },
+    "brand": {
+      "score": 9.5,
+      "observation": "Dr Pepper Zero Sugar cans, logos, branded glassware, cardboard boxes, and tagline end card are prominent throughout almost every frame."
+    },
+    "connect": {
+      "score": 9.2,
+      "observation": "Builds a hilarious and heartwarming bond over shared quirks (cats, bingo, drifting delivery vans) backed by an uplifting montage track."
+    },
+    "direct": {
+      "score": 8,
+      "observation": "Concludes with the recognizable 'It's a Pepper Thing' tagline and lineup showcase of flavor varieties, driving trial and brand affinity."
+    }
+  },
+  "branding_timeline": [
+    {
+      "time_segment": "0s - 5s",
+      "presence_percent": 90,
+      "action": "Dr Pepper Zero Sugar can visible in hand; spoken dialogue references product"
+    },
+    {
+      "time_segment": "5s - 10s",
+      "presence_percent": 95,
+      "action": "Can clink and joyful montage initiation with cans centered"
+    },
+    {
+      "time_segment": "10s - 15s",
+      "presence_percent": 80,
+      "action": "Can visible on table and walking cats with delivery box"
+    },
+    {
+      "time_segment": "15s - 20s",
+      "presence_percent": 90,
+      "action": "Close-up pouring into branded glass; branded box maze for cats"
+    },
+    {
+      "time_segment": "20s - 25s",
+      "presence_percent": 90,
+      "action": "Bingo celebration with cans on desks; macro pour 'ONE-OF-A-KIND TASTE' text"
+    },
+    {
+      "time_segment": "25s - 30s",
+      "presence_percent": 100,
+      "action": "Delivery van drifting stunt with 'ONE-OF-A-KIND CONNECTION' leading to four-can product lineup end card"
+    }
+  ],
+  "observations": [
+    {
+      "category": "Visuals",
+      "notes": "Rich, cinematic color grading combined with whimsical comedy setups including cat walking on leashes, cardboard cat palaces, and van drifting."
+    },
+    {
+      "category": "Audio",
+      "notes": "Classic, soulful friendship anthem 'Together (Wherever We Go)' complements character interaction and sound design."
+    },
+    {
+      "category": "Pacing",
+      "notes": "Fast-paced montage of friendship milestones keeps the 30-second ad energetic, playful, and consistently engaging."
+    }
+  ],
+  "takeaways": [
+    "Establishing common ground over unique flavor profiles builds authentic brand love and humor.",
+    "Montage storytelling with recurring brand props makes high branding density feel natural and entertaining."
+  ],
+  "summary": "This Dr Pepper commercial portrays an unexpected bond forged between a delivery driver and an elderly customer upon discovering they both love Dr Pepper Zero Sugar. Their quirky friendship unfolds through a high-energy montage of cat sculpting, group cat walking, cardboard obstacle courses, bingo victories, and high-speed delivery van donuts, illustrating the concept that shared taste creates a one-of-a-kind connection under the campaign theme 'It's a Pepper Thing.'",
+  "gemini_summary": "This Dr Pepper commercial portrays an unexpected bond forged between a delivery driver and an elderly customer upon discovering they both love Dr Pepper Zero Sugar. Their quirky friendship unfolds through a high-energy montage of cat sculpting, group cat walking, cardboard obstacle courses, bingo victories, and high-speed delivery van donuts, illustrating the concept that shared taste creates a one-of-a-kind connection under the campaign theme 'It's a Pepper Thing.'",
+  "word_cloud": [
+    "Pepper",
+    "ZeroSugar",
+    "Connection",
+    "Taste",
+    "Delivery",
+    "Cats",
+    "Friendship",
+    "Bingo",
+    "Joy",
+    "Unique",
+    "Montage",
+    "Cardboard",
+    "Drifting",
+    "Refreshing",
+    "Together",
+    "Humor",
+    "Bonding",
+    "Soda"
+  ],
+  "timestamp": "2026-08-25T17:32:02.115Z",
+  "videoUrl": "https://www.youtube.com/watch?v=4CJWkFEbo3c"
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "email_weekly_deals",
+    "subject": "Your Weekly Fragrance Refresh: Save big on 3-Wick Candles & Body Care!",
+    "body": "Hi [Name],\n\nReady to elevate your everyday routine? This week, we have exclusive deals on signature scented body care, world-famous 3-wick candles, and gentle foaming hand soaps designed to make you smile.\n\nExplore this week's Bath & Body Works offers now.\n\nBest,\nYour Bath & Body Works Team"
+  },
+  {
+    "id": "email_new_collection",
+    "subject": "Just Landed: Our newest seasonal body care and home fragrances",
+    "body": "Dear [Name],\n\nTransform your space and refresh your daily routine with our latest arrivals. From soothing aromatherapy collections to vibrant new seasonal scents, everything you need for a fragrant home and body is waiting for you.\n\nBrowse the new collection today.\n\nBest,\nBath & Body Works Product Team"
+  },
+  {
+    "id": "email_drive_up_ready",
+    "subject": "Your Bath & Body Works Store Pickup order is ready!",
+    "body": "Hi [Name],\n\nGreat news! Your scented favorites are packed and ready. Stop by your local Bath & Body Works store or let us know when you're arriving via the Bath & Body Works app for seamless curbside pickup.\n\nCheck your order details in the app.\n\nThanks for choosing Bath & Body Works,\nBath & Body Works Support"
+  },
+  {
+    "id": "email_eco_friendly_finds",
+    "subject": "Bath & Body Works Care: Sustainable practices and ingredients you'll love",
+    "body": "Dear [Name],\n\nAt Bath & Body Works, we're committed to a sustainable future. Explore our responsibly sourced ingredients, recyclable packaging, and clean beauty formulas designed to care for you and the planet.\n\nDiscover Bath & Body Works Sustainability.\n\nBest regards,\nThe Bath & Body Works Sustainability Team"
+  },
+  {
+    "id": "email_target_circle_bonus",
+    "subject": "A special rewards bonus just for you, [Name]",
+    "body": "Hi [Name],\n\nAs a valued loyalty member, we've added an exclusive reward to your account! Enjoy $10 off your next purchase of $30 or more on qualifying body care or candle purchases this week.\n\nActivate your offer in the Bath & Body Works app before you shop.\n\nHappy shopping,\nBath & Body Works Rewards Team"
+  }
+]

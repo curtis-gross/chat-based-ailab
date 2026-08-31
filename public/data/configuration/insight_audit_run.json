@@ -1,0 +1,194 @@
+{
+  "id": "audit-1786987934877",
+  "companyName": "EA Games FC",
+  "generatedAt": "Today • Real-Time Insight Audit",
+  "executiveSummary": {
+    "healthScore": 76,
+    "healthVerdict": "Exceptional On-Pitch Simulation Dampened by Live-Ops & PC Technical Friction",
+    "topPositiveBreakthrough": "Rush 5v5 Mode Integration & Ground Pass Deceleration Inertia",
+    "primaryFrictionVector": "Evolutions 15-Win Gated Requirements & PC DirectX 12 Anti-Cheat Crashes",
+    "summaryNarrative": "Across the cross-release trajectory from FC 25 to FC 26 and preview sentiment for FC 27, the core tactical simulation (ball weight, manual passing, youth academy growth, and duplicate storage) has achieved franchise-high positive signals. However, severe sentiment drag persists around live-service economy friction (win-gated evolutions, aggressive day-one monetization) and persistent PC launcher/DirectX 12 anti-cheat stability issues. Addressing these actionable mechanical bottlenecks will secure sustainable multi-cycle growth into FC 28."
+  },
+  "roadmap": {
+    "oneWeek": {
+      "theme": "PC Crash Mitigation & Live Comms Stabilization",
+      "items": [
+        {
+          "id": "w1-1",
+          "title": "Deploy DirectX 12 Splash Screen & Anti-Cheat Hotfix for PC",
+          "description": "Resolve the post-TU4 DirectX 12 splash screen crash vector and kernel driver handshake hangs affecting PC players.",
+          "owner": "PC Core Engine & Security Team",
+          "priority": "critical",
+          "expectedImpact": "Mitigate over 65% of active negative Steam reviews and prevent launch-window refund spikes.",
+          "evidenceSource": "Steam Reviews & PC DirectX 12 Noise Filter Trajectory"
+        },
+        {
+          "id": "w1-2",
+          "title": "Issue Community Pitch Notes on Evolution Win Gates",
+          "description": "Publish transparent developer communication acknowledging community friction regarding 15-win requirements and announcing upcoming match-completion alternatives.",
+          "owner": "Live Ops & Community Communications",
+          "priority": "high",
+          "expectedImpact": "De-escalate viral creator and Reddit backlash regarding pay-to-win progression gates.",
+          "evidenceSource": "Reddit & YouTube Sentiment Corpus"
+        }
+      ]
+    },
+    "oneMonth": {
+      "theme": "Title Update Tuning & Defensive Responsiveness",
+      "items": [
+        {
+          "id": "m1-1",
+          "title": "Restructure Evolution Objectives to Match-Play & Performance Gates",
+          "description": "Transition 15-win mandatory requirements into cumulative match completions, goal contributions, and clean sheets to eradicate Division Rivals sweat-traps.",
+          "owner": "FUT Game Design & Economy Team",
+          "priority": "critical",
+          "expectedImpact": "Boost casual and mid-division Evolution engagement by +40% while lowering match abandonment.",
+          "evidenceSource": "Cross-Release Trajectory: Evolutions Objectives"
+        },
+        {
+          "id": "m1-2",
+          "title": "Tune Manual Defensive Jockeying & Pivot Latency",
+          "description": "Eliminate residual 150ms input latency on manual L2/LT jockey transitions while slightly reducing automatic AI lunging angles.",
+          "owner": "Gameplay Physics & AI Team",
+          "priority": "high",
+          "expectedImpact": "Restore competitive skill-gap satisfaction and resolve player complaints regarding 'ice skating' defenders.",
+          "evidenceSource": "Noise Filter Top Mechanics: Defensive Jockey Acceleration"
+        }
+      ]
+    },
+    "oneYear": {
+      "theme": "Architectural Anti-Cheat, Volumetric Simulation & Netcode Overhaul",
+      "items": [
+        {
+          "id": "y1-1",
+          "title": "Re-engineer EA Anti-Cheat to Asynchronous Micro-Service Architecture",
+          "description": "Complete ground-up decoupling of kernel-level anti-cheat verification from the game client executable, integrating PSO shader pre-compilation.",
+          "owner": "Core Platform & Infrastructure Group",
+          "priority": "high",
+          "expectedImpact": "Eliminate launch-day stutter, 144Hz G-Sync frame pacing drops, and launcher lockouts across PC storefronts.",
+          "evidenceSource": "Multi-Release Steam & Trustpilot Longitudinal Data"
+        },
+        {
+          "id": "y1-2",
+          "title": "Deploy 60Hz Server Tick-Rate & Dedicated Regional Edge Relays",
+          "description": "Upgrade competitive Weekend League and Rivals server infrastructure to dedicated high-frequency edge nodes to eliminate crossplay latency deltas.",
+          "owner": "Netcode & Online Services Team",
+          "priority": "high",
+          "expectedImpact": "Resolve persistent one-sided input delay and ping spikes during peak live-event hours.",
+          "evidenceSource": "Weekend League Netcode Signal Extraction"
+        }
+      ]
+    }
+  },
+  "fc27DoubleDownFeatures": [
+    {
+      "id": "dd-1",
+      "name": "Rush 5v5 Mode Ecosystem & Ranked Ladder",
+      "category": "Core Game Mode",
+      "positiveSignalRate": 91,
+      "whyDoubleDown": "Rush 5v5 is the highest-rated gameplay innovation in recent franchise history (91% positive signal), driving massive cross-platform engagement across casual and creator cohorts.",
+      "recommendedPatchActions": [
+        "Deploy dedicated Rush Ranked Leagues with strict skill-bracket matchmaking",
+        "Implement dynamic forfeit/substitute systems to penalize AFK drop-in griefing",
+        "Introduce exclusive cosmetic and Evolution upgrade tracks dedicated to Rush"
+      ],
+      "riskIfIgnored": "Drop-in matchmaking griefing and AFK farming will erode the casual appeal and retention of the mode."
+    },
+    {
+      "id": "dd-2",
+      "name": "Manual Driven Ground Pass Inertia & Ball Deceleration",
+      "category": "Passing & Ball Physics",
+      "positiveSignalRate": 84,
+      "whyDoubleDown": "Ball deceleration physics and elimination of 720-degree blind passes have successfully ended arcade ping-pong exploits, restoring tactical depth.",
+      "recommendedPatchActions": [
+        "Preserve realistic turf friction and pass deceleration curves across all competitive modes",
+        "Refine contextual cushioned first-touch animations based on incoming pass velocity",
+        "Expand manual driven pass precision feedback in user interface settings"
+      ],
+      "riskIfIgnored": "Yielding to casual requests for automated pass assist will collapse the newly established tactical skill gap."
+    },
+    {
+      "id": "dd-3",
+      "name": "Untradeable Duplicate Storage Expansion",
+      "category": "Live Service & Economy",
+      "positiveSignalRate": 88,
+      "whyDoubleDown": "The 100-item duplicate SBC storage system eliminated one of the longest-standing friction points in Ultimate Team history.",
+      "recommendedPatchActions": [
+        "Expand maximum duplicate storage capacity from 100 to 200 items for major promo cycles",
+        "Add direct batch-submit shortcuts into Squad Building Challenges from storage"
+      ],
+      "riskIfIgnored": "Storage bottlenecks during high-volume promos like Team of the Year cause immediate community frustration."
+    },
+    {
+      "id": "dd-4",
+      "name": "Career Mode Youth Academy Scouting & Dynamic Physical Growth",
+      "category": "Game Modes & Career",
+      "positiveSignalRate": 78,
+      "whyDoubleDown": "Overhauls to realistic youth growth curves and scouting depth drove a substantial sentiment rebound among offline single-player enthusiasts.",
+      "recommendedPatchActions": [
+        "Introduce interactive youth academy training tournaments and scouting events",
+        "Expand managerial tactical preset flexibility and dynamic player archetype evolution"
+      ],
+      "riskIfIgnored": "Neglecting single-player career depth leads to community accusations of franchise stagnation and Ultimate Team bias."
+    }
+  ],
+  "fc28GoNoGoMatrix": [
+    {
+      "id": "gng-1",
+      "featureName": "Rush 5v5 Modular Mode Architecture",
+      "category": "Core Game Mode",
+      "decision": "GO",
+      "sentimentScore": 95,
+      "communityVerdict": "Universal Acclaim • Flagship Innovation Pillar",
+      "strategicRationale": "Rush has redefined social soccer gaming, generating unprecedented creator engagement and casual retention.",
+      "fc28Recommendation": "Greenlight Rush as a headline product pillar in FC 28 with dedicated multi-tier tournament ladders and crossplay club tournaments."
+    },
+    {
+      "id": "gng-2",
+      "featureName": "Win-Gated Evolution Milestone Locks",
+      "category": "Live Economy & Progression",
+      "decision": "NO-GO",
+      "sentimentScore": 22,
+      "communityVerdict": "Severe Friction & Competitive Toxicity",
+      "strategicRationale": "Forcing 15 competitive wins with under-leveled cards in high-division ladders drives burnout, rage quits, and player churn.",
+      "fc28Recommendation": "Formally deprecate mandatory win gates across all Evolution tiers; replace entirely with progressive performance and engagement milestones."
+    },
+    {
+      "id": "gng-3",
+      "featureName": "Legacy AI Auto-Block & Lunge Magnetism",
+      "category": "Defensive Mechanics",
+      "decision": "NO-GO",
+      "sentimentScore": 22,
+      "communityVerdict": "Artificial Defensive Bailout",
+      "strategicRationale": "Overpowered AI auto-blocks undermine the manual skill gap and frustrate competitive players who engineer open shot angles.",
+      "fc28Recommendation": "Sunset automated defensive lunge assists; tie tackle and block success strictly to active user input, player positioning, and physical frame."
+    },
+    {
+      "id": "gng-4",
+      "featureName": "PC EA Anti-Cheat & Launcher Client Architecture",
+      "category": "PC Engine & Platform Infrastructure",
+      "decision": "RE-ARCHITECT",
+      "sentimentScore": 16,
+      "communityVerdict": "Platform-Breaking Barrier • Source of Review Bombing",
+      "strategicRationale": "Kernel-level execution conflicts, DirectX 12 splash screen crashes, and launcher lockouts drive 80% of negative PC sentiment.",
+      "fc28Recommendation": "Re-architect anti-cheat into a decoupled background service with asynchronous initialization, zero-stutter frame pacing, and unified Steam Deck compatibility."
+    },
+    {
+      "id": "gng-5",
+      "featureName": "Realistic Ground Ball Inertia & Passing Physics Model",
+      "category": "Gameplay Physics",
+      "decision": "GO",
+      "sentimentScore": 90,
+      "communityVerdict": "Simulation Benchmark Breakthrough",
+      "strategicRationale": "Natural ball weight and turf friction differentiate the franchise from arcade alternatives and reward tactical football IQ.",
+      "fc28Recommendation": "Expand ball physics model to include dynamic volumetric spin, environmental weather resistance, and authentic pitch surface degradation."
+    }
+  ],
+  "evidenceSummary": {
+    "individualCount": 24,
+    "hasBulkAnalysis": true,
+    "noiseFilterSignalCount": 761,
+    "noiseFilterTotal": 1710,
+    "alertsCount": 0
+  }
+}

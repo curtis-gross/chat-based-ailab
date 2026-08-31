@@ -1,0 +1,640 @@
+{
+  "videoId": "cMbI4gJiDUA",
+  "videoUrl": "https://www.youtube.com/watch?v=cMbI4gJiDUA",
+  "overall_sentiment_score": "2.6",
+  "summary": "In their 100th episode, Business of Drinks synthesizes 16 industry reports to highlight key 2026 shifts toward mindful moderation, smart caffeination, third-space hospitality, and multisensory drink formats, balanced against consumer resistance to drinkflation. Audience response was sparse but targeted, with viewer engagement focusing on functional, niche demographic positioning in the energy drink space.",
+  "video_score_brief": {
+    "overview": "The video maintains an analytical, optimistic, and strategic tone celebrating milestone industry insights, while integrating balanced market realism regarding pricing ceilings and category saturation.",
+    "negative_rationale": "Negative sentiment points stem from discussions around 'drinkflation' backlash, flattening volume growth in high-end spirits like tequila due to price friction, and the looming risk of SKU commoditization across functional beverage categories.",
+    "positive_rationale": "Positive scoring was driven by milestone celebrations, high-conviction growth projections for no/low-ABV 'zebra striping,' botanical and clean caffeine alternatives, and expanding experiential on-premise spaces."
+  },
+  "alignment": {
+    "status": "Aligned",
+    "explanation": "While comment volume is low, the audience input directly mirrors the video's broader discussion around energy drink diversification and demographic-specific functional targeting.",
+    "creator_stance": "Macro-focused on emerging beverage trends, clean energy rituals, and functional cross-category innovation.",
+    "audience_consensus": "Neutral and practical, highlighting specific emerging entrants targeting underserved demographic segments like blue-collar functional energy."
+  },
+  "strategic_takeaways": [
+    {
+      "priority": "High",
+      "area": "Portfolio Innovation",
+      "recommendation": "Accelerate clean energy and tea-based RTD pipelines (yerba mate, matcha, hojicha) that deliver jitter-free functional focus to capture shifting energy beverage demand.",
+      "impact": "Captures emerging daytime functional beverage share without alienating consumers fatigued by high-stimulant energy drinks."
+    },
+    {
+      "priority": "High",
+      "area": "Pricing & Value Strategy",
+      "recommendation": "Audit premium RTD pricing architectures to ensure higher price points are reinforced by tangible functional benefits, clean labels, or sensory upgrades to insulate against 'drinkflation' resistance.",
+      "impact": "Protects gross margin while mitigating consumer trade-down risk in an increasingly price-conscious retail environment."
+    },
+    {
+      "priority": "Medium",
+      "area": "Audience Segmentation",
+      "recommendation": "Evaluate targeted functional RTD propositions tailored for working-class and trade demographics, expanding beyond coastal wellness aesthetics into rugged, utilitarian energy positioning.",
+      "impact": "Unlocks high-frequency, highly loyal consumption occasions historically overlooked by mainstream functional beverage marketing."
+    }
+  ],
+  "video_breakdown": {
+    "positive": 4,
+    "negative": 3,
+    "neutral": 2,
+    "positive_pct": 44,
+    "negative_pct": 33,
+    "neutral_pct": 23
+  },
+  "comments_breakdown": {
+    "positive": 0,
+    "negative": 0,
+    "neutral": 1,
+    "positive_pct": 0,
+    "negative_pct": 0,
+    "neutral_pct": 100
+  },
+  "video_sentiment": {
+    "sentiment": {
+      "positive": [
+        "Hosts celebrate their milestone 100th episode of Business of Drinks with engaging, upbeat commentary.",
+        "Thorough synthesis and meta-analysis of beverage trends across 16 major industry forecast reports.",
+        "Strong growth trajectory highlighted for functional beverages, non-alcoholic drinks, and smarter caffeine alternatives.",
+        "Clear articulation of the consumer shift toward community-oriented third spaces and intentional social gatherings."
+      ],
+      "negative": [
+        "Discussion of 'drinkflation' and consumer backlash against price increases without perceived value.",
+        "Acknowledgment of headwinds and growth flattening in certain categories like tequila due to price sensitivity and trade friction.",
+        "Warning about the risk of commoditization as better-for-you SKU proliferation peaks."
+      ],
+      "neutral": [
+        "Detailed review and grading of past year predictions (zebra striping, savory cocktails, transparency mandates).",
+        "Analysis of beverage advisory services launched by the podcast hosts."
+      ]
+    },
+    "score_brief": {
+      "overview": "The video maintains an analytical, optimistic, and strategic tone celebrating milestone industry insights, while integrating balanced market realism regarding pricing ceilings and category saturation.",
+      "negative_rationale": "Negative sentiment points stem from discussions around 'drinkflation' backlash, flattening volume growth in high-end spirits like tequila due to price friction, and the looming risk of SKU commoditization across functional beverage categories.",
+      "positive_rationale": "Positive scoring was driven by milestone celebrations, high-conviction growth projections for no/low-ABV 'zebra striping,' botanical and clean caffeine alternatives, and expanding experiential on-premise spaces."
+    },
+    "timeline": [
+      {
+        "timestamp": "00:05",
+        "sentiment": "positive",
+        "note": "Hosts celebrate the 100th episode milestone of Business of Drinks."
+      },
+      {
+        "timestamp": "02:18",
+        "sentiment": "positive",
+        "note": "Announcement of the Business of Drinks advisory services launch."
+      },
+      {
+        "timestamp": "05:00",
+        "sentiment": "positive",
+        "note": "Reflection on successful predictions including zebra striping and moderation."
+      },
+      {
+        "timestamp": "09:05",
+        "sentiment": "negative",
+        "note": "Discussion on trade friction, tariffs, and slowing agave/tequila volume growth."
+      },
+      {
+        "timestamp": "10:05",
+        "sentiment": "neutral",
+        "note": "Evaluating slower-than-expected draft line adoption for non-beer beverages."
+      },
+      {
+        "timestamp": "13:30",
+        "sentiment": "positive",
+        "note": "Exploration of third spaces, coffee clubbing, and community-centric gathering venues."
+      },
+      {
+        "timestamp": "17:15",
+        "sentiment": "positive",
+        "note": "Deep dive into tropical anchor flavors like mango and passionfruit."
+      },
+      {
+        "timestamp": "19:40",
+        "sentiment": "positive",
+        "note": "Analysis of zero-proof expansions on mainstream drink menus."
+      },
+      {
+        "timestamp": "22:15",
+        "sentiment": "positive",
+        "note": "Expansion of better-for-you functional beverages across mainstream retail."
+      },
+      {
+        "timestamp": "23:45",
+        "sentiment": "negative",
+        "note": "Warning on 'drinkflation' and consumers rejecting premium price hikes without added value."
+      },
+      {
+        "timestamp": "26:00",
+        "sentiment": "positive",
+        "note": "Rise of smart caffeination, clean energy, and tea-forward beverage rituals."
+      },
+      {
+        "timestamp": "31:00",
+        "sentiment": "neutral",
+        "note": "Tech-enabled bar operations and AI-assisted menu planning."
+      },
+      {
+        "timestamp": "36:35",
+        "sentiment": "positive",
+        "note": "Emergence of heritage and alternative beers, vermouths, and aperitifs."
+      }
+    ],
+    "summary": "In their 100th episode, the hosts of Business of Drinks analyze comprehensive 2026 beverage trend reports, evaluating shifts toward mindful drinking, intentional third spaces, smart caffeination, and multisensory bar experiences, while cautioning against excessive price increases in a value-conscious market.",
+    "products": [
+      {
+        "name": "Business of Drinks Advisory Services",
+        "description": "Consulting service for emerging and mature beverage brands on route-to-market, sales strategy, and investor preparedness.",
+        "timestamp": "02:20"
+      },
+      {
+        "name": "Better-For-You Functional Sodas & Tonics",
+        "description": "Gut-health, low-sugar sodas and adaptogenic beverages like Olipop, Poppi, and Hiyo.",
+        "timestamp": "23:28"
+      },
+      {
+        "name": "Zero-Proof Spirits & De-Alcoholized Wines",
+        "description": "Non-alcoholic wine and spirit alternatives gaining prominent menu real estate.",
+        "timestamp": "19:45"
+      },
+      {
+        "name": "Smart Caffeinated RTDs",
+        "description": "Matcha, yerba mate, and tea-based RTD beverages offering measured, crash-free energy.",
+        "timestamp": "26:30"
+      }
+    ],
+    "themes": [
+      {
+        "name": "Mindful Moderation & Zebra Striping",
+        "description": "Consumers alternating between alcoholic and non-alcoholic drinks within the same occasion."
+      },
+      {
+        "name": "Modern Third Spaces",
+        "description": "Venues reimagining daytime and nighttime social connection around beverages rather than pure alcohol consumption."
+      },
+      {
+        "name": "Smart Caffeination & Functional Rituals",
+        "description": "Replacing high-intensity energy drinks with balanced, plant-powered botanical energy sources."
+      },
+      {
+        "name": "Sensory & Showmanship Experiences",
+        "description": "Focusing on cocktail textures, artisanal ice, garnishes, and narrative storytelling to justify premium pricing."
+      }
+    ],
+    "characters": [
+      {
+        "name": "Erica Duecy",
+        "role_description": "Co-host and beverage industry journalist/strategist.",
+        "appearance_timestamp": "00:05"
+      },
+      {
+        "name": "Scott Rosenbaum",
+        "role_description": "Co-host, beverage educator, and industry analyst.",
+        "appearance_timestamp": "00:18"
+      },
+      {
+        "name": "Caroline Lamb",
+        "role_description": "Co-host, researcher, and trend commentator.",
+        "appearance_timestamp": "00:23"
+      }
+    ],
+    "music": [
+      {
+        "description": "Uptrending electronic intro/outro beat and smooth background ambient acoustic track during mid-roll sponsorship.",
+        "vibe": "Professional, modern, upbeat, engaging",
+        "duration": "00:00 - 41:30"
+      }
+    ],
+    "talking_points": [
+      {
+        "point": "Celebrating the 100th episode milestone of Business of Drinks and framing the episode's meta-trend approach.",
+        "speaker": "Erica Duecy",
+        "timestamp": "00:15"
+      },
+      {
+        "point": "Announcing the launch of Business of Drinks Advisory Services for scaling beverage brands.",
+        "speaker": "Erica Duecy",
+        "timestamp": "02:20"
+      },
+      {
+        "point": "Grading past predictions: Zebra striping, savory cocktails, and ingredient label transparency received high accuracy marks.",
+        "speaker": "Scott Rosenbaum",
+        "timestamp": "05:05"
+      },
+      {
+        "point": "Evaluating the flattening volume growth in premium tequila due to pricing sensitivity and tariff uncertainties.",
+        "speaker": "Scott Rosenbaum",
+        "timestamp": "09:30"
+      },
+      {
+        "point": "Explaining the meta-analysis methodology reviewing 16 leading market reports from Bacardi, Datassential, Innova, and others.",
+        "speaker": "Scott Rosenbaum",
+        "timestamp": "12:20"
+      },
+      {
+        "point": "Highlighting the rise of third spaces and daytime social connection venues like coffee clubs and morning raves.",
+        "speaker": "Erica Duecy",
+        "timestamp": "13:35"
+      },
+      {
+        "point": "Analyzing tropical flavor anchors like mango and passionfruit as safe platforms for bolder 'swicy' flavor innovations.",
+        "speaker": "Scott Rosenbaum",
+        "timestamp": "17:20"
+      },
+      {
+        "point": "Documenting the mainstreaming of zero-proof menu sections across on-premise bars and dining establishments.",
+        "speaker": "Caroline Lamb",
+        "timestamp": "19:45"
+      },
+      {
+        "point": "Examining the shift from niche better-for-you offerings to core growth drivers in retail CPG beverage aisles.",
+        "speaker": "Erica Duecy",
+        "timestamp": "22:15"
+      },
+      {
+        "point": "Unpacking 'smart caffeination' as younger consumers choose matcha, yerba mate, and adaptogens over jitter-inducing energy drinks.",
+        "speaker": "Caroline Lamb",
+        "timestamp": "26:00"
+      },
+      {
+        "point": "Detailing multisensory drink experiences, artisanal ice, and texture innovations required to overcome 'drinkflation' resistance.",
+        "speaker": "Scott Rosenbaum",
+        "timestamp": "29:00"
+      },
+      {
+        "point": "Exploring the resurgence of aperitifs, vermouths, and heritage European beer styles in craft beverage programs.",
+        "speaker": "Caroline Lamb",
+        "timestamp": "36:35"
+      }
+    ],
+    "trends": [
+      {
+        "name": "Zebra Striping & Non-Alcoholic Sprawl",
+        "category": "Consumer & Culture",
+        "trajectory": "Rising",
+        "velocity_score": 92,
+        "sentiment_bias": "Positive",
+        "timestamp": "05:15",
+        "video_evidence": "Zebra striping is a widely recognized term where consumers alternate between alcoholic and non-alcoholic drinks in a single session.",
+        "strategic_implication": "Expand zero-proof and low-ABV RTD portfolio lines to capture the 93% of non-alc drinkers who also consume alcohol."
+      },
+      {
+        "name": "Social Third Spaces & Daytime Venues",
+        "category": "Consumer & Culture",
+        "trajectory": "Rising",
+        "velocity_score": 88,
+        "sentiment_bias": "Positive",
+        "timestamp": "13:50",
+        "video_evidence": "Bars and cafes being reimagined as modern third spaces focusing on human connection, daytime social events, and coffee clubbing.",
+        "strategic_implication": "Partner with hybrid daytime-to-evening hospitality concepts for ready-to-serve functional and premium cold brew placements."
+      },
+      {
+        "name": "Tropical & Swicy Flavor Crossovers",
+        "category": "Product & Flavor",
+        "trajectory": "Rising",
+        "velocity_score": 84,
+        "sentiment_bias": "Positive",
+        "timestamp": "17:30",
+        "video_evidence": "Mango and passion fruit acting as anchor flavors allowing brands to introduce spicy 'swicy' chilis and botanical pairings.",
+        "strategic_implication": "Utilize high-acceptance tropical fruit profiles (mango, passion fruit) as bases for next-generation functional sodas and sparkling waters."
+      },
+      {
+        "name": "Drinkflation & Value Justification",
+        "category": "Economic & Pricing",
+        "trajectory": "Peaking",
+        "velocity_score": 79,
+        "sentiment_bias": "Negative",
+        "timestamp": "23:45",
+        "video_evidence": "Drinkflation will hit a breaking point; consumers stop tolerating price increases without clear experiential or functional justification.",
+        "strategic_implication": "Ensure premium price points are strictly backed by tangible functional ingredients, superior packaging, or unique brand provenance."
+      },
+      {
+        "name": "Smart Caffeination & Clean Energy Rituals",
+        "category": "Product & Flavor",
+        "trajectory": "Rising",
+        "velocity_score": 90,
+        "sentiment_bias": "Positive",
+        "timestamp": "26:15",
+        "video_evidence": "Consumers moving toward matcha, hojicha, and yerba mate for controlled, jitter-free energy and calm focus.",
+        "strategic_implication": "Accelerate innovation in tea-forward, clean-caffeine RTDs targeting Gen Z consumers seeking functional focus over intense stimulants."
+      },
+      {
+        "name": "Multisensory Showmanship & Texture",
+        "category": "Operations & Tech",
+        "trajectory": "Emerging",
+        "velocity_score": 76,
+        "sentiment_bias": "Positive",
+        "timestamp": "29:30",
+        "video_evidence": "Shift from visual-only social media drinks to tactile textures, foams, shaved ice, and storytelling.",
+        "strategic_implication": "Incorporate layered textures, cold foams, and innovative carbonation dynamics into single-serve format R&D."
+      }
+    ],
+    "word_cloud": [
+      "Beverage",
+      "Trends",
+      "Moderation",
+      "Functional",
+      "Matcha",
+      "Caffeination",
+      "Aperitif",
+      "Non-Alcoholic",
+      "Community",
+      "Texture",
+      "Drinkflation",
+      "Innovation",
+      "Zebra-Striping",
+      "Wellness",
+      "Hospitality",
+      "Storytelling",
+      "Retail",
+      "Flavors"
+    ],
+    "breakdown": {
+      "positive": 4,
+      "negative": 3,
+      "neutral": 2,
+      "positive_pct": 44,
+      "negative_pct": 33,
+      "neutral_pct": 23
+    }
+  },
+  "comments_sentiment": {
+    "counts": {
+      "positive": 0,
+      "negative": 0,
+      "neutral": 1
+    },
+    "trends": {
+      "positive": [
+        "No positive trends identified in the current sample."
+      ],
+      "negative": [
+        "No negative trends identified in the current sample."
+      ],
+      "neutral": [
+        "Recommendations for alternative energy drink brands",
+        "Discussions around beverages targeting specific demographics such as blue-collar workers",
+        "Consumer-driven product discovery and shoutouts",
+        "General market awareness of emerging competitors",
+        "Informational peer-to-peer suggestions"
+      ]
+    },
+    "summary": "Analysis of the single provided comment yields a neutral sentiment. The user is offering a recommendation and drawing attention to a new competitive energy drink geared toward a specific demographic.",
+    "breakdown": {
+      "positive": 0,
+      "negative": 0,
+      "neutral": 1,
+      "positive_pct": 0,
+      "negative_pct": 0,
+      "neutral_pct": 100
+    }
+  },
+  "raw_comments_count": 1,
+  "sample_comments": [
+    {
+      "id": "UgzjGj4SNoKVqpO-sdZ4AaABAg",
+      "author": "@manetz72",
+      "authorProfileImageUrl": "https://yt3.ggpht.com/ytc/AIdro_kr8AcrQQa0GQjKXy83aFcAeqDxhnuP1TUfXF1YUmI=s48-c-k-c0x00ffffff-no-rj",
+      "text": "Yall should check out DRC energy… a new energy drink geared for the blue collar worker",
+      "likeCount": 0,
+      "publishedAt": "2026-01-21T13:05:47Z"
+    }
+  ],
+  "counts": {
+    "positive": 0,
+    "negative": 0,
+    "neutral": 1,
+    "positive_pct": 0,
+    "negative_pct": 0,
+    "neutral_pct": 100
+  },
+  "trends": [
+    {
+      "name": "Zebra Striping & Non-Alcoholic Sprawl",
+      "category": "Consumer & Culture",
+      "trajectory": "Rising",
+      "velocity_score": 92,
+      "sentiment_bias": "Positive",
+      "timestamp": "05:15",
+      "video_evidence": "Zebra striping is a widely recognized term where consumers alternate between alcoholic and non-alcoholic drinks in a single session.",
+      "strategic_implication": "Expand zero-proof and low-ABV RTD portfolio lines to capture the 93% of non-alc drinkers who also consume alcohol."
+    },
+    {
+      "name": "Social Third Spaces & Daytime Venues",
+      "category": "Consumer & Culture",
+      "trajectory": "Rising",
+      "velocity_score": 88,
+      "sentiment_bias": "Positive",
+      "timestamp": "13:50",
+      "video_evidence": "Bars and cafes being reimagined as modern third spaces focusing on human connection, daytime social events, and coffee clubbing.",
+      "strategic_implication": "Partner with hybrid daytime-to-evening hospitality concepts for ready-to-serve functional and premium cold brew placements."
+    },
+    {
+      "name": "Tropical & Swicy Flavor Crossovers",
+      "category": "Product & Flavor",
+      "trajectory": "Rising",
+      "velocity_score": 84,
+      "sentiment_bias": "Positive",
+      "timestamp": "17:30",
+      "video_evidence": "Mango and passion fruit acting as anchor flavors allowing brands to introduce spicy 'swicy' chilis and botanical pairings.",
+      "strategic_implication": "Utilize high-acceptance tropical fruit profiles (mango, passion fruit) as bases for next-generation functional sodas and sparkling waters."
+    },
+    {
+      "name": "Drinkflation & Value Justification",
+      "category": "Economic & Pricing",
+      "trajectory": "Peaking",
+      "velocity_score": 79,
+      "sentiment_bias": "Negative",
+      "timestamp": "23:45",
+      "video_evidence": "Drinkflation will hit a breaking point; consumers stop tolerating price increases without clear experiential or functional justification.",
+      "strategic_implication": "Ensure premium price points are strictly backed by tangible functional ingredients, superior packaging, or unique brand provenance."
+    },
+    {
+      "name": "Smart Caffeination & Clean Energy Rituals",
+      "category": "Product & Flavor",
+      "trajectory": "Rising",
+      "velocity_score": 90,
+      "sentiment_bias": "Positive",
+      "timestamp": "26:15",
+      "video_evidence": "Consumers moving toward matcha, hojicha, and yerba mate for controlled, jitter-free energy and calm focus.",
+      "strategic_implication": "Accelerate innovation in tea-forward, clean-caffeine RTDs targeting Gen Z consumers seeking functional focus over intense stimulants."
+    },
+    {
+      "name": "Multisensory Showmanship & Texture",
+      "category": "Operations & Tech",
+      "trajectory": "Emerging",
+      "velocity_score": 76,
+      "sentiment_bias": "Positive",
+      "timestamp": "29:30",
+      "video_evidence": "Shift from visual-only social media drinks to tactile textures, foams, shaved ice, and storytelling.",
+      "strategic_implication": "Incorporate layered textures, cold foams, and innovative carbonation dynamics into single-serve format R&D."
+    }
+  ],
+  "video_trends": [
+    {
+      "name": "Zebra Striping & Non-Alcoholic Sprawl",
+      "category": "Consumer & Culture",
+      "trajectory": "Rising",
+      "velocity_score": 92,
+      "sentiment_bias": "Positive",
+      "timestamp": "05:15",
+      "video_evidence": "Zebra striping is a widely recognized term where consumers alternate between alcoholic and non-alcoholic drinks in a single session.",
+      "strategic_implication": "Expand zero-proof and low-ABV RTD portfolio lines to capture the 93% of non-alc drinkers who also consume alcohol."
+    },
+    {
+      "name": "Social Third Spaces & Daytime Venues",
+      "category": "Consumer & Culture",
+      "trajectory": "Rising",
+      "velocity_score": 88,
+      "sentiment_bias": "Positive",
+      "timestamp": "13:50",
+      "video_evidence": "Bars and cafes being reimagined as modern third spaces focusing on human connection, daytime social events, and coffee clubbing.",
+      "strategic_implication": "Partner with hybrid daytime-to-evening hospitality concepts for ready-to-serve functional and premium cold brew placements."
+    },
+    {
+      "name": "Tropical & Swicy Flavor Crossovers",
+      "category": "Product & Flavor",
+      "trajectory": "Rising",
+      "velocity_score": 84,
+      "sentiment_bias": "Positive",
+      "timestamp": "17:30",
+      "video_evidence": "Mango and passion fruit acting as anchor flavors allowing brands to introduce spicy 'swicy' chilis and botanical pairings.",
+      "strategic_implication": "Utilize high-acceptance tropical fruit profiles (mango, passion fruit) as bases for next-generation functional sodas and sparkling waters."
+    },
+    {
+      "name": "Drinkflation & Value Justification",
+      "category": "Economic & Pricing",
+      "trajectory": "Peaking",
+      "velocity_score": 79,
+      "sentiment_bias": "Negative",
+      "timestamp": "23:45",
+      "video_evidence": "Drinkflation will hit a breaking point; consumers stop tolerating price increases without clear experiential or functional justification.",
+      "strategic_implication": "Ensure premium price points are strictly backed by tangible functional ingredients, superior packaging, or unique brand provenance."
+    },
+    {
+      "name": "Smart Caffeination & Clean Energy Rituals",
+      "category": "Product & Flavor",
+      "trajectory": "Rising",
+      "velocity_score": 90,
+      "sentiment_bias": "Positive",
+      "timestamp": "26:15",
+      "video_evidence": "Consumers moving toward matcha, hojicha, and yerba mate for controlled, jitter-free energy and calm focus.",
+      "strategic_implication": "Accelerate innovation in tea-forward, clean-caffeine RTDs targeting Gen Z consumers seeking functional focus over intense stimulants."
+    },
+    {
+      "name": "Multisensory Showmanship & Texture",
+      "category": "Operations & Tech",
+      "trajectory": "Emerging",
+      "velocity_score": 76,
+      "sentiment_bias": "Positive",
+      "timestamp": "29:30",
+      "video_evidence": "Shift from visual-only social media drinks to tactile textures, foams, shaved ice, and storytelling.",
+      "strategic_implication": "Incorporate layered textures, cold foams, and innovative carbonation dynamics into single-serve format R&D."
+    }
+  ],
+  "comment_trends": {
+    "positive": [
+      "No positive trends identified in the current sample."
+    ],
+    "negative": [
+      "No negative trends identified in the current sample."
+    ],
+    "neutral": [
+      "Recommendations for alternative energy drink brands",
+      "Discussions around beverages targeting specific demographics such as blue-collar workers",
+      "Consumer-driven product discovery and shoutouts",
+      "General market awareness of emerging competitors",
+      "Informational peer-to-peer suggestions"
+    ]
+  },
+  "talking_points": [
+    {
+      "point": "Celebrating the 100th episode milestone of Business of Drinks and framing the episode's meta-trend approach.",
+      "speaker": "Erica Duecy",
+      "timestamp": "00:15"
+    },
+    {
+      "point": "Announcing the launch of Business of Drinks Advisory Services for scaling beverage brands.",
+      "speaker": "Erica Duecy",
+      "timestamp": "02:20"
+    },
+    {
+      "point": "Grading past predictions: Zebra striping, savory cocktails, and ingredient label transparency received high accuracy marks.",
+      "speaker": "Scott Rosenbaum",
+      "timestamp": "05:05"
+    },
+    {
+      "point": "Evaluating the flattening volume growth in premium tequila due to pricing sensitivity and tariff uncertainties.",
+      "speaker": "Scott Rosenbaum",
+      "timestamp": "09:30"
+    },
+    {
+      "point": "Explaining the meta-analysis methodology reviewing 16 leading market reports from Bacardi, Datassential, Innova, and others.",
+      "speaker": "Scott Rosenbaum",
+      "timestamp": "12:20"
+    },
+    {
+      "point": "Highlighting the rise of third spaces and daytime social connection venues like coffee clubs and morning raves.",
+      "speaker": "Erica Duecy",
+      "timestamp": "13:35"
+    },
+    {
+      "point": "Analyzing tropical flavor anchors like mango and passionfruit as safe platforms for bolder 'swicy' flavor innovations.",
+      "speaker": "Scott Rosenbaum",
+      "timestamp": "17:20"
+    },
+    {
+      "point": "Documenting the mainstreaming of zero-proof menu sections across on-premise bars and dining establishments.",
+      "speaker": "Caroline Lamb",
+      "timestamp": "19:45"
+    },
+    {
+      "point": "Examining the shift from niche better-for-you offerings to core growth drivers in retail CPG beverage aisles.",
+      "speaker": "Erica Duecy",
+      "timestamp": "22:15"
+    },
+    {
+      "point": "Unpacking 'smart caffeination' as younger consumers choose matcha, yerba mate, and adaptogens over jitter-inducing energy drinks.",
+      "speaker": "Caroline Lamb",
+      "timestamp": "26:00"
+    },
+    {
+      "point": "Detailing multisensory drink experiences, artisanal ice, and texture innovations required to overcome 'drinkflation' resistance.",
+      "speaker": "Scott Rosenbaum",
+      "timestamp": "29:00"
+    },
+    {
+      "point": "Exploring the resurgence of aperitifs, vermouths, and heritage European beer styles in craft beverage programs.",
+      "speaker": "Caroline Lamb",
+      "timestamp": "36:35"
+    }
+  ],
+  "word_cloud": [
+    "Beverage",
+    "Trends",
+    "Moderation",
+    "Functional",
+    "Matcha",
+    "Caffeination",
+    "Aperitif",
+    "Non-Alcoholic",
+    "Community",
+    "Texture",
+    "Drinkflation",
+    "Innovation",
+    "Zebra-Striping",
+    "Wellness",
+    "Hospitality",
+    "Storytelling",
+    "Retail",
+    "Flavors"
+  ],
+  "music": [
+    {
+      "description": "Uptrending electronic intro/outro beat and smooth background ambient acoustic track during mid-roll sponsorship.",
+      "vibe": "Professional, modern, upbeat, engaging",
+      "duration": "00:00 - 41:30"
+    }
+  ],
+  "timestamp": "2026-08-31T14:41:57.515Z"
+}

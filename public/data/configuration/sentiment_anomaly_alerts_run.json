@@ -1,0 +1,279 @@
+{
+  "monitoredKeyword": "FC 26",
+  "alertMetadata": {
+    "title": "Executive Sentiment Anomaly Report: FC 26",
+    "severityScore": 75,
+    "status": "critical",
+    "detectedAt": "Live • 7-Day Horizon",
+    "totalMentions": "95 Verified Feedback Items Ingested",
+    "confidenceScore": "98% Grounded"
+  },
+  "executiveSummary": "Over the past 7 days, live API tracking across YouTube, Steam, and Google News indicates an overall sentiment of 25% positive for FC 26 out of 95 verified human feedback items. While promotional updates such as the final week of the Futties promo alongside Season 10 pre-season rewards and the implementation of the new Community API update garnered favorable attention, community feedback highlights critical friction points. Steam and YouTube users frequently cite aggressive discounting ($14-$18 price points and 80% off sales), lack of PC/keyboard optimization, difficult man-marking mechanics, and overly rapid gameplay that lacks realism.",
+  "keyAnomalies": [
+    {
+      "id": "anomaly-1",
+      "anomalyTitle": "PC Optimization and Keyboard Usability Failures",
+      "rootCause": "Players report that the game forces the use of a controller, lacking proper optimization for PC and keyboard users.",
+      "affectedCohort": "PC & Keyboard Gamers",
+      "severity": "critical",
+      "channelSource": "Steam Verified Player Reviews",
+      "verificationLink": "https://store.steampowered.com/app/3405690"
+    },
+    {
+      "id": "anomaly-2",
+      "anomalyTitle": "Gameplay Pace and Defensive Mechanics Friction",
+      "rootCause": "Users criticize the game for being too smooth and fast to the point of unreality, alongside difficult man-marking and rigid tactical meta constraints.",
+      "affectedCohort": "Core and Casual Players",
+      "severity": "warning",
+      "channelSource": "YouTube Comments and Reddit Grounding",
+      "verificationLink": "https://www.reddit.com/r/fut/comments/1u8iz18/healthy_discussion_around_fc26_gameplay_and/"
+    }
+  ],
+  "immediateMitigations": [
+    {
+      "id": "mitigation-1",
+      "actionTitle": "PC Usability and Control Patch Evaluation",
+      "department": "Product",
+      "estimatedImpact": "+8% Positive Sentiment Rebound",
+      "status": "ready",
+      "payloadSnippet": "Investigate native keyboard mapping and PC optimization hotfixes to address Steam player grievances regarding controller dependency."
+    }
+  ],
+  "dailySummaryBrief": {
+    "title": "Daily Brief: FC 26 Executive Overview",
+    "generatedAt": "Today • 24-Hour Horizon",
+    "durationSeconds": 90,
+    "audioScript": "Good morning, EA Games FC Marketing. Over the last 7 days, our live tracking for 'FC 26' across YouTube creator reviews, live viewer comments, and Steam verified player feedback indicates an overall sentiment of 25%...",
+    "audioKeyTakeaways": [
+      "YouTube audience comments reflect widespread discussion around aggressive 80% off sales dropping prices to $14-$18.",
+      "Steam verified reviews highlight PC optimization hurdles and lack of keyboard user support.",
+      "Google News and Search trends confirm the rollout of the Futties promo and the new Community API update."
+    ],
+    "sentimentPulse": {
+      "overallPositive": 25,
+      "dodDelta": "+1%",
+      "activeVolume": "95 verified items",
+      "channels": [
+        {
+          "channel": "YouTube Creator Coverage",
+          "sentiment": "12% Positive",
+          "status": "critical"
+        },
+        {
+          "channel": "YouTube Viewer Comments",
+          "sentiment": "8/65 Positive (12%)",
+          "status": "critical"
+        },
+        {
+          "channel": "Steam Verified Player Reviews",
+          "sentiment": "53% Positive (16/30 Positive)",
+          "status": "warning"
+        },
+        {
+          "channel": "Google News & Community Grounding",
+          "sentiment": "3 Active 7-Day Feeds",
+          "status": "favorable"
+        }
+      ]
+    },
+    "topics": [
+      {
+        "id": "topic-fc-26",
+        "title": "FC 26 Verified Community Discourse",
+        "tag": "LIVE VERIFIED",
+        "sentiment": "negative",
+        "summary": "Real discussions span across pricing shifts due to 80% off sales, defensive AI exploits, and PC control optimization.",
+        "creatorClips": [],
+        "topCommentThreads": []
+      }
+    ]
+  },
+  "wordCloud": [
+    "FC 26",
+    "Reviews",
+    "Community",
+    "Feedback",
+    "Gameplay",
+    "Updates",
+    "Steam",
+    "YouTube"
+  ],
+  "sampleFeed": [
+    {
+      "id": "steam-0",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Recommended",
+      "content": "I have a better idea! why dont u release the fc27 as a dlc update in fc26. sounds cool right! nah man there's a catch. whoever does not purchase the fc27 dlc won't be able to play fc26 anymore and i will also add an expansion like for a more 100$ u can get the whole fc26 squads in the fc27 also.\r\nP.S - FC27 DLC will priced at the same as \"Ultimate Plus edition\". at EA we dont negotiate with players we just ♥♥♥♥ them whenver we like !!!",
+      "sentiment": "positive",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-1",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "♥♥♥♥",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-2",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "Unplayable demo version of game, Clubs and Career the only not covered in ♥♥♥♥ content.",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-3",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Recommended",
+      "content": "good",
+      "sentiment": "positive",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-4",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "pretty ♥♥♥♥ really",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-5",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "this game is not optimised for pc users and keyboard user . to enjoy this game it forces you to have a controller",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-6",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Recommended",
+      "content": "very fun",
+      "sentiment": "positive",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-7",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "PES 2021 mogs ts",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-8",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "trash",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-9",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "Trash",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-10",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "This game sucks!!! Big time, matching doesn't happen with people in your tier, man marking is very difficult and there's too many things added, this is not friendly for people who don't know anything about soccer and just want to play and have fun online. This game is SUCKS",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-11",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Recommended",
+      "content": "rl cool game\r\n",
+      "sentiment": "positive",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-12",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Not Recommended",
+      "content": "Seriously EA, please fix FC 26 before you start working on another game. I’m so tired of this ♥♥♥♥. We are paying full price for a game that still has so many bugs. Every year you release a new FC, add some new features, change a few things and expect us to pay again while the previous game is still broken. The ICON bug in Career Mode is especially annoying. I edited my squad and added some ICONs to my team, started a new Career using Current Squads and everything was fine. I played a few games, saved my Career and closed the game. Then I came back later and my ICONs were ♥♥♥♥♥♥♥ gone. They were replaced by random normal players that I never even put in my squad. What is the point of letting us edit squads if the game just deletes the changes when we load the Career? And the worst part is that I actually spent time building this team and playing the Career, and now I basically have to start over because the game can't even keep the players I added. And this isn't even the only problem, there are still black loading screens, audio bugs, Player Career bugs, Create a Club problems and a bunch of other random ♥♥♥♥ happening all the time. How is this acceptable? Please stop trying to sell us another FC game and actually fix the one we already paid for. I don't want another game with a new menu and a few new animations, I just want the basic stuff to ♥♥♥♥♥♥♥ work. Fix FC 26 first, then worry about FC 27.",
+      "sentiment": "negative",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-13",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Recommended",
+      "content": "yes, because i like playing fc26.\r\n",
+      "sentiment": "positive",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-14",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Recommended",
+      "content": "get the game on sale its abs worth it and dont EVER PLAY ULTIMATE TEAM UR GON CRASHOUT",
+      "sentiment": "positive",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    },
+    {
+      "id": "steam-15",
+      "source": "steam",
+      "author": "Steam Verified Player",
+      "title": "Steam Review: Recommended",
+      "content": "i love playing this game\r\n",
+      "sentiment": "positive",
+      "upvotes": 0,
+      "timestamp": "Recent 30 Days",
+      "url": "https://store.steampowered.com/app/3405690/"
+    }
+  ]
+}

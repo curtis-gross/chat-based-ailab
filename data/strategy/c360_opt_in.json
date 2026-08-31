@@ -1,0 +1,74 @@
+[
+  {
+    "segmentId": "fragrance_aficionados",
+    "name": "Fine Body Care & Fragrance Collectors",
+    "enrolledShoppersCount": 85000,
+    "optInSMS": true,
+    "optInEmail": true,
+    "activeCampaignsCount": 1,
+    "contactFrequencyLimits": {
+      "maxPerWeek": 2,
+      "rollingSent": 1
+    }
+  },
+  {
+    "segmentId": "candle_collectors",
+    "name": "3-Wick Candle & Seasonal Home Decor Buyers",
+    "enrolledShoppersCount": 140000,
+    "optInSMS": true,
+    "optInEmail": true,
+    "activeCampaignsCount": 2,
+    "contactFrequencyLimits": {
+      "maxPerWeek": 3,
+      "rollingSent": 2
+    }
+  },
+  {
+    "segmentId": "aromatherapy_seekers",
+    "name": "Aromatherapy & Stress Relief Ritual Club",
+    "enrolledShoppersCount": 62000,
+    "optInSMS": true,
+    "optInEmail": false,
+    "activeCampaignsCount": 0,
+    "contactFrequencyLimits": {
+      "maxPerWeek": 2,
+      "rollingSent": 0
+    }
+  },
+  {
+    "segmentId": "gourmand_lovers",
+    "name": "Bakery Gourmand & Sweet Scent Enthusiasts",
+    "enrolledShoppersCount": 95000,
+    "optInSMS": false,
+    "optInEmail": true,
+    "activeCampaignsCount": 1,
+    "contactFrequencyLimits": {
+      "maxPerWeek": 2,
+      "rollingSent": 1
+    }
+  },
+  {
+    "segmentId": "wallflowers_subscribers",
+    "name": "Wallflowers Plug-In Refill Subscribers",
+    "enrolledShoppersCount": 110000,
+    "optInSMS": true,
+    "optInEmail": true,
+    "activeCampaignsCount": 0,
+    "contactFrequencyLimits": {
+      "maxPerWeek": 2,
+      "rollingSent": 0
+    }
+  },
+  {
+    "segmentId": "gifting_shoppers",
+    "name": "Holiday & Birthday Gifting Shoppers",
+    "enrolledShoppersCount": 78000,
+    "optInSMS": false,
+    "optInEmail": true,
+    "activeCampaignsCount": 1,
+    "contactFrequencyLimits": {
+      "maxPerWeek": 2,
+      "rollingSent": 1
+    }
+  }
+]

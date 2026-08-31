@@ -1,0 +1,98 @@
+[
+  {
+    "user_id": 1,
+    "email": "m.chen@outlook.com",
+    "name": "Maya Chen",
+    "location": "Seattle, WA",
+    "topChannel": "Mobile App",
+    "condition": "VIP Rewards Member",
+    "Browse_history": "Japanese Cherry Blossom Body Lotion, Champagne Toast 3-Wick Candle, Eucalyptus Spearmint Hand Soap",
+    "preferred_language": "English",
+    "weather": "rainy",
+    "recentActivity": "Placed store pickup order for Champagne Toast 3-Wick Candle, applied 10% Rewards member discount"
+  },
+  {
+    "user_id": 2,
+    "email": "david.miller82@gmail.com",
+    "name": "David Miller",
+    "location": "Austin, TX",
+    "topChannel": "Web",
+    "condition": "Home Fragrance Enthusiast",
+    "Browse_history": "Mahogany Teakwood 3-Wick Candle, Wallflowers Fragrance Refill, Gentle Foaming Hand Soap",
+    "preferred_language": "English",
+    "weather": "sunny",
+    "recentActivity": "Pre-ordered latest seasonal candle collection, redeemed $10 Rewards credit"
+  },
+  {
+    "user_id": 3,
+    "email": "chloe.j@yahoo.com",
+    "name": "Chloe Jenkins",
+    "location": "Boston, MA",
+    "topChannel": "Email",
+    "condition": "Aromatherapy Specialist",
+    "Browse_history": "Eucalyptus Spearmint Body Wash, Lavender Vanilla Pillow Mist, Aromatherapy Body Cream",
+    "preferred_language": "English",
+    "weather": "windy",
+    "recentActivity": "Added aromatherapy set to wish list, clicked 'Semi-Annual Sale' link in newsletter"
+  },
+  {
+    "user_id": 4,
+    "email": "liam.o.student@uillinois.edu",
+    "name": "Liam O'Connor",
+    "location": "Chicago, IL",
+    "topChannel": "Web",
+    "condition": "Gift Shopper",
+    "Browse_history": "Gentle & Clean Hand Soap 5-Pack, PocketBac Hand Sanitizer Holder, Men's Body Spray",
+    "preferred_language": "English",
+    "weather": "snowy",
+    "recentActivity": "Created gift set bundle, purchased Hand Soap 5-Pack with free shipping promo"
+  },
+  {
+    "user_id": 5,
+    "email": "sarah.m.design@gmail.com",
+    "name": "Sarah Martinez",
+    "location": "Miami, FL",
+    "topChannel": "Email",
+    "condition": "Signature Collection VIP",
+    "Browse_history": "Into the Night Fine Fragrance Mist, In the Stars Body Cream, Gingham Glow Eau de Parfum",
+    "preferred_language": "Spanish",
+    "weather": "humid",
+    "recentActivity": "Checked in-store inventory for body mists, saved summer fragrance collection"
+  },
+  {
+    "user_id": 6,
+    "email": "m.thompson@comcast.net",
+    "name": "Michael Thompson",
+    "location": "Denver, CO",
+    "topChannel": "Web",
+    "condition": "Men's Shop Fan",
+    "Browse_history": "Ocean 3-in-1 Hair, Face & Body Wash, Freshwater Body Spray, Teakwood Cologne",
+    "preferred_language": "English",
+    "weather": "clear",
+    "recentActivity": "Purchased men's body wash refills, left 5-star review for Teakwood Cologne"
+  },
+  {
+    "user_id": 7,
+    "email": "isabella.rossi@icloud.com",
+    "name": "Isabella Rossi",
+    "location": "Los Angeles, CA",
+    "topChannel": "Mobile App",
+    "condition": "Wallflowers Power User",
+    "Browse_history": "Wallflowers Plug, Sweet Cinnamon Pumpkin Refill, Kitchen Lemon Gentle Foaming Hand Soap",
+    "preferred_language": "English",
+    "weather": "warm",
+    "recentActivity": "Scanned product QR code in retail store, redeemed Rewards points for free full-size body care"
+  },
+  {
+    "user_id": 8,
+    "email": "marcus.v@gmail.com",
+    "name": "Marcus Vance",
+    "location": "New York, NY",
+    "topChannel": "Web",
+    "condition": "Holiday Collection Specialist",
+    "Browse_history": "Winter Candy Apple 3-Wick Candle, Vanilla Bean Noel Hand Soap, Holiday Traditions Gift Box",
+    "preferred_language": "English",
+    "weather": "overcast",
+    "recentActivity": "Scheduled same-day store pickup for holiday candles, set up auto-delivery for seasonal hand soaps"
+  }
+]

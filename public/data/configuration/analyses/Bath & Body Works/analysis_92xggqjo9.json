@@ -1,0 +1,94 @@
+{
+  "type": "abcd",
+  "videoId": "FkqtgipZj3o",
+  "first_mention": {
+    "seconds": 0,
+    "method": "logo shown",
+    "result": "Pass"
+  },
+  "abcd_scores": {
+    "attract": {
+      "score": 9.2,
+      "observation": "Grabs attention instantly in the first 5 seconds with a striking silhouette of a woman kneeling on a white block, high-energy pop-rock music, and dramatic lighting. The fast-paced cuts and close-ups of water splashing and lips moving keep the viewer engaged."
+    },
+    "brand": {
+      "score": 9.5,
+      "observation": "Excellent brand integration. The Bath & Body Works logo is displayed boldly across the screen in the first 2 seconds, and the brand name is repeated visually and verbally at the end. The products are showcased dynamically with water and mist, emphasizing their refreshing nature."
+    },
+    "connect": {
+      "score": 8,
+      "observation": "Connects through sensory and physical emotion. The feeling of a refreshing shower, energetic dancing in the rain, and the sensory appeal of 'fruity scents' and 'juicy benefits' create an uplifting, revitalizing, and joyful emotional bridge."
+    },
+    "direct": {
+      "score": 7.8,
+      "observation": "The call to action introduces the new 'Fruit Fusion' product line clearly. While it lacks a direct digital link or prompt (like 'Shop now' or a website URL), the final screen clearly presents the product collection as the main takeaway."
+    }
+  },
+  "branding_timeline": [
+    {
+      "time_segment": "0s - 3s",
+      "presence_percent": 100,
+      "action": "Bath & Body Works logo overlaid on screen while a woman poses on a white pedestal."
+    },
+    {
+      "time_segment": "4s - 20s",
+      "presence_percent": 0,
+      "action": "Product usage demonstration under a shower with focus on sensory experience, water, and spray mist."
+    },
+    {
+      "time_segment": "21s - 24s",
+      "presence_percent": 50,
+      "action": "On-screen text overlays highlight 'Four fruity scents. Real juicy benefits.' while showcasing product application."
+    },
+    {
+      "time_segment": "25s - 30s",
+      "presence_percent": 100,
+      "action": "Fruit Fusion by Bath & Body Works logo and product lineup are displayed on screen with voiceover mention."
+    }
+  ],
+  "observations": [
+    {
+      "category": "Visuals",
+      "notes": "High-contrast studio lighting with a dark background and a bright waterfall stream. The actress wears a simple white outfit that contrasts with her pink socks and the vibrant, colorful packaging of the Fruit Fusion line."
+    },
+    {
+      "category": "Audio",
+      "notes": "Features an energetic, upbeat pop-rock soundtrack with lyrics like 'Tempted by the fruit of another'. The voiceover at the end is smooth, inviting, and clearly introduces the new collection."
+    },
+    {
+      "category": "Pacing",
+      "notes": "Very fast-paced with rapid cuts between close-ups of splashing water, lips singing, mist spraying, and full-body choreography, conveying a sense of energy and freshness."
+    }
+  ],
+  "takeaways": [
+    "Leverage high-energy music and sensory visuals (water, mist, lather) to create an immediate association with freshness and revitalization.",
+    "Introduce the corporate brand identity in the very first frame to maximize brand recall, even during short digital exposures.",
+    "Use vibrant, contrasting product packaging at the end of the commercial to make the new product line memorable and easily recognizable on shelves."
+  ],
+  "summary": "This high-energy commercial for Bath & Body Works introduces their 'Fruit Fusion' product line. By combining dynamic choreography, splashing water, and sensory-focused close-ups with a lively pop soundtrack, the ad successfully communicates a feeling of vibrant freshness and juicy indulgence, making the brand's new collection highly memorable.",
+  "gemini_summary": "This high-energy commercial for Bath & Body Works introduces their 'Fruit Fusion' product line. By combining dynamic choreography, splashing water, and sensory-focused close-ups with a lively pop soundtrack, the ad successfully communicates a feeling of vibrant freshness and juicy indulgence, making the brand's new collection highly memorable.",
+  "word_cloud": [
+    "Fresh",
+    "Shower",
+    "Water",
+    "Fruit",
+    "Fusion",
+    "Juicy",
+    "Energy",
+    "Scent",
+    "Moisture",
+    "Lather",
+    "Mist",
+    "Vibrant",
+    "Splash",
+    "Lively",
+    "Clean",
+    "Bath",
+    "Body",
+    "Tempted"
+  ],
+  "timestamp": "2026-08-11T21:06:11.133Z",
+  "videos": [
+    "FkqtgipZj3o"
+  ]
+}

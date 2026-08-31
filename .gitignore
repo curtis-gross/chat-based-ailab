@@ -1,0 +1,16 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Python virtual environments
+venv_311/
+venv/
+.venv/
+
+# Python cache & compiled files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/

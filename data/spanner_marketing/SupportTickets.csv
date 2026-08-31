@@ -1,0 +1,81 @@
+ticket_id,topic,resolution_status,sentiment_score
+5e453980-9b95-4e92-9a79-5d2ac9737db0,Expired Product,Open,-0.14
+269c8d60-fc91-4111-9664-ce0d639ee3ad,Question about Ingredients,Resolved,0.17
+eba3ce58-e253-4954-abfa-f5b510604838,Expired Product,Resolved,-0.59
+1cdd26dc-5986-4d2e-b10f-bef41cf00e7c,Question about Ingredients,Closed,0.39
+adc698a4-f42f-4f89-8407-a9382502fa40,Billing Error,Closed,0.01
+ceec054b-dcda-4faa-9a14-5af89b5b406e,Damaged Packaging,Open,0.08
+9f003e49-8b47-4665-aee0-20978de8bd0e,Damaged Packaging,Open,0.33
+c0f0bc1b-220a-4f9b-8f61-543880a1c882,Billing Error,Closed,-0.81
+c4375153-34eb-4596-8a2d-e0f64ec34fcd,Missing Item in Delivery,Closed,-0.15
+5dce1a01-f3c6-4fea-a3e2-d0601b142686,Question about Ingredients,Open,-0.19
+46f564d8-c309-4d08-a084-f6a87b86fccd,Damaged Packaging,Resolved,-0.94
+fbad9f2a-1630-46f8-8f5d-b96d52c9810e,Damaged Packaging,Closed,-0.8
+1e4c4200-f1bc-4645-b1fd-3b192519197c,Missing Item in Delivery,Closed,-0.45
+0a71b89c-07ac-4696-b67b-36fc3d9ac1fc,Billing Error,Resolved,-0.16
+d84aabb7-3ab0-4adb-b091-f56c9e30789a,Billing Error,Closed,-0.7
+c6ca3bfb-df89-4155-ac36-d8112ce21bda,Missing Item in Delivery,Closed,-0.7
+49708aee-e1a9-4295-82f6-4e9c080bd17f,Damaged Packaging,Resolved,-0.43
+bde76e80-d015-4dbe-afa8-261c4a818f92,Billing Error,Resolved,0.46
+aae18e5e-68d1-4fdd-81c7-066a2191aa20,Damaged Packaging,Open,-0.26
+83443e85-def1-4cfd-8f05-d518cc539b6f,Missing Item in Delivery,Resolved,0.03
+8dd8e98c-5b82-4eb4-8eaa-987164033364,Question about Ingredients,Closed,-0.24
+eaaccc70-47f6-4644-9a55-611daf820e59,Missing Item in Delivery,Closed,0.12
+e3e763ef-665e-4dec-9114-a22b8cb1c65e,Question about Ingredients,Closed,0.09
+6e586ee8-eff0-44a0-85c6-8d4e981fb70f,Missing Item in Delivery,Open,-0.53
+8b7d85a2-2e53-419d-b36d-faebc7607ca8,Question about Ingredients,Resolved,-0.78
+4a2d7123-c15b-45cc-82c9-8fd6491cc0d2,Question about Ingredients,Open,-0.22
+60e997ac-3e60-4d13-ab84-f26dd6464575,Billing Error,Closed,-0.28
+1c7f15fc-75e4-4cd9-849b-716bd285f579,Damaged Packaging,Open,-0.92
+2dbf5967-dfe5-417c-8bf1-e6a5fb38faa8,Expired Product,Resolved,0.12
+8ab0f5f3-56f4-4e8b-85c0-50cf9abe9f41,Billing Error,Resolved,-0.97
+b1d75487-ea87-41bc-b250-83e4f1725b27,Billing Error,Resolved,-0.23
+94d77e81-6f2c-41ef-bf31-66f37d7f0de1,Billing Error,Closed,-0.65
+a815fef0-dadb-4d9f-9a42-f84ab9d1f7bd,Question about Ingredients,Resolved,0.34
+cc4e10c0-bf41-41ec-afd7-eba21343340b,Question about Ingredients,Open,-0.98
+ceae770c-dc2b-40c5-a23d-66a741c26f57,Billing Error,Resolved,-0.55
+af3865da-b707-4ae8-a900-e01c471c2cef,Question about Ingredients,Open,-0.53
+8c446e84-5ef5-46f0-8b46-f98488895b62,Damaged Packaging,Open,0.05
+5ddd0577-f36b-4efe-8451-19050b28006e,Question about Ingredients,Resolved,-0.85
+04e8868a-8ae8-4151-b508-994b69a85186,Question about Ingredients,Resolved,0.0
+2cd3b64a-a270-469d-8752-1212cd09476d,Question about Ingredients,Open,-0.38
+8140f9c4-f5f1-442c-90a8-1090153e072c,Billing Error,Closed,-0.75
+590e7667-151f-458e-87e4-c41dc0ba33f8,Question about Ingredients,Resolved,-0.94
+78a2a82f-bcfb-4a18-9da1-976a00fc9b8d,Damaged Packaging,Open,-0.75
+fbdfc30a-3bd8-4e84-9560-2424a5654f57,Billing Error,Open,-0.79
+882c0729-d0b6-49a4-8192-9d11df6347c2,Missing Item in Delivery,Open,-0.01
+f6b50036-237b-478c-a336-a0303a91a43d,Damaged Packaging,Closed,0.23
+91c82e19-b8aa-421f-ba6b-e92e17d1e136,Billing Error,Closed,-0.8
+596253e6-e15e-4e1a-be06-5395288b2c1f,Missing Item in Delivery,Open,-0.12
+86451bf2-4bd3-4f56-988d-7a08e331dc77,Question about Ingredients,Open,-0.56
+8427fa7c-203f-40a1-88b9-4284e5d57962,Billing Error,Resolved,-0.81
+c279c685-3b21-475a-9a79-0ded6f133e56,Question about Ingredients,Closed,-0.96
+2d25758f-2822-41db-a62a-6638846924ed,Billing Error,Closed,-0.24
+b782d3dc-8456-4685-b755-8bc306a5ad8f,Missing Item in Delivery,Open,0.48
+a78686b4-79a0-451c-804b-c207e462018c,Question about Ingredients,Closed,-0.79
+4a6fbc58-3b24-4dea-a6f7-5b6c6e5e1b4f,Missing Item in Delivery,Open,-0.91
+5509d49c-b0fc-413a-b00d-04288511f6a0,Billing Error,Closed,0.31
+36717dca-96dd-4b62-9a34-c1b7cfc86dd8,Missing Item in Delivery,Resolved,0.41
+089af9ee-d8d0-43ff-b483-29987212705f,Missing Item in Delivery,Open,-0.38
+22334ca1-a67c-46c8-aeb5-c45f0e7d0859,Billing Error,Resolved,-0.05
+9b402dac-5896-4e04-bb23-417ea7b5070a,Billing Error,Resolved,0.02
+6531b64a-476c-4cbb-873b-7d8bd73b85ed,Damaged Packaging,Open,-0.84
+f78cb551-8075-47fa-b36f-8212a5dcae55,Billing Error,Resolved,-0.76
+44176a3b-d7b0-46bd-9782-e7e96da1a088,Question about Ingredients,Open,-0.21
+75544e9c-67d3-4763-a0f9-e8e5f08bf8be,Missing Item in Delivery,Open,-0.39
+528b3c69-2905-47da-b91c-fdae4d59d913,Expired Product,Resolved,-0.44
+89503547-7544-4881-a4ec-4e7c367371a7,Question about Ingredients,Resolved,-0.49
+4e4b6404-d6da-4287-b6ef-c3a64b047bad,Expired Product,Resolved,-0.68
+7010b3a2-fcfc-462b-b103-336c981ec3d7,Question about Ingredients,Open,0.12
+d170bdd6-e3bc-4c25-832e-efe7ca8c70a5,Billing Error,Open,-0.04
+475ca895-8dee-49ba-9fb3-0627a7e1942d,Question about Ingredients,Open,-0.11
+3bf2075d-c0ce-4247-b469-6a12f4367ff1,Billing Error,Closed,0.12
+afef1230-98d8-433e-877e-3b267be6fdce,Missing Item in Delivery,Resolved,-0.56
+18273dc2-2204-4d77-82cb-59b2711e6db9,Damaged Packaging,Closed,0.22
+80b05364-408f-40c9-94fe-07d44cfb8bc4,Missing Item in Delivery,Closed,0.43
+42dc9949-1c9f-44ef-b8c3-0df92ab50a65,Question about Ingredients,Closed,-0.87
+15745355-5902-4e9c-8dc7-3c6c48cccad1,Billing Error,Closed,0.41
+2329598d-fdd6-421b-9f6d-ea943d8ab88d,Damaged Packaging,Open,-0.41
+d971f704-b90d-4a5c-abe1-d0f5bd135d9a,Question about Ingredients,Closed,-0.89
+369960cc-6123-4574-84b5-808fcebe57fd,Missing Item in Delivery,Resolved,-0.22
+e272f288-6404-4619-933e-622c6a577347,Expired Product,Open,0.43

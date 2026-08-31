@@ -1,0 +1,156 @@
+{
+  "campaign": {
+    "campaignName": "[Squirt] US_Search_PMax_Citrus_Portfolio_2026",
+    "brandName": "Squirt",
+    "campaignType": "Google Search & Performance Max",
+    "biddingStrategy": "Maximize Conversions (Target CPA: $12.50)",
+    "dailyBudget": 150,
+    "monthlyBudget": 4500,
+    "targetGeos": ["Texas", "California", "Arizona", "Nevada", "Colorado", "Illinois"],
+    "targetLanguages": ["English", "Spanish"],
+    "adSchedule": "All hours (bid +25% Thursday-Sunday 3PM-10PM for social & cocktail hours)",
+    "strategicRationale": "Synthesized from 3 calibrated synthetic consumer segments and grocery purchase telemetry. Triangulates high-intent Paloma craft mixology search terms, Hispanic multi-pack supermarket pantry demand, and zero-sugar daytime refreshment habits to displace competitors (Jarritos Toronja, Fever-Tree, Fresca).",
+    "personasInvolved": ["The Modern Mixologist", "The Cultural Traditionalist", "The Nostalgic Flavor Purist"],
+    "adGroups": [
+      {
+        "id": "ag_mixologist",
+        "name": "Modern Mixologist — Paloma & Craft Cocktails",
+        "targetPersona": "The Modern Mixologist",
+        "targetPersonaName": "Sofia Ramirez",
+        "coreAngle": "Essential Paloma mixer with authentic grapefruit bite, zero sugar, and sleek 7.5 oz mini cans for aesthetic bar cart entertaining.",
+        "recommendedBidCpa": "$11.80",
+        "headlines": [
+          { "type": "headline", "text": "The Essential Paloma Mixer", "charCount": 26, "maxChars": 30, "pinnedPosition": "1", "personaAlignment": "The Modern Mixologist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Real Grapefruit Citrus Bite", "charCount": 27, "maxChars": 30, "pinnedPosition": "2", "personaAlignment": "The Modern Mixologist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Squirt Zero Sugar Mini Cans", "charCount": 27, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Modern Mixologist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Upgrade Your Friday Cocktails", "charCount": 29, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Modern Mixologist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Crisp Ruby Red Grapefruit", "charCount": 25, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Modern Mixologist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Skip Artificial Syrups", "charCount": 23, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Modern Mixologist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Craft the Perfect Paloma", "charCount": 24, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Modern Mixologist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Tequila's Favorite Soda", "charCount": 23, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Modern Mixologist", "performanceScore": "EXCELLENT" }
+        ],
+        "descriptions": [
+          { "type": "description", "text": "Elevate your bar cart with authentic grapefruit bite. Perfect for craft Paloma cocktails.", "charCount": 88, "maxChars": 90, "personaAlignment": "The Modern Mixologist", "performanceScore": "GOOD" },
+          { "type": "description", "text": "Crisp, tart, and never too sweet. Stock your bar with the ultimate citrus cocktail base.", "charCount": 88, "maxChars": 90, "personaAlignment": "The Modern Mixologist", "performanceScore": "GOOD" },
+          { "type": "description", "text": "Enjoy zero calories and zero sugar with full grapefruit flavor. Grab 7.5 oz mini cans today.", "charCount": 90, "maxChars": 90, "personaAlignment": "The Modern Mixologist", "performanceScore": "GOOD" }
+        ],
+        "keywords": [
+          { "keyword": "paloma cocktail mixer", "matchType": "Exact", "formattedText": "[paloma cocktail mixer]", "searchIntent": "High Commercial", "estimatedCpc": "$1.85", "personaTrigger": "Searching for authentic cocktail ingredients", "monthlyVolumeTier": "High (10k-50k)" },
+          { "keyword": "best grapefruit soda for paloma", "matchType": "Phrase", "formattedText": "\"best grapefruit soda for paloma\"", "searchIntent": "High Commercial", "estimatedCpc": "$1.40", "personaTrigger": "DIY bartender seeking quality soda base", "monthlyVolumeTier": "High (10k-50k)" },
+          { "keyword": "squirt zero sugar mini cans", "matchType": "Phrase", "formattedText": "\"squirt zero sugar mini cans\"", "searchIntent": "Transactional", "estimatedCpc": "$1.15", "personaTrigger": "Convenient portion size for bar carts", "monthlyVolumeTier": "Medium (1k-10k)" },
+          { "keyword": "fever tree pink grapefruit substitute", "matchType": "Broad", "formattedText": "fever tree pink grapefruit substitute", "searchIntent": "Competitor Conquesting", "estimatedCpc": "$2.10", "personaTrigger": "Conquesting expensive craft tonic buyers", "monthlyVolumeTier": "Medium (1k-10k)" },
+          { "keyword": "topo chico paloma recipe", "matchType": "Broad", "formattedText": "topo chico paloma recipe", "searchIntent": "Informational", "estimatedCpc": "$1.60", "personaTrigger": "Cocktail hosts looking for bubbly citrus mix", "monthlyVolumeTier": "High (10k-50k)" }
+        ],
+        "negativeKeywords": ["free tequila", "paloma cocktail bar near me", "beer recipes", "alcohol delivery law"]
+      },
+      {
+        "id": "ag_traditionalist",
+        "name": "Cultural Traditionalist — Mexican Glass Bottle Heritage",
+        "targetPersona": "The Cultural Traditionalist",
+        "targetPersonaName": "Mateo Alvarez",
+        "coreAngle": "Authentic Mexican Squirt in glass bottles with real cane sugar and 2L multi-packs for Sunday carne asadas and family gatherings.",
+        "recommendedBidCpa": "$9.40",
+        "headlines": [
+          { "type": "headline", "text": "Authentic Mexican Squirt", "charCount": 24, "maxChars": 30, "pinnedPosition": "1", "personaAlignment": "The Cultural Traditionalist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Made With Real Cane Sugar", "charCount": 25, "maxChars": 30, "pinnedPosition": "2", "personaAlignment": "The Cultural Traditionalist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Traditional Glass Bottles", "charCount": 25, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Cultural Traditionalist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "The Family Cookout Staple", "charCount": 25, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Cultural Traditionalist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Pairs With Street Tacos", "charCount": 23, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Cultural Traditionalist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Squirt Original 2 Liter", "charCount": 23, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Cultural Traditionalist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Hecho En Mexico Toronja", "charCount": 23, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Cultural Traditionalist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Stock Up For The Weekend", "charCount": 24, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Cultural Traditionalist", "performanceScore": "GOOD" }
+        ],
+        "descriptions": [
+          { "type": "description", "text": "Timeless grapefruit taste in authentic glass bottles. The perfect pairing for family tacos.", "charCount": 89, "maxChars": 90, "personaAlignment": "The Cultural Traditionalist", "performanceScore": "GOOD" },
+          { "type": "description", "text": "Real cane sugar and bold citrus fizz. Bring the iconic Mexican soda tradition home today.", "charCount": 89, "maxChars": 90, "personaAlignment": "The Cultural Traditionalist", "performanceScore": "GOOD" },
+          { "type": "description", "text": "Stock your pantry with 2L bottles and 12-packs. Crisp refreshment the whole family loves.", "charCount": 89, "maxChars": 90, "personaAlignment": "The Cultural Traditionalist", "performanceScore": "GOOD" }
+        ],
+        "keywords": [
+          { "keyword": "mexican squirt glass bottle", "matchType": "Exact", "formattedText": "[mexican squirt glass bottle]", "searchIntent": "Transactional", "estimatedCpc": "$1.10", "personaTrigger": "Specific desire for cane sugar glass bottles", "monthlyVolumeTier": "High (10k-50k)" },
+          { "keyword": "squirt hecho en mexico", "matchType": "Phrase", "formattedText": "\"squirt hecho en mexico\"", "searchIntent": "High Commercial", "estimatedCpc": "$0.95", "personaTrigger": "Bilingual heritage authenticity search", "monthlyVolumeTier": "High (10k-50k)" },
+          { "keyword": "squirt 2 liter party pack", "matchType": "Phrase", "formattedText": "\"squirt 2 liter party pack\"", "searchIntent": "Transactional", "estimatedCpc": "$0.85", "personaTrigger": "Weekend family gathering multi-pack buying", "monthlyVolumeTier": "Medium (1k-10k)" },
+          { "keyword": "jarritos toronja alternative", "matchType": "Broad", "formattedText": "jarritos toronja alternative", "searchIntent": "Competitor Conquesting", "estimatedCpc": "$1.35", "personaTrigger": "Conquesting traditional Hispanic soda buyers", "monthlyVolumeTier": "Medium (1k-10k)" },
+          { "keyword": "penafiel grapefruit soda", "matchType": "Broad", "formattedText": "penafiel grapefruit soda", "searchIntent": "Competitor Conquesting", "estimatedCpc": "$1.20", "personaTrigger": "Conquesting imported Mexican grapefruit buyers", "monthlyVolumeTier": "Niche (500-1k)" }
+        ],
+        "negativeKeywords": ["mexican restaurant menu", "diy glass bottle cutting", "jarritos factory tour"]
+      },
+      {
+        "id": "ag_purist",
+        "name": "Nostalgic Flavor Purist — Timeless Tart Citrus Soda",
+        "targetPersona": "The Nostalgic Flavor Purist",
+        "targetPersonaName": "Gary Miller",
+        "coreAngle": "Unchanging 1938 formula, anti-trend reliability, crisp thirst-quenching bite, and supermarket 12-pack availability.",
+        "recommendedBidCpa": "$10.20",
+        "headlines": [
+          { "type": "headline", "text": "Classic Squirt Grapefruit", "charCount": 25, "maxChars": 30, "pinnedPosition": "1", "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Crisp & Tart Since 1938", "charCount": 23, "maxChars": 30, "pinnedPosition": "2", "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "The Real Thirst Quencher", "charCount": 24, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Never Cloyingly Sweet", "charCount": 21, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "EXCELLENT" },
+          { "type": "headline", "text": "Squirt Original 12-Pack", "charCount": 23, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Find Squirt at Your Store", "charCount": 25, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Bold Citrus Punch", "charCount": 17, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "GOOD" },
+          { "type": "headline", "text": "Crisp Ice-Cold Soda", "charCount": 19, "maxChars": 30, "pinnedPosition": "any", "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "GOOD" }
+        ],
+        "descriptions": [
+          { "type": "description", "text": "The original grapefruit soda with a bold citrus snap. Stock up on classic 12-packs today.", "charCount": 89, "maxChars": 90, "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "GOOD" },
+          { "type": "description", "text": "Thirst-quenching citrus flavor that stays consistent over decades. No gimmicks, just taste.", "charCount": 90, "maxChars": 90, "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "GOOD" },
+          { "type": "description", "text": "Craving that tart grapefruit fizz? Check supermarket availability and grab your 12-pack.", "charCount": 88, "maxChars": 90, "personaAlignment": "The Nostalgic Flavor Purist", "performanceScore": "GOOD" }
+        ],
+        "keywords": [
+          { "keyword": "original squirt soda", "matchType": "Exact", "formattedText": "[original squirt soda]", "searchIntent": "Transactional", "estimatedCpc": "$0.90", "personaTrigger": "Brand-loyal customer looking for authentic formula", "monthlyVolumeTier": "High (10k-50k)" },
+          { "keyword": "grapefruit soda 12 pack", "matchType": "Phrase", "formattedText": "\"grapefruit soda 12 pack\"", "searchIntent": "High Commercial", "estimatedCpc": "$1.05", "personaTrigger": "Supermarket shopper restocking pantry", "monthlyVolumeTier": "High (10k-50k)" },
+          { "keyword": "buy squirt soda near me", "matchType": "Phrase", "formattedText": "\"buy squirt soda near me\"", "searchIntent": "Transactional", "estimatedCpc": "$1.30", "personaTrigger": "Local supermarket and C-store intent", "monthlyVolumeTier": "High (10k-50k)" },
+          { "keyword": "fresca vs squirt", "matchType": "Broad", "formattedText": "fresca vs squirt", "searchIntent": "Informational", "estimatedCpc": "$0.95", "personaTrigger": "Comparison shoppers seeking bold tartness", "monthlyVolumeTier": "Medium (1k-10k)" },
+          { "keyword": "sun drop soda substitute", "matchType": "Broad", "formattedText": "sun drop soda substitute", "searchIntent": "Competitor Conquesting", "estimatedCpc": "$1.15", "personaTrigger": "Citrus soda drinkers wanting real grapefruit", "monthlyVolumeTier": "Niche (500-1k)" }
+        ],
+        "negativeKeywords": ["history of soda documentary", "soda can collector", "vintage soda bottles value"]
+      }
+    ],
+    "sitelinks": [
+      { "linkText": "Paloma Cocktail Recipes", "line1": "Learn how to make authentic Palomas", "line2": "Squirt, tequila blanco & fresh lime", "url": "https://www.squirtsoda.com/recipes/paloma" },
+      { "linkText": "Find Squirt Near You", "line1": "Locate 12-packs, 2L & glass bottles", "line2": "Available at major grocery stores", "url": "https://www.squirtsoda.com/store-locator" },
+      { "linkText": "Squirt Zero Sugar", "line1": "Crisp tart flavor, zero calories", "line2": "Uncompromising grapefruit citrus bite", "url": "https://www.squirtsoda.com/products/zero-sugar" },
+      { "linkText": "Mexican Squirt Bottles", "line1": "Crafted with real cane sugar", "line2": "Classic glass bottles for family feasts", "url": "https://www.squirtsoda.com/products/mexican-squirt" }
+    ],
+    "callouts": [
+      "Real Grapefruit Juice",
+      "Authentic Mexican Paloma Base",
+      "Zero Sugar Options Available",
+      "Made With Real Cane Sugar",
+      "Caffeine Free Soda",
+      "Family Party 2L Packs"
+    ],
+    "structuredSnippets": {
+      "header": "Varieties",
+      "values": ["Original Grapefruit", "Squirt Zero Sugar", "Ruby Red Squirt", "Mexican Squirt Glass Bottles"]
+    },
+    "audienceSignals": [
+      {
+        "category": "Custom Intent",
+        "name": "High-Intent Paloma & Mixer Searches",
+        "details": "Keywords: paloma mixer, best soda for tequila, mexican grapefruit soda, cane sugar soda",
+        "personaLink": "The Modern Mixologist"
+      },
+      {
+        "category": "In-Market",
+        "name": "Spirits & Cocktail Accessories",
+        "details": "Shoppers currently researching premium tequila, cocktail shakers, glassware, and mixers",
+        "personaLink": "The Modern Mixologist"
+      },
+      {
+        "category": "Affinity",
+        "name": "Latin & Mexican Culinary Enthusiasts",
+        "details": "Consumers frequently cooking authentic Mexican food, taco nights, and carne asada BBQs",
+        "personaLink": "The Cultural Traditionalist"
+      },
+      {
+        "category": "First-Party / Demographics",
+        "name": "Sunbelt & Southwest Grocery Shoppers",
+        "details": "Ages 21-55 in TX, CA, AZ, NV, CO; Household income $40,000 - $140,000+",
+        "personaLink": "The Cultural Traditionalist & Purist"
+      }
+    ],
+    "timestamp": "2026-08-31T15:20:00.000Z"
+  },
+  "savedAt": "2026-08-31T15:20:00.000Z"
+}

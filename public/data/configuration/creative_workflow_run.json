@@ -1,0 +1,79 @@
+{
+  "baseImage": "/api/content-audit/image/creative_upload_1786569782159_953.jpg?companyName=EA%20Games%20FC",
+  "auditResult": {
+    "score": 9.4,
+    "reason": "The marketing asset strictly adheres to EA SPORTS FC brand guidelines, showcasing accurate title treatments, official partnership logos, and high-impact commercial packaging polish.",
+    "positive": [
+      "Flawless integration of the official EA SPORTS branding and crisp 'FC 27' typography.",
+      "Accurate and authentic representation of modern club kits and player likeness.",
+      "Polished retail-ready packaging design including proper rating boards and platform banners."
+    ],
+    "negative": [
+      "Background composition is slightly crowded with disparate global stadium elements.",
+      "The placement of the mandatory content download warning could be better integrated.",
+      "Minor blending inconsistencies around the athlete's feet on the elevated terrain."
+    ],
+    "metadata": "EA Sports FC 27, PS5, Kylian Mbappé, Real Madrid, video game cover, soccer, cityscape, bright daylight, sports, digital art"
+  },
+  "personaScenarios": {
+    "persona_2_tyler_ross": "/api/content-audit/image/gen_ref_1786569900668_135.jpg?companyName=EA%20Games%20FC",
+    "persona_0_marcus_vance": "/api/content-audit/image/gen_ref_1786569904674_154.jpg?companyName=EA%20Games%20FC",
+    "persona_1_jordan_bell": "/api/content-audit/image/gen_ref_1786569903065_323.jpg?companyName=EA%20Games%20FC",
+    "persona_3_brandon_cole": "/api/content-audit/image/gen_ref_1786569907234_359.jpg?companyName=EA%20Games%20FC",
+    "persona_5_marcus_vance": "/api/content-audit/image/gen_ref_1786569910590_177.jpg?companyName=EA%20Games%20FC",
+    "persona_4_kyle_henderson": "/api/content-audit/image/gen_ref_1786569909320_260.jpg?companyName=EA%20Games%20FC",
+    "persona_6_elena_rostova": "/api/content-audit/image/gen_ref_1786569911878_392.jpg?companyName=EA%20Games%20FC",
+    "persona_7_jordan_kincaid": "/api/content-audit/image/gen_ref_1786569915526_505.jpg?companyName=EA%20Games%20FC",
+    "persona_9_samira_thorne": "/api/content-audit/image/gen_ref_1786569916871_305.jpg?companyName=EA%20Games%20FC",
+    "persona_8_devon_patel": "/api/content-audit/image/gen_ref_1786569914977_21.jpg?companyName=EA%20Games%20FC",
+    "persona_10_marcus_vance": "/api/content-audit/image/gen_ref_1786569921476_673.jpg?companyName=EA%20Games%20FC",
+    "persona_12_jordan_kincaid": "/api/content-audit/image/gen_ref_1786569923881_629.jpg?companyName=EA%20Games%20FC",
+    "persona_11_elena_rostova": "/api/content-audit/image/gen_ref_1786569923866_146.jpg?companyName=EA%20Games%20FC",
+    "persona_13_priya_patel": "/api/content-audit/image/gen_ref_1786569927066_611.jpg?companyName=EA%20Games%20FC",
+    "persona_15_jordan_vance": "/api/content-audit/image/gen_ref_1786569931182_800.jpg?companyName=EA%20Games%20FC",
+    "persona_16_aaliyah_patel": "/api/content-audit/image/gen_ref_1786569932019_581.jpg?companyName=EA%20Games%20FC",
+    "persona_14_liam_sullivan": "/api/content-audit/image/gen_ref_1786569930036_958.jpg?companyName=EA%20Games%20FC",
+    "persona_17_marcus_brody": "/api/content-audit/image/gen_ref_1786569935395_23.jpg?companyName=EA%20Games%20FC",
+    "persona_18_elena_rostova": "/api/content-audit/image/gen_ref_1786569937728_246.jpg?companyName=EA%20Games%20FC",
+    "persona_19_devon_vance": "/api/content-audit/image/gen_ref_1786569939342_956.jpg?companyName=EA%20Games%20FC",
+    "persona_21_brenda_vance": "/api/content-audit/image/gen_ref_1786569942267_85.jpg?companyName=EA%20Games%20FC",
+    "persona_20_arthur_pendelton": "/api/content-audit/image/gen_ref_1786569941595_339.jpg?companyName=EA%20Games%20FC",
+    "persona_22_geraldine_ross": "/api/content-audit/image/gen_ref_1786569945671_223.jpg?companyName=EA%20Games%20FC",
+    "persona_24_helen_vance": "/api/content-audit/image/gen_ref_1786569946955_148.jpg?companyName=EA%20Games%20FC",
+    "persona_23_marcus_thorne": "/api/content-audit/image/gen_ref_1786569947352_60.jpg?companyName=EA%20Games%20FC",
+    "ea-usr-02885": "/api/content-audit/image/gen_ref_1787065363540_985.jpg?companyName=EA%20Games%20FC",
+    "ea-usr-00816": "/api/content-audit/image/gen_ref_1787065375023_616.jpg?companyName=EA%20Games%20FC",
+    "ea-usr-00005": "/api/content-audit/image/gen_ref_1787082954923_563.jpg?companyName=EA%20Games%20FC",
+    "ea-usr-00003": "/api/content-audit/image/gen_ref_1787082965060_275.jpg?companyName=EA%20Games%20FC",
+    "ea-usr-02410": "/api/content-audit/image/gen_ref_1787161979332_858.jpg?companyName=EA%20Games%20FC",
+    "ea-usr-01290": "/api/content-audit/image/gen_ref_1787161998086_832.jpg?companyName=EA%20Games%20FC"
+  },
+  "additionalScenarioPrompt": "place the game naturally flat on the surface, it is a DVD size game, so the box is smaller.",
+  "selectedHeroAsset": "/api/content-audit/image/gen_ref_1786569907234_359.jpg?companyName=EA%20Games%20FC",
+  "aspectImages": {
+    "16:9": "/api/content-audit/image/gen_ref_1786569959751_762.jpg?companyName=EA%20Games%20FC",
+    "9:16": "/api/content-audit/image/gen_ref_1786569959971_21.jpg?companyName=EA%20Games%20FC",
+    "1:1": "/api/content-audit/image/gen_ref_1786569961501_216.jpg?companyName=EA%20Games%20FC",
+    "4:5": "/api/content-audit/image/gen_ref_1786569965008_12.jpg?companyName=EA%20Games%20FC",
+    "3:2": "/api/content-audit/image/gen_ref_1786569965229_810.jpg?companyName=EA%20Games%20FC",
+    "21:9": "/api/content-audit/image/gen_ref_1786569966073_525.jpg?companyName=EA%20Games%20FC"
+  },
+  "variantImages": {
+    "ultimate_edition": "/api/content-audit/image/gen_ref_1786570004634_5.jpg?companyName=EA%20Games%20FC",
+    "standard_edition": "/api/content-audit/image/gen_ref_1786570006901_427.jpg?companyName=EA%20Games%20FC",
+    "fc_iq_tactical_dlc": "/api/content-audit/image/gen_ref_1786570008077_790.jpg?companyName=EA%20Games%20FC",
+    "nike_mad_voltage": "/api/content-audit/image/gen_ref_1786570014047_498.jpg?companyName=EA%20Games%20FC",
+    "xbox_edition": "/api/content-audit/image/gen_ref_1786570220823_484.jpg?companyName=EA%20Games%20FC",
+    "digital_edition": "/api/content-audit/image/gen_ref_1786570221235_651.jpg?companyName=EA%20Games%20FC",
+    "pc_edition": "/api/content-audit/image/gen_ref_1786570221515_480.jpg?companyName=EA%20Games%20FC",
+    "ps5_edition": "/api/content-audit/image/gen_ref_1786570226659_313.jpg?companyName=EA%20Games%20FC",
+    "ps5_ultimate_edition": "/api/content-audit/image/gen_ref_1786988062095_316.jpg?companyName=EA%20Games%20FC",
+    "switch_edition": "/api/content-audit/image/gen_ref_1786988072799_117.jpg?companyName=EA%20Games%20FC"
+  },
+  "generatedVideoUrl": "/videos/generated/spin_1786571518077_361.mp4",
+  "revisionHistory": [
+    "/api/content-audit/image/creative_upload_1786569782159_953.jpg?companyName=EA%20Games%20FC"
+  ],
+  "timestamp": "8/19/2026, 10:53:18 AM",
+  "companyName": "EA Games FC"
+}

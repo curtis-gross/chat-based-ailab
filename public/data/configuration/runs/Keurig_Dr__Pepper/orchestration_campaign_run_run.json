@@ -1,0 +1,808 @@
+{
+  "campaign": {
+    "campaignName": "[Keurig Dr. Pepper] - Squirt Paloma Mixology & Modern Displacement Search/PMax",
+    "brandName": "Keurig Dr. Pepper",
+    "campaignType": "Google Search & Performance Max",
+    "biddingStrategy": "Maximize Conversions (Target CPA)",
+    "dailyBudget": 150,
+    "monthlyBudget": 4500,
+    "targetGeos": [
+      "Texas",
+      "California",
+      "Arizona",
+      "Nevada",
+      "Colorado",
+      "Illinois"
+    ],
+    "targetLanguages": [
+      "English",
+      "Spanish"
+    ],
+    "adSchedule": "All hours (optimized for evening & weekend peaks)",
+    "strategicRationale": "Capture high-intent Paloma cocktail mixology queries, displace premium competitors (Fever-Tree, Jarritos, Fresca), and drive volume across Squirt Zero Sugar, Ruby Red, and 7.5 oz mini cans in key Southwestern and metro markets.",
+    "personasInvolved": [
+      "The Modern Mixologist",
+      "The Cultural Traditionalist",
+      "The Nostalgic Flavor Purist"
+    ],
+    "adGroups": [
+      {
+        "id": "ag_1",
+        "name": "Modern Mixologist - Craft Paloma & Mini Cans",
+        "targetPersona": "The Modern Mixologist",
+        "targetPersonaName": "Modern Craft Bartender & Patio Host",
+        "coreAngle": "The authentic craft Paloma cocktail mixer featuring 7.5 oz mini-cans and Zero Sugar options for modern home entertaining.",
+        "recommendedBidCpa": "$14.50",
+        "headlines": [
+          {
+            "type": "headline",
+            "text": "The Real Paloma Mixer",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "1",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Squirt Craft Paloma Mix",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "7.5 oz Perfect Mini Cans",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Upgrade Your Tequila",
+            "charCount": 20,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Zero Sugar Paloma Mixer",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Better Than Fever-Tree",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Crisp Ruby Red Grapefruit",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Essential Cocktail Mixer",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Authentic Mexican Paloma",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "No Syrupy Aftertaste",
+            "charCount": 20,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Craft Cocktail Recipes",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Find Squirt Mini Cans",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Low Calorie Paloma",
+            "charCount": 18,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Real Citrus Zing",
+            "charCount": 16,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Shop Squirt Mixers Today",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "EXCELLENT"
+          }
+        ],
+        "descriptions": [
+          {
+            "type": "description",
+            "text": "Craft the authentic Mexican Paloma. Crisp grapefruit flavor in convenient 7.5 oz cans.",
+            "charCount": 86,
+            "maxChars": 90,
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Zero sugar, maximum citrus punch. Level up your home bar with genuine Squirt mixers.",
+            "charCount": 84,
+            "maxChars": 90,
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Tired of flat soda mixers? Discover why top mixologists insist on Squirt for Palomas.",
+            "charCount": 85,
+            "maxChars": 90,
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Buy Squirt 7.5 oz mini cans & Ruby Red online or at local retailers for your next party.",
+            "charCount": 88,
+            "maxChars": 90,
+            "personaAlignment": "The Modern Mixologist",
+            "performanceScore": "GOOD"
+          }
+        ],
+        "keywords": [
+          {
+            "keyword": "best paloma mixer",
+            "matchType": "Exact",
+            "formattedText": "[best paloma mixer]",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.85",
+            "personaTrigger": "Searching for the authentic grapefruit base for premium tequila cocktails.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "grapefruit soda for paloma",
+            "matchType": "Phrase",
+            "formattedText": "\"grapefruit soda for paloma\"",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.45",
+            "personaTrigger": "Modern mixologists looking for the exact citrus soda component.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          },
+          {
+            "keyword": "squirt zero sugar mini cans",
+            "matchType": "Broad",
+            "formattedText": "squirt zero sugar mini cans",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.10",
+            "personaTrigger": "Cocktail hosts seeking pre-portioned, low-calorie bar stock.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "fever tree paloma alternative",
+            "matchType": "Exact",
+            "formattedText": "[fever tree paloma alternative]",
+            "searchIntent": "Competitor Conquesting",
+            "estimatedCpc": "$2.20",
+            "personaTrigger": "Conquesting craft cocktail buyers looking for authentic flavor without premium tax.",
+            "monthlyVolumeTier": "Niche (500-1k)"
+          },
+          {
+            "keyword": "craft paloma recipe tequila",
+            "matchType": "Phrase",
+            "formattedText": "\"craft paloma recipe tequila\"",
+            "searchIntent": "Informational",
+            "estimatedCpc": "$1.25",
+            "personaTrigger": "At-home bartenders researching authentic specs and ingredient pairings.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          },
+          {
+            "keyword": "ruby red squirt mixer",
+            "matchType": "Exact",
+            "formattedText": "[ruby red squirt mixer]",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.35",
+            "personaTrigger": "Consumers looking for a bold, tart pink citrus profile for specialty drinks.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          }
+        ],
+        "negativeKeywords": [
+          "free",
+          "jobs",
+          "wholesale b2b supplier",
+          "squirt gun",
+          "pornography"
+        ]
+      },
+      {
+        "id": "ag_2",
+        "name": "Cultural Traditionalist - Mexican Squirt & Heritage",
+        "targetPersona": "The Cultural Traditionalist",
+        "targetPersonaName": "Heritage Enthusiast & Authentic Culinary Host",
+        "coreAngle": "Authentic Mexican Squirt made with real cane sugar in classic glass bottles for traditional family gatherings and authentic Palomas.",
+        "recommendedBidCpa": "$12.80",
+        "headlines": [
+          {
+            "type": "headline",
+            "text": "Authentic Mexican Squirt",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "1",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Real Cane Sugar Soda",
+            "charCount": 20,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Classic Glass Bottles",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "The Original Paloma Soda",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Authentic Mexican Formula",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Better Than Jarritos",
+            "charCount": 20,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Squirt Glass Bottle 12pk",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Traditional Citrus Taste",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Family Gathering Favorite",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Made For Tequila & Mezcal",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Pure Cane Sugar Citrus",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Crisp & Authentic Flavor",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Buy Mexican Squirt Online",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Taste The Real Heritage",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Find Mexican Squirt Near You",
+            "charCount": 28,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "EXCELLENT"
+          }
+        ],
+        "descriptions": [
+          {
+            "type": "description",
+            "text": "Enjoy authentic Mexican Squirt crafted with real cane sugar in traditional glass bottles.",
+            "charCount": 89,
+            "maxChars": 90,
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "The original companion for authentic Mexican Palomas and family meals. Crisp & refreshing.",
+            "charCount": 90,
+            "maxChars": 90,
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Skip the corn syrup. Experience the heritage, pure cane sweetness, and tart citrus bite.",
+            "charCount": 88,
+            "maxChars": 90,
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Stock up on 12-packs of Mexican Squirt in glass bottles. Order now for easy delivery.",
+            "charCount": 85,
+            "maxChars": 90,
+            "personaAlignment": "The Cultural Traditionalist",
+            "performanceScore": "GOOD"
+          }
+        ],
+        "keywords": [
+          {
+            "keyword": "mexican squirt glass bottles",
+            "matchType": "Exact",
+            "formattedText": "[mexican squirt glass bottles]",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.40",
+            "personaTrigger": "Specific demand for heritage glass-bottled product.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "squirt real cane sugar",
+            "matchType": "Phrase",
+            "formattedText": "\"squirt real cane sugar\"",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.20",
+            "personaTrigger": "Consumers filtering for non-HFCS natural sweetener profiles.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "jarritos grapefruit vs squirt",
+            "matchType": "Exact",
+            "formattedText": "[jarritos grapefruit vs squirt]",
+            "searchIntent": "Competitor Conquesting",
+            "estimatedCpc": "$1.65",
+            "personaTrigger": "Comparison shoppers choosing between Mexican soda brands.",
+            "monthlyVolumeTier": "Niche (500-1k)"
+          },
+          {
+            "keyword": "mexican squirt soda near me",
+            "matchType": "Broad",
+            "formattedText": "mexican squirt soda near me",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.50",
+            "personaTrigger": "Local purchase intent for immediate consumption and hosting.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          },
+          {
+            "keyword": "authentic mexican paloma soda",
+            "matchType": "Phrase",
+            "formattedText": "\"authentic mexican paloma soda\"",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.30",
+            "personaTrigger": "Seeking culturally verified ingredients for genuine cocktail preparation.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          }
+        ],
+        "negativeKeywords": [
+          "recipe blog free",
+          "distributor login",
+          "candy",
+          "toy"
+        ]
+      },
+      {
+        "id": "ag_3",
+        "name": "Nostalgic Flavor Purist - Crisp Grapefruit & Zero Sugar",
+        "targetPersona": "The Nostalgic Flavor Purist",
+        "targetPersonaName": "Everyday Citrus Enthusiast & Refreshment Loyalist",
+        "coreAngle": "The unbeatable, thirst-quenching bite of original Squirt and Squirt Zero Sugar 12-pack cans for daily refreshment.",
+        "recommendedBidCpa": "$11.20",
+        "headlines": [
+          {
+            "type": "headline",
+            "text": "Original Grapefruit Soda",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "1",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Squirt Zero Sugar Cans",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Unmatched Citrus Bite",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Zero Calories, 100% Taste",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Better Than Fresca",
+            "charCount": 18,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Crisp Thirst Quencher",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Classic Citrus Flavor",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Squirt 12-Pack Cans",
+            "charCount": 19,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "No Syrupy Sweetness",
+            "charCount": 19,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Bold Grapefruit Kick",
+            "charCount": 20,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Zero Sugar Thirst Buster",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Authentic Taste Since 1938",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Stock Up On Squirt",
+            "charCount": 18,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Pure Refreshment Daily",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Buy Squirt Cans Today",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "EXCELLENT"
+          }
+        ],
+        "descriptions": [
+          {
+            "type": "description",
+            "text": "Crisp, tart, and deeply refreshing. Rediscover original Squirt and Squirt Zero Sugar.",
+            "charCount": 85,
+            "maxChars": 90,
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Get the bold grapefruit bite without calories. Squirt Zero Sugar delivers zero compromise.",
+            "charCount": 90,
+            "maxChars": 90,
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Say goodbye to boring sodas. Experience the real grapefruit punch that cuts through thirst",
+            "charCount": 90,
+            "maxChars": 90,
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Order 12-packs and 2-liter bottles of Squirt at your favorite local store or online.",
+            "charCount": 84,
+            "maxChars": 90,
+            "personaAlignment": "The Nostalgic Flavor Purist",
+            "performanceScore": "GOOD"
+          }
+        ],
+        "keywords": [
+          {
+            "keyword": "squirt zero sugar 12 pack",
+            "matchType": "Exact",
+            "formattedText": "[squirt zero sugar 12 pack]",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$0.95",
+            "personaTrigger": "Direct bulk purchase intent for low-calorie daily drinking.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          },
+          {
+            "keyword": "best zero sugar grapefruit soda",
+            "matchType": "Phrase",
+            "formattedText": "\"best zero sugar grapefruit soda\"",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.20",
+            "personaTrigger": "Health-conscious consumers seeking crisp, non-sweet refreshment.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "fresca alternative",
+            "matchType": "Exact",
+            "formattedText": "[fresca alternative]",
+            "searchIntent": "Competitor Conquesting",
+            "estimatedCpc": "$1.45",
+            "personaTrigger": "Targeting diet citrus soda buyers looking for punchier flavor.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "squirt grapefruit soda delivery",
+            "matchType": "Broad",
+            "formattedText": "squirt grapefruit soda delivery",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.15",
+            "personaTrigger": "Stock-up grocery shoppers wanting direct home fulfillment.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "original squirt soda cans",
+            "matchType": "Phrase",
+            "formattedText": "\"original squirt soda cans\"",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$0.85",
+            "personaTrigger": "Brand loyalists seeking classic packaging.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          }
+        ],
+        "negativeKeywords": [
+          "cocktail shaker sets",
+          "bartending school",
+          "squirt cleaning solution",
+          "vintage antique bottles"
+        ]
+      }
+    ],
+    "sitelinks": [
+      {
+        "linkText": "Paloma Cocktail Recipes",
+        "line1": "Mix the perfect Paloma at home",
+        "line2": "Step-by-step craft recipes",
+        "url": "https://www.squirtsoda.com/paloma-recipes"
+      },
+      {
+        "linkText": "Squirt Zero Sugar",
+        "line1": "100% crisp grapefruit flavor",
+        "line2": "0 calories & 0g sugar per can",
+        "url": "https://www.squirtsoda.com/zero-sugar"
+      },
+      {
+        "linkText": "7.5 oz Mini Cans",
+        "line1": "Single-serve Paloma mixers",
+        "line2": "Fresh carbonation every pour",
+        "url": "https://www.squirtsoda.com/mini-cans"
+      },
+      {
+        "linkText": "Where to Buy Near You",
+        "line1": "Find Squirt at local grocers",
+        "line2": "Order online for fast delivery",
+        "url": "https://www.squirtsoda.com/store-locator"
+      }
+    ],
+    "callouts": [
+      "Original Paloma Mixer",
+      "Real Citrus Zing",
+      "Zero Sugar Available",
+      "Real Cane Sugar Glass",
+      "7.5 oz Mini-Cans",
+      "Crisp Grapefruit Bite"
+    ],
+    "structuredSnippets": {
+      "header": "Varieties",
+      "values": [
+        "Squirt Original",
+        "Squirt Zero Sugar",
+        "Ruby Red Squirt",
+        "Mexican Squirt Cane Sugar"
+      ]
+    },
+    "audienceSignals": [
+      {
+        "category": "Custom Intent",
+        "name": "Paloma & Craft Tequila Mixology Enthusiasts",
+        "details": "Keywords: 'paloma recipe', 'best grapefruit mixer', 'tequila cocktail recipes', 'fever tree paloma mixer', 'casamigos paloma specs'",
+        "personaLink": "The Modern Mixologist"
+      },
+      {
+        "category": "In-Market",
+        "name": "Liquor, Spirits & Cocktail Mixers",
+        "details": "Actively browsing liquor retail sites, cocktail recipe portals, and home bar supply marketplaces.",
+        "personaLink": "The Modern Mixologist & The Cultural Traditionalist"
+      },
+      {
+        "category": "Affinity",
+        "name": "Foodies & Home Bar Entertaining",
+        "details": "High engagement with culinary content, Latin American cuisine, home cocktail hosting, and BBQ patio entertainment.",
+        "personaLink": "The Cultural Traditionalist"
+      },
+      {
+        "category": "First-Party / Demographics",
+        "name": "Adult Consumers 21-54 (Top 40% HHI)",
+        "details": "Targeting Age 21-54, Household Income Top 10-40% in TX, CA, AZ, NV, CO, IL with affinity for premium spirits and specialty groceries.",
+        "personaLink": "The Modern Mixologist & The Nostalgic Flavor Purist"
+      }
+    ],
+    "timestamp": "2026-08-31T15:16:48.429Z"
+  },
+  "savedAt": "2026-08-31T15:16:48.429Z"
+}

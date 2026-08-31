@@ -1,0 +1,85 @@
+{
+  "items": [
+    {
+      "id": "img_1788188858482",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1788188857935_717.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images.jpg",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "08:07 AM"
+    },
+    {
+      "id": "img_1788188842955",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1788188842213_963.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "PHM0424PF04-scaled.jpg",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "08:07 AM"
+    },
+    {
+      "id": "img_1787942007578",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1787758369554_495.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "image1.png",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "11:33 AM"
+    },
+    {
+      "id": "img_1787860698985",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1787711213411_856.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-3.jpg",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "12:58 PM"
+    },
+    {
+      "id": "img_1787857030393",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1787843415858_456.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "fido-dido-the-random-90s-7up-commercial-dude-v0-n7c9ptsowb8a1.webp",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "11:57 AM"
+    },
+    {
+      "id": "img_1787843416359",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1787843415858_456.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "fido-dido-the-random-90s-7up-commercial-dude-v0-n7c9ptsowb8a1.webp",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "08:10 AM"
+    },
+    {
+      "id": "img_1787758370605",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1787758369554_495.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "image1.png",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "08:32 AM"
+    },
+    {
+      "id": "img_1787711216354",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1787711213411_856.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-3.jpg",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "07:26 PM"
+    },
+    {
+      "id": "img_1787711210508",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1787711206396_780.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-2.jpg",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "07:26 PM"
+    },
+    {
+      "id": "img_1787678113143",
+      "urlOrBase64": "/api/content-audit/image/creative_upload_1787678112530_465.jpg?companyName=Keurig%20Dr.%20Pepper",
+      "title": "images-1.jpg",
+      "type": "uploaded",
+      "mediaType": "image",
+      "timestamp": "10:15 AM"
+    }
+  ],
+  "updatedAt": "2026-08-31T15:07:38.483Z"
+}
