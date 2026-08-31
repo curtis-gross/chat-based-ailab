@@ -1,0 +1,830 @@
+{
+  "campaign": {
+    "campaignName": "[WSI (Williams-Sonoma)] - Premium Cookware & Culinary Performance - Q3/Q4",
+    "brandName": "WSI (Williams-Sonoma)",
+    "campaignType": "Google Search & Performance Max",
+    "biddingStrategy": "Maximize Conversions (Target CPA)",
+    "dailyBudget": 250,
+    "monthlyBudget": 7500,
+    "targetGeos": [
+      "California",
+      "New York",
+      "Texas",
+      "Illinois",
+      "Florida",
+      "Massachusetts",
+      "Washington"
+    ],
+    "targetLanguages": [
+      "English",
+      "Spanish"
+    ],
+    "adSchedule": "All hours (optimized for evening & weekend peaks)",
+    "strategicRationale": "Capitalize on high-intent search demand across enameled cast iron, multi-clad cookware, luxury barware, and precision culinary electrics. Budget is distributed to maximize Target ROAS and capture competitor conquesting volume during key entertaining and gift-giving cycles.",
+    "personasInvolved": [
+      "The Heirloom Culinary Traditionalist",
+      "The Aesthetic Host & Mixologist",
+      "The Gourmet Kitchen Purist"
+    ],
+    "adGroups": [
+      {
+        "id": "ag_1",
+        "name": "Heirloom Cookware & Dutch Ovens",
+        "targetPersona": "The Heirloom Culinary Traditionalist",
+        "targetPersonaName": "Eleanor Vance",
+        "coreAngle": "Heritage French enameled cast iron and multi-clad stainless steel engineered to last generations.",
+        "recommendedBidCpa": "$38.00",
+        "headlines": [
+          {
+            "type": "headline",
+            "text": "Williams Sonoma Cookware",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "1",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Le Creuset Dutch Ovens",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "2",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Thermo-Clad 10-Pc Set",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Signature French Cast Iron",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Heirloom Quality Kitchen",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Crafted For Generations",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Even Heat Distribution",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Better Than All-Clad",
+            "charCount": 20,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Sur La Table Alternative",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Master Holiday Braising",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Exclusive Colorways Here",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Shop Signature Dutch Oven",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Free Shipping Over $99",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Lifetime Performance",
+            "charCount": 20,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Order Premium Cookware Now",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "3",
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "EXCELLENT"
+          }
+        ],
+        "descriptions": [
+          {
+            "type": "description",
+            "text": "Shop Le Creuset 5.5 Qt Dutch Ovens & Thermo-Clad sets. Built to last for generations.",
+            "charCount": 85,
+            "maxChars": 90,
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Experience superior heat control with Williams Sonoma Thermo-Clad multi-clad stainless.",
+            "charCount": 87,
+            "maxChars": 90,
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Explore iconic French cast iron in exclusive colors. Free shipping on qualifying orders.",
+            "charCount": 88,
+            "maxChars": 90,
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Upgrade your kitchen heritage today. Shop timeless heirloom cookware online or in-store.",
+            "charCount": 88,
+            "maxChars": 90,
+            "personaAlignment": "The Heirloom Culinary Traditionalist",
+            "performanceScore": "GOOD"
+          }
+        ],
+        "keywords": [
+          {
+            "keyword": "le creuset dutch oven",
+            "matchType": "Exact",
+            "formattedText": "[le creuset dutch oven]",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$2.20",
+            "personaTrigger": "Searching specifically for premium French cast iron dutch ovens for braising and family cooking.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          },
+          {
+            "keyword": "williams sonoma cookware set",
+            "matchType": "Exact",
+            "formattedText": "[williams sonoma cookware set]",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.85",
+            "personaTrigger": "High-intent branded search for complete stainless multi-clad cookware packages.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "thermo clad stainless steel cookware",
+            "matchType": "Phrase",
+            "formattedText": "\"thermo clad stainless steel cookware\"",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.95",
+            "personaTrigger": "Seeks professional heat distribution and durable stainless sets for serious cooking.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "best enameled cast iron dutch oven",
+            "matchType": "Phrase",
+            "formattedText": "\"best enameled cast iron dutch oven\"",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$2.40",
+            "personaTrigger": "Evaluating luxury heirloom culinary vessels across top brands.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          },
+          {
+            "keyword": "sur la table dutch oven sale",
+            "matchType": "Phrase",
+            "formattedText": "\"sur la table dutch oven sale\"",
+            "searchIntent": "Competitor Conquesting",
+            "estimatedCpc": "$2.10",
+            "personaTrigger": "Conquesting competitor shoppers actively seeking cast iron bargains.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "heirloom french cookware",
+            "matchType": "Broad",
+            "formattedText": "heirloom french cookware",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.60",
+            "personaTrigger": "Broad discovery for timeless, generational kitchen investments.",
+            "monthlyVolumeTier": "Niche (500-1k)"
+          }
+        ],
+        "negativeKeywords": [
+          "cheap dutch oven",
+          "walmart cast iron",
+          "used cookware set",
+          "camping cast iron",
+          "free recipes"
+        ]
+      },
+      {
+        "id": "ag_2",
+        "name": "Barware, Crystal & Tablescapes",
+        "targetPersona": "The Aesthetic Host & Mixologist",
+        "targetPersonaName": "Chloe Davenport",
+        "coreAngle": "Curated Dorset crystal coupes, marble bar carts, and elevated entertaining essentials for the modern host.",
+        "recommendedBidCpa": "$32.00",
+        "headlines": [
+          {
+            "type": "headline",
+            "text": "Williams Sonoma Barware",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "1",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Dorset Crystal Coupes",
+            "charCount": 21,
+            "maxChars": 30,
+            "pinnedPosition": "2",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Luxury Marble Bar Carts",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Elevate Your Tablescape",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Hand-Blown Crystal Glass",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Espresso Martini Glasses",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Better Than Crate & Barrel",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Chic Entertaining Platters",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "West Elm Glass Alternative",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Artisan Cocktail Tools",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Zero-Sugar Craft Syrups",
+            "charCount": 23,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Viral Cocktail Essentials",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Design A Picture Bar Cart",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Curated Home Bar Styling",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Shop Crystal Glassware",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "3",
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "EXCELLENT"
+          }
+        ],
+        "descriptions": [
+          {
+            "type": "description",
+            "text": "Craft stunning cocktails with hand-cut Dorset crystal coupes & brass bar carts.",
+            "charCount": 79,
+            "maxChars": 90,
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Style the perfect tablescape with artisan glassware and gourmet bar essentials.",
+            "charCount": 79,
+            "maxChars": 90,
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Explore premium entertaining collections designed to elevate every dinner party.",
+            "charCount": 80,
+            "maxChars": 90,
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Shop modern cocktail glassware, marble accents & serveware. Order online today.",
+            "charCount": 79,
+            "maxChars": 90,
+            "personaAlignment": "The Aesthetic Host & Mixologist",
+            "performanceScore": "GOOD"
+          }
+        ],
+        "keywords": [
+          {
+            "keyword": "crystal coupe glasses",
+            "matchType": "Exact",
+            "formattedText": "[crystal coupe glasses]",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.75",
+            "personaTrigger": "Searching for luxury cocktail coupes for home mixology and entertaining.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "marble and brass bar cart",
+            "matchType": "Phrase",
+            "formattedText": "\"marble and brass bar cart\"",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$2.35",
+            "personaTrigger": "Looking for photogenic, high-end bar cart furniture.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "williams sonoma glassware set",
+            "matchType": "Phrase",
+            "formattedText": "\"williams sonoma glassware set\"",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.50",
+            "personaTrigger": "High-intent branded barware and table styling query.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "crate and barrel cocktail glasses",
+            "matchType": "Phrase",
+            "formattedText": "\"crate and barrel cocktail glasses\"",
+            "searchIntent": "Competitor Conquesting",
+            "estimatedCpc": "$1.90",
+            "personaTrigger": "Intercepting contemporary home decor shoppers seeking cocktail glassware.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "luxury barware entertaining essentials",
+            "matchType": "Broad",
+            "formattedText": "luxury barware entertaining essentials",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.40",
+            "personaTrigger": "Broad search for high-end party hosting and beverage accessories.",
+            "monthlyVolumeTier": "Niche (500-1k)"
+          },
+          {
+            "keyword": "espresso martini glass set",
+            "matchType": "Exact",
+            "formattedText": "[espresso martini glass set]",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.65",
+            "personaTrigger": "Searching for specialized glassware for viral cocktail trends.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          }
+        ],
+        "negativeKeywords": [
+          "plastic party cups",
+          "cheap bulk glasses",
+          "dollar store glassware",
+          "free cocktail app",
+          "bar cart diy"
+        ]
+      },
+      {
+        "id": "ag_3",
+        "name": "Precision Electrics & Japanese Cutlery",
+        "targetPersona": "The Gourmet Kitchen Purist",
+        "targetPersonaName": "Marcus Chen",
+        "coreAngle": "Commercial-grade kitchen electrics, precision sous vide, and Damascus steel Shun cutlery.",
+        "recommendedBidCpa": "$42.00",
+        "headlines": [
+          {
+            "type": "headline",
+            "text": "Williams Sonoma Electrics",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "1",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Breville Barista Touch",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "2",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Shun Classic 8-Inch Knife",
+            "charCount": 25,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Vitamix A3500 Smart Blender",
+            "charCount": 27,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Commercial Grade Precision",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Damascus Steel Kitchen Knives",
+            "charCount": 29,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Smart PID Espresso Control",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Better Than Zwilling Direct",
+            "charCount": 27,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Vitamix Direct Alternative",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Sous Vide & Smart Tech",
+            "charCount": 22,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Razor Sharp Japanese Steel",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Master Temperature Control",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Precision Motor Appliances",
+            "charCount": 26,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Culinary Engineering Lab",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "any",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          },
+          {
+            "type": "headline",
+            "text": "Shop Precision Electrics",
+            "charCount": 24,
+            "maxChars": 30,
+            "pinnedPosition": "3",
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "EXCELLENT"
+          }
+        ],
+        "descriptions": [
+          {
+            "type": "description",
+            "text": "Master culinary thermodynamics with Shun Damascus cutlery and Breville smart electrics.",
+            "charCount": 87,
+            "maxChars": 90,
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Shop commercial-power Vitamix A3500 blenders & precision PID espresso machines.",
+            "charCount": 79,
+            "maxChars": 90,
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Engineered for culinary perfection. Explore premium Japanese cutlery & smart appliances.",
+            "charCount": 88,
+            "maxChars": 90,
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "GOOD"
+          },
+          {
+            "type": "description",
+            "text": "Elevate your culinary craft with pro-grade kitchen technology. Shop Williams Sonoma.",
+            "charCount": 84,
+            "maxChars": 90,
+            "personaAlignment": "The Gourmet Kitchen Purist",
+            "performanceScore": "GOOD"
+          }
+        ],
+        "keywords": [
+          {
+            "keyword": "breville barista touch impress",
+            "matchType": "Exact",
+            "formattedText": "[breville barista touch impress]",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$2.60",
+            "personaTrigger": "Searching for high-end smart espresso machines with auto-tamping and precision PID.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          },
+          {
+            "keyword": "shun classic 8 chef knife",
+            "matchType": "Exact",
+            "formattedText": "[shun classic 8 chef knife]",
+            "searchIntent": "Transactional",
+            "estimatedCpc": "$1.90",
+            "personaTrigger": "Targeting high-precision Japanese VG-MAX Damascus steel cutlery queries.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "vitamix a3500 blender sale",
+            "matchType": "Phrase",
+            "formattedText": "\"vitamix a3500 blender sale\"",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$2.25",
+            "personaTrigger": "Seeks commercial-grade high-power smart blender for precision purees and emulsions.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "japanese kitchen knife set",
+            "matchType": "Phrase",
+            "formattedText": "\"japanese kitchen knife set\"",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$2.10",
+            "personaTrigger": "Evaluating premium handcrafted steel blade sets for culinary precision.",
+            "monthlyVolumeTier": "High (10k-50k)"
+          },
+          {
+            "keyword": "zwilling pro chef knife",
+            "matchType": "Phrase",
+            "formattedText": "\"zwilling pro chef knife\"",
+            "searchIntent": "Competitor Conquesting",
+            "estimatedCpc": "$1.80",
+            "personaTrigger": "Conquesting competitor German steel searches to introduce Shun and premium cutlery.",
+            "monthlyVolumeTier": "Medium (1k-10k)"
+          },
+          {
+            "keyword": "commercial precision culinary electrics",
+            "matchType": "Broad",
+            "formattedText": "commercial precision culinary electrics",
+            "searchIntent": "High Commercial",
+            "estimatedCpc": "$1.95",
+            "personaTrigger": "Tech-first home chef researching professional kitchen appliances.",
+            "monthlyVolumeTier": "Niche (500-1k)"
+          }
+        ],
+        "negativeKeywords": [
+          "cheap blender under 50",
+          "used espresso machine",
+          "knife sharpening service near me",
+          "plastic food processor",
+          "coffee pod machine cheap"
+        ]
+      }
+    ],
+    "sitelinks": [
+      {
+        "linkText": "Le Creuset Dutch Ovens",
+        "line1": "Iconic French enameled cast iron.",
+        "line2": "Explore timeless signature colors.",
+        "url": "https://www.williams-sonoma.com/shop/cookware/le-creuset/"
+      },
+      {
+        "linkText": "Thermo-Clad Cookware",
+        "line1": "Patented multi-clad stainless steel",
+        "line2": "Engineered for elite heat control.",
+        "url": "https://www.williams-sonoma.com/shop/cookware/williams-sonoma-thermo-clad/"
+      },
+      {
+        "linkText": "Dorset Crystal Barware",
+        "line1": "Hand-cut crystal coupes & glasses.",
+        "line2": "Elevate your home bar styling.",
+        "url": "https://www.williams-sonoma.com/shop/tabletop-glassware-bar/barware-glassware/"
+      },
+      {
+        "linkText": "Breville & Smart Electric",
+        "line1": "Precision espresso & Vitamix tech.",
+        "line2": "Commercial-grade power at home.",
+        "url": "https://www.williams-sonoma.com/shop/electrics/electrics-breville/"
+      }
+    ],
+    "callouts": [
+      "Free Shipping Over $99",
+      "Williams Sonoma Exclusive",
+      "Lifetime Cookware Guarant",
+      "Free Curbside Pickup",
+      "Expert Culinary Advice",
+      "Complimentary Gift Regist"
+    ],
+    "structuredSnippets": {
+      "header": "Varieties",
+      "values": [
+        "Enameled Cast Iron",
+        "Thermo-Clad Stainless",
+        "Dorset Crystal",
+        "Damascus Cutlery",
+        "Smart Electrics"
+      ]
+    },
+    "audienceSignals": [
+      {
+        "category": "Custom Intent",
+        "name": "High-Intent Cookware & Barware Seekers",
+        "details": "Users searching for: 'best dutch oven for braising', 'le creuset 5.5 qt signature sale', 'luxury crystal coupe glasses', 'breville barista touch reviews', 'shun classic vs zwilling pro'.",
+        "personaLink": "Eleanor Vance, Chloe Davenport, Marcus Chen"
+      },
+      {
+        "category": "In-Market",
+        "name": "Cookware & Dining Sets",
+        "details": "In-Market > Home & Garden > Kitchen & Dining > Cookware and Small Kitchen Appliances.",
+        "personaLink": "The Heirloom Culinary Traditionalist & The Gourmet Kitchen Purist"
+      },
+      {
+        "category": "Affinity",
+        "name": "Foodies & Luxury Entertaining Enthusiasts",
+        "details": "Affinity > Enthusiasts > Food & Dining Enthusiasts > Cooking Enthusiasts, Home Decor Enthusiasts.",
+        "personaLink": "The Aesthetic Host & Mixologist"
+      },
+      {
+        "category": "First-Party / Demographics",
+        "name": "Affluent Homeowners (Top 10-20% HHI)",
+        "details": "Ages 28-64, Top 10-20% Household Income across target states: CA, NY, TX, IL, FL, MA, WA.",
+        "personaLink": "All synthetic personas"
+      }
+    ],
+    "timestamp": "2026-08-31T18:46:56.770Z"
+  },
+  "savedAt": "2026-08-31T18:46:56.770Z"
+}

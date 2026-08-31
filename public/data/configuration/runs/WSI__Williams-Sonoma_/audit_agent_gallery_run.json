@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "id": "audit_1788201961580",
+      "urlOrBase64": "/api/content-audit/image/audit_upload_1788201953417_319.jpg?companyName=WSI%20(Williams-Sonoma)",
+      "title": "le-creuset-signature-enameled-cast-iron-round-wide-dutch-o-xl.jpg",
+      "score": 9.4,
+      "verdict": "PASSED",
+      "timestamp": "11:46 AM"
+    }
+  ],
+  "updatedAt": "2026-08-31T18:46:01.580Z"
+}

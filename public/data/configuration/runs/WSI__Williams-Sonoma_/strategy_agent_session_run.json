@@ -1,0 +1,761 @@
+{
+  "sessionId": "session_1788201899664",
+  "messages": [
+    {
+      "id": "user_1788201904156",
+      "sender": "user",
+      "timestamp": "11:45 AM",
+      "text": "Show the Williams-Sonoma synthetic dataset"
+    },
+    {
+      "id": "assistant_1788201905496",
+      "sender": "assistant",
+      "timestamp": "11:45 AM",
+      "text": "Here is the **Williams-Sonoma Synthetic Dataset** (5 customer records across Cookware, Cutlery, Electrics, and Gourmet Pantry categories):",
+      "showDatasetTable": true
+    },
+    {
+      "id": "user_1788201909649",
+      "sender": "user",
+      "timestamp": "11:45 AM",
+      "text": "Create audience personas from this dataset"
+    },
+    {
+      "id": "assistant_1788201933816",
+      "sender": "assistant",
+      "timestamp": "11:45 AM",
+      "text": "I have analyzed the **Williams-Sonoma Synthetic Dataset** and generated **3 new audience personas** with psychographic profiles: **Eleanor Vance**, **Chloe Davenport**, and **Marcus Chen**.\n\n**Would you like to save these personas to GCS and activate them as your testing panel?**",
+      "generatedPersonas": [
+        {
+          "id": "wsi_gen_0_1788201933816",
+          "name": "The Heirloom Culinary Traditionalist",
+          "personaName": "Eleanor Vance",
+          "status": "Core Anchor: Heritage Culinary Host",
+          "lifeEvent": "Multi-generational holiday banquet hosting and family milestone celebrations",
+          "location": "Greenwich, CT (Suburban Heritage Home)",
+          "financialHealth": "Affluent & Value-Driven ($120,000 – $250,000+)",
+          "ageRange": "35–60",
+          "incomeRange": "$120,000 – $250,000+",
+          "familySize": "Married, 2 teenage children, frequent extended family visits",
+          "coreValues": "Heirloom craftsmanship, family gathering, culinary tradition",
+          "whatTheyWant": "Professional-grade cast iron, multi-clad stainless steel, and timeless French culinary cookware that lasts decades",
+          "competitorBrands": [
+            "Sur La Table",
+            "Le Creuset Direct",
+            "All-Clad Direct"
+          ],
+          "recommendedProducts": [
+            "Le Creuset Signature Round Dutch Oven 5.5 Qt",
+            "Williams Sonoma Thermo-Clad Cookware Set"
+          ],
+          "keyCharacteristics": "High brand loyalty, large kitchen investment, frequent holiday entertainer",
+          "brandEngagement": "Very High",
+          "bioLifestyleNeeds": "Eleanor views the kitchen as the emotional centerpiece of her home, anchoring family gatherings through time-honored recipes, weekend braises, and sourdough baking. She invests in premium enameled cast iron and multi-ply stainless steel designed to endure generations, rejecting disposable trends in favor of timeless French culinary tradition and iconic seasonal holiday confections.",
+          "nba": "Deliver physical seasonal catalog drops featuring heritage Le Creuset colorway exclusives, paired with VIP invitations to in-store Dutch oven braising masterclasses and early-access holiday Peppermint Bark allocations.",
+          "imagePrompt": "Editorial portrait of Eleanor Vance, a sophisticated 44-year-old woman with warm hazel eyes and styled brunette hair tied back, standing in a sunlit luxury farmhouse kitchen with copper hanging racks, Le Creuset French blue Dutch oven on a marble island, wearing a neutral cashmere sweater and linen apron, soft natural morning light, highly detailed 8k photography.",
+          "isStandard": false,
+          "psychographics": {
+            "personalityTraits": [
+              "Nurturing",
+              "Tradition-oriented",
+              "Quality-conscious",
+              "Convivial"
+            ],
+            "beverageRituals": "Slow morning French press coffee with whole organic milk; afternoon Earl Grey tea; evening Bordeaux pairing during long simmer braises.",
+            "flavorAffinity": "Slow-cooked Coq au Vin, braised short ribs, artisan sourdough, Williams Sonoma Peppermint Bark, and aged balsamic reductions.",
+            "sugarPreference": "Pure cane sugar, Madagascar Bourbon vanilla bean, and Guittard heritage chocolate.",
+            "shoppingValues": "Lifetime warranties, multi-ply clad heat distribution, enameled cast iron durability, and timeless aesthetic legacy.",
+            "mediaHabits": "Williams Sonoma Print Catalog, Ina Garten cookbooks, Epicurious, Architectural Digest, and curated Pinterest boards."
+          }
+        },
+        {
+          "id": "wsi_gen_1_1788201933816",
+          "name": "The Aesthetic Host & Mixologist",
+          "personaName": "Chloe Davenport",
+          "status": "Growth Catalyst: Social Curator & Mixologist",
+          "lifeEvent": "Hosting seasonal rooftop soirees, engagement parties, and weekend tapas cocktail evenings",
+          "location": "Chicago, IL (Lincoln Park Urban Brownstone)",
+          "financialHealth": "Upwardly Mobile Trendsetter ($85,000 – $160,000)",
+          "ageRange": "26–40",
+          "incomeRange": "$85,000 – $160,000",
+          "familySize": "Cohabitating partner, no children",
+          "coreValues": "Elevating social experiences, aesthetic bar cart styling, viral entertaining",
+          "whatTheyWant": "Hand-blown crystal glassware, marble bar carts, espresso martini essentials, and photogenic tablescapes",
+          "competitorBrands": [
+            "Crate & Barrel",
+            "West Elm",
+            "CB2",
+            "Anthropologie Home"
+          ],
+          "recommendedProducts": [
+            "Williams Sonoma Dorset Crystal Coupes",
+            "Marble & Brass Bar Cart",
+            "Breville Barista Touch"
+          ],
+          "keyCharacteristics": "High digital engagement, social sharer (TikTok/Instagram), cocktail-led shopping",
+          "brandEngagement": "High",
+          "bioLifestyleNeeds": "Chloe treats weekend entertaining as an expressive art form, designing Instagram-ready cocktail hours and styled tablescapes for her circle of friends. She prioritizes chic brass barware, crystal coupes, and artisanal syrups that make home mixology feel like an upscale speakeasy experience, relying on omnichannel digital discovery and seamless store pickup.",
+          "nba": "Deploy dynamic Instagram & TikTok ads highlighting curated 'At-Home Espresso Martini' kits and Dorset crystal styling guides, retargeted with The Key Rewards Premier point multiplier promotions.",
+          "imagePrompt": "Cinematic lifestyle portrait of Chloe Davenport, a stylish 31-year-old woman with a chic bob haircut, holding a crystal coupe glass next to an illuminated brass and marble bar cart with artisanal cocktail bottles, modern loft apartment setting with warm ambient twilight lighting, editorial Vogue Living style, sharp focus 8k.",
+          "isStandard": false,
+          "psychographics": {
+            "personalityTraits": [
+              "Socially magnetic",
+              "Aesthetic-driven",
+              "Trend-conscious",
+              "Creative"
+            ],
+            "beverageRituals": "Double-shot oat milk cortado by morning; craft smoked mezcal negronis and shaken espresso martinis by weekend evening.",
+            "flavorAffinity": "Artisanal botanical bitters, Meyer lemon simple syrup, Charcuterie accompaniments (truffle Marcona almonds, fig preserves), and crisp Prosecco.",
+            "sugarPreference": "Agave nectar, raw turbinado sugar crystals, and small-batch organic fruit purees.",
+            "shoppingValues": "Photogenic silhouette, tactile hand-blown glass, sleek brass accents, and viral entertaining shareability.",
+            "mediaHabits": "Instagram Reels, TikTok mixology creators, Architectural Digest Cleo, Spotify dinner party playlists, and Food52."
+          }
+        },
+        {
+          "id": "wsi_gen_2_1788201933816",
+          "name": "The Gourmet Kitchen Purist",
+          "personaName": "Marcus Chen",
+          "status": "High-Value Authority: Precision Home Chef",
+          "lifeEvent": "Kitchen technology upgrade and culinary technique mastery",
+          "location": "San Francisco, CA (Modern Bay Area Residence)",
+          "financialHealth": "Affluent Tech Professional ($110,000 – $220,000)",
+          "ageRange": "30–55",
+          "incomeRange": "$110,000 – $220,000",
+          "familySize": "Married, 1 child",
+          "coreValues": "Culinary perfectionism, precision engineering, cutting-edge kitchen technology",
+          "whatTheyWant": "Commercial-grade smart electrics, razor-sharp Damascus steel knives, and sous vide temperature control",
+          "competitorBrands": [
+            "Zwilling J.A. Henckels",
+            "Vitamix Direct",
+            "Breville Direct"
+          ],
+          "recommendedProducts": [
+            "Breville Barista Touch Impress",
+            "Shun Classic 8\" Chef Knife",
+            "Vitamix A3500 Smart Blender"
+          ],
+          "keyCharacteristics": "Researches thermodynamics and motor specs, high repeat purchase on premium electrics",
+          "brandEngagement": "High",
+          "bioLifestyleNeeds": "Marcus approaches gastronomy through the lens of precision physics and culinary engineering, seeking commercial performance for his residential kitchen. From dialed-in 9-bar espresso extractions to micro-beveled Japanese Damascus cutlery, he evaluates equipment based on thermal stability, motor wattage, and blade Rockwell hardness, trusting Williams-Sonoma for top-tier exclusive innovations.",
+          "nba": "Trigger technical product breakdown emails highlighting precision PID temperature controls and motor torque specs for new electrics, paired with Reserve VIP concierge knife-sharpening clinics.",
+          "imagePrompt": "Close-up cinematic portrait of Marcus Chen, a 38-year-old Asian tech professional with wireframe glasses, precisely slicing heirloom produce with a Shun Damascus chef knife on an end-grain walnut butcher block, sleek minimalist matte black kitchen background, studio lighting, hyper-realistic 8k resolution.",
+          "isStandard": false,
+          "psychographics": {
+            "personalityTraits": [
+              "Analytical",
+              "Perfectionist",
+              "Methodical",
+              "Discerning"
+            ],
+            "beverageRituals": "Single-origin pour-overs dialed by bean density and gram scale; precision-steamed flat whites at 145°F.",
+            "flavorAffinity": "Sous-vide wagyu ribeye, umami-rich dashi reductions, single-estate early harvest olive oils, and molecular gastronomy textures.",
+            "sugarPreference": "Monk fruit sweetener, minimally processed raw acacia honey, and zero-refined-sugar culinary profiles.",
+            "shoppingValues": "Thermo-stability, commercial grade motor brushless longevity, ergonomic Rockwell hardness, and cutting-edge digital interface.",
+            "mediaHabits": "Modernist Cuisine, Serious Eats / Kenji López-Alt, YouTube culinary tech teardowns, Wired, and Reddit r/espresso."
+          }
+        }
+      ],
+      "clarifyingOptions": {
+        "question": "Confirm Persona Activation or Start Testing / Visuals:",
+        "options": [
+          {
+            "label": "💾 Yes, Save & Activate Personas to GCS",
+            "action": "save_and_activate_personas",
+            "payload": [
+              {
+                "id": "wsi_gen_0_1788201933816",
+                "name": "The Heirloom Culinary Traditionalist",
+                "personaName": "Eleanor Vance",
+                "status": "Core Anchor: Heritage Culinary Host",
+                "lifeEvent": "Multi-generational holiday banquet hosting and family milestone celebrations",
+                "location": "Greenwich, CT (Suburban Heritage Home)",
+                "financialHealth": "Affluent & Value-Driven ($120,000 – $250,000+)",
+                "ageRange": "35–60",
+                "incomeRange": "$120,000 – $250,000+",
+                "familySize": "Married, 2 teenage children, frequent extended family visits",
+                "coreValues": "Heirloom craftsmanship, family gathering, culinary tradition",
+                "whatTheyWant": "Professional-grade cast iron, multi-clad stainless steel, and timeless French culinary cookware that lasts decades",
+                "competitorBrands": [
+                  "Sur La Table",
+                  "Le Creuset Direct",
+                  "All-Clad Direct"
+                ],
+                "recommendedProducts": [
+                  "Le Creuset Signature Round Dutch Oven 5.5 Qt",
+                  "Williams Sonoma Thermo-Clad Cookware Set"
+                ],
+                "keyCharacteristics": "High brand loyalty, large kitchen investment, frequent holiday entertainer",
+                "brandEngagement": "Very High",
+                "bioLifestyleNeeds": "Eleanor views the kitchen as the emotional centerpiece of her home, anchoring family gatherings through time-honored recipes, weekend braises, and sourdough baking. She invests in premium enameled cast iron and multi-ply stainless steel designed to endure generations, rejecting disposable trends in favor of timeless French culinary tradition and iconic seasonal holiday confections.",
+                "nba": "Deliver physical seasonal catalog drops featuring heritage Le Creuset colorway exclusives, paired with VIP invitations to in-store Dutch oven braising masterclasses and early-access holiday Peppermint Bark allocations.",
+                "imagePrompt": "Editorial portrait of Eleanor Vance, a sophisticated 44-year-old woman with warm hazel eyes and styled brunette hair tied back, standing in a sunlit luxury farmhouse kitchen with copper hanging racks, Le Creuset French blue Dutch oven on a marble island, wearing a neutral cashmere sweater and linen apron, soft natural morning light, highly detailed 8k photography.",
+                "isStandard": false,
+                "psychographics": {
+                  "personalityTraits": [
+                    "Nurturing",
+                    "Tradition-oriented",
+                    "Quality-conscious",
+                    "Convivial"
+                  ],
+                  "beverageRituals": "Slow morning French press coffee with whole organic milk; afternoon Earl Grey tea; evening Bordeaux pairing during long simmer braises.",
+                  "flavorAffinity": "Slow-cooked Coq au Vin, braised short ribs, artisan sourdough, Williams Sonoma Peppermint Bark, and aged balsamic reductions.",
+                  "sugarPreference": "Pure cane sugar, Madagascar Bourbon vanilla bean, and Guittard heritage chocolate.",
+                  "shoppingValues": "Lifetime warranties, multi-ply clad heat distribution, enameled cast iron durability, and timeless aesthetic legacy.",
+                  "mediaHabits": "Williams Sonoma Print Catalog, Ina Garten cookbooks, Epicurious, Architectural Digest, and curated Pinterest boards."
+                }
+              },
+              {
+                "id": "wsi_gen_1_1788201933816",
+                "name": "The Aesthetic Host & Mixologist",
+                "personaName": "Chloe Davenport",
+                "status": "Growth Catalyst: Social Curator & Mixologist",
+                "lifeEvent": "Hosting seasonal rooftop soirees, engagement parties, and weekend tapas cocktail evenings",
+                "location": "Chicago, IL (Lincoln Park Urban Brownstone)",
+                "financialHealth": "Upwardly Mobile Trendsetter ($85,000 – $160,000)",
+                "ageRange": "26–40",
+                "incomeRange": "$85,000 – $160,000",
+                "familySize": "Cohabitating partner, no children",
+                "coreValues": "Elevating social experiences, aesthetic bar cart styling, viral entertaining",
+                "whatTheyWant": "Hand-blown crystal glassware, marble bar carts, espresso martini essentials, and photogenic tablescapes",
+                "competitorBrands": [
+                  "Crate & Barrel",
+                  "West Elm",
+                  "CB2",
+                  "Anthropologie Home"
+                ],
+                "recommendedProducts": [
+                  "Williams Sonoma Dorset Crystal Coupes",
+                  "Marble & Brass Bar Cart",
+                  "Breville Barista Touch"
+                ],
+                "keyCharacteristics": "High digital engagement, social sharer (TikTok/Instagram), cocktail-led shopping",
+                "brandEngagement": "High",
+                "bioLifestyleNeeds": "Chloe treats weekend entertaining as an expressive art form, designing Instagram-ready cocktail hours and styled tablescapes for her circle of friends. She prioritizes chic brass barware, crystal coupes, and artisanal syrups that make home mixology feel like an upscale speakeasy experience, relying on omnichannel digital discovery and seamless store pickup.",
+                "nba": "Deploy dynamic Instagram & TikTok ads highlighting curated 'At-Home Espresso Martini' kits and Dorset crystal styling guides, retargeted with The Key Rewards Premier point multiplier promotions.",
+                "imagePrompt": "Cinematic lifestyle portrait of Chloe Davenport, a stylish 31-year-old woman with a chic bob haircut, holding a crystal coupe glass next to an illuminated brass and marble bar cart with artisanal cocktail bottles, modern loft apartment setting with warm ambient twilight lighting, editorial Vogue Living style, sharp focus 8k.",
+                "isStandard": false,
+                "psychographics": {
+                  "personalityTraits": [
+                    "Socially magnetic",
+                    "Aesthetic-driven",
+                    "Trend-conscious",
+                    "Creative"
+                  ],
+                  "beverageRituals": "Double-shot oat milk cortado by morning; craft smoked mezcal negronis and shaken espresso martinis by weekend evening.",
+                  "flavorAffinity": "Artisanal botanical bitters, Meyer lemon simple syrup, Charcuterie accompaniments (truffle Marcona almonds, fig preserves), and crisp Prosecco.",
+                  "sugarPreference": "Agave nectar, raw turbinado sugar crystals, and small-batch organic fruit purees.",
+                  "shoppingValues": "Photogenic silhouette, tactile hand-blown glass, sleek brass accents, and viral entertaining shareability.",
+                  "mediaHabits": "Instagram Reels, TikTok mixology creators, Architectural Digest Cleo, Spotify dinner party playlists, and Food52."
+                }
+              },
+              {
+                "id": "wsi_gen_2_1788201933816",
+                "name": "The Gourmet Kitchen Purist",
+                "personaName": "Marcus Chen",
+                "status": "High-Value Authority: Precision Home Chef",
+                "lifeEvent": "Kitchen technology upgrade and culinary technique mastery",
+                "location": "San Francisco, CA (Modern Bay Area Residence)",
+                "financialHealth": "Affluent Tech Professional ($110,000 – $220,000)",
+                "ageRange": "30–55",
+                "incomeRange": "$110,000 – $220,000",
+                "familySize": "Married, 1 child",
+                "coreValues": "Culinary perfectionism, precision engineering, cutting-edge kitchen technology",
+                "whatTheyWant": "Commercial-grade smart electrics, razor-sharp Damascus steel knives, and sous vide temperature control",
+                "competitorBrands": [
+                  "Zwilling J.A. Henckels",
+                  "Vitamix Direct",
+                  "Breville Direct"
+                ],
+                "recommendedProducts": [
+                  "Breville Barista Touch Impress",
+                  "Shun Classic 8\" Chef Knife",
+                  "Vitamix A3500 Smart Blender"
+                ],
+                "keyCharacteristics": "Researches thermodynamics and motor specs, high repeat purchase on premium electrics",
+                "brandEngagement": "High",
+                "bioLifestyleNeeds": "Marcus approaches gastronomy through the lens of precision physics and culinary engineering, seeking commercial performance for his residential kitchen. From dialed-in 9-bar espresso extractions to micro-beveled Japanese Damascus cutlery, he evaluates equipment based on thermal stability, motor wattage, and blade Rockwell hardness, trusting Williams-Sonoma for top-tier exclusive innovations.",
+                "nba": "Trigger technical product breakdown emails highlighting precision PID temperature controls and motor torque specs for new electrics, paired with Reserve VIP concierge knife-sharpening clinics.",
+                "imagePrompt": "Close-up cinematic portrait of Marcus Chen, a 38-year-old Asian tech professional with wireframe glasses, precisely slicing heirloom produce with a Shun Damascus chef knife on an end-grain walnut butcher block, sleek minimalist matte black kitchen background, studio lighting, hyper-realistic 8k resolution.",
+                "isStandard": false,
+                "psychographics": {
+                  "personalityTraits": [
+                    "Analytical",
+                    "Perfectionist",
+                    "Methodical",
+                    "Discerning"
+                  ],
+                  "beverageRituals": "Single-origin pour-overs dialed by bean density and gram scale; precision-steamed flat whites at 145°F.",
+                  "flavorAffinity": "Sous-vide wagyu ribeye, umami-rich dashi reductions, single-estate early harvest olive oils, and molecular gastronomy textures.",
+                  "sugarPreference": "Monk fruit sweetener, minimally processed raw acacia honey, and zero-refined-sugar culinary profiles.",
+                  "shoppingValues": "Thermo-stability, commercial grade motor brushless longevity, ergonomic Rockwell hardness, and cutting-edge digital interface.",
+                  "mediaHabits": "Modernist Cuisine, Serious Eats / Kenji López-Alt, YouTube culinary tech teardowns, Wired, and Reddit r/espresso."
+                }
+              }
+            ]
+          },
+          {
+            "label": "🎨 Generate Tailored Ad Visual for Eleanor",
+            "action": "prompt_for_persona_image",
+            "payload": {
+              "persona": {
+                "id": "wsi_gen_0_1788201933816",
+                "name": "The Heirloom Culinary Traditionalist",
+                "personaName": "Eleanor Vance",
+                "status": "Core Anchor: Heritage Culinary Host",
+                "lifeEvent": "Multi-generational holiday banquet hosting and family milestone celebrations",
+                "location": "Greenwich, CT (Suburban Heritage Home)",
+                "financialHealth": "Affluent & Value-Driven ($120,000 – $250,000+)",
+                "ageRange": "35–60",
+                "incomeRange": "$120,000 – $250,000+",
+                "familySize": "Married, 2 teenage children, frequent extended family visits",
+                "coreValues": "Heirloom craftsmanship, family gathering, culinary tradition",
+                "whatTheyWant": "Professional-grade cast iron, multi-clad stainless steel, and timeless French culinary cookware that lasts decades",
+                "competitorBrands": [
+                  "Sur La Table",
+                  "Le Creuset Direct",
+                  "All-Clad Direct"
+                ],
+                "recommendedProducts": [
+                  "Le Creuset Signature Round Dutch Oven 5.5 Qt",
+                  "Williams Sonoma Thermo-Clad Cookware Set"
+                ],
+                "keyCharacteristics": "High brand loyalty, large kitchen investment, frequent holiday entertainer",
+                "brandEngagement": "Very High",
+                "bioLifestyleNeeds": "Eleanor views the kitchen as the emotional centerpiece of her home, anchoring family gatherings through time-honored recipes, weekend braises, and sourdough baking. She invests in premium enameled cast iron and multi-ply stainless steel designed to endure generations, rejecting disposable trends in favor of timeless French culinary tradition and iconic seasonal holiday confections.",
+                "nba": "Deliver physical seasonal catalog drops featuring heritage Le Creuset colorway exclusives, paired with VIP invitations to in-store Dutch oven braising masterclasses and early-access holiday Peppermint Bark allocations.",
+                "imagePrompt": "Editorial portrait of Eleanor Vance, a sophisticated 44-year-old woman with warm hazel eyes and styled brunette hair tied back, standing in a sunlit luxury farmhouse kitchen with copper hanging racks, Le Creuset French blue Dutch oven on a marble island, wearing a neutral cashmere sweater and linen apron, soft natural morning light, highly detailed 8k photography.",
+                "isStandard": false,
+                "psychographics": {
+                  "personalityTraits": [
+                    "Nurturing",
+                    "Tradition-oriented",
+                    "Quality-conscious",
+                    "Convivial"
+                  ],
+                  "beverageRituals": "Slow morning French press coffee with whole organic milk; afternoon Earl Grey tea; evening Bordeaux pairing during long simmer braises.",
+                  "flavorAffinity": "Slow-cooked Coq au Vin, braised short ribs, artisan sourdough, Williams Sonoma Peppermint Bark, and aged balsamic reductions.",
+                  "sugarPreference": "Pure cane sugar, Madagascar Bourbon vanilla bean, and Guittard heritage chocolate.",
+                  "shoppingValues": "Lifetime warranties, multi-ply clad heat distribution, enameled cast iron durability, and timeless aesthetic legacy.",
+                  "mediaHabits": "Williams Sonoma Print Catalog, Ina Garten cookbooks, Epicurious, Architectural Digest, and curated Pinterest boards."
+                }
+              }
+            }
+          },
+          {
+            "label": "💬 Ask New Personas: What is your primary consideration when investing in heirloom cookware?",
+            "action": "test_question_with_personas",
+            "payload": {
+              "question": "What is your primary consideration when investing in heirloom cookware like Le Creuset or Thermo-Clad?",
+              "personas": [
+                {
+                  "id": "wsi_gen_0_1788201933816",
+                  "name": "The Heirloom Culinary Traditionalist",
+                  "personaName": "Eleanor Vance",
+                  "status": "Core Anchor: Heritage Culinary Host",
+                  "lifeEvent": "Multi-generational holiday banquet hosting and family milestone celebrations",
+                  "location": "Greenwich, CT (Suburban Heritage Home)",
+                  "financialHealth": "Affluent & Value-Driven ($120,000 – $250,000+)",
+                  "ageRange": "35–60",
+                  "incomeRange": "$120,000 – $250,000+",
+                  "familySize": "Married, 2 teenage children, frequent extended family visits",
+                  "coreValues": "Heirloom craftsmanship, family gathering, culinary tradition",
+                  "whatTheyWant": "Professional-grade cast iron, multi-clad stainless steel, and timeless French culinary cookware that lasts decades",
+                  "competitorBrands": [
+                    "Sur La Table",
+                    "Le Creuset Direct",
+                    "All-Clad Direct"
+                  ],
+                  "recommendedProducts": [
+                    "Le Creuset Signature Round Dutch Oven 5.5 Qt",
+                    "Williams Sonoma Thermo-Clad Cookware Set"
+                  ],
+                  "keyCharacteristics": "High brand loyalty, large kitchen investment, frequent holiday entertainer",
+                  "brandEngagement": "Very High",
+                  "bioLifestyleNeeds": "Eleanor views the kitchen as the emotional centerpiece of her home, anchoring family gatherings through time-honored recipes, weekend braises, and sourdough baking. She invests in premium enameled cast iron and multi-ply stainless steel designed to endure generations, rejecting disposable trends in favor of timeless French culinary tradition and iconic seasonal holiday confections.",
+                  "nba": "Deliver physical seasonal catalog drops featuring heritage Le Creuset colorway exclusives, paired with VIP invitations to in-store Dutch oven braising masterclasses and early-access holiday Peppermint Bark allocations.",
+                  "imagePrompt": "Editorial portrait of Eleanor Vance, a sophisticated 44-year-old woman with warm hazel eyes and styled brunette hair tied back, standing in a sunlit luxury farmhouse kitchen with copper hanging racks, Le Creuset French blue Dutch oven on a marble island, wearing a neutral cashmere sweater and linen apron, soft natural morning light, highly detailed 8k photography.",
+                  "isStandard": false,
+                  "psychographics": {
+                    "personalityTraits": [
+                      "Nurturing",
+                      "Tradition-oriented",
+                      "Quality-conscious",
+                      "Convivial"
+                    ],
+                    "beverageRituals": "Slow morning French press coffee with whole organic milk; afternoon Earl Grey tea; evening Bordeaux pairing during long simmer braises.",
+                    "flavorAffinity": "Slow-cooked Coq au Vin, braised short ribs, artisan sourdough, Williams Sonoma Peppermint Bark, and aged balsamic reductions.",
+                    "sugarPreference": "Pure cane sugar, Madagascar Bourbon vanilla bean, and Guittard heritage chocolate.",
+                    "shoppingValues": "Lifetime warranties, multi-ply clad heat distribution, enameled cast iron durability, and timeless aesthetic legacy.",
+                    "mediaHabits": "Williams Sonoma Print Catalog, Ina Garten cookbooks, Epicurious, Architectural Digest, and curated Pinterest boards."
+                  }
+                },
+                {
+                  "id": "wsi_gen_1_1788201933816",
+                  "name": "The Aesthetic Host & Mixologist",
+                  "personaName": "Chloe Davenport",
+                  "status": "Growth Catalyst: Social Curator & Mixologist",
+                  "lifeEvent": "Hosting seasonal rooftop soirees, engagement parties, and weekend tapas cocktail evenings",
+                  "location": "Chicago, IL (Lincoln Park Urban Brownstone)",
+                  "financialHealth": "Upwardly Mobile Trendsetter ($85,000 – $160,000)",
+                  "ageRange": "26–40",
+                  "incomeRange": "$85,000 – $160,000",
+                  "familySize": "Cohabitating partner, no children",
+                  "coreValues": "Elevating social experiences, aesthetic bar cart styling, viral entertaining",
+                  "whatTheyWant": "Hand-blown crystal glassware, marble bar carts, espresso martini essentials, and photogenic tablescapes",
+                  "competitorBrands": [
+                    "Crate & Barrel",
+                    "West Elm",
+                    "CB2",
+                    "Anthropologie Home"
+                  ],
+                  "recommendedProducts": [
+                    "Williams Sonoma Dorset Crystal Coupes",
+                    "Marble & Brass Bar Cart",
+                    "Breville Barista Touch"
+                  ],
+                  "keyCharacteristics": "High digital engagement, social sharer (TikTok/Instagram), cocktail-led shopping",
+                  "brandEngagement": "High",
+                  "bioLifestyleNeeds": "Chloe treats weekend entertaining as an expressive art form, designing Instagram-ready cocktail hours and styled tablescapes for her circle of friends. She prioritizes chic brass barware, crystal coupes, and artisanal syrups that make home mixology feel like an upscale speakeasy experience, relying on omnichannel digital discovery and seamless store pickup.",
+                  "nba": "Deploy dynamic Instagram & TikTok ads highlighting curated 'At-Home Espresso Martini' kits and Dorset crystal styling guides, retargeted with The Key Rewards Premier point multiplier promotions.",
+                  "imagePrompt": "Cinematic lifestyle portrait of Chloe Davenport, a stylish 31-year-old woman with a chic bob haircut, holding a crystal coupe glass next to an illuminated brass and marble bar cart with artisanal cocktail bottles, modern loft apartment setting with warm ambient twilight lighting, editorial Vogue Living style, sharp focus 8k.",
+                  "isStandard": false,
+                  "psychographics": {
+                    "personalityTraits": [
+                      "Socially magnetic",
+                      "Aesthetic-driven",
+                      "Trend-conscious",
+                      "Creative"
+                    ],
+                    "beverageRituals": "Double-shot oat milk cortado by morning; craft smoked mezcal negronis and shaken espresso martinis by weekend evening.",
+                    "flavorAffinity": "Artisanal botanical bitters, Meyer lemon simple syrup, Charcuterie accompaniments (truffle Marcona almonds, fig preserves), and crisp Prosecco.",
+                    "sugarPreference": "Agave nectar, raw turbinado sugar crystals, and small-batch organic fruit purees.",
+                    "shoppingValues": "Photogenic silhouette, tactile hand-blown glass, sleek brass accents, and viral entertaining shareability.",
+                    "mediaHabits": "Instagram Reels, TikTok mixology creators, Architectural Digest Cleo, Spotify dinner party playlists, and Food52."
+                  }
+                },
+                {
+                  "id": "wsi_gen_2_1788201933816",
+                  "name": "The Gourmet Kitchen Purist",
+                  "personaName": "Marcus Chen",
+                  "status": "High-Value Authority: Precision Home Chef",
+                  "lifeEvent": "Kitchen technology upgrade and culinary technique mastery",
+                  "location": "San Francisco, CA (Modern Bay Area Residence)",
+                  "financialHealth": "Affluent Tech Professional ($110,000 – $220,000)",
+                  "ageRange": "30–55",
+                  "incomeRange": "$110,000 – $220,000",
+                  "familySize": "Married, 1 child",
+                  "coreValues": "Culinary perfectionism, precision engineering, cutting-edge kitchen technology",
+                  "whatTheyWant": "Commercial-grade smart electrics, razor-sharp Damascus steel knives, and sous vide temperature control",
+                  "competitorBrands": [
+                    "Zwilling J.A. Henckels",
+                    "Vitamix Direct",
+                    "Breville Direct"
+                  ],
+                  "recommendedProducts": [
+                    "Breville Barista Touch Impress",
+                    "Shun Classic 8\" Chef Knife",
+                    "Vitamix A3500 Smart Blender"
+                  ],
+                  "keyCharacteristics": "Researches thermodynamics and motor specs, high repeat purchase on premium electrics",
+                  "brandEngagement": "High",
+                  "bioLifestyleNeeds": "Marcus approaches gastronomy through the lens of precision physics and culinary engineering, seeking commercial performance for his residential kitchen. From dialed-in 9-bar espresso extractions to micro-beveled Japanese Damascus cutlery, he evaluates equipment based on thermal stability, motor wattage, and blade Rockwell hardness, trusting Williams-Sonoma for top-tier exclusive innovations.",
+                  "nba": "Trigger technical product breakdown emails highlighting precision PID temperature controls and motor torque specs for new electrics, paired with Reserve VIP concierge knife-sharpening clinics.",
+                  "imagePrompt": "Close-up cinematic portrait of Marcus Chen, a 38-year-old Asian tech professional with wireframe glasses, precisely slicing heirloom produce with a Shun Damascus chef knife on an end-grain walnut butcher block, sleek minimalist matte black kitchen background, studio lighting, hyper-realistic 8k resolution.",
+                  "isStandard": false,
+                  "psychographics": {
+                    "personalityTraits": [
+                      "Analytical",
+                      "Perfectionist",
+                      "Methodical",
+                      "Discerning"
+                    ],
+                    "beverageRituals": "Single-origin pour-overs dialed by bean density and gram scale; precision-steamed flat whites at 145°F.",
+                    "flavorAffinity": "Sous-vide wagyu ribeye, umami-rich dashi reductions, single-estate early harvest olive oils, and molecular gastronomy textures.",
+                    "sugarPreference": "Monk fruit sweetener, minimally processed raw acacia honey, and zero-refined-sugar culinary profiles.",
+                    "shoppingValues": "Thermo-stability, commercial grade motor brushless longevity, ergonomic Rockwell hardness, and cutting-edge digital interface.",
+                    "mediaHabits": "Modernist Cuisine, Serious Eats / Kenji López-Alt, YouTube culinary tech teardowns, Wired, and Reddit r/espresso."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "label": "☕ Ask New Personas: How do you balance smart kitchen electrics with traditional scratch cooking?",
+            "action": "test_question_with_personas",
+            "payload": {
+              "question": "How do you balance smart kitchen electrics (e.g. Breville espresso, Vitamix) with traditional scratch cooking?",
+              "personas": [
+                {
+                  "id": "wsi_gen_0_1788201933816",
+                  "name": "The Heirloom Culinary Traditionalist",
+                  "personaName": "Eleanor Vance",
+                  "status": "Core Anchor: Heritage Culinary Host",
+                  "lifeEvent": "Multi-generational holiday banquet hosting and family milestone celebrations",
+                  "location": "Greenwich, CT (Suburban Heritage Home)",
+                  "financialHealth": "Affluent & Value-Driven ($120,000 – $250,000+)",
+                  "ageRange": "35–60",
+                  "incomeRange": "$120,000 – $250,000+",
+                  "familySize": "Married, 2 teenage children, frequent extended family visits",
+                  "coreValues": "Heirloom craftsmanship, family gathering, culinary tradition",
+                  "whatTheyWant": "Professional-grade cast iron, multi-clad stainless steel, and timeless French culinary cookware that lasts decades",
+                  "competitorBrands": [
+                    "Sur La Table",
+                    "Le Creuset Direct",
+                    "All-Clad Direct"
+                  ],
+                  "recommendedProducts": [
+                    "Le Creuset Signature Round Dutch Oven 5.5 Qt",
+                    "Williams Sonoma Thermo-Clad Cookware Set"
+                  ],
+                  "keyCharacteristics": "High brand loyalty, large kitchen investment, frequent holiday entertainer",
+                  "brandEngagement": "Very High",
+                  "bioLifestyleNeeds": "Eleanor views the kitchen as the emotional centerpiece of her home, anchoring family gatherings through time-honored recipes, weekend braises, and sourdough baking. She invests in premium enameled cast iron and multi-ply stainless steel designed to endure generations, rejecting disposable trends in favor of timeless French culinary tradition and iconic seasonal holiday confections.",
+                  "nba": "Deliver physical seasonal catalog drops featuring heritage Le Creuset colorway exclusives, paired with VIP invitations to in-store Dutch oven braising masterclasses and early-access holiday Peppermint Bark allocations.",
+                  "imagePrompt": "Editorial portrait of Eleanor Vance, a sophisticated 44-year-old woman with warm hazel eyes and styled brunette hair tied back, standing in a sunlit luxury farmhouse kitchen with copper hanging racks, Le Creuset French blue Dutch oven on a marble island, wearing a neutral cashmere sweater and linen apron, soft natural morning light, highly detailed 8k photography.",
+                  "isStandard": false,
+                  "psychographics": {
+                    "personalityTraits": [
+                      "Nurturing",
+                      "Tradition-oriented",
+                      "Quality-conscious",
+                      "Convivial"
+                    ],
+                    "beverageRituals": "Slow morning French press coffee with whole organic milk; afternoon Earl Grey tea; evening Bordeaux pairing during long simmer braises.",
+                    "flavorAffinity": "Slow-cooked Coq au Vin, braised short ribs, artisan sourdough, Williams Sonoma Peppermint Bark, and aged balsamic reductions.",
+                    "sugarPreference": "Pure cane sugar, Madagascar Bourbon vanilla bean, and Guittard heritage chocolate.",
+                    "shoppingValues": "Lifetime warranties, multi-ply clad heat distribution, enameled cast iron durability, and timeless aesthetic legacy.",
+                    "mediaHabits": "Williams Sonoma Print Catalog, Ina Garten cookbooks, Epicurious, Architectural Digest, and curated Pinterest boards."
+                  }
+                },
+                {
+                  "id": "wsi_gen_1_1788201933816",
+                  "name": "The Aesthetic Host & Mixologist",
+                  "personaName": "Chloe Davenport",
+                  "status": "Growth Catalyst: Social Curator & Mixologist",
+                  "lifeEvent": "Hosting seasonal rooftop soirees, engagement parties, and weekend tapas cocktail evenings",
+                  "location": "Chicago, IL (Lincoln Park Urban Brownstone)",
+                  "financialHealth": "Upwardly Mobile Trendsetter ($85,000 – $160,000)",
+                  "ageRange": "26–40",
+                  "incomeRange": "$85,000 – $160,000",
+                  "familySize": "Cohabitating partner, no children",
+                  "coreValues": "Elevating social experiences, aesthetic bar cart styling, viral entertaining",
+                  "whatTheyWant": "Hand-blown crystal glassware, marble bar carts, espresso martini essentials, and photogenic tablescapes",
+                  "competitorBrands": [
+                    "Crate & Barrel",
+                    "West Elm",
+                    "CB2",
+                    "Anthropologie Home"
+                  ],
+                  "recommendedProducts": [
+                    "Williams Sonoma Dorset Crystal Coupes",
+                    "Marble & Brass Bar Cart",
+                    "Breville Barista Touch"
+                  ],
+                  "keyCharacteristics": "High digital engagement, social sharer (TikTok/Instagram), cocktail-led shopping",
+                  "brandEngagement": "High",
+                  "bioLifestyleNeeds": "Chloe treats weekend entertaining as an expressive art form, designing Instagram-ready cocktail hours and styled tablescapes for her circle of friends. She prioritizes chic brass barware, crystal coupes, and artisanal syrups that make home mixology feel like an upscale speakeasy experience, relying on omnichannel digital discovery and seamless store pickup.",
+                  "nba": "Deploy dynamic Instagram & TikTok ads highlighting curated 'At-Home Espresso Martini' kits and Dorset crystal styling guides, retargeted with The Key Rewards Premier point multiplier promotions.",
+                  "imagePrompt": "Cinematic lifestyle portrait of Chloe Davenport, a stylish 31-year-old woman with a chic bob haircut, holding a crystal coupe glass next to an illuminated brass and marble bar cart with artisanal cocktail bottles, modern loft apartment setting with warm ambient twilight lighting, editorial Vogue Living style, sharp focus 8k.",
+                  "isStandard": false,
+                  "psychographics": {
+                    "personalityTraits": [
+                      "Socially magnetic",
+                      "Aesthetic-driven",
+                      "Trend-conscious",
+                      "Creative"
+                    ],
+                    "beverageRituals": "Double-shot oat milk cortado by morning; craft smoked mezcal negronis and shaken espresso martinis by weekend evening.",
+                    "flavorAffinity": "Artisanal botanical bitters, Meyer lemon simple syrup, Charcuterie accompaniments (truffle Marcona almonds, fig preserves), and crisp Prosecco.",
+                    "sugarPreference": "Agave nectar, raw turbinado sugar crystals, and small-batch organic fruit purees.",
+                    "shoppingValues": "Photogenic silhouette, tactile hand-blown glass, sleek brass accents, and viral entertaining shareability.",
+                    "mediaHabits": "Instagram Reels, TikTok mixology creators, Architectural Digest Cleo, Spotify dinner party playlists, and Food52."
+                  }
+                },
+                {
+                  "id": "wsi_gen_2_1788201933816",
+                  "name": "The Gourmet Kitchen Purist",
+                  "personaName": "Marcus Chen",
+                  "status": "High-Value Authority: Precision Home Chef",
+                  "lifeEvent": "Kitchen technology upgrade and culinary technique mastery",
+                  "location": "San Francisco, CA (Modern Bay Area Residence)",
+                  "financialHealth": "Affluent Tech Professional ($110,000 – $220,000)",
+                  "ageRange": "30–55",
+                  "incomeRange": "$110,000 – $220,000",
+                  "familySize": "Married, 1 child",
+                  "coreValues": "Culinary perfectionism, precision engineering, cutting-edge kitchen technology",
+                  "whatTheyWant": "Commercial-grade smart electrics, razor-sharp Damascus steel knives, and sous vide temperature control",
+                  "competitorBrands": [
+                    "Zwilling J.A. Henckels",
+                    "Vitamix Direct",
+                    "Breville Direct"
+                  ],
+                  "recommendedProducts": [
+                    "Breville Barista Touch Impress",
+                    "Shun Classic 8\" Chef Knife",
+                    "Vitamix A3500 Smart Blender"
+                  ],
+                  "keyCharacteristics": "Researches thermodynamics and motor specs, high repeat purchase on premium electrics",
+                  "brandEngagement": "High",
+                  "bioLifestyleNeeds": "Marcus approaches gastronomy through the lens of precision physics and culinary engineering, seeking commercial performance for his residential kitchen. From dialed-in 9-bar espresso extractions to micro-beveled Japanese Damascus cutlery, he evaluates equipment based on thermal stability, motor wattage, and blade Rockwell hardness, trusting Williams-Sonoma for top-tier exclusive innovations.",
+                  "nba": "Trigger technical product breakdown emails highlighting precision PID temperature controls and motor torque specs for new electrics, paired with Reserve VIP concierge knife-sharpening clinics.",
+                  "imagePrompt": "Close-up cinematic portrait of Marcus Chen, a 38-year-old Asian tech professional with wireframe glasses, precisely slicing heirloom produce with a Shun Damascus chef knife on an end-grain walnut butcher block, sleek minimalist matte black kitchen background, studio lighting, hyper-realistic 8k resolution.",
+                  "isStandard": false,
+                  "psychographics": {
+                    "personalityTraits": [
+                      "Analytical",
+                      "Perfectionist",
+                      "Methodical",
+                      "Discerning"
+                    ],
+                    "beverageRituals": "Single-origin pour-overs dialed by bean density and gram scale; precision-steamed flat whites at 145°F.",
+                    "flavorAffinity": "Sous-vide wagyu ribeye, umami-rich dashi reductions, single-estate early harvest olive oils, and molecular gastronomy textures.",
+                    "sugarPreference": "Monk fruit sweetener, minimally processed raw acacia honey, and zero-refined-sugar culinary profiles.",
+                    "shoppingValues": "Thermo-stability, commercial grade motor brushless longevity, ergonomic Rockwell hardness, and cutting-edge digital interface.",
+                    "mediaHabits": "Modernist Cuisine, Serious Eats / Kenji López-Alt, YouTube culinary tech teardowns, Wired, and Reddit r/espresso."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "label": "🔄 Re-generate Personas with Different Focus",
+            "action": "generate_personas"
+          }
+        ]
+      }
+    }
+  ],
+  "activePersonas": [
+    {
+      "id": "wsi_gen_0_1788201933816",
+      "name": "The Heirloom Culinary Traditionalist",
+      "personaName": "Eleanor Vance",
+      "status": "Core Anchor: Heritage Culinary Host",
+      "lifeEvent": "Multi-generational holiday banquet hosting and family milestone celebrations",
+      "location": "Greenwich, CT (Suburban Heritage Home)",
+      "financialHealth": "Affluent & Value-Driven ($120,000 – $250,000+)",
+      "ageRange": "35–60",
+      "incomeRange": "$120,000 – $250,000+",
+      "familySize": "Married, 2 teenage children, frequent extended family visits",
+      "coreValues": "Heirloom craftsmanship, family gathering, culinary tradition",
+      "whatTheyWant": "Professional-grade cast iron, multi-clad stainless steel, and timeless French culinary cookware that lasts decades",
+      "competitorBrands": [
+        "Sur La Table",
+        "Le Creuset Direct",
+        "All-Clad Direct"
+      ],
+      "recommendedProducts": [
+        "Le Creuset Signature Round Dutch Oven 5.5 Qt",
+        "Williams Sonoma Thermo-Clad Cookware Set"
+      ],
+      "keyCharacteristics": "High brand loyalty, large kitchen investment, frequent holiday entertainer",
+      "brandEngagement": "Very High",
+      "bioLifestyleNeeds": "Eleanor views the kitchen as the emotional centerpiece of her home, anchoring family gatherings through time-honored recipes, weekend braises, and sourdough baking. She invests in premium enameled cast iron and multi-ply stainless steel designed to endure generations, rejecting disposable trends in favor of timeless French culinary tradition and iconic seasonal holiday confections.",
+      "nba": "Deliver physical seasonal catalog drops featuring heritage Le Creuset colorway exclusives, paired with VIP invitations to in-store Dutch oven braising masterclasses and early-access holiday Peppermint Bark allocations.",
+      "imagePrompt": "Editorial portrait of Eleanor Vance, a sophisticated 44-year-old woman with warm hazel eyes and styled brunette hair tied back, standing in a sunlit luxury farmhouse kitchen with copper hanging racks, Le Creuset French blue Dutch oven on a marble island, wearing a neutral cashmere sweater and linen apron, soft natural morning light, highly detailed 8k photography.",
+      "isStandard": false,
+      "psychographics": {
+        "personalityTraits": [
+          "Nurturing",
+          "Tradition-oriented",
+          "Quality-conscious",
+          "Convivial"
+        ],
+        "beverageRituals": "Slow morning French press coffee with whole organic milk; afternoon Earl Grey tea; evening Bordeaux pairing during long simmer braises.",
+        "flavorAffinity": "Slow-cooked Coq au Vin, braised short ribs, artisan sourdough, Williams Sonoma Peppermint Bark, and aged balsamic reductions.",
+        "sugarPreference": "Pure cane sugar, Madagascar Bourbon vanilla bean, and Guittard heritage chocolate.",
+        "shoppingValues": "Lifetime warranties, multi-ply clad heat distribution, enameled cast iron durability, and timeless aesthetic legacy.",
+        "mediaHabits": "Williams Sonoma Print Catalog, Ina Garten cookbooks, Epicurious, Architectural Digest, and curated Pinterest boards."
+      }
+    },
+    {
+      "id": "wsi_gen_1_1788201933816",
+      "name": "The Aesthetic Host & Mixologist",
+      "personaName": "Chloe Davenport",
+      "status": "Growth Catalyst: Social Curator & Mixologist",
+      "lifeEvent": "Hosting seasonal rooftop soirees, engagement parties, and weekend tapas cocktail evenings",
+      "location": "Chicago, IL (Lincoln Park Urban Brownstone)",
+      "financialHealth": "Upwardly Mobile Trendsetter ($85,000 – $160,000)",
+      "ageRange": "26–40",
+      "incomeRange": "$85,000 – $160,000",
+      "familySize": "Cohabitating partner, no children",
+      "coreValues": "Elevating social experiences, aesthetic bar cart styling, viral entertaining",
+      "whatTheyWant": "Hand-blown crystal glassware, marble bar carts, espresso martini essentials, and photogenic tablescapes",
+      "competitorBrands": [
+        "Crate & Barrel",
+        "West Elm",
+        "CB2",
+        "Anthropologie Home"
+      ],
+      "recommendedProducts": [
+        "Williams Sonoma Dorset Crystal Coupes",
+        "Marble & Brass Bar Cart",
+        "Breville Barista Touch"
+      ],
+      "keyCharacteristics": "High digital engagement, social sharer (TikTok/Instagram), cocktail-led shopping",
+      "brandEngagement": "High",
+      "bioLifestyleNeeds": "Chloe treats weekend entertaining as an expressive art form, designing Instagram-ready cocktail hours and styled tablescapes for her circle of friends. She prioritizes chic brass barware, crystal coupes, and artisanal syrups that make home mixology feel like an upscale speakeasy experience, relying on omnichannel digital discovery and seamless store pickup.",
+      "nba": "Deploy dynamic Instagram & TikTok ads highlighting curated 'At-Home Espresso Martini' kits and Dorset crystal styling guides, retargeted with The Key Rewards Premier point multiplier promotions.",
+      "imagePrompt": "Cinematic lifestyle portrait of Chloe Davenport, a stylish 31-year-old woman with a chic bob haircut, holding a crystal coupe glass next to an illuminated brass and marble bar cart with artisanal cocktail bottles, modern loft apartment setting with warm ambient twilight lighting, editorial Vogue Living style, sharp focus 8k.",
+      "isStandard": false,
+      "psychographics": {
+        "personalityTraits": [
+          "Socially magnetic",
+          "Aesthetic-driven",
+          "Trend-conscious",
+          "Creative"
+        ],
+        "beverageRituals": "Double-shot oat milk cortado by morning; craft smoked mezcal negronis and shaken espresso martinis by weekend evening.",
+        "flavorAffinity": "Artisanal botanical bitters, Meyer lemon simple syrup, Charcuterie accompaniments (truffle Marcona almonds, fig preserves), and crisp Prosecco.",
+        "sugarPreference": "Agave nectar, raw turbinado sugar crystals, and small-batch organic fruit purees.",
+        "shoppingValues": "Photogenic silhouette, tactile hand-blown glass, sleek brass accents, and viral entertaining shareability.",
+        "mediaHabits": "Instagram Reels, TikTok mixology creators, Architectural Digest Cleo, Spotify dinner party playlists, and Food52."
+      }
+    },
+    {
+      "id": "wsi_gen_2_1788201933816",
+      "name": "The Gourmet Kitchen Purist",
+      "personaName": "Marcus Chen",
+      "status": "High-Value Authority: Precision Home Chef",
+      "lifeEvent": "Kitchen technology upgrade and culinary technique mastery",
+      "location": "San Francisco, CA (Modern Bay Area Residence)",
+      "financialHealth": "Affluent Tech Professional ($110,000 – $220,000)",
+      "ageRange": "30–55",
+      "incomeRange": "$110,000 – $220,000",
+      "familySize": "Married, 1 child",
+      "coreValues": "Culinary perfectionism, precision engineering, cutting-edge kitchen technology",
+      "whatTheyWant": "Commercial-grade smart electrics, razor-sharp Damascus steel knives, and sous vide temperature control",
+      "competitorBrands": [
+        "Zwilling J.A. Henckels",
+        "Vitamix Direct",
+        "Breville Direct"
+      ],
+      "recommendedProducts": [
+        "Breville Barista Touch Impress",
+        "Shun Classic 8\" Chef Knife",
+        "Vitamix A3500 Smart Blender"
+      ],
+      "keyCharacteristics": "Researches thermodynamics and motor specs, high repeat purchase on premium electrics",
+      "brandEngagement": "High",
+      "bioLifestyleNeeds": "Marcus approaches gastronomy through the lens of precision physics and culinary engineering, seeking commercial performance for his residential kitchen. From dialed-in 9-bar espresso extractions to micro-beveled Japanese Damascus cutlery, he evaluates equipment based on thermal stability, motor wattage, and blade Rockwell hardness, trusting Williams-Sonoma for top-tier exclusive innovations.",
+      "nba": "Trigger technical product breakdown emails highlighting precision PID temperature controls and motor torque specs for new electrics, paired with Reserve VIP concierge knife-sharpening clinics.",
+      "imagePrompt": "Close-up cinematic portrait of Marcus Chen, a 38-year-old Asian tech professional with wireframe glasses, precisely slicing heirloom produce with a Shun Damascus chef knife on an end-grain walnut butcher block, sleek minimalist matte black kitchen background, studio lighting, hyper-realistic 8k resolution.",
+      "isStandard": false,
+      "psychographics": {
+        "personalityTraits": [
+          "Analytical",
+          "Perfectionist",
+          "Methodical",
+          "Discerning"
+        ],
+        "beverageRituals": "Single-origin pour-overs dialed by bean density and gram scale; precision-steamed flat whites at 145°F.",
+        "flavorAffinity": "Sous-vide wagyu ribeye, umami-rich dashi reductions, single-estate early harvest olive oils, and molecular gastronomy textures.",
+        "sugarPreference": "Monk fruit sweetener, minimally processed raw acacia honey, and zero-refined-sugar culinary profiles.",
+        "shoppingValues": "Thermo-stability, commercial grade motor brushless longevity, ergonomic Rockwell hardness, and cutting-edge digital interface.",
+        "mediaHabits": "Modernist Cuisine, Serious Eats / Kenji López-Alt, YouTube culinary tech teardowns, Wired, and Reddit r/espresso."
+      }
+    }
+  ],
+  "savedAt": "2026-08-31T18:45:33.817Z"
+}
