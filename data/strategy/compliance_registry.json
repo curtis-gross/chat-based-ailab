@@ -1,24 +1,24 @@
 {
   "disclaimerRequired": {
-    "Citrus & Carbonated Soft Drinks": "Squirt is a naturally flavored grapefruit soda with real citrus concentrate. Caffeine-free.",
-    "Zero Sugar & Low Calorie": "Squirt Zero Sugar contains 0 calories and 0g total sugars per 12 fl oz serving.",
-    "Cocktail Mixers & Alcoholic Pairings": "Please drink responsibly. Cocktails containing tequila are intended exclusively for adults of legal drinking age (21+).",
-    "Multi-Pack & Grocery Bundles": "Promotional discounts valid while supplies last at participating grocery and mass retail locations."
+    "Heirloom Cookware & Enamel Care": "Le Creuset enameled cast iron and Williams-Sonoma Thermo-Clad are backed by lifetime manufacturer warranties against defects.",
+    "Smart Kitchen Electrics": "Breville and Vitamix electrics are engineered for household residential use. Check voltage compatibility before international use.",
+    "Cutlery & Blade Care": "Hand wash with mild soap and dry immediately. Shun Japanese cutlery features high-carbon VG-MAX core steel and should not be washed in automatic dishwashers.",
+    "Bridal & Gift Registry": "Registry completion discount applies for 6 months following event date on eligible regular-priced cookware, electrics, and tabletop items."
   },
   "prohibitedWords": [
-    "medicinal hangover cure",
-    "energy drink replacement",
-    "weight loss miracle",
-    "alcohol contained inside can",
-    "FDA medical approval"
+    "indestructible non-stick",
+    "zero maintenance carbon steel",
+    "commercial dishwasher safe blades",
+    "counterfeit cast iron",
+    "unlicensed outlet seconds"
   ],
   "trademarkExclusions": [
-    "Coca-Cola",
-    "Pepsi",
-    "Sprite",
-    "Fresca",
-    "Jarritos",
-    "Fanta",
-    "Mountain Dew"
+    "Sur La Table",
+    "Crate & Barrel",
+    "Target Figmint",
+    "Amazon Basics",
+    "Caraway",
+    "Made In",
+    "Our Place"
   ]
 }

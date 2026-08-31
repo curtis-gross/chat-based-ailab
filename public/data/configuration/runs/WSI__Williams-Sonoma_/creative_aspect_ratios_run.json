@@ -1,0 +1,15 @@
+{
+  "aspectRatioResults": {
+    "1:1": "/api/content-audit/image/gen_ref_1788200976937_23.jpg?companyName=WSI%20(Williams-Sonoma)",
+    "4:3": "/api/content-audit/image/gen_ref_1788200977327_913.jpg?companyName=WSI%20(Williams-Sonoma)",
+    "16:9": "/api/content-audit/image/gen_ref_1788200978086_709.jpg?companyName=WSI%20(Williams-Sonoma)",
+    "9:16": "/api/content-audit/image/gen_ref_1788200979357_924.jpg?companyName=WSI%20(Williams-Sonoma)",
+    "3:2": "/api/content-audit/image/gen_ref_1788200979619_219.jpg?companyName=WSI%20(Williams-Sonoma)",
+    "2:3": "/api/content-audit/image/gen_ref_1788200980843_419.jpg?companyName=WSI%20(Williams-Sonoma)",
+    "4:5": "/api/content-audit/image/gen_ref_1788200981595_404.jpg?companyName=WSI%20(Williams-Sonoma)",
+    "5:4": "/api/content-audit/image/gen_ref_1788200982728_526.jpg?companyName=WSI%20(Williams-Sonoma)",
+    "21:9": "/api/content-audit/image/gen_ref_1788200984693_249.jpg?companyName=WSI%20(Williams-Sonoma)"
+  },
+  "originalImage": "/api/content-audit/image/creative_upload_1788200967934_597.jpg?companyName=WSI%20(Williams-Sonoma)",
+  "savedAt": "2026-08-31T18:29:45.203Z"
+}

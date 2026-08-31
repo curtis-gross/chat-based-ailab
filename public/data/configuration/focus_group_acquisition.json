@@ -1,26 +1,26 @@
 [
   {
-    "id": "offer_paloma_bundle",
-    "title": "Squirt Paloma Party Starter",
-    "description": "Stock up on authentic Squirt grapefruit soda cans for weekend taco fiestas and craft Paloma cocktails.",
-    "discount": "Buy 2 12-Packs, Get 1 Free"
+    "id": "offer_le_creuset_bonus",
+    "title": "Williams-Sonoma Heirloom Dutch Oven Exclusive",
+    "description": "Receive a complimentary silicone tool set with the purchase of any Le Creuset 7.25 Qt Round Dutch Oven in French Blue.",
+    "discount": "Complimentary Tool Set ($40 Value)"
   },
   {
-    "id": "offer_zero_sugar_coupon",
-    "title": "Squirt Zero Sugar Digital Coupon",
-    "description": "Experience bold, tart grapefruit refreshment with 0 calories and 0 sugar. Instant digital coupon.",
-    "discount": "$2.00 Off Any 12-Pack"
+    "id": "offer_thermo_clad_bundle",
+    "title": "Thermo-Clad 10-Piece Cookware Event",
+    "description": "Invest in patented 5-ply stainless steel cookware with 35% better heat conductivity and lifetime performance.",
+    "discount": "Free Roasting Pan with 10-Pc Set"
   },
   {
-    "id": "offer_cookout_bundle",
-    "title": "Southwestern Taco & Cookout Bundle",
-    "description": "Pair your favorite grilling meats and Mexican meals with ice-cold Squirt 2-liter bottles and cans.",
-    "discount": "Save $3 on 3 Multi-Packs"
+    "id": "offer_breville_espresso",
+    "title": "Barista Touch Precision Coffee Bonus",
+    "description": "Receive 2 bags of artisan roast espresso beans and 2 double-wall glass cups with Breville espresso machines.",
+    "discount": "Free Barista Starter Kit ($65 Value)"
   },
   {
-    "id": "offer_kdp_rewards",
-    "title": "Keurig Dr Pepper Thirst Rewards",
-    "description": "Join our beverage rewards program to earn points on every Squirt, Dr Pepper, and citrus purchase.",
-    "discount": "$5 Off Your Next Purchase"
+    "id": "offer_the_key_rewards",
+    "title": "The Key Rewards Member Welcome",
+    "description": "Join The Key Rewards across Williams-Sonoma, Pottery Barn, and West Elm to earn 5% back on all purchases.",
+    "discount": "$20 Reward on First $100 Purchase"
   }
 ]

@@ -57,7 +57,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentMode, setMode, is
       id: AppMode.STRATEGIZE, 
       label: 'Strategize Agent', 
       icon: 'Target', 
-      desc: 'Squirt Personas & Strategy',
+      desc: 'WSI Personas & Strategy',
       activeBg: 'bg-purple-50 border-purple-200/80 text-purple-700',
       iconActive: 'bg-purple-100 text-purple-700',
       badge: 'bg-purple-100 text-purple-700'

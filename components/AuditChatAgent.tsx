@@ -624,15 +624,15 @@ export const AuditChatAgent: React.FC = () => {
       lensName = 'Competitor & Retail Benchmark';
       promptFocusInstructions = `
       PRIMARY AUDIT LENS: COMPETITOR BENCHMARK & RETAIL STANDARDS.
-      You MUST evaluate how this beverage/marketing image performs head-to-head against:
-      1. Big Name Category Giants (e.g. Coca-Cola, PepsiCo, Sprite, Keurig Dr Pepper, Monster).
-      2. House Brands & Private Label (e.g. Walmart Great Value, Target Good & Gather, Kroger Big K, Kirkland Signature).
-      3. Modern Functional & Better-for-You Challengers (e.g. Poppi, Olipop, Celsius, Liquid Death).
+      You MUST evaluate how this culinary retail marketing image performs head-to-head against:
+      1. Premium Culinary Specialists (e.g. Sur La Table, Crate & Barrel, Le Creuset, All-Clad, Staub).
+      2. Department Store & Mass Retailers (e.g. Target Figmint, Amazon Basics Kitchen, Macy's Tools of the Trade).
+      3. Modern Direct-to-Consumer Kitchen Brands (e.g. Caraway, Made In, Our Place, Great Jones).
 
       Evaluate:
       1. Shelf & PDP Visual Cut-Through: Eye-flow dominance, contrast, and instant recognition in a crowded retail aisle or e-commerce grid. (0 to 10.0)
-      2. Competitive Brand Distinctiveness: How clearly this asset stands out against rival beverage brands without visual confusion. (0 to 10.0)
-      3. Retail Packaging Pop & Mobile Legibility: How well the product branding and key flavor identifiers read at small mobile app thumbnail scales. (0 to 10.0)
+      2. Competitive Brand Distinctiveness: How clearly this asset stands out against rival culinary brands without visual confusion. (0 to 10.0)
+      3. Retail Packaging Pop & Mobile Legibility: How well the product branding, heirloom materials, and key culinary features read at small mobile app thumbnail scales. (0 to 10.0)
       4. Conversion & Add-to-Cart Appeal: Commercial shopper motivation, appetite appeal, and purchase trigger power compared to competitors. (0 to 10.0)
 
       In categoryLabels provide:
@@ -644,24 +644,24 @@ export const AuditChatAgent: React.FC = () => {
       YOU MUST ALSO POPULATE the "competitiveInsights" object in the JSON output:
       "competitiveInsights": {
         "bigNameMatchup": {
-          "rivals": ["Coca-Cola", "Pepsi", "Mountain Dew"],
-          "advantage": "Specific visual/flavor cue advantage over legacy giants (e.g., crisper condensation, richer flavor storytelling, vibrant color pop).",
-          "vulnerability": "Where legacy leaders hold entrenched visual brand equity or mass familiarity.",
+          "rivals": ["Sur La Table", "Crate & Barrel", "Le Creuset"],
+          "advantage": "Specific visual/culinary storytelling advantage over luxury kitchen specialists (e.g., artisanal French enameled finish, rich culinary heritage, professional chef-grade styling).",
+          "vulnerability": "Where luxury competitors hold entrenched lifestyle aesthetics or boutique showroom familiarity.",
           "verdict": "DOMINATES" // "DOMINATES" | "COMPETITIVE" | "LAGGING"
         },
         "houseBrandMatchup": {
-          "rivals": ["Great Value Cola", "Target Good & Gather", "Kroger Big K"],
-          "premiumSeparation": "How the typography, lighting, and finish visually command a premium price tier and avoid generic private-label look-alike perception.",
-          "designDefensibility": "Why a store brand cannot easily clone or cheapen this visual identity.",
+          "rivals": ["Target Figmint", "Amazon Basics Kitchen", "Macy's Tools of the Trade"],
+          "premiumSeparation": "How the heirloom craftsmanship, heavy-gauge clad stainless, and typography visually command a luxury price tier and avoid generic private-label look-alike perception.",
+          "designDefensibility": "Why a mass retail brand cannot easily clone or cheapen this Williams-Sonoma culinary heritage.",
           "verdict": "STRONG_SEPARATION" // "STRONG_SEPARATION" | "MODERATE" | "RISK_OF_BLENDING"
         },
         "challengerMatchup": {
-          "rivals": ["Poppi", "Olipop", "Celsius"],
-          "modernAestheticAppeal": "Assessment of how modern, fresh, and social-first the styling is against viral DTC/clean-label drinks.",
+          "rivals": ["Caraway", "Made In", "Our Place"],
+          "modernAestheticAppeal": "Assessment of how modern, functional, and social-first the culinary styling is against viral direct-to-consumer cookware brands.",
           "verdict": "TREND_FORWARD" // "TREND_FORWARD" | "BALANCED" | "NEEDS_MODERNIZATION"
         },
-        "shelfEyeShare": "Top 12% Visual Dominance",
-        "retailReadinessRating": "A+ (E-Commerce PDP & End-Cap Dominant)"
+        "shelfEyeShare": "Top 10% Visual Dominance",
+        "retailReadinessRating": "A+ (E-Commerce PDP & Luxury Retail Dominant)"
       }
       `;
     } else if (customFocus) {
@@ -726,24 +726,24 @@ export const AuditChatAgent: React.FC = () => {
         ${isCompetitorLens ? `,
         "competitiveInsights": {
           "bigNameMatchup": {
-            "rivals": ["Coca-Cola", "Pepsi", "Dr Pepper"],
+            "rivals": ["Sur La Table", "Crate & Barrel", "Le Creuset"],
             "advantage": "string",
             "vulnerability": "string",
             "verdict": "DOMINATES"
           },
           "houseBrandMatchup": {
-            "rivals": ["Great Value", "Kirkland Signature", "Target Good & Gather"],
+            "rivals": ["Target Figmint", "Amazon Basics Kitchen", "Macy's Tools of the Trade"],
             "premiumSeparation": "string",
             "designDefensibility": "string",
             "verdict": "STRONG_SEPARATION"
           },
           "challengerMatchup": {
-            "rivals": ["Poppi", "Olipop", "Celsius"],
+            "rivals": ["Caraway", "Made In", "Our Place"],
             "modernAestheticAppeal": "string",
             "verdict": "TREND_FORWARD"
           },
-          "shelfEyeShare": "Top 12% Visual Dominance",
-          "retailReadinessRating": "A+ (E-Commerce PDP & End-Cap Dominant)"
+          "shelfEyeShare": "Top 10% Visual Dominance",
+          "retailReadinessRating": "A+ (E-Commerce PDP & Luxury Retail Dominant)"
         }` : ''}
       }
       `;

@@ -1,13 +1,13 @@
 {
   "branding": {
-    "companyName": "Keurig Dr. Pepper",
-    "logo": "/images/screenshot_2026_08_25_at_7.46.34_am.png",
+    "companyName": "WSI (Williams-Sonoma)",
+    "logo": "/images/screenshot_2026_08_31_at_11.27.41_am.png",
     "colors": {
       "primary": "#FFFFFF",
-      "secondary": "#111827",
-      "accent": "#1A73E8"
+      "secondary": "#0F172A",
+      "accent": "#002B49"
     },
-    "metaTitle": "Brand Sentiment and Reputation Monitoring",
+    "metaTitle": "WSI (Williams-Sonoma) Brand Intelligence & Marketing AI Lab",
     "logoHeight": 128,
     "industryType": "Retail"
   },
@@ -35,14 +35,14 @@
   ],
   "pages": {
     "MARKETING_BRIEF": {
-      "defaultGoal": "To re-acquire the 18-34 year old demographic.",
-      "heroImage": "/images/generated/brief_hero.webp"
+      "defaultGoal": "To inspire and engage culinary enthusiasts, wedding registry shoppers, and home entertainers with heirloom-quality kitchenware.",
+      "heroImage": "/images/default-pot.png"
     },
     "CONTENT_STUDIO": {
-      "primaryProductImage": "/images/screenshot_2026_08_11_at_2.54.07_pm.png",
+      "primaryProductImage": "/images/default-pot.png",
       "secondaryStyleReference": "",
       "multiImageReferences": [
-        "/images/screenshot_2026_04_29_at_2.57.49_pm.png"
+        "/images/default-pot.png"
       ],
       "contentVersioningReference": "/images/download.jpg",
       "productSpinReferences": [
@@ -57,27 +57,27 @@
         "PERSONALIZATION"
       ],
       "youtubeBannerTemplate": "/images/screenshot_2026_04_29_at_7.39.51_am.png",
-      "multiImagePersona": "younger social entertainer in their late 20s",
-      "multiImageProduct": "Squirt Grapefruit Soda can",
+      "multiImagePersona": "passionate gourmet home chef and entertainer in their mid-30s",
+      "multiImageProduct": "Williams Sonoma Signature Enameled Cast Iron Dutch Oven in French Blue",
       "multiImageLocations": [
-        "On a sunny backyard patio table next to street tacos and fresh limes",
-        "In an ice-filled cooler at an outdoor gathering",
-        "On a kitchen bar counter prepared for Paloma cocktails"
+        "On a white marble kitchen island with fresh rosemary and artisan sourdough bread",
+        "Simmering coq au vin on a professional 6-burner gas range in a sunlit open kitchen",
+        "Centered on a reclaimed French oak dining table set for an intimate dinner party"
       ]
     }
   },
   "adAnalysisVideos": [
     {
       "id": "MrJOCtA_w68",
-      "title": "Squirt Citrus Refreshment Campaign",
+      "title": "Williams-Sonoma - Heirloom Cast Iron & Culinary Masterclass",
       "url": "https://www.youtube.com/watch?v=MrJOCtA_w68",
-      "description": "Analysis of Squirt market trends, Paloma cocktail culture, and beverage consumer behavior."
+      "description": "Evaluation of culinary storytelling, craft demonstrations, and cookware durability using the YouTube ABCD Framework."
     },
     {
       "id": "QVhwdWr1i-Y",
-      "title": "Keurig Dr Pepper Brand Spotlight",
+      "title": "WSI Brand Spotlight - Art of Modern Entertaining",
       "url": "https://www.youtube.com/watch?v=QVhwdWr1i-Y",
-      "description": "Analysis of Keurig Dr Pepper advertising using YouTube ABCD Framework."
+      "description": "ABCD multimodal analysis of Williams-Sonoma entertaining essentials and tableware styling."
     }
   ],
   "metadataVideos": []

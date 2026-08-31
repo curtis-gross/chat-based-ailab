@@ -686,10 +686,10 @@ export const generateAudienceSegments = async (context: string): Promise<any[]> 
                     Company Context: ${context}
                     
                     **IMPORTANT**: If the company context indicates a retail or product-based company (like fashion, body care, fitness apparel, etc.), ensure that the generated segments, bios, and next best actions use product-focused language rather than subscription or insurance-focused language.
-                    **SQUIRT / CITRUS BEVERAGE SPECIALIZATION**: If the context indicates Squirt or citrus soda, align the 3 generated segments to:
-                    1. "The Cultural Traditionalist" (Core values: cultural continuity, family gathering, authentic heritage; desires familiar staples that pair naturally with traditional food and celebrations; competitors: Jarritos Toronja, Fresca, Peñafiel; recommended: Squirt Original 2L/12-packs & Mexican Squirt glass bottles).
-                    2. "The Modern Mixologist" (Core values: elevating social experiences, culinary discovery, aesthetic hosting; desires premium yet unpretentious mixer with real grapefruit bite for cocktails; competitors: Fever-Tree Pink Grapefruit, Q Mixers, Topo Chico; recommended: Squirt Zero Sugar, Ruby Red, 7.5 oz mini-cans).
-                    3. "The Nostalgic Flavor Purist" (Core values: comfort in timeless taste, anti-trend reliability, no-nonsense refreshment; desires crisp tart citrus flavor consistent over decades; competitors: Fresca, Sun Drop, Mountain Dew; recommended: Squirt Original, Squirt Zero Sugar 12-packs & 20 oz bottles).
+                    **WILLIAMS-SONOMA / CULINARY RETAIL SPECIALIZATION**: If the context indicates Williams-Sonoma or gourmet kitchen retail, align the 3 generated segments to:
+                    1. "The Heirloom Traditionalist" (Core values: heirloom durability, timeless French culinary tradition, lifetime performance; desires investment cookware pieces that last generations, master slow braising, and present elegantly on table; competitors: Le Creuset Boutique, Staub, Sur La Table, All-Clad; recommended: Williams Sonoma Thermo-Clad Stainless 10-Piece Set, Le Creuset Enameled Cast Iron Dutch Oven).
+                    2. "The Aesthetic Host & Mixologist" (Core values: visual elegance, effortless hospitality, modern entertaining, bar-cart curation; desires striking crystal glassware, marble cheese boards, aesthetic cocktail tools, and gourmet pantry accents; competitors: Crate & Barrel, CB2, Anthropologie Home; recommended: Williams Sonoma Dorset Crystal Cocktail Coupes, Marble & Brass Serveware, Artisan Agrumato Olive Oil).
+                    3. "The Kitchen Tech Purist" (Core values: culinary precision, thermal accuracy, Japanese blade craft, cutting-edge smart electrics; desires professional-grade smart kitchen electrics, VG-MAX Japanese cutlery, and exact-temperature precision tools; competitors: Sur La Table, Seattle Coffee Gear, Hedley & Bennett, Zwilling; recommended: Breville Barista Touch Impress Espresso Machine, Shun Classic 8" Damascus Chef Knife, Vitamix A3500 Smart Ascent Blender).
                     
                     For each audience, provide the following fields in the JSON structure:
                     1. "name": A compelling Segment Name (e.g., "The Busy Parent", "The Trendsetter")
@@ -6905,15 +6905,15 @@ export interface GoogleAdsGenerationParams {
 export const generateGoogleAdsCampaign = async (
     params: GoogleAdsGenerationParams
 ): Promise<GoogleAdsCampaignPackage> => {
-    const brandName = params.brandContext || brandConfig.companyName || 'Squirt';
+    const brandName = params.brandContext || brandConfig.companyName || 'WSI (Williams-Sonoma)';
     
     const personaSummary = params.targetPersonas.map((p, idx) => `
     Persona ${idx + 1}: ${p.name} (${p.personaName || 'Representative'})
     - Core Driver: ${p.coreValues || 'N/A'}
     - Desires: ${p.whatTheyWant || 'N/A'}
-    - Demographics: Age ${p.ageRange || '21-50'}, Income ${p.incomeRange || '$45k-$100k'}
-    - Competitors: ${(p.competitorBrands || []).join(', ') || 'Fresca, Jarritos'}
-    - Products: ${(p.recommendedProducts || []).join(', ') || 'Original, Zero Sugar'}
+    - Demographics: Age ${p.ageRange || '28-60'}, Income ${p.incomeRange || '$85k-$250k+'}
+    - Competitors: ${(p.competitorBrands || []).join(', ') || 'Sur La Table, Crate & Barrel'}
+    - Products: ${(p.recommendedProducts || []).join(', ') || 'Thermo-Clad Cookware, Le Creuset Dutch Oven'}
     - Key Characteristics: ${p.keyCharacteristics || 'N/A'}
     `).join('\n');
 
@@ -6947,15 +6947,15 @@ export const generateGoogleAdsCampaign = async (
        - Strictly MAXIMUM 90 CHARACTERS each.
     4. AD GROUPS:
        - Create 3 dedicated Ad Groups mapping directly to the personas:
-         * Ad Group 1: The Modern Mixologist (Paloma mixer, craft cocktails, 7.5 oz mini cans, patio hosting)
-         * Ad Group 2: The Cultural Traditionalist (Mexican Squirt real cane sugar glass bottles, 2L family packs, food pairings)
-         * Ad Group 3: The Nostalgic Flavor Purist (Classic crisp grapefruit soda, anti-trend, 12-pack cans, zero sugar)
+         * Ad Group 1: The Heirloom Culinary Traditionalist (French enameled cast iron, Dutch ovens, heritage braising, Thermo-Clad sets)
+         * Ad Group 2: The Aesthetic Host & Mixologist (Crystal glassware, Dorset barware, entertaining platters, tablescapes, gourmet pantry)
+         * Ad Group 3: The Gourmet Kitchen Purist (Japanese cutlery, Shun knives, Breville espresso, Vitamix blenders, precision tools)
        - For each Ad Group, provide:
          * 5-7 high-intent keywords with Google Ads match notations:
-           - Exact Match: enclosed in square brackets e.g. [paloma cocktail mixer]
-           - Phrase Match: enclosed in double quotes e.g. "best grapefruit soda for paloma"
-           - Broad Match: standard keywords e.g. squirt zero sugar mini cans
-         * Estimated CPC ($0.80 - $2.50)
+           - Exact Match: enclosed in square brackets e.g. [le creuset dutch oven]
+           - Phrase Match: enclosed in double quotes e.g. "best stainless steel cookware set"
+           - Broad Match: standard keywords e.g. williams sonoma espresso machine sale
+         * Estimated CPC ($0.80 - $3.50)
          * Search Intent ('High Commercial', 'Transactional', 'Informational', or 'Competitor Conquesting')
          * Persona Trigger explanation
          * 3-5 Negative Keywords specifically for that Ad Group
@@ -7123,25 +7123,25 @@ export const generateGoogleAdsCampaign = async (
             targetGeos: Array.isArray(parsed.targetGeos) ? parsed.targetGeos : [params.geoFocus],
             targetLanguages: Array.isArray(parsed.targetLanguages) ? parsed.targetLanguages : ['English', 'Spanish'],
             adSchedule: parsed.adSchedule || 'All hours (bid-adjusted for peak afternoon & weekend hours)',
-            strategicRationale: parsed.strategicRationale || 'Campaign structured across persona-specific ad groups with tailored search intent and real grapefruit tartness messaging.',
+            strategicRationale: parsed.strategicRationale || 'Campaign structured across persona-specific ad groups with tailored search intent and heirloom culinary craftsmanship messaging.',
             personasInvolved: Array.isArray(parsed.personasInvolved) ? parsed.personasInvolved : params.targetPersonas.map(p => p.name),
             adGroups,
             sitelinks: (parsed.sitelinks || []).map((s: any) => ({
-                linkText: sanitizeText(s.linkText || 'Shop Squirt', 25),
-                line1: sanitizeText(s.line1 || 'Find store availability near you', 35),
-                line2: sanitizeText(s.line2 || 'Original and Zero Sugar citrus', 35),
-                url: s.url || 'https://www.squirtsoda.com'
+                linkText: sanitizeText(s.linkText || 'Shop Williams-Sonoma', 25),
+                line1: sanitizeText(s.line1 || 'Heirloom cookware & cutlery', 35),
+                line2: sanitizeText(s.line2 || 'Free shipping on eligible orders', 35),
+                url: s.url || 'https://www.williams-sonoma.com'
             })),
             callouts: (parsed.callouts || []).map((c: string) => sanitizeText(c, 25)),
             structuredSnippets: {
-                header: parsed.structuredSnippets?.header || 'Varieties',
-                values: (parsed.structuredSnippets?.values || ['Original Citrus', 'Zero Sugar', 'Ruby Red', 'Mexican Glass Bottle']).map((v: string) => sanitizeText(v, 25))
+                header: parsed.structuredSnippets?.header || 'Departments',
+                values: (parsed.structuredSnippets?.values || ['Cookware', 'Cutlery', 'Electrics', 'Tabletop & Bar']).map((v: string) => sanitizeText(v, 25))
             },
             audienceSignals: (parsed.audienceSignals || []).map((a: any) => ({
                 category: a.category || 'Custom Intent',
-                name: a.name || 'Citrus Beverage Shoppers',
+                name: a.name || 'Gourmet Kitchen Shoppers',
                 details: a.details || '',
-                personaLink: a.personaLink || 'The Modern Mixologist'
+                personaLink: a.personaLink || 'The Heirloom Culinary Traditionalist'
             })),
             timestamp: new Date().toISOString()
         };

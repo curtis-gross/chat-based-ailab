@@ -1,0 +1,79 @@
+{
+  "sessions": [
+    {
+      "sessionId": "session_1788200962743",
+      "title": "Uploaded Image: le-creuset-signature-enameled",
+      "timestamp": "Aug 31, 11:29 AM",
+      "messageCount": 4,
+      "previewImage": "/api/content-audit/image/gen_ref_1788200976937_23.jpg?companyName=WSI%20(Williams-Sonoma)",
+      "currentReferenceImage": "/api/content-audit/image/creative_upload_1788200967934_597.jpg?companyName=WSI%20(Williams-Sonoma)",
+      "currentReferenceVideo": null,
+      "isPinned": false,
+      "messages": [
+        {
+          "id": "user_1788200968850",
+          "sender": "user",
+          "timestamp": "11:29 AM",
+          "text": "Uploaded Image: le-creuset-signature-enameled-cast-iron-round-wide-dutch-o-xl.jpg",
+          "uploadedImageBase64": "/api/content-audit/image/creative_upload_1788200967934_597.jpg?companyName=WSI%20(Williams-Sonoma)"
+        },
+        {
+          "id": "assistant_1788200968851",
+          "sender": "assistant",
+          "timestamp": "11:29 AM",
+          "text": "I have received your image asset. What creative action would you like to perform?",
+          "clarifyingOptions": {
+            "question": "Select an AI creative action:",
+            "options": [
+              {
+                "label": "📐 Generate Multiple Aspect Ratios (9 Formats: 1:1, 16:9, 9:16, 4:3, etc.)",
+                "action": "generate_aspect_ratios",
+                "payload": {
+                  "imageBase64": "/api/content-audit/image/creative_upload_1788200967934_597.jpg?companyName=WSI%20(Williams-Sonoma)"
+                }
+              },
+              {
+                "label": "🎨 Edit / Restyle Image (Change background, elements, lighting, theme)",
+                "action": "prompt_for_edit",
+                "payload": {
+                  "imageBase64": "/api/content-audit/image/creative_upload_1788200967934_597.jpg?companyName=WSI%20(Williams-Sonoma)"
+                }
+              },
+              {
+                "label": "🎬 Animate Image to Video Motion (Gemini Omni Flash Preview)",
+                "action": "animate_image_to_video",
+                "payload": {
+                  "imageBase64": "/api/content-audit/image/creative_upload_1788200967934_597.jpg?companyName=WSI%20(Williams-Sonoma)"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "user_1788200972380",
+          "sender": "user",
+          "timestamp": "11:29 AM",
+          "text": "📐 Generate Multiple Aspect Ratios (9 Formats: 1:1, 16:9, 9:16, 4:3, etc.)"
+        },
+        {
+          "id": "assistant_ratios_1788200972381",
+          "sender": "assistant",
+          "timestamp": "11:29 AM",
+          "text": "Generating **9 Aspect Ratio Variations** adapted for social, display, and video banners:",
+          "aspectRatioResults": {
+            "1:1": "/api/content-audit/image/gen_ref_1788200976937_23.jpg?companyName=WSI%20(Williams-Sonoma)",
+            "4:3": "/api/content-audit/image/gen_ref_1788200977327_913.jpg?companyName=WSI%20(Williams-Sonoma)",
+            "16:9": "/api/content-audit/image/gen_ref_1788200978086_709.jpg?companyName=WSI%20(Williams-Sonoma)",
+            "9:16": "/api/content-audit/image/gen_ref_1788200979357_924.jpg?companyName=WSI%20(Williams-Sonoma)",
+            "3:2": "/api/content-audit/image/gen_ref_1788200979619_219.jpg?companyName=WSI%20(Williams-Sonoma)",
+            "2:3": "/api/content-audit/image/gen_ref_1788200980843_419.jpg?companyName=WSI%20(Williams-Sonoma)",
+            "4:5": "/api/content-audit/image/gen_ref_1788200981595_404.jpg?companyName=WSI%20(Williams-Sonoma)",
+            "5:4": "/api/content-audit/image/gen_ref_1788200982728_526.jpg?companyName=WSI%20(Williams-Sonoma)",
+            "21:9": "/api/content-audit/image/gen_ref_1788200984693_249.jpg?companyName=WSI%20(Williams-Sonoma)"
+          }
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-08-31T18:30:09.822Z"
+}

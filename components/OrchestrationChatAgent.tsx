@@ -46,10 +46,10 @@ import {
 import { useCompanyContext } from '../context/CompanyContext';
 import { useAppConfig } from '../context/AppConfigContext';
 import { 
-  DEFAULT_SQUIRT_GENERATED_PERSONAS, 
+  DEFAULT_WSI_GENERATED_PERSONAS, 
   DEFAULT_STANDARD_PERSONAS 
 } from './StrategyChatAgent';
-import { SQUIRT_SYNTHETIC_DATASET, SQUIRT_DATASET_SUMMARY } from '../data/squirtDataset';
+import { WSI_SYNTHETIC_DATASET, WSI_DATASET_SUMMARY } from '../data/wsiDataset';
 import { generateGoogleAdsCampaign } from '../services/geminiService';
 
 export interface OrchestrationChatMessage {
@@ -76,7 +76,7 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
 }) => {
   const { name: companyContextName } = useCompanyContext();
   const { config } = useAppConfig();
-  const activeBrandName = companyContextName || config?.branding?.companyName || 'Squirt';
+  const activeBrandName = companyContextName || config?.branding?.companyName || 'WSI (Williams-Sonoma)';
 
   // Chat State
   const [messages, setMessages] = useState<OrchestrationChatMessage[]>([]);
@@ -100,7 +100,7 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Active target personas to pull from
-  const effectivePersonas = personas.length > 0 ? personas : DEFAULT_SQUIRT_GENERATED_PERSONAS;
+  const effectivePersonas = personas.length > 0 ? personas : DEFAULT_WSI_GENERATED_PERSONAS;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -121,23 +121,23 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
     const welcomeMsg: OrchestrationChatMessage = {
       id: 'welcome_msg',
       sender: 'orchestrator',
-      text: `Hello! I am the **Campaign Orchestration Agent** for **${activeBrandName}**.\n\nI synthesize your brand's synthetic personas (*The Cultural Traditionalist*, *The Modern Mixologist*, *The Nostalgic Flavor Purist*, and baseline controls) with retail telemetry to architect complete, ready-to-execute **Google Ads Campaigns**.\n\nSelect an instant campaign preset below, or describe your marketing objective:`,
+      text: `Hello! I am the **Campaign Orchestration Agent** for **${activeBrandName}**.\n\nI synthesize your brand's synthetic personas (*The Heirloom Culinary Traditionalist*, *The Aesthetic Host & Mixologist*, *The Gourmet Kitchen Purist*, and baseline controls) with retail telemetry to architect complete, ready-to-execute **Google Ads Campaigns**.\n\nSelect an instant campaign preset below, or describe your marketing objective:`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       options: [
         {
-          label: '🍹 Paloma Summer Mixology ($150/day)',
-          action: () => handleExecutePreset('paloma')
+          label: '🍳 Heirloom Dutch Oven & Cookware ($250/day)',
+          action: () => handleExecutePreset('cookware')
         },
         {
-          label: '🌮 Authentic Mexican Squirt Heritage ($200/day)',
-          action: () => handleExecutePreset('heritage')
+          label: '☕ Smart Electrics & Espresso ($200/day)',
+          action: () => handleExecutePreset('espresso')
         },
         {
-          label: '⚡ Zero Sugar Thirst Quencher Trial ($100/day)',
-          action: () => handleExecutePreset('zerosugar')
+          label: '🍷 Tabletop & Modern Entertaining ($150/day)',
+          action: () => handleExecutePreset('entertaining')
         },
         {
-          label: '🎯 Omnichannel Full Portfolio ($500/day)',
+          label: '🎯 Omnichannel Registry & Luxury Portfolio ($500/day)',
           action: () => handleExecutePreset('fullportfolio')
         }
       ]
@@ -153,43 +153,43 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
   };
 
   // Preset dispatcher
-  const handleExecutePreset = (presetType: 'paloma' | 'heritage' | 'zerosugar' | 'fullportfolio') => {
+  const handleExecutePreset = (presetType: 'cookware' | 'espresso' | 'entertaining' | 'fullportfolio') => {
     let promptText = '';
     let productFocus = '';
-    let budgetDaily = 150;
-    let monthlyBudget = 4500;
-    let geo = 'Texas, California, Arizona, Nevada, Colorado, Illinois';
+    let budgetDaily = 250;
+    let monthlyBudget = 7500;
+    let geo = 'California, New York, Texas, Illinois, Florida, Massachusetts, Washington';
     let goal = '';
 
     switch (presetType) {
-      case 'paloma':
-        promptText = 'Build a Google Ads Search & Performance Max campaign for Squirt Paloma Mixology targeting Modern Mixologists with a $150/day budget.';
-        productFocus = 'Squirt Zero Sugar, Ruby Red Squirt, and 7.5 oz Mini-Cans for Craft Paloma Mixology';
-        budgetDaily = 150;
-        monthlyBudget = 4500;
-        goal = 'High-Intent Craft Paloma Cocktail Search & Modern Mixology Displacement';
+      case 'cookware':
+        promptText = 'Build a Google Ads Search & Performance Max campaign for Williams-Sonoma Signature Cast Iron & Thermo-Clad Cookware targeting Heirloom Home Chefs with a $250/day budget.';
+        productFocus = 'Le Creuset Signature Round Dutch Oven and Williams-Sonoma Thermo-Clad 10-Piece Cookware Set';
+        budgetDaily = 250;
+        monthlyBudget = 7500;
+        goal = 'High-Intent Heirloom Cookware Search & Le Creuset Dutch Oven Positioning';
         break;
-      case 'heritage':
-        promptText = 'Build a Google Ads campaign for Authentic Mexican Squirt (glass bottles with real cane sugar) and 2L multi-packs for Hispanic family feasts.';
-        productFocus = 'Mexican Squirt (Real Sugar Glass Bottles) and Squirt Original 2L / 12-Pack Cans';
+      case 'espresso':
+        promptText = 'Build a Google Ads Search & Shopping campaign for Breville Smart Espresso Machines & Vitamix Blenders targeting Gourmet Kitchen Purists with a $200/day budget.';
+        productFocus = 'Breville Barista Touch Impress Espresso Machine and Vitamix A3500 Smart Blender';
         budgetDaily = 200;
         monthlyBudget = 6000;
-        goal = 'Supermarket Pantry Penetration & Hispanic Cultural Heritage Feasts';
+        goal = 'Precision Kitchen Electrics Trial & Espresso Machine Upgrade Cycle';
         break;
-      case 'zerosugar':
-        promptText = 'Build a Google Ads campaign for Squirt Zero Sugar daytime thirst-quenching targeting flavor purists and wellness switchers.';
-        productFocus = 'Squirt Zero Sugar 12-packs and 20 oz bottles';
-        budgetDaily = 100;
-        monthlyBudget = 3000;
-        goal = 'Diet & Zero Sugar Trial without artificial sweetener aftertaste';
+      case 'entertaining':
+        promptText = 'Build a Google Ads campaign for Williams-Sonoma Dorset Crystal Glassware, Marble Bar Carts, and Artisan Pantry Gifting targeting Entertaining Hosts with a $150/day budget.';
+        productFocus = 'Dorset Crystal Cocktail Coupes, Marble Entertaining Trays, and Williams-Sonoma Reserve Olive Oil';
+        budgetDaily = 150;
+        monthlyBudget = 4500;
+        goal = 'Entertaining & Bar-Cart Discovery with Aesthetic Home Styling';
         break;
       case 'fullportfolio':
       default:
-        promptText = 'Build a comprehensive 3-AdGroup Google Ads campaign covering Mixology, Heritage, and Timeless Citrus across all 3 synthetic segments.';
-        productFocus = 'Full Squirt Portfolio (Original, Zero Sugar, Ruby Red, Mexican Glass Bottle)';
+        promptText = 'Build a comprehensive 3-AdGroup Google Ads campaign covering Cookware, Precision Electrics, and Tabletop Entertaining across all 3 synthetic segments.';
+        productFocus = 'Full Williams-Sonoma Portfolio (Le Creuset, Thermo-Clad, Breville, Dorset Glassware, Peppermint Bark)';
         budgetDaily = 500;
         monthlyBudget = 15000;
-        goal = 'Omnichannel Category Dominance & Brand Conquesting';
+        goal = 'Omnichannel Category Dominance & Wedding Registry Acquisition';
         break;
     }
 
@@ -228,14 +228,14 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
     const thinkingMsg: OrchestrationChatMessage = {
       id: thinkingMsgId,
       sender: 'orchestrator',
-      text: `Synthesizing campaign for **${activeBrandName}**...\n- Product Focus: *${params.productFocus}*\n- Daily Budget: *$${params.budgetDaily}/day* ($${params.monthlyBudget.toLocaleString()}/mo)\n- Grounded in 3 calibrated personas: *The Cultural Traditionalist*, *The Modern Mixologist*, *The Nostalgic Flavor Purist*.`,
+      text: `Synthesizing campaign for **${activeBrandName}**...\n- Product Focus: *${params.productFocus}*\n- Daily Budget: *$${params.budgetDaily}/day* ($${params.monthlyBudget.toLocaleString()}/mo)\n- Grounded in 3 calibrated personas: *The Heirloom Culinary Traditionalist*, *The Aesthetic Host & Mixologist*, *The Gourmet Kitchen Purist*.`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       isThinking: true
     };
     setMessages(prev => [...prev, thinkingMsg]);
 
     try {
-      setLoadingStep('2/4: Grounding in Squirt telemetry & competitor conquesting...');
+      setLoadingStep('2/4: Grounding in Williams-Sonoma telemetry & luxury cookware conquesting...');
       await new Promise(r => setTimeout(r, 600));
 
       setLoadingStep('3/4: Drafting 15 RSA headlines (≤30 char) & match-typed keywords...');
@@ -253,10 +253,10 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
           personaName: p.personaName,
           coreValues: p.coreValues || p.status,
           whatTheyWant: (p as any).whatTheyWant || p.bioLifestyleNeeds,
-          competitorBrands: (p as any).competitorBrands || ['Jarritos', 'Fresca', 'Fever-Tree'],
-          recommendedProducts: (p as any).recommendedProducts || ['Squirt Original', 'Squirt Zero Sugar'],
-          ageRange: (p as any).ageRange || '21-50',
-          incomeRange: (p as any).incomeRange || '$45,000 - $100,000',
+          competitorBrands: (p as any).competitorBrands || ['Sur La Table', 'Crate & Barrel', 'Le Creuset'],
+          recommendedProducts: (p as any).recommendedProducts || ['Williams-Sonoma Thermo-Clad Set', 'Le Creuset Dutch Oven'],
+          ageRange: (p as any).ageRange || '28-60',
+          incomeRange: (p as any).incomeRange || '$85,000 - $250,000+',
           lifestyle: p.bioLifestyleNeeds,
           keyCharacteristics: (p as any).keyCharacteristics
         }))
@@ -292,7 +292,7 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
             action: () => executeCampaignGeneration(params)
           },
           {
-            label: '📂 Load Cached Squirt Campaign Run',
+            label: '📂 Load Cached WSI Campaign Run',
             action: () => handleLoadLastRun()
           }
         ]
@@ -334,10 +334,10 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
     }
 
     executeCampaignGeneration({
-      productFocus: text.toLowerCase().includes('zero') ? 'Squirt Zero Sugar' : text.toLowerCase().includes('mexican') ? 'Mexican Squirt Glass Bottles' : 'Squirt Citrus Soda Portfolio',
+      productFocus: text.toLowerCase().includes('cookware') ? 'Williams-Sonoma Thermo-Clad Cookware' : text.toLowerCase().includes('espresso') ? 'Breville Smart Espresso Machines' : 'Williams-Sonoma Heirloom Cookware & Tabletop',
       budgetDaily,
       monthlyBudget,
-      geoFocus: 'Top Metro & Sunbelt Markets (TX, CA, AZ, NV, CO, IL)',
+      geoFocus: 'Top Metro & Culinary Markets (CA, NY, TX, IL, FL, MA, WA)',
       campaignGoal: 'Google Search & PMax Conversion Drive',
       userCustomInstructions: text
     });
@@ -379,7 +379,7 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
 
       // Fallback to static seed if needed
       if (!data || !data.campaign) {
-        const seedRes = await fetch('/data/configuration/runs/Squirt/orchestration_campaign_run.json');
+        const seedRes = await fetch('/data/configuration/runs/Williams_Sonoma/orchestration_campaign_run.json');
         if (seedRes.ok) {
           data = await seedRes.json();
         }
@@ -426,7 +426,7 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
       const h3 = ag.headlines[2]?.text || '';
       const d1 = ag.descriptions[0]?.text || '';
       const d2 = ag.descriptions[1]?.text || '';
-      const finalUrl = 'https://www.squirtsoda.com';
+      const finalUrl = 'https://www.williams-sonoma.com';
 
       // 1. Output the Ad record
       rows.push([
@@ -480,7 +480,7 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
       const h3 = ag.headlines[2]?.text || '';
       const d1 = ag.descriptions[0]?.text || '';
       const d2 = ag.descriptions[1]?.text || '';
-      const url = 'https://www.squirtsoda.com';
+      const url = 'https://www.williams-sonoma.com';
 
       // Ad row
       lines.push([activeCampaign.campaignName, ag.name, '', '', h1, h2, h3, d1, d2, url].join('\t'));
@@ -1111,20 +1111,20 @@ export const OrchestrationChatAgent: React.FC<OrchestrationChatAgentProps> = ({
                                 <span className="font-bold text-xs text-gray-900">Sponsored</span>
                                 <span className="text-gray-400 text-xs">•</span>
                                 <div className="flex items-center gap-1 text-xs text-gray-600">
-                                  <div className="w-4 h-4 rounded-full bg-amber-600 text-white text-[9px] flex items-center justify-center font-bold">S</div>
-                                  <span className="font-medium text-gray-800">Squirt Soda</span>
-                                  <span className="text-gray-400">https://www.squirtsoda.com/official</span>
+                                  <div className="w-4 h-4 rounded-full bg-slate-900 text-white text-[9px] flex items-center justify-center font-bold">W</div>
+                                  <span className="font-medium text-gray-800">Williams-Sonoma</span>
+                                  <span className="text-gray-400">https://www.williams-sonoma.com/official</span>
                                 </div>
                               </div>
 
                               {/* Google Ads Dynamic Headline */}
                               <h3 className="text-lg text-[#1a0dab] hover:underline cursor-pointer font-medium leading-snug">
-                                {msg.campaignPackage.adGroups[0]?.headlines[0]?.text || 'Squirt Grapefruit Soda'} | {msg.campaignPackage.adGroups[0]?.headlines[1]?.text || 'The Real Citrus Thirst Quencher'} | Official Store
+                                {msg.campaignPackage.adGroups[0]?.headlines[0]?.text || 'Williams-Sonoma Official'} | {msg.campaignPackage.adGroups[0]?.headlines[1]?.text || 'Heirloom Cookware & Luxury Kitchenware'} | Official Store
                               </h3>
 
                               {/* Description Snippet */}
                               <p className="text-sm text-[#4d5156] mt-1.5 leading-relaxed">
-                                {msg.campaignPackage.adGroups[0]?.descriptions[0]?.text || 'Crisp tart grapefruit refreshment with real citrus juice. Perfect on its own or mixed into an authentic Paloma.'}
+                                {msg.campaignPackage.adGroups[0]?.descriptions[0]?.text || 'Discover heirloom cookware, artisan cutlery, and luxury kitchen electrics. Free shipping on eligible orders.'}
                               </p>
 
                               {/* Callouts inline */}

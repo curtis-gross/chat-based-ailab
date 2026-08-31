@@ -1,0 +1,77 @@
+{
+  "run": {
+    "question": "What is your primary consideration when investing in heirloom cookware like Le Creuset or Thermo-Clad?",
+    "summary": "The calibrated 6-persona culinary panel demonstrated unanimous conviction for lifetime heirloom craftsmanship, superior thermal conductivity, and aesthetic stovetop presence. The Heirloom Traditionalist and Gourmet Purist emphasized heavy-gauge 5-ply clad stainless and enameled cast iron heat retention for braising and searing consistency, while The Aesthetic Host highlighted visual elegance from oven-to-table presentation. The baseline controls affirmed premium value, with Arthur Vance validating the absence of chemical non-stick coatings and Sam Taylor noting lifetime warranty replacement protection.",
+    "consensusPoints": [
+      "Williams-Sonoma heirloom pieces provide superior lifetime durability and thermal performance compared to disposable non-stick pans.",
+      "Dual functionality: exceptional culinary heating characteristics combined with iconic oven-to-table aesthetic presentation."
+    ],
+    "divergentPoints": [
+      "Classic heritage vs. Modern precision: Traditionalists prioritize French enameled cast iron colors and time-tested braising pedigree, while Tech Purists prioritize Rockwell 61 blade hardness and PID-calibrated electrics.",
+      "Entertaining vs. Utility: Aesthetic hosts focus on crystal clarity and bar cart photogenic styling, whereas daily home chefs demand dishwasher safety and durable stainless cladding."
+    ],
+    "responses": [
+      {
+        "personaId": "wsi_gen_traditionalist",
+        "personaName": "Eleanor Vance",
+        "archetype": "The Heirloom Traditionalist",
+        "isStandardDefault": false,
+        "answer": "When I invest in Williams-Sonoma cookware, I am buying pieces that will be passed down to my children. My Le Creuset 7.25 Qt French Blue Dutch oven distributes heat with absolute perfection—there are no hot spots, and braises stay tender and moist for hours. Plus, serving directly from it onto the dining table feels warm, generous, and timeless.",
+        "sentiment": "enthusiastic",
+        "favoriteFlavorMentioned": "Le Creuset Enameled Cast Iron Dutch Oven (French Blue) & Thermo-Clad Stainless",
+        "keyReason": "Heirloom longevity, thermal heat retention for slow braises, and elegant oven-to-table dining."
+      },
+      {
+        "personaId": "wsi_gen_entertainer",
+        "personaName": "Chloe Davenport",
+        "archetype": "The Aesthetic Host & Mixologist",
+        "isStandardDefault": false,
+        "answer": "Entertaining is visual storytelling. When guests gather around my kitchen island, the Dorset crystal coupes and French enameled Dutch oven make an immediate design statement. I look for pieces that balance culinary performance with chic, photogenic design.",
+        "sentiment": "enthusiastic",
+        "favoriteFlavorMentioned": "Williams Sonoma Dorset Crystal Coupes & Marble Entertaining Trays",
+        "keyReason": "Aesthetic tablescapes, crystal clarity, and effortless elevated hosting."
+      },
+      {
+        "personaId": "wsi_gen_purist",
+        "personaName": "Marcus Chen",
+        "archetype": "The Kitchen Tech Purist",
+        "isStandardDefault": false,
+        "answer": "I look at the metallurgical specs and thermal conductivity curves. Williams-Sonoma Thermo-Clad uses an aluminum alloy core bonded with surgical-grade stainless, which responds instantly to induction heat changes. Pair that with Shun 16-degree Japanese edge bevels, and meal prep is an absolute science of precision.",
+        "sentiment": "enthusiastic",
+        "favoriteFlavorMentioned": "Thermo-Clad Cookware, Breville Barista Touch, and Shun Damascus Cutlery",
+        "keyReason": "Precision thermal responsiveness, metallurgical edge retention, and pro-grade engineering."
+      },
+      {
+        "personaId": "default_optimist",
+        "personaName": "Joy Sun",
+        "archetype": "The Gourmet Host",
+        "isStandardDefault": true,
+        "answer": "Cooking for friends and family brings so much joy! A vibrant enameled pot simmering seasonal soups on a cold weekend makes the whole home smell wonderful and invites everyone to gather around.",
+        "sentiment": "enthusiastic",
+        "favoriteFlavorMentioned": "Williams-Sonoma Signature Cookware & Gourmet Pantry",
+        "keyReason": "Uplifting hospitality, sensory culinary warmth, and bringing people together."
+      },
+      {
+        "personaId": "default_pessimist",
+        "personaName": "Arthur Vance",
+        "archetype": "Cookware Durability Skeptic",
+        "isStandardDefault": true,
+        "answer": "Most modern kitchen pans are coated in non-stick chemicals that degrade within two years. Williams-Sonoma Thermo-Clad is one of the few collections with genuine 5-ply construction and no synthetic coatings. If it survives five hundred dishwasher cycles and high-heat searing without warping, it justifies the price tag.",
+        "sentiment": "positive",
+        "favoriteFlavorMentioned": "Thermo-Clad Clad Stainless Steel Cookware",
+        "keyReason": "Non-toxic materials, warp resistance under high heat, and verified lifetime durability."
+      },
+      {
+        "personaId": "default_generalist",
+        "personaName": "Sam Taylor",
+        "archetype": "Family Cooking Generalist",
+        "isStandardDefault": true,
+        "answer": "As a busy parent cooking every night, I need pieces that can go from high stovetop searing into a 450-degree oven without handle scorching. Williams-Sonoma products are durable workhorses that simplify weeknight cooking.",
+        "sentiment": "positive",
+        "favoriteFlavorMentioned": "Williams-Sonoma All-Clad and 10-Piece Stainless Sets",
+        "keyReason": "Versatility from stovetop to oven, easy cleanup, and reliable family cooking performance."
+      }
+    ]
+  },
+  "savedAt": "2026-08-31T18:30:00.000Z"
+}

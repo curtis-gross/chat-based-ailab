@@ -23,8 +23,8 @@ graph TD
         AuditAgent --> GeminiSvc
         OrchestrationAgent --> GeminiSvc
         InsightsAgent --> VideoTracker[VideoTrendsTracker.tsx: Trend Velocity]
-        StrategizeAgent --> SquirtData[squirtDataset.ts: Calibrated Personas]
-        OrchestrationAgent --> SquirtData
+        StrategizeAgent --> WsiData[wsiDataset.ts: Williams-Sonoma Culinary Personas]
+        OrchestrationAgent --> WsiData
     end
 
     subgraph State & Context
@@ -55,7 +55,7 @@ graph TD
 ### 2. Strategize Agent
 - **Purpose**: Bridge synthetic consumer research with strategic go-to-market planning.
 - **Capabilities**:
-  - 3 Calibrated Strategic Personas (*The Cultural Traditionalist*, *The Modern Mixologist*, *The Nostalgic Flavor Purist*) plus 3 baseline controls (*Optimist*, *Pessimist*, *Neutral*).
+  - 3 Calibrated Strategic Personas (*The Heirloom Traditionalist*, *The Aesthetic Host & Mixologist*, *The Kitchen Tech Purist*) plus 3 baseline controls (*Gourmet Host*, *Durability Skeptic*, *Family Generalist*).
   - Direct 1-on-1 persona interviews and broadcast focus group testing.
   - Automated visual ad creation tailored to each persona's emotional drivers.
 

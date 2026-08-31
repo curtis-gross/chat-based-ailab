@@ -1,27 +1,27 @@
 [
   {
-    "id": "persona_fragrance_enthusiast",
-    "name": "The Signature Scent Collector",
-    "bio": "A dedicated home fragrance and self-care lover who relies on Bath & Body Works for an uplifting, aromatic lifestyle. From setting the mood with iconic 3-wick candles to maintaining a daily self-care routine with nourishing scented body care and hand soaps, they prioritize relaxation, seasonal fragrance updates, and indulgence.",
-    "demographics": "Ages 22-50, Suburban & Urban Lifestyle Consumers",
+    "id": "persona_heirloom_traditionalist",
+    "name": "The Heirloom Traditionalist",
+    "bio": "A dedicated home chef and host who relies on Williams-Sonoma for timeless culinary excellence. From slow-simmering roasts in enameled cast iron Dutch ovens to holiday feasts, they prioritize heirloom durability, French craftsmanship, and generational cooking traditions.",
+    "demographics": "Ages 35-65, Affluent Suburban & Urban Homeowners",
     "details": {
       "lifestyle_tags": [
-        "3-Wick Candle Loyalist",
-        "Body Care Connoisseur",
-        "Bath & Body Works Rewards Member"
+        "Le Creuset Collector",
+        "Thermo-Clad Cookware Loyalist",
+        "Williams-Sonoma The Key Rewards Member"
       ]
     }
   },
   {
-    "id": "persona_gift_shopper",
-    "name": "The Thoughtful Gifting Expert",
-    "bio": "A social connector focused on sharing joy through beautifully packaged gift sets, soothing hand soaps, and trending seasonal aromas. They rely on Bath & Body Works for effortless, crowd-pleasing presents and quick everyday luxuries that brighten friends' and family members' homes.",
-    "demographics": "Ages 25-55, Family-Oriented & Social Shoppers",
+    "id": "persona_aesthetic_host",
+    "name": "The Aesthetic Host & Mixologist",
+    "bio": "A social entertainer focused on curating unforgettable dinner parties and Friday cocktail salons. They rely on Williams-Sonoma for sparkling cut-crystal coupes, marble serveware, and artisan gourmet pantry accents that elevate everyday hospitality.",
+    "demographics": "Ages 26-45, Design-Forward Urban Hosts",
     "details": {
       "lifestyle_tags": [
-        "Seasonal Gifting Fan",
-        "Hand Soap Stockist",
-        "Omnichannel Shopper"
+        "Dorset Crystal Barware Fan",
+        "Artisan Pantry Curator",
+        "Omnichannel & Registry Shopper"
       ]
     }
   }

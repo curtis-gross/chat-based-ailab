@@ -188,7 +188,7 @@ export const Home: React.FC<HomeProps> = ({ setMode, startupCheck: initialStartu
       mode: AppMode.STRATEGIZE,
       title: "Strategize Conversational Agent",
       subtitle: "Synthetic Personas & Consumer Rituals",
-      description: "Chat with the Strategize Agent to inspect calibrated synthetic personas (The Cultural Traditionalist, The Modern Mixologist, The Nostalgic Flavor Purist), conduct 1-on-1 interviews, and broadcast test messaging.",
+      description: "Chat with the Strategize Agent to inspect calibrated synthetic personas (The Heirloom Traditionalist, The Aesthetic Host, The Kitchen Tech Purist), conduct 1-on-1 interviews, and broadcast test messaging.",
       icon: Target,
       badge: "Strategy Agent",
       color: "from-purple-600 to-indigo-600"

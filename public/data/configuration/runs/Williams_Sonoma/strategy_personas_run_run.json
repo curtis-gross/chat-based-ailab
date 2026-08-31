@@ -1,0 +1,131 @@
+{
+  "companyName": "WSI (Williams-Sonoma)",
+  "personas": [
+    {
+      "id": "wsi_gen_traditionalist",
+      "name": "The Heirloom Traditionalist",
+      "personaName": "Eleanor Vance",
+      "status": "Core Culinary Anchor: Heirloom Traditionalist",
+      "lifeEvent": "Multi-generational Sunday Family Dinners & Holiday Roasts",
+      "location": "Boston, MA (Beacon Hill / Back Bay)",
+      "financialHealth": "$180,000 – $320,000 (Affluent Established Household)",
+      "ageRange": "45–65",
+      "incomeRange": "$180,000 – $320,000",
+      "familySize": "Married with Adult Children (4)",
+      "coreValues": "Heirloom durability, timeless French culinary tradition, lifetime performance",
+      "whatTheyWant": "Investment cookware pieces that last generations, master braising, and present elegantly on table",
+      "competitorBrands": [
+        "Le Creuset Boutique",
+        "Staub",
+        "Sur La Table",
+        "All-Clad"
+      ],
+      "recommendedProducts": [
+        "Williams Sonoma Thermo-Clad Stainless 10-Piece Set",
+        "Le Creuset Enameled Cast Iron Round Dutch Oven (7.25 Qt, French Blue)"
+      ],
+      "keyCharacteristics": "High lifetime value, seasonal catalog shopper, attends in-store cooking demonstrations, values heirloom pedigree",
+      "brandEngagement": "Very High",
+      "bioLifestyleNeeds": "Eleanor is a 54-year-old architectural historian and dedicated weekend cook who believes kitchen tools should last generations. For Sunday roasts and holiday gatherings, her French enameled Dutch oven and Thermo-Clad cookware are indispensable centerpieces. She demands heavy-gauge clad stainless, cast iron heat retention, and lifetime warranties. She views Williams-Sonoma as her trusted culinary authority.",
+      "nba": "Promote heirloom cast iron colorway exclusives, French enameled Dutch oven recipes, and in-store culinary masterclasses.",
+      "imagePrompt": "Photorealistic warm portrait of an elegant 54-year-old woman in a sunlit classic kitchen lifting the lid of a French Blue enameled cast iron Dutch oven with steaming beef bourguignon, marble countertops, copper pots hanging in background, 4k commercial photography.",
+      "psychographics": {
+        "personalityTraits": [
+          "Culinary Anchor",
+          "Heritage Purist",
+          "Generational Host",
+          "Quality Connoisseur"
+        ],
+        "culinaryRituals": "Slow weekend braises, holiday turkey roasts, homemade stocks, and preserving seasonal fruit in heavy copper pots.",
+        "productAffinity": "Le Creuset Enameled Dutch Oven, Williams Sonoma Thermo-Clad Stainless Cookware, Shun Classic Cutlery",
+        "shoppingValues": "Lifetime warranty, handcrafted European pedigree, heavy thermal core, aesthetic stovetop presence.",
+        "mediaHabits": "Williams-Sonoma seasonal print catalog, Bon Appétit, Julia Child cookbooks, New York Times Cooking"
+      }
+    },
+    {
+      "id": "wsi_gen_entertainer",
+      "name": "The Aesthetic Host & Mixologist",
+      "personaName": "Chloe Davenport",
+      "status": "Trend Elevator: Aesthetic Host & Mixologist",
+      "lifeEvent": "Friday Cocktail Salons, Rooftop Tapas & Dinner Parties",
+      "location": "San Francisco, CA (Pacific Heights / Marina)",
+      "financialHealth": "$160,000 – $280,000+ (Discretionary Urban Professional)",
+      "ageRange": "28–42",
+      "incomeRange": "$160,000 – $280,000+",
+      "familySize": "Young Professional Couple",
+      "coreValues": "Visual elegance, effortless hospitality, modern entertaining, bar-cart curation",
+      "whatTheyWant": "Striking crystal glassware, marble cheese boards, aesthetic cocktail tools, and gourmet pantry accents",
+      "competitorBrands": [
+        "Crate & Barrel",
+        "CB2",
+        "Anthropologie Home",
+        "West Elm"
+      ],
+      "recommendedProducts": [
+        "Williams Sonoma Dorset Crystal Cocktail Coupes",
+        "Marble & Brass Entertaining Lazy Susan",
+        "Artisan Agrumato Citrus Olive Oil"
+      ],
+      "keyCharacteristics": "High digital engagement, Instagram/TikTok entertaining content creator, cocktail-led dinner parties, registry curator",
+      "brandEngagement": "High (Strong potential for social dynamic creative)",
+      "bioLifestyleNeeds": "Chloe is a 33-year-old design strategist and vibrant host who transforms everyday evenings into curated culinary salons. She curates stunning tablescapes, crystal coupe cocktails, and artisan charcuterie boards. Seeks visually captivating tabletop items that photograph beautifully while remaining functional. Relies on Williams-Sonoma for heirloom-quality entertaining essentials and cocktail bitters.",
+      "nba": "Deploy dynamic cocktail video ads, Dorset crystal bar cart sets, and seasonal dinner party entertaining guides on Instagram and Pinterest.",
+      "imagePrompt": "Chic photorealistic portrait of a stylish 33-year-old woman in a sleek contemporary dining room garnishing a cocktail in a sparkling cut-crystal coupe on a marble bar cart, warm ambient evening party lighting, cinematic aesthetic.",
+      "psychographics": {
+        "personalityTraits": [
+          "Social Curator",
+          "Design Connoisseur",
+          "Cocktail Aficionado",
+          "Aesthetic Trendsetter"
+        ],
+        "culinaryRituals": "Crafting signature cocktails for weekend dinner parties; plating small tapas on marble platters; curated Sunday brunches with brioche French toast.",
+        "productAffinity": "Williams Sonoma Dorset Crystal Glassware, Breville Barista Touch Impress, Nordic Ware Bundt Bakeware",
+        "shoppingValues": "Photogenic presentation, optical clarity in lead-free crystal, tactile marble and brass accents.",
+        "mediaHabits": "Instagram design influencers, Pinterest tablescape boards, Architectural Digest, Food & Wine"
+      }
+    },
+    {
+      "id": "wsi_gen_purist",
+      "name": "The Kitchen Tech Purist",
+      "personaName": "Marcus Chen",
+      "status": "Performance Specialist: Precision Tech Purist",
+      "lifeEvent": "High-Precision Sous-Vide, Handcrafted Sourdough & Espresso Crafting",
+      "location": "Seattle, WA (Capitol Hill / Tech Hub)",
+      "financialHealth": "$175,000 – $310,000 (Data-Driven Tech Professional)",
+      "ageRange": "30–48",
+      "incomeRange": "$175,000 – $310,000",
+      "familySize": "Single / Urban Couple",
+      "coreValues": "Culinary precision, thermal accuracy, Japanese blade craft, cutting-edge smart electrics",
+      "whatTheyWant": "Professional-grade smart kitchen electrics, VG-MAX Japanese cutlery, and exact-temperature precision tools",
+      "competitorBrands": [
+        "Sur La Table",
+        "Seattle Coffee Gear",
+        "Hedley & Bennett",
+        "Zwilling"
+      ],
+      "recommendedProducts": [
+        "Breville Barista Touch Impress Espresso Machine",
+        "Shun Classic 8\" Damascus Chef Knife",
+        "Vitamix A3500 Smart Ascent Blender"
+      ],
+      "keyCharacteristics": "Researches metallurgical hardness (Rockwell 61), reads technical reviews, measures espresso extraction in grams, habitual repeat purchaser for pro-sumer upgrades",
+      "brandEngagement": "High",
+      "bioLifestyleNeeds": "Marcus is a 38-year-old principal software engineer and weekend culinary perfectionist. From dialing in espresso shots at 9 bars of pressure to achieving exact crumb structure in Tartine sourdough, he treats cooking as an exacting craft. Demands Damascus-clad Japanese cutlery, dual-boiler espresso machines, and induction-ready 5-ply stainless pans. He relies on Williams-Sonoma for authorized premium warranties and pro-grade tools.",
+      "nba": "Highlight Breville espresso calibration guides, Shun edge-retention metallurgy, and smart appliance firmware integrations.",
+      "imagePrompt": "Photorealistic portrait of a focused 38-year-old Asian man slicing crisp sourdough bread with a gleaming Shun Japanese Damascus knife on an end-grain walnut butcher block, modern minimalist stainless steel kitchen, natural daylight.",
+      "psychographics": {
+        "personalityTraits": [
+          "Precision Purist",
+          "Tech-Forward Chef",
+          "Specification-Obsessed",
+          "Craftsmanship Devotee"
+        ],
+        "culinaryRituals": "Morning single-origin espresso extraction with 18g tamp; weekend 48-hour fermented sourdough loaves; precision sous-vide ribeye searing.",
+        "productAffinity": "Breville Barista Touch, Shun Classic 8\" Chef Knife, Vitamix A3500, ChefSteps Joule Sous Vide",
+        "shoppingValues": "Rockwell hardness scale, PID temperature controllers, commercial motor warranties, and professional chef reviews.",
+        "mediaHabits": "Serious Eats, Kenji López-Alt YouTube, James Hoffmann coffee channel, Reddit r/espresso & r/chefknives"
+      }
+    }
+  ],
+  "savedAt": "2026-08-31T18:30:00.000Z"
+}

@@ -46,11 +46,12 @@ import { CombinedPersona, PersonaPsychographics } from '../types';
 import { useCompanyContext } from '../context/CompanyContext';
 import { useAppConfig } from '../context/AppConfigContext';
 import { 
-  SQUIRT_SYNTHETIC_DATASET, 
-  SQUIRT_DATASET_SUMMARY, 
-  SquirtConsumerRecord,
-  DR_PEPPER_SYNTHETIC_DATASET 
-} from '../data/squirtDataset';
+  WSI_SYNTHETIC_DATASET, 
+  WSI_DATASET_SUMMARY, 
+  WSIConsumerRecord,
+  SQUIRT_SYNTHETIC_DATASET,
+  DEFAULT_SQUIRT_GENERATED_PERSONAS as LEGACY_SQUIRT_PERSONAS
+} from '../data/wsiDataset';
 import { 
   callGenAiProxy, 
   extractTextFromResponse, 
@@ -67,23 +68,23 @@ export const DEFAULT_STANDARD_PERSONAS = [
     name: 'The Enthusiastic Optimist',
     personaName: 'Joy Sun',
     status: 'Baseline Control: Optimist',
-    lifeEvent: 'Flavor Explorer & Early Adopter',
+    lifeEvent: 'Gourmet Host & Holiday Baker',
     location: 'Austin, TX (US Metro)',
     financialHealth: 'Discretionary Spender',
     familySize: 'Young Professional / Roommates',
-    bioLifestyleNeeds: 'Enthusiastic and eager to explore refreshing citrus cocktails and trending summer spritzers. Passionate about authentic Mexican Palomas, joyful outdoor gatherings, and uplifting brand energy.',
-    coreValues: 'Positivity, Delight, Fun Social Experiences',
-    nba: 'Target with seasonal cocktail recipes, Squirt Ruby Red drops, and backyard fiesta inspiration.',
-    imagePrompt: 'Smiling cheerful 26-year-old woman holding a refreshing glass of iced Squirt Paloma with lime garnish in bright natural daylight',
+    bioLifestyleNeeds: 'Enthusiastic home entertainer who loves curating weekend brunch tablescapes, experimenting with seasonal baking mixes, and hosting joyful dinner parties. Passionate about authentic artisanal presentation, seasonal Le Creuset colors, and uplifting kitchen energy.',
+    coreValues: 'Hospitality, Craftsmanship, Joyful Entertaining',
+    nba: 'Target with seasonal baking mixes, Nordic Ware bundt pans, and holiday entertaining tablescape inspiration.',
+    imagePrompt: 'Smiling cheerful 28-year-old woman in a sunlit gourmet kitchen holding a loaf of freshly baked artisan sourdough bread next to a French blue Dutch oven, natural bright daylight',
     type: 'default_optimist',
     isStandard: true,
     psychographics: {
-      personalityTraits: ['Trend-Seeker', 'Social Host', 'Paloma Crafter', 'Joyful Explorer'],
-      beverageRituals: 'Weekend afternoon Paloma ritual; custom mixes Squirt Original Grapefruit Soda with tequila blanco, fresh lime juice, and a chili-lime salt rim.',
-      flavorAffinity: 'Squirt Original Citrus, Squirt Ruby Red, Mexican Glass Bottle Real Sugar',
-      sugarPreference: 'Mixes Both (Flavor-first indulger)',
-      shoppingValues: 'Impulse buyer driven by aesthetic cocktail photography, authentic Mexican pairings, and refreshing citrus flavors.',
-      mediaHabits: 'TikTok, Instagram Reels, Food & Beverage Podcasts'
+      personalityTraits: ['Trend-Seeker', 'Social Host', 'Artisan Baker', 'Joyful Explorer'],
+      beverageRituals: 'Weekend afternoon cappuccino and baking ritual; prepares gourmet espresso with freshly ground beans and artisan pastries.',
+      flavorAffinity: 'Williams Sonoma Peppermint Bark, Pumpkin Spice Quick Bread, Reserve Olive Oil',
+      sugarPreference: 'Artisan ingredients with natural cane sugar and rich Guittard chocolate',
+      shoppingValues: 'Impulse buyer driven by aesthetic table styling, vibrant cookware photography, and seasonal catalog collections.',
+      mediaHabits: 'Instagram Reels, Food Network, Bon Appétit, TikTok hosting tutorials'
     }
   },
   {
@@ -91,23 +92,23 @@ export const DEFAULT_STANDARD_PERSONAS = [
     name: 'The Skeptical Critic',
     personaName: 'Arthur Vance',
     status: 'Baseline Control: Pessimist',
-    lifeEvent: 'Quality & Value Guardrail',
+    lifeEvent: 'Cookware Quality & Durability Guardrail',
     location: 'San Diego, CA (Suburban)',
-    financialHealth: 'Value-Conscious Skeptic',
+    financialHealth: 'Value-Conscious Discerning Buyer',
     familySize: 'Mature Household',
-    bioLifestyleNeeds: 'Critical consumer who rejects overly sweet sodas and synthetic diet claims. Demands real grapefruit citrus concentrate, zero sugar crashes, and clear value-per-ounce.',
-    coreValues: 'Transparency, Authentic Ingredients, Honest Pricing',
-    nba: 'Emphasize real citrus concentrate quality, crisp zero-sugar taste, and clean label transparency.',
-    imagePrompt: 'Thoughtful serious 52-year-old man inspecting an ice-cold can of Squirt Zero Sugar in everyday modern kitchen setting',
+    bioLifestyleNeeds: 'Critical home chef who vehemently rejects flimsy cookware, non-stick coatings containing PFAS/PTFE, and cheap plastic appliances. Demands multi-ply clad stainless steel, heavy-gauge French enameled cast iron, and lifetime warranties.',
+    coreValues: 'Durability, Material Transparency, Professional Performance',
+    nba: 'Emphasize Thermo-Clad 35% thermal conductivity advantage, warp-free 5-ply construction, and lifetime heirloom guarantees.',
+    imagePrompt: 'Thoughtful serious 54-year-old man inspecting a polished multi-ply stainless steel sauté pan on a gas range in an upscale kitchen, sharp natural lighting',
     type: 'default_pessimist',
     isStandard: true,
     psychographics: {
-      personalityTraits: ['Discerning Traditionalist', 'Quality Guardrail', 'Value-Conscious', 'Analytical'],
-      beverageRituals: 'Daily lunchtime 12 oz can with a grilled chicken salad; strictly drinks ice-cold Squirt Zero Sugar with real citrus bite.',
-      flavorAffinity: 'Squirt Zero Sugar, Squirt Original Grapefruit',
-      sugarPreference: 'Zero Sugar (Health-conscious & avoids sugar crashes)',
-      shoppingValues: 'Seeks bulk club pack value, discounts, and rejects cloying artificial sweeteners.',
-      mediaHabits: 'Local News, YouTube Hardware/Repair, Financial Newsletters'
+      personalityTraits: ['Discerning Purist', 'Quality Guardrail', 'Material-Conscious', 'Analytical'],
+      beverageRituals: 'Morning Chemex pour-over coffee ritual with single-origin beans; values heat retention and pure taste.',
+      flavorAffinity: 'Williams Sonoma Reserve Tuscan Olive Oil, Aged Modena Balsamic, Heritage Spice Blends',
+      sugarPreference: 'Low sugar, focuses on clean whole ingredients and savory braises',
+      shoppingValues: 'Demands heirloom durability, thermal performance data, and rejects gimmicky electrics.',
+      mediaHabits: 'America\'s Test Kitchen, Serious Eats, Wirecutter, Culinary Engineering Forums'
     }
   },
   {
@@ -115,120 +116,123 @@ export const DEFAULT_STANDARD_PERSONAS = [
     name: 'The Mainstream Neutral',
     personaName: 'Sam Taylor',
     status: 'Baseline Control: Neutral',
-    lifeEvent: 'Convenience Habit',
+    lifeEvent: 'Practical Everyday Family Cooking',
     location: 'Denver, CO (Suburban)',
     financialHealth: 'Everyday Pragmatist',
-    familySize: 'Family of 3',
-    bioLifestyleNeeds: 'Everyday casual consumer who drinks what is convenient and familiar. Balances price, taste, and accessibility across grocery stores, gas stations, and drive-thrus.',
-    coreValues: 'Convenience, Value for Money, Familiar Flavor',
-    nba: 'Ensure frictionless store availability and eye-level shelf placement in grocery beverage aisles.',
-    imagePrompt: 'Friendly 35-year-old casual consumer in comfortable weekend casual attire enjoying a cold Squirt soda',
+    familySize: 'Family of 4',
+    bioLifestyleNeeds: 'Everyday casual home cook who balances weeknight meal efficiency with reliable tools. Needs versatile, dishwasher-safe cookware, easy-to-clean prep tools, and dependable kitchenware that withstands daily family use.',
+    coreValues: 'Convenience, Durability, Everyday Value',
+    nba: 'Highlight Open Kitchen by Williams Sonoma 10-piece sets, multi-functional electrics, and registry starter packages.',
+    imagePrompt: 'Friendly 36-year-old home cook in comfortable weekend casual attire preparing dinner with a stainless steel skillet in a welcoming home kitchen',
     type: 'default_generalist',
     isStandard: true,
     psychographics: {
-      personalityTraits: ['Pragmatic Routine-Seeker', 'Convenience-Driven', 'Family-Focused', 'Easygoing'],
-      beverageRituals: 'Weekend family cookouts and road trip gas station grab-and-go 20 oz bottles.',
-      flavorAffinity: 'Squirt Original Citrus Grapefruit, Squirt Ruby Red',
-      sugarPreference: 'Original Full Sugar',
-      shoppingValues: 'Buys 12-packs on grocery multi-buy sales; loyal to reliable thirst-quenching taste.',
-      mediaHabits: 'Live Sports, Streaming Video, Suburban Community Groups'
+      personalityTraits: ['Pragmatic Family Cook', 'Efficiency-Driven', 'Value-Focused', 'Comfort-Seeking'],
+      beverageRituals: 'Weekday morning drip coffee and quick family smoothies.',
+      flavorAffinity: 'Open Kitchen Tableware, Classic Roasting Pans, High-Temp Silicone Spatulas',
+      sugarPreference: 'Balanced family-friendly recipes',
+      shoppingValues: 'Buys during semi-annual warehouse sales and looks for versatile multi-use tools.',
+      mediaHabits: 'YouTube Cooking Quick Tips, Suburban Family Groups, Streaming Cooking Shows'
     }
   }
 ];
 
-// Default 3 Generated Personas for Squirt (Cultural Traditionalist, Modern Mixologist, Nostalgic Flavor Purist)
-export const DEFAULT_SQUIRT_GENERATED_PERSONAS = [
+// Default 3 Generated Personas for Williams-Sonoma
+export const DEFAULT_WSI_GENERATED_PERSONAS = [
   {
-    id: 'squirt_gen_traditionalist',
-    name: 'The Cultural Traditionalist',
-    personaName: 'Mateo Alvarez',
-    status: 'Core Anchor: Cultural Traditionalist',
-    lifeEvent: 'Multi-generational Family Cookouts & Heritage Celebrations',
-    location: 'El Paso, TX (Bilingual Metro)',
-    financialHealth: '$40,000 – $85,000 (Value-Conscious Household)',
-    ageRange: '21–45',
-    incomeRange: '$40,000 – $85,000',
-    familySize: 'Multi-generational Household (5)',
-    coreValues: 'Cultural continuity, family gathering, authentic heritage',
-    whatTheyWant: 'Familiar, authentic staples that pair naturally with traditional food and family celebrations',
-    competitorBrands: ['Jarritos Toronja', 'Fresca', 'Peñafiel'],
-    recommendedProducts: ['Squirt Original (2L, 12-pack cans)', 'Mexican Squirt (glass bottle with real sugar)'],
-    keyCharacteristics: 'High brand loyalty, high household penetration in Hispanic communities, pantry staple',
-    brandEngagement: 'High',
-    bioLifestyleNeeds: 'Multi-generational home and festive gathering coordinator. Values cultural continuity, family gatherings, and authentic heritage. Needs value-pack bulk availability and cultural resonance. Treats Squirt as an essential pantry staple for Sunday carne asadas, tamale making, and holiday fiestas where it pairs naturally with traditional Latin food.',
-    nba: 'Promote multi-pack value deals, Hispanic heritage cookout co-promotions, and Mexican glass bottle displays at local grocers.',
-    imagePrompt: 'Photorealistic warm portrait headshot of a smiling 32-year-old Hispanic man holding a chilled glass bottle of Mexican Squirt at a sunny backyard family barbecue cookout, natural sunlight, 4k commercial photography',
+    id: 'wsi_gen_traditionalist',
+    name: 'The Heirloom Culinary Traditionalist',
+    personaName: 'Eleanor Vance',
+    status: 'Core Anchor: Culinary Traditionalist',
+    lifeEvent: 'Multi-Generational Feasts & Heirloom Kitchen Crafting',
+    location: 'Greenwich, CT (Heritage Suburb)',
+    financialHealth: '$120,000 – $250,000+ (High Discretionary Spender)',
+    ageRange: '35–60',
+    incomeRange: '$120,000 – $250,000+',
+    familySize: 'Multi-Generational Family Household (4-6)',
+    coreValues: 'Heirloom craftsmanship, family gathering, culinary tradition',
+    whatTheyWant: 'Professional-grade cast iron, multi-clad stainless steel, and timeless French culinary cookware that lasts decades',
+    competitorBrands: ['Sur La Table', 'Le Creuset Direct', 'All-Clad Direct'],
+    recommendedProducts: ['Le Creuset Signature Round Dutch Oven 5.5 Qt', 'Williams Sonoma Thermo-Clad Cookware Set'],
+    keyCharacteristics: 'High brand loyalty, large kitchen investment, frequent holiday entertainer',
+    brandEngagement: 'Very High',
+    bioLifestyleNeeds: 'Accomplished home chef coordinating holiday banquets and Sunday family dinners. Considers cookware an heirloom investment. Values heavy French enameled cast iron, multi-ply stainless steel, and classic heritage recipes passed down generations.',
+    nba: 'Promote exclusive Le Creuset French Blue colorways, Thanksgiving turkey roaster collections, and private chef masterclasses.',
+    imagePrompt: 'Photorealistic warm portrait headshot of a smiling 44-year-old woman in a luxury French country kitchen holding a Le Creuset Dutch oven, warm golden lighting, 4k commercial photography',
     isStandard: false,
     psychographics: {
-      personalityTraits: ['Family Anchor', 'Heritage Foodie', 'Loyal Purchaser', 'Social Host'],
-      beverageRituals: 'Pantry-stocks 12-packs and 2-liter bottles for weekend cookouts; enjoys an ice-cold Mexican Squirt with lime alongside spicy homemade meals.',
-      flavorAffinity: 'Mexican Squirt (Real Sugar Glass Bottle), Squirt Original Grapefruit Soda',
-      sugarPreference: 'Original Full Sugar',
-      shoppingValues: 'Bulk multi-buy value, authentic glass packaging, and consistent real citrus taste.',
-      mediaHabits: 'Facebook family groups, Spanish-language radio, YouTube cooking channels'
+      personalityTraits: ['Family Anchor', 'Culinary Artisan', 'Loyal Collector', 'Generous Host'],
+      beverageRituals: 'Slow-drip espresso after dinner and red wine decanting during Sunday family meals.',
+      flavorAffinity: 'Williams Sonoma Reserve Extra Virgin Olive Oil, Braising Bases, Aged Modena Balsamic',
+      sugarPreference: 'Scratch baker using pure Madagascar vanilla and unbleached flours',
+      shoppingValues: 'Lifetime warranty, brand heritage, and heavyweight thermal heat retention.',
+      mediaHabits: 'Williams Sonoma catalogs, Bon Appétit, Martha Stewart, PBS Cooking'
     }
   },
   {
-    id: 'squirt_gen_mixologist',
-    name: 'The Modern Mixologist',
-    personaName: 'Sofia Ramirez',
-    status: 'Trend Elevator: Modern Mixologist',
-    lifeEvent: 'Aesthetic Hosting & Home Cocktail Discovery',
-    location: 'Austin, TX (Urban / Sunbelt)',
-    financialHealth: '$75,000 – $140,000+ (Discretionary Spender)',
-    ageRange: '24–38',
-    incomeRange: '$75,000 – $140,000+',
+    id: 'wsi_gen_mixologist',
+    name: 'The Aesthetic Host & Mixologist',
+    personaName: 'Chloe Davenport',
+    status: 'Trend Elevator: Aesthetic Entertainer',
+    lifeEvent: 'Cocktail Hour Discovery & Curated Tablescapes',
+    location: 'Chicago, IL (Urban Metro)',
+    financialHealth: '$85,000 – $160,000 (Lifestyle Influencer)',
+    ageRange: '26–40',
+    incomeRange: '$85,000 – $160,000',
     familySize: 'Young Professional Couple',
-    coreValues: 'Elevating social experiences, culinary discovery, aesthetic hosting',
-    whatTheyWant: 'Premium yet unpretentious mixer with real grapefruit bite for cocktails (e.g., Palomas)',
-    competitorBrands: ['Fever-Tree Pink Grapefruit', 'Q Mixers', 'Topo Chico', 'Fresca Mixed'],
-    recommendedProducts: ['Squirt Zero Sugar', 'Ruby Red Squirt', 'Squirt 7.5 oz mini-cans'],
-    keyCharacteristics: 'High digital engagement, social sharer (TikTok/Instagram), cocktail-led consumption',
-    brandEngagement: 'Medium (High potential via automated dynamic creative)',
-    bioLifestyleNeeds: 'Urban/suburban socializer and DIY home bartender. Seeks to elevate social experiences through culinary discovery and aesthetic hosting. Needs cocktail recipes, sleek packaging, and bar-cart aesthetics. Uses Squirt Zero Sugar and Ruby Red as a premium yet unpretentious mixer with real grapefruit bite for handcrafted Palomas.',
-    nba: 'Deploy dynamic cocktail video ads, 7.5 oz mini-can bar cart bundles, and influencer Paloma masterclasses on Instagram and TikTok.',
-    imagePrompt: 'Chic photorealistic portrait of a stylish 28-year-old woman garnishing an artisanal iced Squirt Paloma cocktail with a fresh ruby grapefruit slice on a modern sunlit patio bar, cinematic aesthetic, golden hour glow',
+    coreValues: 'Elevating social experiences, aesthetic bar cart styling, viral entertaining',
+    whatTheyWant: 'Hand-blown crystal glassware, marble bar carts, espresso martini essentials, and photogenic tablescapes',
+    competitorBrands: ['Crate & Barrel', 'West Elm', 'CB2', 'Anthropologie Home'],
+    recommendedProducts: ['Williams Sonoma Dorset Crystal Coupes', 'Marble & Brass Bar Cart', 'Breville Barista Touch'],
+    keyCharacteristics: 'High digital engagement, social sharer (TikTok/Instagram), cocktail-led shopping',
+    brandEngagement: 'High (Dynamic social ads & aesthetic styling guides)',
+    bioLifestyleNeeds: 'Urban entertainer and DIY cocktail crafter who hosts Friday happy hours and weekend patio dinners. Seeks sleek brass barware, artisanal cocktail syrups, and aesthetic dinner party accessories for social media sharing.',
+    nba: 'Deploy Instagram Reels ads featuring espresso martini tutorials, crystal glassware bundles, and marble entertaining trays.',
+    imagePrompt: 'Chic photorealistic portrait of an elegant 31-year-old woman garnishing an artisanal cocktail in a cut crystal coupe on a marble bar cart, warm atmospheric city apartment, golden hour',
     isStandard: false,
     psychographics: {
-      personalityTraits: ['Social Explorer', 'Cocktail Enthusiast', 'Aesthetic Creator', 'Digital Trendsetter'],
-      beverageRituals: 'Friday night happy hours and weekend rooftop cocktail gatherings; shakes or builds Palomas with Squirt Zero Sugar, fresh lime, and sea salt rims.',
-      flavorAffinity: 'Squirt Zero Sugar, Squirt Ruby Red, Squirt 7.5 oz Mini-Cans',
-      sugarPreference: 'Zero Sugar (Loves flavor without caloric load)',
-      shoppingValues: 'Sleek mini-can packaging, premium mixology credentials, and visual bar-cart appeal.',
-      mediaHabits: 'Instagram Reels, TikTok food & drink trends, Spotify curated playlists'
+      personalityTraits: ['Aesthetic Creator', 'Cocktail Connoisseur', 'Social Trendsetter', 'Design Enthusiast'],
+      beverageRituals: 'Friday evening craft cocktail shaking and Sunday morning cold-brew coffee on the patio.',
+      flavorAffinity: 'Williams Sonoma Artisanal Cocktail Mixers, Chili-Lime Salts, Blood Orange Syrups',
+      sugarPreference: 'Craft balance, focuses on natural botanical extracts and fresh citrus',
+      shoppingValues: 'Visual appeal, bar-cart styling credentials, and modern tabletop aesthetics.',
+      mediaHabits: 'Instagram Reels, Architectural Digest, TikTok culinary trends, Pinterest boards'
     }
   },
   {
-    id: 'squirt_gen_purist',
-    name: 'The Nostalgic Flavor Purist',
-    personaName: 'Gary Miller',
-    status: 'Brand Loyalist: Nostalgic Purist',
-    lifeEvent: 'Routine-Driven Everyday Refreshment',
-    location: 'Columbus, OH (Midwest Suburban)',
-    financialHealth: '$45,000 – $95,000 (Practical Budgeter)',
-    ageRange: '35–60+',
-    incomeRange: '$45,000 – $95,000',
-    familySize: 'Married with Grown Children',
-    coreValues: 'Comfort in timeless taste, anti-trend reliability, no-nonsense refreshment',
-    whatTheyWant: 'Crisp, tart, thirst-quenching citrus flavor that stays consistent over decades',
-    competitorBrands: ['Fresca', 'Sun Drop', 'Mountain Dew', 'Sprite'],
-    recommendedProducts: ['Squirt Original', 'Squirt Zero Sugar (12-pack, 20 oz bottles)'],
-    keyCharacteristics: 'Moderate media consumption, habitual repeat purchaser in traditional retail',
+    id: 'wsi_gen_purist',
+    name: 'The Gourmet Kitchen Purist',
+    personaName: 'Marcus Chen',
+    status: 'Precision Innovator: High-Tech Chef',
+    lifeEvent: 'Precision Cooking & Specialty Appliance Mastery',
+    location: 'San Francisco, CA (Tech Hub)',
+    financialHealth: '$110,000 – $220,000 (Precision Cookware Investor)',
+    ageRange: '30–55',
+    incomeRange: '$110,000 – $220,000',
+    familySize: 'Single or Couple with High Discretionary Budget',
+    coreValues: 'Culinary perfectionism, precision engineering, cutting-edge kitchen technology',
+    whatTheyWant: 'Commercial-grade smart electrics, razor-sharp Damascus steel knives, and sous vide temperature control',
+    competitorBrands: ['Zwilling J.A. Henckels', 'Vitamix Direct', 'Breville Direct'],
+    recommendedProducts: ['Breville Barista Touch Impress', 'Shun Classic 8" Chef Knife', 'Vitamix A3500 Smart Blender'],
+    keyCharacteristics: 'Researches thermodynamics and motor specs, high repeat purchase on premium electrics',
     brandEngagement: 'High',
-    bioLifestyleNeeds: 'Practical, routine-driven consumer who has enjoyed Squirt for over 30 years. Seeks comfort in timeless taste, anti-trend reliability, and no-nonsense refreshment. Needs reliable local distribution in supermarkets and C-stores for crisp, tart, thirst-quenching citrus flavor that stays consistent over decades.',
-    nba: 'Reinforce reliable retail distribution in supermarkets and convenience store cold coolers, with straightforward multi-pack pricing.',
-    imagePrompt: 'Photorealistic portrait of a friendly 49-year-old man taking a refreshing sip from an ice-cold can of Squirt Original next to his pickup truck after yard work on a sunny afternoon, honest authentic commercial style',
+    bioLifestyleNeeds: 'Tech executive and precision home cook who approaches gastronomy as an exact science. Needs commercial-grade knife sharpness, thermojet espresso heating, and automated sous-vide precision in the kitchen.',
+    nba: 'Target with in-store knife sharpening masterclasses, smart espresso machine trade-in credits, and high-performance kitchen demos.',
+    imagePrompt: 'Photorealistic portrait of a focused 38-year-old Asian man slicing fresh herbs with a Damascus steel chef knife on an olivewood cutting board in a sleek modern kitchen',
     isStandard: false,
     psychographics: {
-      personalityTraits: ['Pragmatic Loyalist', 'Anti-Trend', 'Routine-Driven', 'Quality-First'],
-      beverageRituals: 'Cracks a cold can from the garage fridge after work or grabs a 20 oz bottle at the local convenience store during road trips.',
-      flavorAffinity: 'Squirt Original Grapefruit Soda, Squirt Zero Sugar (12-Packs & 20 oz)',
-      sugarPreference: 'Original Full Sugar (Occasional Zero Sugar)',
-      shoppingValues: 'Dependable supermarket availability, straightforward pricing, and classic unchanged taste.',
-      mediaHabits: 'Local news broadcasts, Major League Baseball, automotive forums'
+      personalityTraits: ['Precision Thinker', 'Tech Culinary Explorer', 'Quality Obsessive', 'Performance-Driven'],
+      beverageRituals: 'Morning 9-bar pressure double espresso extraction; measures grind size down to the micron.',
+      flavorAffinity: 'Specialty Single-Origin Espresso Beans, White Truffle Oil, Japanese Finishing Salts',
+      sugarPreference: 'Strictly zero added refined sugars; focuses on high-protein, umami-rich culinary profiles',
+      shoppingValues: 'Engineering tolerances, motor wattage, Rockwell steel hardness, and professional reviews.',
+      mediaHabits: 'YouTube Cutlery & Coffee channels (James Hoffmann), Eater, Wired, Tech Gear Reviews'
     }
   }
 ];
+
+// Compatibility alias for Orchestration and legacy components
+export const DEFAULT_SQUIRT_GENERATED_PERSONAS = DEFAULT_WSI_GENERATED_PERSONAS;
 
 export interface PersonaTestingResponse {
   personaId: string;
@@ -297,7 +301,7 @@ interface StrategyChatAgentProps {
 export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas = [], setPersonas }) => {
   const { name } = useCompanyContext();
   const { config } = useAppConfig();
-  const companyName = config?.branding.companyName || name || 'Squirt';
+  const companyName = config?.branding.companyName || name || 'WSI (Williams-Sonoma)';
   const accentColor = config?.branding.colors.accent || '#1A73E8';
 
   const [inputPrompt, setInputPrompt] = useState('');
@@ -624,12 +628,12 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `No saved persona runs found for **${companyName}** in storage yet. Would you like me to generate a new set from the Squirt synthetic dataset?`,
+        text: `No saved persona runs found for **${companyName}** in storage yet. Would you like me to generate a new set from the WSI synthetic dataset?`,
         clarifyingOptions: {
           question: "Generate new personas from dataset:",
           options: [
-            { label: "🚀 Generate Personas from Squirt Dataset", action: "generate_personas" },
-            { label: "📊 View Squirt Synthetic Dataset First", action: "view_dataset" }
+            { label: "🚀 Generate Personas from WSI Dataset", action: "generate_personas" },
+            { label: "📊 View WSI Synthetic Dataset First", action: "view_dataset" }
           ]
         }
       };
@@ -677,14 +681,14 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
           id: `assistant_${Date.now()}`,
           sender: 'assistant',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          text: `Here are the **current active personas** (${current.length} generated personas from the Squirt dataset):`,
+          text: `Here are the **current active personas** (${current.length} generated personas from the WSI dataset):`,
           generatedPersonas: current,
           clarifyingOptions: {
             question: "Next actions with current personas:",
             options: [
-              { label: "💬 Ask a question to the 6-persona panel", action: "test_question", payload: "What flavor of Squirt brand drinks do you like best, and why?" },
+              { label: "💬 Ask a question to the 6-persona panel", action: "test_question", payload: "What is your primary consideration when investing in heirloom cookware like Le Creuset or Thermo-Clad?" },
               { label: "🚀 Re-generate new personas from dataset", action: "generate_personas" },
-              { label: "📊 View Squirt synthetic dataset", action: "view_dataset" }
+              { label: "📊 View WSI synthetic dataset", action: "view_dataset" }
             ]
           }
         };
@@ -696,12 +700,12 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
           id: `assistant_${Date.now()}`,
           sender: 'assistant',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          text: `No active personas are currently loaded in memory. Would you like me to generate them from the Squirt synthetic dataset?`,
+          text: `No active personas are currently loaded in memory. Would you like me to generate them from the WSI synthetic dataset?`,
           clarifyingOptions: {
             question: "Create personas from dataset:",
             options: [
-              { label: "🚀 Generate Personas from Squirt Dataset", action: "generate_personas" },
-              { label: "📊 View Squirt Synthetic Dataset First", action: "view_dataset" }
+              { label: "🚀 Generate Personas from WSI Dataset", action: "generate_personas" },
+              { label: "📊 View WSI Synthetic Dataset First", action: "view_dataset" }
             ]
           }
         };
@@ -755,19 +759,19 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
           question: "Broadcast a question to the 6-persona panel:",
           options: [
             { 
-              label: "💬 Ask: What flavor of Squirt drinks do you like best, and why?", 
+              label: "💬 Ask: What is your primary consideration when investing in heirloom cookware?", 
               action: "test_question_with_personas", 
-              payload: { question: "What flavor of Squirt brand drinks do you like best, and why?", personas: personasToSave } 
+              payload: { question: "What is your primary consideration when investing in heirloom cookware like Le Creuset or Thermo-Clad?", personas: personasToSave } 
             },
             { 
-              label: "🍹 Ask: How do you feel about Squirt as the authentic mixer for Palomas?", 
+              label: "☕ Ask: How do you balance smart kitchen electrics with traditional scratch cooking?", 
               action: "test_question_with_personas", 
-              payload: { question: "How do you feel about Squirt as the authentic mixer for Palomas?", personas: personasToSave } 
+              payload: { question: "How do you balance smart kitchen electrics (e.g. Breville espresso, Vitamix) with traditional scratch cooking?", personas: personasToSave } 
             },
             { 
-              label: "🥤 Ask: What would make you try Squirt Zero Sugar or Squirt Ruby Red?", 
+              label: "🍷 Ask: What kitchenware or tabletop items are essential for your holiday dinner parties?", 
               action: "test_question_with_personas", 
-              payload: { question: "What would make you try Squirt Zero Sugar or Squirt Ruby Red?", personas: personasToSave } 
+              payload: { question: "What kitchenware or tabletop items are essential for your holiday dinner parties?", personas: personasToSave } 
             }
           ]
         }
@@ -796,62 +800,62 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
   // Generate Personas from Squirt Synthetic Dataset
   const generatePersonasFromDataset = async (currentMessages: StrategyChatMessage[], customFocus?: string) => {
     setIsLoading(true);
-    setStatusMessage('Analyzing Squirt synthetic consumer records with Gemini 3.7 Flash...');
+    setStatusMessage('Analyzing Williams-Sonoma synthetic consumer records with Gemini 3.7 Flash...');
 
     try {
-      const focusInstruction = customFocus ? `Special Focus: ${customFocus}` : `Focus on the 3 core strategic segments: The Cultural Traditionalist, The Modern Mixologist, and The Nostalgic Flavor Purist.`;
+      const focusInstruction = customFocus ? `Special Focus: ${customFocus}` : `Focus on the 3 core strategic segments: The Heirloom Culinary Traditionalist, The Aesthetic Host & Mixologist, and The Gourmet Kitchen Purist.`;
 
       const prompt = `
-      You are the Master Marketing Strategist for Squirt and Keurig Dr Pepper.
-      Task: Analyze the Squirt Synthetic Consumer Dataset and create exactly 3 distinct, rich, production-ready Audience Segments and Personas calibrated to the following 3 mandatory strategic segments:
+      You are the Master Marketing Strategist for Williams-Sonoma (WSI).
+      Task: Analyze the Williams-Sonoma Synthetic Consumer Dataset and create exactly 3 distinct, rich, production-ready Audience Segments and Personas calibrated to the following 3 mandatory strategic segments:
 
       ${focusInstruction}
 
       MANDATORY STRATEGIC SEGMENTS TO GENERATE:
 
-      1. SEGMENT 1: "The Cultural Traditionalist"
-         - Core Value Driver: Cultural continuity, family gathering, authentic heritage
-         - What They Want: Familiar, authentic staples that pair naturally with traditional food and family celebrations
-         - Competitor Brands Targeting Them: ["Jarritos Toronja", "Fresca", "Peñafiel"]
-         - Age Range: 21–45
-         - Income Range: $40,000 – $85,000
-         - Lifestyle & Needs: Multi-generational homes, festive gatherings; values value-pack availability and cultural resonance
-         - Recommended Products: ["Squirt Original (2L, 12-pack cans)", "Mexican Squirt (glass bottle with real sugar)"]
-         - Key Characteristics: High brand loyalty, high household penetration in Hispanic communities, pantry staple
+      1. SEGMENT 1: "The Heirloom Culinary Traditionalist"
+         - Core Value Driver: Heirloom craftsmanship, family gathering, culinary tradition
+         - What They Want: Professional-grade cast iron, multi-clad stainless steel, and timeless French culinary cookware that lasts decades
+         - Competitor Brands Targeting Them: ["Sur La Table", "Le Creuset Direct", "All-Clad Direct"]
+         - Age Range: 35–60
+         - Income Range: $120,000 – $250,000+
+         - Lifestyle & Needs: Multi-generational homes, festive holiday banquets; values heirloom durability, French enameled cast iron, and heritage scratch cooking
+         - Recommended Products: ["Le Creuset Signature Round Dutch Oven 5.5 Qt", "Williams Sonoma Thermo-Clad Cookware Set"]
+         - Key Characteristics: High brand loyalty, large kitchen investment, frequent holiday entertainer
+         - Brand Engagement: Very High
+         - Representative Persona Name: Eleanor Vance (or similar heritage culinary host)
+
+      2. SEGMENT 2: "The Aesthetic Host & Mixologist"
+         - Core Value Driver: Elevating social experiences, aesthetic bar cart styling, viral entertaining
+         - What They Want: Hand-blown crystal glassware, marble bar carts, espresso martini essentials, and photogenic tablescapes
+         - Competitor Brands Targeting Them: ["Crate & Barrel", "West Elm", "CB2", "Anthropologie Home"]
+         - Age Range: 26–40
+         - Income Range: $85,000 – $160,000
+         - Lifestyle & Needs: Urban/suburban socializers, DIY cocktail crafters; needs sleek brass barware, artisanal cocktail syrups, and aesthetic dinner party styling
+         - Recommended Products: ["Williams Sonoma Dorset Crystal Coupes", "Marble & Brass Bar Cart", "Breville Barista Touch"]
+         - Key Characteristics: High digital engagement, social sharer (TikTok/Instagram), cocktail-led shopping
+         - Brand Engagement: High (Dynamic social ads & aesthetic styling guides)
+         - Representative Persona Name: Chloe Davenport (or similar aesthetic host)
+
+      3. SEGMENT 3: "The Gourmet Kitchen Purist"
+         - Core Value Driver: Culinary perfectionism, precision engineering, cutting-edge kitchen technology
+         - What They Want: Commercial-grade smart electrics, razor-sharp Damascus steel knives, and sous vide temperature control
+         - Competitor Brands Targeting Them: ["Zwilling J.A. Henckels", "Vitamix Direct", "Breville Direct"]
+         - Age Range: 30–55
+         - Income Range: $110,000 – $220,000
+         - Lifestyle & Needs: High-precision home cooks; needs commercial-grade knife sharpness, thermojet espresso heating, and automated culinary precision
+         - Recommended Products: ["Breville Barista Touch Impress", "Shun Classic 8\" Chef Knife", "Vitamix A3500 Smart Blender"]
+         - Key Characteristics: Researches thermodynamics and motor specs, high repeat purchase on premium electrics
          - Brand Engagement: High
-         - Representative Persona Name: Mateo Alvarez (or similar authentic Hispanic family host)
+         - Representative Persona Name: Marcus Chen (or similar precision home chef)
 
-      2. SEGMENT 2: "The Modern Mixologist"
-         - Core Value Driver: Elevating social experiences, culinary discovery, aesthetic hosting
-         - What They Want: Premium yet unpretentious mixer with real grapefruit bite for cocktails (e.g., Palomas)
-         - Competitor Brands Targeting Them: ["Fever-Tree Pink Grapefruit", "Q Mixers", "Topo Chico", "Fresca Mixed"]
-         - Age Range: 24–38
-         - Income Range: $75,000 – $140,000+
-         - Lifestyle & Needs: Urban/suburban socializers, DIY bartenders; needs cocktail recipes, sleek packaging, and bar-cart aesthetics
-         - Recommended Products: ["Squirt Zero Sugar", "Ruby Red Squirt", "Squirt 7.5 oz mini-cans"]
-         - Key Characteristics: High digital engagement, social sharer (TikTok/Instagram), cocktail-led consumption
-         - Brand Engagement: Medium (High potential via automated dynamic creative)
-         - Representative Persona Name: Sofia Ramirez (or similar aesthetic cocktail creator)
-
-      3. SEGMENT 3: "The Nostalgic Flavor Purist"
-         - Core Value Driver: Comfort in timeless taste, anti-trend reliability, no-nonsense refreshment
-         - What They Want: Crisp, tart, thirst-quenching citrus flavor that stays consistent over decades
-         - Competitor Brands Targeting Them: ["Fresca", "Sun Drop", "Mountain Dew", "Sprite"]
-         - Age Range: 35–60+
-         - Income Range: $45,000 – $95,000
-         - Lifestyle & Needs: Practical, routine-driven routines; needs reliable local distribution in supermarkets and C-stores
-         - Recommended Products: ["Squirt Original", "Squirt Zero Sugar (12-pack, 20 oz bottles)"]
-         - Key Characteristics: Moderate media consumption, habitual repeat purchaser in traditional retail
-         - Brand Engagement: High
-         - Representative Persona Name: Gary Miller (or similar dependable 30-year purist)
-
-      SQUIRT SYNTHETIC DATASET:
+      WILLIAMS-SONOMA SYNTHETIC DATASET:
       ${JSON.stringify(SQUIRT_SYNTHETIC_DATASET, null, 2)}
 
       For each persona, return a JSON object with:
-      - "name": Segment Name ("The Cultural Traditionalist" | "The Modern Mixologist" | "The Nostalgic Flavor Purist")
+      - "name": Segment Name ("The Heirloom Culinary Traditionalist" | "The Aesthetic Host & Mixologist" | "The Gourmet Kitchen Purist")
       - "personaName": Full Realistic Name
-      - "status": Archetype Subtitle (e.g. "Core Anchor: Cultural Traditionalist")
+      - "status": Archetype Subtitle (e.g. "Core Anchor: Culinary Traditionalist")
       - "lifeEvent": Current Life Stage or Seasonal Driver
       - "location": Region & Living Environment
       - "financialHealth": Mindset & Income Bracket
@@ -859,20 +863,20 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       - "incomeRange": Exact Income Range
       - "familySize": Family or Household Structure
       - "coreValues": Core Value Driver
-      - "whatTheyWant": What they want from Squirt
+      - "whatTheyWant": What they want from Williams-Sonoma
       - "competitorBrands": Array of 3-4 competitor brands targeting them
-      - "recommendedProducts": Array of recommended Squirt products & pack sizes
+      - "recommendedProducts": Array of recommended Williams-Sonoma products
       - "keyCharacteristics": Key consumer characteristics
-      - "brandEngagement": Engagement level ("High" or "Medium (High potential via automated dynamic creative)")
-      - "bioLifestyleNeeds": Rich paragraph describing their lifestyle, beverage rituals, and cultural/aesthetic triggers
+      - "brandEngagement": Engagement level ("High" or "Very High")
+      - "bioLifestyleNeeds": Rich paragraph describing their lifestyle, cooking rituals, and entertaining triggers
       - "nba": Next Best Action for the marketing team
       - "imagePrompt": Detailed photorealistic headshot prompt
       - "psychographics": {
           "personalityTraits": ["Trait 1", "Trait 2", "Trait 3"],
-          "beverageRituals": "Daily routine, occasion, and mixology habits",
-          "flavorAffinity": "Favorite Squirt flavors and packaging",
-          "sugarPreference": "Original Full Sugar" | "Zero Sugar" | "Mixes Both",
-          "shoppingValues": "Key purchase drivers and packaging preference",
+          "beverageRituals": "Daily coffee routine, mixology, or culinary habits",
+          "flavorAffinity": "Favorite cookware lines, gourmet pantry items, or appliances",
+          "sugarPreference": "Ingredient preference (e.g. Pure cane sugar & Guittard chocolate / Clean whole food)",
+          "shoppingValues": "Key purchase drivers, durability requirements, and aesthetic preferences",
           "mediaHabits": "Top media and social platforms"
         }
 
@@ -919,7 +923,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       const normalizedPersonas = parsedPersonas.map((p, idx) => {
         const fallback = DEFAULT_SQUIRT_GENERATED_PERSONAS[idx] || DEFAULT_SQUIRT_GENERATED_PERSONAS[0];
         return {
-          id: p.id || `squirt_gen_${idx}_${Date.now()}`,
+          id: p.id || `wsi_gen_${idx}_${Date.now()}`,
           name: p.name || fallback.name,
           personaName: p.personaName || p.name || fallback.personaName,
           status: p.status || fallback.status,
@@ -957,7 +961,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `I have analyzed the **Squirt Synthetic Dataset** and generated **3 new audience personas** with psychographic profiles: **${p1}**, **${p2}**, and **${p3}**.\n\n**Would you like to save these personas to GCS and activate them as your testing panel?**`,
+        text: `I have analyzed the **Williams-Sonoma Synthetic Dataset** and generated **3 new audience personas** with psychographic profiles: **${p1}**, **${p2}**, and **${p3}**.\n\n**Would you like to save these personas to GCS and activate them as your testing panel?**`,
         generatedPersonas: normalizedPersonas,
         clarifyingOptions: {
           question: "Confirm Persona Activation or Start Testing / Visuals:",
@@ -973,14 +977,14 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
               payload: { persona: normalizedPersonas[0] }
             },
             { 
-              label: "💬 Ask New Personas: What flavor of Squirt drinks do you like best, and why?", 
+              label: "💬 Ask New Personas: What is your primary consideration when investing in heirloom cookware?", 
               action: "test_question_with_personas", 
-              payload: { question: "What flavor of Squirt brand drinks do you like best, and why?", personas: normalizedPersonas } 
+              payload: { question: "What is your primary consideration when investing in heirloom cookware like Le Creuset or Thermo-Clad?", personas: normalizedPersonas } 
             },
             { 
-              label: "🍹 Ask New Personas: How do you prefer to drink Squirt (Straight, over ice, or in a Paloma)?", 
+              label: "☕ Ask New Personas: How do you balance smart kitchen electrics with traditional scratch cooking?", 
               action: "test_question_with_personas", 
-              payload: { question: "How do you prefer to drink Squirt (Straight, over ice, or in a Paloma)?", personas: normalizedPersonas } 
+              payload: { question: "How do you balance smart kitchen electrics (e.g. Breville espresso, Vitamix) with traditional scratch cooking?", personas: normalizedPersonas } 
             },
             { 
               label: "🔄 Re-generate Personas with Different Focus", 
@@ -1010,61 +1014,60 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
     }
   };
 
-  // Step 1: Prompt user for Flavor, Sugar, and Visual Hook to catch persona's attention
+  // Step 1: Prompt user for Product, Formulation, and Visual Hook to catch persona's attention
   const runPromptForPersonaImage = async (persona: any, currentMessages: StrategyChatMessage[]) => {
     const pName = persona.personaName || persona.name || 'Persona';
     const archetype = persona.status || persona.archetype || 'Audience Segment';
     const psy = persona.psychographics;
 
-    const favoriteFlavor = psy?.flavorAffinity?.split(',')[0] || 'Squirt Original Citrus';
-    const defaultSugar = psy?.sugarPreference?.includes('Zero') ? 'Zero Sugar' : 'Original Full Sugar';
+    const favoriteProduct = psy?.flavorAffinity?.split(',')[0] || 'Williams Sonoma Cookware';
 
     const assistantMsg: StrategyChatMessage = {
       id: `assistant_ad_prompt_${Date.now()}`,
       sender: 'assistant',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      text: `Let's generate a targeted commercial ad visual tailored to catch **${pName}**'s attention (${archetype}).\n\n**Persona Flavor Affinity:** ${psy?.flavorAffinity || 'Squirt Original Citrus'}\n**Sugar Preference:** ${psy?.sugarPreference || 'Original'}\n**Ritual Context:** *"${psy?.beverageRituals || 'Daily refreshment'}"*\n\nSelect a visual concept, flavor, and sugar formulation below, or type your custom creative prompt:`,
+      text: `Let's generate a targeted commercial ad visual tailored to catch **${pName}**'s attention (${archetype}).\n\n**Persona Product Affinity:** ${psy?.flavorAffinity || 'Williams Sonoma Heirloom Cookware'}\n**Cooking Ritual:** *"${psy?.beverageRituals || 'Weekend entertaining and scratch culinary craft'}"*\n\nSelect a visual culinary concept below, or type your custom creative prompt:`,
       clarifyingOptions: {
-        question: `Select a targeted visual concept for ${pName}:`,
+        question: `Select a targeted culinary visual concept for ${pName}:`,
         options: [
           {
-            label: `🍹 Squirt Paloma Cocktail (${defaultSugar}) - Sun-Drenched Patio & Mixology Bar`,
+            label: `🍳 Le Creuset Dutch Oven - French Country Kitchen & Artisan Sourdough`,
             action: 'generate_persona_ad',
             payload: {
               persona,
-              flavor: 'Original Citrus',
-              sugar: defaultSugar,
-              hook: `A stylish outdoor patio beverage bar setting with an ice-cold glass of Squirt Paloma featuring tequila blanco, coarse sea salt rim, fresh ruby red grapefruit slice, and condensation under bright sunny ambient daylight`
+              flavor: 'Enameled Cast Iron',
+              sugar: 'French Blue',
+              hook: `A warm sun-drenched French country kitchen island with a French blue Le Creuset enameled cast iron Dutch oven filled with simmering coq au vin, crusty artisan sourdough bread, fresh rosemary sprigs, and natural window daylight`
             }
           },
           {
-            label: `🌮 Squirt Citrus Soda (${defaultSugar}) - Backyard BBQ & Street Taco Gathering`,
+            label: `🍷 Dorset Crystal Glassware & Marble Bar Cart - Friday Evening Cocktail Hour`,
             action: 'generate_persona_ad',
             payload: {
               persona,
-              flavor: 'Original Citrus',
-              sugar: defaultSugar,
-              hook: `A lively sunny backyard cookout scene with friends, an ice-filled galvanized tub with frost-covered Squirt cans, fresh street tacos with lime wedges, and a smoking grill in the background`
+              flavor: 'Crystal Glassware',
+              sugar: 'Entertaining Collection',
+              hook: `A chic modern living room setting with a polished brass and white marble bar cart, handcrafted cut-crystal cocktail coupes, fresh botanical garnishes, and warm atmospheric evening lighting`
             }
           },
           {
-            label: `🏃 Squirt Zero Sugar - Active Outdoor Trail & Post-Workout Refreshment`,
+            label: `☕ Breville Barista Touch Impress - Morning Precision Espresso Craft`,
             action: 'generate_persona_ad',
             payload: {
               persona,
-              flavor: 'Zero Sugar',
-              sugar: 'Zero Sugar',
-              hook: `A crisp bright mountain hiking trail setting in natural morning sunlight with an ice-cold can of Squirt Zero Sugar with fresh citrus water droplets`
+              flavor: 'Smart Electrics',
+              sugar: 'Brushed Stainless',
+              hook: `A sleek modern kitchen coffee bar with a brushed stainless steel Breville espresso machine extracting rich golden crema into clear double-walled glass mugs, microfoam latte art, and morning sunlight`
             }
           },
           {
-            label: `🌅 Squirt Ruby Red (${defaultSugar}) - Sunset Golden Hour Rooftop Gathering`,
+            label: `✨ Holiday Tabletop & Peppermint Bark - Festive Family Gathering`,
             action: 'generate_persona_ad',
             payload: {
               persona,
-              flavor: 'Ruby Red',
-              sugar: defaultSugar,
-              hook: `A warm sunset rooftop lounge setting with amber golden hour lighting, modern glassware filled with vibrant pink Squirt Ruby Red, fresh grapefruit garnish, and city skyline view`
+              flavor: 'Gourmet Pantry',
+              sugar: 'Holiday Confection',
+              hook: `An elegant holiday dining table set with Williams Sonoma Open Kitchen porcelain dinnerware, festive evergreen centerpiece, polished cutlery, and a tin of iconic Peppermint Bark ready for dessert`
             }
           }
         ]
@@ -1089,14 +1092,14 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
     setStatusMessage(`Generating tailored ad visual for ${pName} with Gemini 3.1 Flash Lite Image...`);
 
     try {
-      const cleanFlavor = flavor.replace(/^Squirt\s*/i, '');
-      const fullProductName = `Squirt ${cleanFlavor} ${sugar === 'Zero Sugar' ? 'Zero Sugar' : ''}`.trim();
+      const cleanProduct = flavor || 'Heirloom Culinary Collection';
+      const fullProductName = `Williams-Sonoma ${cleanProduct}`.trim();
 
       const imagePrompt = `
       A premium commercial advertising photograph created specifically to catch the attention of ${pName}, a ${persona.status || 'consumer'} (${persona.location || 'US'}).
-      Product: Ice-cold can and beverage glass of ${fullProductName}, covered with crisp, refreshing condensation water droplets.
+      Product: ${fullProductName} in pristine heirloom condition, styled in an upscale luxury kitchen environment.
       Creative Scene & Visual Hook: ${hook}.
-      Visual Style: 4K high-end commercial beverage advertising photography, vibrant colors, cinematic commercial studio lighting, ultra-sharp focus on the product, photorealistic packaging.
+      Visual Style: 4K high-end commercial culinary and interior advertising photography, natural soft window lighting, warm tones, ultra-sharp focus on the product craftsmanship and artisanal culinary details.
       `;
 
       const generatedUrl = await generateImage(
@@ -1124,7 +1127,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       activePersonasRef.current = updatedActivePersonas;
       if (setPersonas) setPersonas(updatedActivePersonas);
 
-      const alignmentReason = `Designed to resonate with ${pName}'s psychographic profile (${persona.psychographics?.personalityTraits?.[0] || 'core driver'}). The ${cleanFlavor} (${sugar}) formulation and ${hook.slice(0, 50)}... aesthetic directly match their preferred ritual: "${persona.psychographics?.beverageRituals || 'Daily refreshment'}".`;
+      const alignmentReason = `Designed to resonate with ${pName}'s psychographic profile (${persona.psychographics?.personalityTraits?.[0] || 'core driver'}). The ${cleanProduct} formulation and ${hook.slice(0, 50)}... aesthetic directly match their preferred ritual: "${persona.psychographics?.beverageRituals || 'Weekend culinary entertaining'}".`;
 
       const assistantMsg: StrategyChatMessage = {
         id: `assistant_ad_result_${Date.now()}`,
@@ -1135,7 +1138,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
           persona: updatedPersona,
           imageUrl: generatedUrl,
           prompt: imagePrompt,
-          flavor: cleanFlavor,
+          flavor: cleanProduct,
           sugar,
           hook,
           alignmentReason
@@ -1148,14 +1151,14 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
               action: 'interview_single_persona',
               payload: {
                 persona: updatedPersona,
-                question: `Looking at this new ad visual for Squirt ${cleanFlavor} (${sugar}) set in ${hook}, does this catch your attention and would it motivate you to purchase?`
+                question: `Looking at this new ad visual for Williams-Sonoma ${cleanProduct} set in ${hook}, does this catch your attention and would it motivate you to purchase?`
               }
             },
             {
               label: `👥 Test this creative concept across the entire 6-Persona Focus Group`,
               action: 'test_question_with_personas',
               payload: {
-                question: `How effective is this creative ad concept featuring Squirt ${cleanFlavor} (${sugar}) with a ${hook.slice(0, 45)} theme?`,
+                question: `How effective is this creative ad concept featuring Williams-Sonoma ${cleanProduct} with a ${hook.slice(0, 45)} theme?`,
                 personas: updatedActivePersonas
               }
             },
@@ -1195,7 +1198,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
     overridePersonas?: any[]
   ) => {
     setIsLoading(true);
-    setStatusMessage('Broadcasting question to 6 synthetic personas (3 Squirt Generated + 3 Standards)...');
+    setStatusMessage('Broadcasting question to 6 synthetic personas (3 WSI Generated + 3 Standards)...');
 
     try {
       // Robust Persona Resolution
@@ -1232,29 +1235,29 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
 
       // Fallback defaults if no generated personas exist yet
       if (gen3.length < 3) {
-        gen3 = DEFAULT_SQUIRT_GENERATED_PERSONAS;
+        gen3 = DEFAULT_WSI_GENERATED_PERSONAS;
       }
 
       // Normalize gen3 properties
       const p1 = {
-        personaName: gen3[0].personaName || gen3[0].name || DEFAULT_SQUIRT_GENERATED_PERSONAS[0].personaName,
-        name: gen3[0].name || gen3[0].status || DEFAULT_SQUIRT_GENERATED_PERSONAS[0].name,
-        bio: gen3[0].bioLifestyleNeeds || gen3[0].bio || gen3[0].demographics || DEFAULT_SQUIRT_GENERATED_PERSONAS[0].bioLifestyleNeeds,
-        roleTag: 'Generated: Cultural Traditionalist',
+        personaName: gen3[0].personaName || gen3[0].name || DEFAULT_WSI_GENERATED_PERSONAS[0].personaName,
+        name: gen3[0].name || gen3[0].status || DEFAULT_WSI_GENERATED_PERSONAS[0].name,
+        bio: gen3[0].bioLifestyleNeeds || gen3[0].bio || gen3[0].demographics || DEFAULT_WSI_GENERATED_PERSONAS[0].bioLifestyleNeeds,
+        roleTag: 'Generated: Culinary Traditionalist',
         isStandard: false
       };
       const p2 = {
-        personaName: gen3[1].personaName || gen3[1].name || DEFAULT_SQUIRT_GENERATED_PERSONAS[1].personaName,
-        name: gen3[1].name || gen3[1].status || DEFAULT_SQUIRT_GENERATED_PERSONAS[1].name,
-        bio: gen3[1].bioLifestyleNeeds || gen3[1].bio || gen3[1].demographics || DEFAULT_SQUIRT_GENERATED_PERSONAS[1].bioLifestyleNeeds,
-        roleTag: 'Generated: Modern Mixologist',
+        personaName: gen3[1].personaName || gen3[1].name || DEFAULT_WSI_GENERATED_PERSONAS[1].personaName,
+        name: gen3[1].name || gen3[1].status || DEFAULT_WSI_GENERATED_PERSONAS[1].name,
+        bio: gen3[1].bioLifestyleNeeds || gen3[1].bio || gen3[1].demographics || DEFAULT_WSI_GENERATED_PERSONAS[1].bioLifestyleNeeds,
+        roleTag: 'Generated: Aesthetic Host & Mixologist',
         isStandard: false
       };
       const p3 = {
-        personaName: gen3[2].personaName || gen3[2].name || DEFAULT_SQUIRT_GENERATED_PERSONAS[2].personaName,
-        name: gen3[2].name || gen3[2].status || DEFAULT_SQUIRT_GENERATED_PERSONAS[2].name,
-        bio: gen3[2].bioLifestyleNeeds || gen3[2].bio || gen3[2].demographics || DEFAULT_SQUIRT_GENERATED_PERSONAS[2].bioLifestyleNeeds,
-        roleTag: 'Generated: Nostalgic Flavor Purist',
+        personaName: gen3[2].personaName || gen3[2].name || DEFAULT_WSI_GENERATED_PERSONAS[2].personaName,
+        name: gen3[2].name || gen3[2].status || DEFAULT_WSI_GENERATED_PERSONAS[2].name,
+        bio: gen3[2].bioLifestyleNeeds || gen3[2].bio || gen3[2].demographics || DEFAULT_WSI_GENERATED_PERSONAS[2].bioLifestyleNeeds,
+        roleTag: 'Generated: Gourmet Kitchen Purist',
         isStandard: false
       };
 
@@ -1288,9 +1291,9 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       MULTIMODAL CONTEXT - ADVERTISEMENT VISUAL ATTACHED:
       An ad visual image is attached to this focus group testing session.
       ${recentAd?.hook ? `- Creative Concept / Hook: "${recentAd.hook}"` : ''}
-      ${recentAd?.flavor ? `- Flavor Featured: "${recentAd.flavor}"` : ''}
-      ${recentAd?.sugar ? `- Sugar Formulation: "${recentAd.sugar}"` : ''}
-      All 6 personas MUST review this attached visual and factor what they see (the styling, drink appearance, branding, color palette, appetizing qualities, and theme) into their spoken responses.
+      ${recentAd?.flavor ? `- Product / Line Featured: "${recentAd.flavor}"` : ''}
+      ${recentAd?.sugar ? `- Style / Colorway: "${recentAd.sugar}"` : ''}
+      All 6 personas MUST review this attached visual and factor what they see (the styling, craftsmanship, kitchen setting, color palette, and premium appeal) into their spoken responses.
             `;
           }
         } catch (imgErr) {
@@ -1299,7 +1302,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       }
 
       const prompt = `
-      You are simulating a live qualitative focus group interview panel of 6 diverse synthetic personas for Squirt and ${companyName}.
+      You are simulating a live qualitative focus group interview panel of 6 diverse synthetic personas for Williams-Sonoma (${companyName}).
       
       QUESTION BROADCAST TO PANEL:
       "${question}"
@@ -1314,7 +1317,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       6. [Default Standard: Generalist] Sam Taylor (The Mainstream Generalist): ${DEFAULT_STANDARD_PERSONAS[2].bioLifestyleNeeds}
 
       TASK:
-      Simulate each of the 6 personas answering this specific question authentically in their distinct voice, referencing their lifestyle, flavor preferences, and mindset.
+      Simulate each of the 6 personas answering this specific question authentically in their distinct voice, referencing their lifestyle, culinary habits, and mindset.
       Also provide a high-level executive summary, key consensus points, and divergent viewpoints.
 
       REQUIRED JSON STRUCTURE:
@@ -1337,7 +1340,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
             "isStandardDefault": false,
             "answer": "Spoken direct quote in first-person voice explaining their exact thoughts...",
             "sentiment": "enthusiastic",
-            "favoriteFlavorMentioned": "Specific flavor or product mentioned (e.g. Squirt Original Citrus, Ruby Red, Zero Sugar)",
+            "favoriteFlavorMentioned": "Specific product line or culinary tool mentioned (e.g. Le Creuset Dutch Oven, Thermo-Clad Cookware, Breville Espresso)",
             "keyReason": "Core takeaway reason behind their response"
           },
           {
@@ -1462,7 +1465,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       ...p,
       id: p.id || `custom_persona_${idx}`,
       personaName: p.personaName || p.name || `Persona ${idx + 1}`,
-      name: p.name || p.status || `Squirt Segment ${idx + 1}`,
+      name: p.name || p.status || `WSI Segment ${idx + 1}`,
       archetype: p.archetype || p.status || p.name || `Consumer Archetype ${idx + 1}`,
       isStandard: false
     }));
@@ -1506,9 +1509,9 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       5. "generate_personas": The user wants to generate, synthesize, or create new consumer personas from the dataset.
       6. "show_personas": The user wants to see, display, or view the 6 persona cards in chat.
       7. "load_personas": The user wants to load previously saved personas from GCS storage.
-      8. "view_dataset": The user wants to inspect or browse the Squirt synthetic dataset table.
+      8. "view_dataset": The user wants to inspect or browse the Williams-Sonoma synthetic dataset table.
       9. "market_strategy": Broad industry research, marketing strategy advice, or competitive questions.
-      10. "unsupported": The user is asking for something outside the scope of consumer strategy, persona focus groups, persona ad generation, or beverage dataset research (e.g. coding, math, flight booking, weather, ordering groceries, non-strategic tasks).
+      10. "unsupported": The user is asking for something outside the scope of consumer strategy, persona focus groups, persona ad generation, or culinary dataset research (e.g. coding, math, flight booking, weather, ordering groceries, non-strategic tasks).
           -> In "direct_answer_text", start with: "I don't currently know how to do that, but here are some other items I can do:" and list out the core strategy skills.
 
       Return ONLY raw JSON:
@@ -1652,9 +1655,9 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
       PERSONA PROFILE:
       - Name: ${pName}
       - Archetype: ${archetype}
-      - Background / Lifestyle / Needs: ${persona.bioLifestyleNeeds || persona.bio || persona.demographics || 'Regular beverage consumer'}
-      - Core Values: ${persona.coreValues || 'Taste, Quality, Value'}
-      - Category Association: ${companyName} beverages (Squirt Original Grapefruit Soda, Squirt Zero Sugar, Squirt Ruby Red, Mexican Glass Bottle Real Sugar, Paloma Mixers, etc.)
+      - Background / Lifestyle / Needs: ${persona.bioLifestyleNeeds || persona.bio || persona.demographics || 'Gourmet home cook and culinary enthusiast'}
+      - Core Values: ${persona.coreValues || 'Heirloom Quality, Performance, Craftsmanship'}
+      - Category Association: ${companyName} culinary portfolio (Williams Sonoma Thermo-Clad Cookware, Le Creuset Enameled Cast Iron, Breville Smart Electrics, Shun Cutlery, Dorset Crystal Glassware, Gourmet Pantry)
       ${persona.psychographics ? `- Psychographics: ${JSON.stringify(persona.psychographics)}` : ''}
 
       INTERVIEW QUESTION:
@@ -1663,10 +1666,10 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
 
       INSTRUCTIONS:
       1. Stay 100% in character as ${pName}. Speak in your distinctive voice, personality, lifestyle habits, and emotional tone.
-      2. If you are Arthur Vance (The Skeptical Critic), be discerning, critical of marketing hype or artificial aftertastes, honest about pricing and quality.
-      3. If you are Joy Sun (The Enthusiastic Optimist), be vibrant, social, excited about creative flavors, dirty soda mixes, and joyful moments.
+      2. If you are Arthur Vance (The Skeptical Critic), be discerning, critical of marketing hype or non-stick synthetic coatings, and demand verified durability, 5-ply clad construction, and lifetime heirloom quality.
+      3. If you are Joy Sun (The Enthusiastic Optimist), be vibrant, social, excited about creative recipes, artisan sourdough baking, aesthetic holiday hosting, and joyful kitchen moments.
       4. If you are Sam Taylor (The Mainstream Generalist), be balanced, pragmatic, everyday practical, and conscious of convenience.
-      5. State your personal perspective, answer the question directly, give your exact flavor preference if relevant, and explain why you feel this way. If an image is attached, provide specific visual critique of what you see.
+      5. State your personal perspective, answer the question directly, give your exact product preference if relevant, and explain why you feel this way. If an image is attached, provide specific visual critique of what you see.
 
       Return ONLY a JSON object:
       {
@@ -1676,7 +1679,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
         "isStandardDefault": ${Boolean(persona.isStandard || persona.isStandardDefault || persona.type?.startsWith('default'))},
         "answer": "In-character direct spoken quote responding to the question...",
         "sentiment": "enthusiastic" | "positive" | "neutral" | "skeptical",
-        "favoriteFlavorMentioned": "Specific favorite Squirt flavor mentioned in response",
+        "favoriteFlavorMentioned": "Specific favorite Williams-Sonoma product or collection mentioned in response",
         "keyReason": "Concise summary of their core rationale"
       }
       Do not use markdown code blocks. Output ONLY raw JSON.
@@ -1856,7 +1859,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
           id: `assistant_${Date.now()}`,
           sender: 'assistant',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          text: `Here is the **Squirt Brands Synthetic Dataset** (${SQUIRT_SYNTHETIC_DATASET.length} customer records across Original Grapefruit Citrus, Zero Sugar, Ruby Red, and Mexican Glass Bottle channels):`,
+          text: `Here is the **Williams-Sonoma Synthetic Dataset** (${SQUIRT_SYNTHETIC_DATASET.length} customer records across Cookware, Cutlery, Electrics, and Gourmet Pantry categories):`,
           showDatasetTable: true
         };
 
@@ -1870,7 +1873,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
 
       // Route 8: Market Strategy & Grounded Search (Default)
       setStatusMessage(`Analyzing marketing strategy & competitive landscape for "${text}"...`);
-      const searchRes = await groundedSearch(`Squirt citrus soda beverage marketing strategy, Paloma trends, and brand growth: ${text}`, companyName);
+      const searchRes = await groundedSearch(`Williams-Sonoma culinary retail marketing strategy, cookware trends, and customer growth: ${text}`, companyName);
 
       let formattedText = '';
       if (typeof searchRes === 'string') {
@@ -1880,7 +1883,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
           searchRes.summary ? `**Strategic Summary:**\n${searchRes.summary}\n` : '',
           searchRes.detailed_report ? `**Market Findings:**\n${searchRes.detailed_report}\n` : '',
           searchRes.recommendations && searchRes.recommendations.length > 0 
-            ? `**Next Steps for Squirt Marketing:**\n${searchRes.recommendations.map((r: string) => `• ${r}`).join('\n')}` 
+            ? `**Next Steps for Williams-Sonoma Marketing:**\n${searchRes.recommendations.map((r: string) => `• ${r}`).join('\n')}` 
             : ''
         ].filter(Boolean).join('\n');
       }
@@ -1949,7 +1952,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **Squirt Brands Synthetic Dataset**:`,
+        text: `Here is the **Williams-Sonoma Synthetic Dataset**:`,
         showDatasetTable: true
       };
       const updated = [...newMessages, assistantMsg];
@@ -1962,7 +1965,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
   const filteredDataset = SQUIRT_SYNTHETIC_DATASET.filter(item => 
     item.name.toLowerCase().includes(datasetSearch.toLowerCase()) ||
     item.segmentArchetype.toLowerCase().includes(datasetSearch.toLowerCase()) ||
-    item.preferredFlavor.toLowerCase().includes(datasetSearch.toLowerCase()) ||
+    ((item as any).preferredProduct || item.preferredFlavor || '').toLowerCase().includes(datasetSearch.toLowerCase()) ||
     item.location.toLowerCase().includes(datasetSearch.toLowerCase())
   );
 
@@ -1977,7 +1980,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
           <div>
             <span className="font-bold text-sm text-gray-900">Strategize Agent</span>
             <span className="ml-2 text-[10px] font-bold text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">
-              Squirt 6-Persona Panel Ready
+              WSI 6-Persona Panel Ready
             </span>
           </div>
         </div>
@@ -2021,7 +2024,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
               </div>
               <div className="space-y-1">
                 <p className="text-gray-900 text-base sm:text-lg font-semibold leading-snug">
-                  Hi, I am the <span className="font-bold text-purple-700">Strategize Agent</span>. Ask me to inspect our Squirt dataset, create audience personas, or test questions across our 6 synthetic personas.
+                  Hi, I am the <span className="font-bold text-purple-700">Strategize Agent</span>. Ask me to inspect our Williams-Sonoma dataset, create audience personas, or test questions across our 6 synthetic personas.
                 </p>
                 <p className="text-xs text-gray-500 italic">
                   *I automatically route prompts to explore datasets, synthesize buyer segments, or broadcast qualitative focus group tests.
@@ -2038,14 +2041,14 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <button
-                  onClick={() => handleSendMessage("What flavor of Squirt brand drinks do you like best, and why?")}
+                  onClick={() => handleSendMessage("What is your primary consideration when investing in heirloom cookware like Le Creuset or Thermo-Clad?")}
                   className="p-4 bg-white hover:bg-purple-50/50 border border-gray-200 hover:border-purple-600 rounded-2xl text-left transition-all duration-200 shadow-xs hover:shadow-md flex flex-col justify-between h-32 group"
                 >
                   <span className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-purple-700 transition-colors leading-tight">
-                    6-Persona Flavor Test
+                    6-Persona Cookware Test
                   </span>
                   <div className="flex justify-between items-center w-full mt-2">
-                    <span className="text-[11px] text-gray-500 line-clamp-2">Broadcast flavor question to all 6 personas.</span>
+                    <span className="text-[11px] text-gray-500 line-clamp-2">Broadcast cookware question to all 6 personas.</span>
                     <div className="p-1.5 rounded-full bg-gray-50 group-hover:bg-purple-100 text-gray-400 group-hover:text-purple-700 shrink-0 ml-1">
                       <Lightbulb size={14} />
                     </div>
@@ -2053,7 +2056,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                 </button>
 
                 <button
-                  onClick={() => handleSendMessage("Create audience personas from the Squirt dataset")}
+                  onClick={() => handleSendMessage("Create audience personas from the Williams-Sonoma dataset")}
                   className="p-4 bg-white hover:bg-purple-50/50 border border-gray-200 hover:border-purple-600 rounded-2xl text-left transition-all duration-200 shadow-xs hover:shadow-md flex flex-col justify-between h-32 group"
                 >
                   <span className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-purple-700 transition-colors leading-tight">
@@ -2068,14 +2071,14 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                 </button>
 
                 <button
-                  onClick={() => handleSendMessage("Show the Squirt synthetic dataset")}
+                  onClick={() => handleSendMessage("Show the Williams-Sonoma synthetic dataset")}
                   className="p-4 bg-white hover:bg-purple-50/50 border border-gray-200 hover:border-purple-600 rounded-2xl text-left transition-all duration-200 shadow-xs hover:shadow-md flex flex-col justify-between h-32 group"
                 >
                   <span className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-purple-700 transition-colors leading-tight">
-                    Squirt Dataset
+                    WSI Dataset
                   </span>
                   <div className="flex justify-between items-center w-full mt-2">
-                    <span className="text-[11px] text-gray-500 line-clamp-2">Inspect consumer records & channel spend.</span>
+                    <span className="text-[11px] text-gray-500 line-clamp-2">Inspect consumer records & annual spend.</span>
                     <div className="p-1.5 rounded-full bg-gray-50 group-hover:bg-purple-100 text-gray-400 group-hover:text-purple-700 shrink-0 ml-1">
                       <Lightbulb size={14} />
                     </div>
@@ -2083,14 +2086,14 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                 </button>
 
                 <button
-                  onClick={() => handleSendMessage("What is the market growth strategy for Squirt Zero Sugar and Palomas?")}
+                  onClick={() => handleSendMessage("What is the market growth strategy for smart espresso machines and premium electrics?")}
                   className="p-4 bg-white hover:bg-purple-50/50 border border-gray-200 hover:border-purple-600 rounded-2xl text-left transition-all duration-200 shadow-xs hover:shadow-md flex flex-col justify-between h-32 group"
                 >
                   <span className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-purple-700 transition-colors leading-tight">
-                    Zero Sugar Growth
+                    Smart Kitchen Electrics
                   </span>
                   <div className="flex justify-between items-center w-full mt-2">
-                    <span className="text-[11px] text-gray-500 line-clamp-2">Analyze health switchers & retail expansion.</span>
+                    <span className="text-[11px] text-gray-500 line-clamp-2">Analyze high-tech cooking & registry expansion.</span>
                     <div className="p-1.5 rounded-full bg-gray-50 group-hover:bg-purple-100 text-gray-400 group-hover:text-purple-700 shrink-0 ml-1">
                       <Lightbulb size={14} />
                     </div>
@@ -2108,25 +2111,25 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                   Show Current Personas
                 </button>
                 <button
-                  onClick={() => handleSendMessage("Create audience personas from the Squirt dataset")}
+                  onClick={() => handleSendMessage("Create audience personas from the Williams-Sonoma dataset")}
                   className="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-300 hover:border-purple-600 text-gray-700 hover:text-purple-700 rounded-full text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5"
                 >
                   <Users size={14} className="text-indigo-600" />
                   Create AI Personas
                 </button>
                 <button
-                  onClick={() => handleSendMessage("Show the Squirt synthetic dataset")}
+                  onClick={() => handleSendMessage("Show the Williams-Sonoma synthetic dataset")}
                   className="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-300 hover:border-purple-600 text-gray-700 hover:text-purple-700 rounded-full text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5"
                 >
                   <Database size={14} className="text-emerald-600" />
                   View Dataset Table
                 </button>
                 <button
-                  onClick={() => handleSendMessage("What flavor of Squirt brand drinks do you like best, and why?")}
+                  onClick={() => handleSendMessage("What is your primary consideration when investing in heirloom cookware like Le Creuset or Thermo-Clad?")}
                   className="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-300 hover:border-purple-600 text-gray-700 hover:text-purple-700 rounded-full text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5"
                 >
                   <MessageSquare size={14} className="text-purple-700" />
-                  Test Flavor Question (6 Personas)
+                  Test Cookware Question (6 Personas)
                 </button>
               </div>
             </div>
@@ -2342,7 +2345,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                                 {msg.generatedPersonaAd.sugar}
                               </span>
                               <span className="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-200">
-                                Squirt {msg.generatedPersonaAd.flavor}
+                                {msg.generatedPersonaAd.flavor}
                               </span>
                             </div>
                             <h4 className="text-sm font-extrabold text-gray-950 mt-1.5">
@@ -2433,7 +2436,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                     </div>
                   )}
 
-                  {/* Interactive Squirt Dataset Table */}
+                  {/* Interactive Williams-Sonoma Dataset Table */}
                   {msg.showDatasetTable && (
                     <div className="mt-4 space-y-3 pt-3 border-t border-gray-100 text-gray-900">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -2443,7 +2446,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                             type="text"
                             value={datasetSearch}
                             onChange={(e) => setDatasetSearch(e.target.value)}
-                            placeholder="Filter by flavor, segment, location..."
+                            placeholder="Filter by product, segment, location..."
                             className="w-full pl-8 pr-3 py-1 text-xs bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-600 focus:bg-white text-gray-800"
                           />
                         </div>
@@ -2462,9 +2465,9 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                             <tr>
                               <th className="p-2.5">Name</th>
                               <th className="p-2.5">Segment / Archetype</th>
-                              <th className="p-2.5">Preferred Flavor</th>
+                              <th className="p-2.5">Preferred Product</th>
                               <th className="p-2.5">Channel</th>
-                              <th className="p-2.5">Monthly Spend</th>
+                              <th className="p-2.5">Annual Spend</th>
                               <th className="p-2.5">Location</th>
                             </tr>
                           </thead>
@@ -2473,9 +2476,9 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                               <tr key={item.id} className="hover:bg-purple-50/40 transition-colors">
                                 <td className="p-2.5 font-bold text-gray-900">{item.name} ({item.age})</td>
                                 <td className="p-2.5 text-gray-700">{item.segmentArchetype}</td>
-                                <td className="p-2.5 font-medium text-purple-700">{item.preferredFlavor}</td>
+                                <td className="p-2.5 font-medium text-purple-700">{(item as any).preferredProduct || item.preferredFlavor}</td>
                                 <td className="p-2.5 text-gray-600">{item.topChannel}</td>
-                                <td className="p-2.5 font-mono text-gray-800">${item.monthlySpend.toFixed(2)}</td>
+                                <td className="p-2.5 font-mono text-gray-800">${((item as any).annualSpend || (item.monthlySpend ? item.monthlySpend * 12 : 2850)).toLocaleString()}</td>
                                 <td className="p-2.5 text-gray-500">{item.location}</td>
                               </tr>
                             ))}
@@ -2496,7 +2499,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                             Brand-Specific Audience Segments ({msg.generatedPersonas.length} Generated)
                           </span>
                           <span className="text-[10px] font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-100">
-                            Squirt Dataset
+                            Williams-Sonoma Dataset
                           </span>
                         </div>
 
@@ -2641,7 +2644,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
 
                                   <div className="grid grid-cols-2 gap-1.5">
                                     <button
-                                      onClick={() => handleSendMessage(`Ask ${p.personaName || p.name}: What is your favorite Squirt flavor and what makes you buy it?`)}
+                                      onClick={() => handleSendMessage(`Ask ${p.personaName || p.name}: What is your favorite Williams-Sonoma culinary collection and what makes you buy it?`)}
                                       className="w-full py-1.5 px-2 text-[11px] font-bold bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-xl transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-2xs"
                                     >
                                       <MessageCircle size={12} />
@@ -2778,7 +2781,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
 
                                   <div className="grid grid-cols-2 gap-1.5">
                                     <button
-                                      onClick={() => handleSendMessage(`Ask ${sp.personaName}: What would convince you to buy or switch to Squirt products?`)}
+                                      onClick={() => handleSendMessage(`Ask ${sp.personaName}: What would convince you to invest in Williams-Sonoma culinary collections?`)}
                                       className="w-full py-1.5 px-2 text-[11px] font-bold bg-blue-50 hover:bg-blue-100 text-[#1A73E8] border border-blue-200 rounded-xl transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-2xs"
                                     >
                                       <MessageCircle size={12} />
@@ -3068,12 +3071,12 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                     <button
                       onClick={() => {
                         setShowPlusMenu(false);
-                        handleSendMessage("What flavor of Squirt brand drinks do you like best, and why?");
+                        handleSendMessage("What is your primary consideration when investing in heirloom cookware like Le Creuset or Thermo-Clad?");
                       }}
                       className="w-full px-3 py-2 text-left hover:bg-purple-50 text-gray-700 flex items-center gap-2"
                     >
                       <MessageSquare size={14} className="text-purple-600" />
-                      Test: "What flavor do you like best, why?"
+                      Test: "Heirloom Cookware Considerations"
                     </button>
                     <button
                       onClick={() => {
@@ -3088,7 +3091,7 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                     <button
                       onClick={() => {
                         setShowPlusMenu(false);
-                        handleSendMessage("Create audience personas from the Squirt dataset");
+                        handleSendMessage("Create audience personas from the Williams-Sonoma dataset");
                       }}
                       className="w-full px-3 py-2 text-left hover:bg-purple-50 text-gray-700 flex items-center gap-2"
                     >
@@ -3098,12 +3101,12 @@ export const StrategyChatAgent: React.FC<StrategyChatAgentProps> = ({ personas =
                     <button
                       onClick={() => {
                         setShowPlusMenu(false);
-                        handleSendMessage("Show the Squirt synthetic dataset");
+                        handleSendMessage("Show the Williams-Sonoma synthetic dataset");
                       }}
                       className="w-full px-3 py-2 text-left hover:bg-purple-50 text-gray-700 flex items-center gap-2"
                     >
                       <Database size={14} className="text-emerald-600" />
-                      View Squirt Dataset
+                      View WSI Dataset
                     </button>
                     <button
                       onClick={() => {

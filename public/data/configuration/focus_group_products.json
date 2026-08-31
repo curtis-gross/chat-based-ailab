@@ -1,30 +1,30 @@
 [
   {
-    "id": "squirt_original_12pack",
-    "name": "Squirt Original Grapefruit Soda (12-Pack)",
-    "description": "Crisp, tart, and wildly refreshing. Light, fizzy, caffeine-free naturally flavored grapefruit soda made with real citrus juice. Perfect ice-cold from the can or mixed in an authentic Mexican Paloma.",
-    "price": "$6.99",
-    "category": "Citrus Soda"
+    "id": "le_creuset_dutch_oven",
+    "name": "Le Creuset Enameled Cast Iron Round Dutch Oven (7.25 Qt, French Blue)",
+    "description": "The quintessential culinary heirloom. Handcrafted in France with premium enameled cast iron for exceptional heat retention and slow braising perfection. Transitions seamlessly from oven to table.",
+    "price": "$420.00",
+    "category": "Heirloom Cookware"
   },
   {
-    "id": "squirt_zero_sugar",
-    "name": "Squirt Zero Sugar Grapefruit Soda (12-Pack)",
-    "description": "All the bright, bold citrus punch of classic Squirt with zero calories and zero sugar. Crisp hydration that satisfies intense thirst without any sugar crash.",
-    "price": "$6.99",
-    "category": "Zero Sugar Soda"
+    "id": "wsi_thermo_clad_10pc",
+    "name": "Williams Sonoma Thermo-Clad Stainless Steel 10-Piece Cookware Set",
+    "description": "Engineered with patented Thermo-Clad technology for 35% better heat conductivity than other clad cookware. Surgical-grade stainless steel interior, induction-compatible, and dishwasher safe.",
+    "price": "$899.95",
+    "category": "Cookware Sets"
   },
   {
-    "id": "squirt_ruby_red",
-    "name": "Squirt Ruby Red Citrus Soda (2-Liter)",
-    "description": "Bursting with sweet, tangy ruby red grapefruit flavor and a splash of citrus zest. Ideal for family cookouts, taco fiestas, and party punch bowls.",
-    "price": "$2.49",
-    "category": "Citrus Soda"
+    "id": "shun_classic_chef_knife",
+    "name": "Shun Classic 8\" Damascus Chef Knife",
+    "description": "Handcrafted in Seki City, Japan. Features 68 micro-layers of Damascus cladding over a VG-MAX steel cutting core with a 16-degree double-bevel razor edge and PakkaWood handle.",
+    "price": "$169.95",
+    "category": "Cutlery"
   },
   {
-    "id": "squirt_paloma_mixer_pack",
-    "name": "Squirt Paloma Cocktail Party Pack",
-    "description": "The quintessential authentic mixer bundle for craft Palomas. Includes two 12-packs of Squirt, artisanal chili-lime cocktail salt, and recipe card for the perfect Mexican Paloma.",
-    "price": "$14.99",
-    "category": "Beverage & Mixers"
+    "id": "breville_barista_touch",
+    "name": "Breville Barista Touch Impress Espresso Machine",
+    "description": "Automated touchscreen espresso system featuring ThermoJet 3-second heating, assisted tamping, micro-foam milk texturing, and real-time extraction feedback.",
+    "price": "$1,499.95",
+    "category": "Kitchen Electrics"
   }
 ]

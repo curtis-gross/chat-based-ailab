@@ -1,0 +1,36 @@
+{
+  "companyName": "WSI (Williams-Sonoma)",
+  "lastUpdated": "2026-08-31T18:29:37.123Z",
+  "items": [
+    {
+      "id": "asset_1788200975473_663",
+      "url": "/api/content-audit/image/creative_upload_1788200967934_597.jpg?companyName=WSI%20(Williams-Sonoma)",
+      "type": "upload",
+      "mediaType": "image",
+      "timestamp": "11:29 AM",
+      "isoDate": "2026-08-31T18:29:35.473Z",
+      "query": "le-creuset-signature-enameled-cast-iron-round-wide-dutch-o-xl.jpg",
+      "aspectRatio": "auto",
+      "metadata": {
+        "coreContent": "A Le Creuset Signature Enameled Cast Iron Round Wide Dutch Oven in a soft sea salt green color, shown with its lid on, resting on a white marble board next to a draped grey linen cloth.",
+        "style": "Commercial Studio, Bright Minimalist, 4K Photorealistic, Lifestyle Cookware Photography",
+        "dominantColors": [
+          "Sea Salt Green",
+          "Marble White",
+          "Linen Grey"
+        ],
+        "tags": [
+          "le creuset",
+          "dutch oven",
+          "enameled cast iron",
+          "cookware",
+          "kitchenware",
+          "sea salt",
+          "williams sonoma"
+        ],
+        "sizing": "auto",
+        "additionalDetails": "The lid features the embossed 'LE CREUSET' brand name and a silver stainless steel knob with engraved branding. The scene is set on a light grey textured background."
+      }
+    }
+  ]
+}

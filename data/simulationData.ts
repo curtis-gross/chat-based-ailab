@@ -1,21 +1,23 @@
-  // Keurig Dr Pepper / Squirt Products & Refreshment Portfolio
+  // Williams-Sonoma (WSI) Culinary, Cookware & Home Portfolio
 export const SIMULATION_PRODUCTS = [
-  // Squirt Citrus Portfolio
-  "Squirt Original Grapefruit Soda (12-Pack): Naturally flavored, caffeine-free, crisp and tart citrus soda made with real grapefruit juice.",
-  "Squirt Zero Sugar Grapefruit Soda (12-Pack): 100% bold grapefruit flavor with zero sugar, zero calories, and zero crash.",
-  "Squirt Ruby Red Citrus Soda (2-Liter): Sweet ruby grapefruit tang with a burst of bright citrus fizz, perfect for family dinners and party punches.",
-  "Squirt Paloma Cocktail Party Pack: Authentic Mexican Paloma cocktail mixer bundle with Squirt cans, artisanal chili-lime salt, and recipe guides.",
+  // Flagship Cookware & Cast Iron
+  "Williams Sonoma Signature Thermo-Clad Stainless Steel 10-Piece Cookware Set: Patented Thermo-Clad technology delivers 35% better heat conductivity and eliminate hot spots for precision searing.",
+  "Le Creuset Signature Enameled Cast Iron Round Dutch Oven (5.5 Qt, French Blue): Handcrafted French heirloom cast iron engineered for slow-simmered stews, artisan sourdough loaves, and lifetime durability.",
+  "All-Clad d5 Stainless-Steel 4-Qt Sauté Pan with Lid: Five bonded layers of stainless steel and aluminum providing warp-free flat bottoms and superior braising performance.",
+  "Staub Cast Iron 3.5-Qt Pumpkin Cocotte: Enameled French heirloom pumpkin baker, perfect for autumn soups, roasted vegetables, and festive tablescapes.",
 
-  // Dr Pepper & Specialty Sodas
-  "Dr Pepper Original 12-Pack: The signature blend of 23 legendary flavors providing authentic, one-of-a-kind indulgence.",
-  "Dr Pepper Strawberries & Cream: Smooth strawberry flavor blended with rich vanilla cream and the classic 23-flavor recipe.",
-  "Dr Pepper Cherry Zero Sugar: Rich black cherry undertones paired with bold Dr Pepper flavor and 0 calories.",
-  "Canada Dry Ginger Ale: Crisp, real ginger extract beverage made for everyday refreshment and cocktail mixing.",
+  // Precision Cutlery & Prep
+  "Shun Classic 8\" Chef's Knife: Handcrafted in Seki, Japan with 34 layers of Damascus cladding and razor-sharp VG-MAX steel core for effortless chopping.",
+  "Williams Sonoma Estate Olivewood End-Grain Cutting Board: Dense Northern Italian olivewood end-grain slab providing self-healing surface protection for chef's knives.",
+  "Global Classic 7-Piece Knife Block Set: Distinctive dimpled stainless handles and Chromova 18 steel edge retention for professional home kitchens.",
 
-  // Snapple & Fruit Refreshers
-  "Snapple Kiwi Strawberry (16 oz Glass Bottle): Made from the Best Stuff on Earth with natural fruit flavors and real sugar.",
-  "Snapple Peach Tea (16 oz Glass Bottle): Premium brewed black tea blended with sweet peach flavor.",
-  "7UP Lemon Lime Soda: Clean, crisp, 100% natural lemon and lime flavor with zero caffeine.",
-  "A&W Root Beer: Rich, creamy, aged vanilla root beer made for classic soda floats."
+  // Smart Kitchen Electrics & Coffee
+  "Breville Barista Touch Impress Espresso Machine: Automated touch-screen espresso crafting with assisted tamping, thermo-jet heating, and microfoam milk texturing.",
+  "Vitamix A3500 Ascent Series Smart Blender: Variable speed control, built-in wireless connectivity, and 5 program settings for hot soups, smoothies, and nut butters.",
+
+  // Gourmet Pantry, Holiday Classics & Tabletop
+  "Williams Sonoma Original Peppermint Bark: Legendary holiday confection with custom-blended Guittard dark and white chocolates infused with natural peppermint oil.",
+  "Williams Sonoma Reserve Extra Virgin Olive Oil & 25-Year Modena Balsamic: Cold-pressed Tuscan olive oil paired with authentic aged balsamic vinegar for artisan dipping.",
+  "Open Kitchen by Williams Sonoma 16-Piece Porcelain Dinnerware Set: High-fired durable white porcelain designed for everyday family meals and sophisticated entertaining."
 ];
 

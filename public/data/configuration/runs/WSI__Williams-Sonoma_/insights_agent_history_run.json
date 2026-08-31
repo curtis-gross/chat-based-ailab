@@ -1,0 +1,69 @@
+{
+  "sessions": [
+    {
+      "sessionId": "session_1788200889536",
+      "title": "Show all insights and indexed videos",
+      "timestamp": "Aug 31, 11:28 AM",
+      "messageCount": 4,
+      "isPinned": false,
+      "messages": [
+        {
+          "id": "user_1788200890672",
+          "sender": "user",
+          "timestamp": "11:28 AM",
+          "text": "Show all insights and indexed videos"
+        },
+        {
+          "id": "assistant_1788200892304",
+          "sender": "assistant",
+          "timestamp": "11:28 AM",
+          "text": "No indexed videos found for **WSI (Williams-Sonoma)** yet. You can paste a YouTube URL anytime to analyze it!",
+          "indexedVideos": []
+        },
+        {
+          "id": "user_1788200914477",
+          "sender": "user",
+          "timestamp": "11:28 AM",
+          "text": "what can you do"
+        },
+        {
+          "id": "assistant_1788200916031",
+          "sender": "assistant",
+          "timestamp": "11:28 AM",
+          "text": "I am your WSI Intelligence Agent. I can analyze video ad creative, video sentiment, YouTube comments, competitor benchmarks, Reddit consumer discussions, website landing pages, and provide bulk cross-campaign insights.",
+          "clarifyingOptions": {
+            "question": "Next actions with the Insights Agent:",
+            "options": [
+              {
+                "label": "📹 Show all indexed videos",
+                "action": "show_all_videos"
+              },
+              {
+                "label": "💬 Analyze YouTube comments sentiment",
+                "action": "run_comments_sentiment",
+                "payload": {
+                  "topic": "WSI (Williams-Sonoma)"
+                }
+              },
+              {
+                "label": "⚔️ Run competitor benchmark",
+                "action": "run_competitor",
+                "payload": {
+                  "topic": "WSI (Williams-Sonoma)"
+                }
+              },
+              {
+                "label": "🌐 Audit website landing page",
+                "action": "run_website_audit",
+                "payload": {
+                  "url": "https://www.drpepper.com"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-08-31T18:28:36.514Z"
+}
