@@ -643,7 +643,14 @@ const getActiveCompanyName = () => {
 };
 
 const getBucketName = () => {
-    return process.env.GCS_BUCKET_NAME || 'ailab-gcs';
+    if (process.env.GCS_BUCKET_NAME) {
+        return process.env.GCS_BUCKET_NAME;
+    }
+    const project = process.env.GCP_PROJECT || process.env.GOOGLE_CLOUD_PROJECT;
+    if (project) {
+        return `${project}-ailab-gcs`;
+    }
+    return 'ailab-gcs';
 };
 
 
