@@ -75,6 +75,11 @@ export interface TrackedRedditThread {
   dateAdded: string;
   topic?: string;
   notes?: string;
+  lastScore?: number;
+  analysisSummary?: string;
+  analysisId?: string;
+  analyzedAt?: string;
+  analysisResult?: RedditAnalysisResult | any;
 }
 
 export interface RedditAnalysisResult {
@@ -152,6 +157,7 @@ export interface ChatMessage {
   redditResult?: RedditAnalysisResult | any;
   competitorResult?: any;
   indexedVideos?: any[];
+  analyzedRedditThreads?: TrackedRedditThread[];
   bulkResult?: any;
   error?: string;
   statusText?: string;
@@ -322,6 +328,22 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
   };
 
   const handleDeleteRedditThread = async (id: string) => {
+    const thread = trackedThreads.find(t => t.id === id);
+    if (thread) {
+      try {
+        await fetch('/api/reddit/delete-thread', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            companyName,
+            threadId: thread.id,
+            url: thread.url
+          })
+        });
+      } catch (e) {
+        console.warn("Delete thread API error:", e);
+      }
+    }
     const updated = trackedThreads.filter(t => t.id !== id);
     await saveTrackedThreads(updated);
   };
@@ -690,9 +712,10 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
   // Intelligent Multi-Channel Intent & Skill Classification with Gemini 3.5 Flash Lite
   const classifyGenericQuery = async (
     query: string, 
-    indexedVideos: any[] = []
+    indexedVideos: any[] = [],
+    trackedRedditThreads: TrackedRedditThread[] = []
   ): Promise<{
-    primary_channel: 'direct_answer' | 'list_videos' | 'reindex' | 'bulk_insights' | 'specific_saved_video' | 'youtube_comments' | 'video_sentiment' | 'youtube_video' | 'competitor' | 'reddit_comments' | 'website' | 'general_market' | 'unsupported';
+    primary_channel: 'direct_answer' | 'list_videos' | 'reindex' | 'bulk_insights' | 'specific_saved_video' | 'youtube_comments' | 'video_sentiment' | 'youtube_video' | 'competitor' | 'reddit_comments' | 'website' | 'general_market' | 'list_reddit_threads' | 'show_reddit_analysis' | 'delete_reddit_thread' | 'unsupported';
     confidence: number;
     reasoning: string;
     extracted_target?: string;
@@ -701,6 +724,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
   }> => {
     try {
       const catalogSummary = indexedVideos.map(v => `[ID: "${v.id || v.videoId}", Title: "${v.title}", Type: "${v.analysisType || 'abcd'}"]`).join(', ');
+      const redditCatalogSummary = trackedRedditThreads.map(t => `[ID: "${t.id}", Title: "${t.title}", Subreddit: "${t.subreddit}"]`).join(', ');
 
       const prompt = `
       You are an AI Intelligence Agent & Skill Dispatcher for ${companyName}.
@@ -711,6 +735,9 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       INDEXED VIDEOS CATALOG (${indexedVideos.length} TOTAL):
       [${catalogSummary}]
 
+      TRACKED REDDIT THREADS CATALOG (${trackedRedditThreads.length} TOTAL):
+      [${redditCatalogSummary}]
+
       ROUTING DIRECTIVES:
       1. "direct_answer": The user is asking a conversational question, capability inquiry (e.g. "what can you do?", "what skills do you have?", "how does this work?"), or factual data question about the indexed videos or intelligence channels (e.g. "how many videos are in my catalog?", "explain the ABCD framework", "what is competitor benchmark?", "what channels can I analyze?").
          -> In "direct_answer_text", write a concise, direct, helpful answer in Simplified Technical English.
@@ -719,19 +746,25 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       4. "bulk_insights": The user wants to synthesize intelligence across ALL indexed video assets (e.g. "bulk insights", "cross-campaign synthesis").
       5. "specific_saved_video": The user is asking for insights about a specific previously indexed video by title or keyword (e.g. "give me insights on Fansville", "show analysis for the 2024 college football ad").
          -> Set "extracted_target" to the matched video title or ID.
-      6. "youtube_video": Inquiry regarding YouTube video ad creative, pacing, 5-second hook, visual storytelling, or ABCD ad scoring. (Do NOT select this if the user asks for sentiment, emotional tone, or viewer reactions).
-      7. "video_sentiment": Inquiry regarding video emotional tone, viewer sentiment, sentiment score, sentiment analysis, comments sentiment, or video sentiment breakdown.
-      8. "youtube_comments": Inquiry regarding YouTube viewer feedback, comment section tone, audience reactions to a video, or comment discussion topics.
-      9. "competitor": Inquiry regarding competitor analysis, brand comparison (e.g. vs Coke, Pepsi, etc.), competitor benchmarking, or market counter-strategies.
-      10. "reddit_comments": Inquiry regarding Reddit consumer discussions, subreddit opinions, consumer reviews on Reddit, organic customer complaints/praise.
-      11. "website": Inquiry regarding website landing page analysis, UX conversion, website copy, or target URL evaluation.
-      12. "general_market": Broad search trends, market keywords, or general consumer research.
-      13. "unsupported": The user is asking for something outside the scope of marketing intelligence, ad analysis, sentiment mining, competitor research, or video synthesis (e.g. coding, math, flight booking, weather, ordering groceries, non-intelligence tasks).
+      6. "list_reddit_threads": The user wants to see, list, view, or browse the tracked/analyzed Reddit threads (e.g. "what reddit threads are analyzed", "list reddit threads", "show tracked threads", "show analyzed reddit threads", "what threads do we have").
+      7. "show_reddit_analysis": The user wants to view or display the saved analysis for a specific Reddit thread (e.g. "show analysis for Squirt", "show reddit analysis", "view reddit analysis").
+         -> Set "extracted_target" to the thread title, topic, or url.
+      8. "delete_reddit_thread": The user wants to delete or remove a Reddit thread from tracking/storage (e.g. "delete reddit thread", "remove this thread", "delete thread 1").
+         -> Set "extracted_target" to the thread title, ID, or url.
+      9. "reddit_comments": Inquiry regarding Reddit consumer discussions, subreddit opinions, consumer reviews on Reddit, organic customer complaints/praise, or analyzing a new thread (e.g. "analyze this reddit thread https://...").
+         -> Set "extracted_target" to the Reddit URL or topic query if provided.
+      10. "youtube_video": Inquiry regarding YouTube video ad creative, pacing, 5-second hook, visual storytelling, or ABCD ad scoring. (Do NOT select this if the user asks for sentiment, emotional tone, or viewer reactions).
+      11. "video_sentiment": Inquiry regarding video emotional tone, viewer sentiment, sentiment score, sentiment analysis, comments sentiment, or video sentiment breakdown.
+      12. "youtube_comments": Inquiry regarding YouTube viewer feedback, comment section tone, audience reactions to a video, or comment discussion topics.
+      13. "competitor": Inquiry regarding competitor analysis, brand comparison (e.g. vs Coke, Pepsi, etc.), competitor benchmarking, or market counter-strategies.
+      14. "website": Inquiry regarding website landing page analysis, UX conversion, website copy, or target URL evaluation.
+      15. "general_market": Broad search trends, market keywords, or general consumer research.
+      16. "unsupported": The user is asking for something outside the scope of marketing intelligence, ad analysis, sentiment mining, competitor research, or video synthesis (e.g. coding, math, flight booking, weather, ordering groceries, non-intelligence tasks).
           -> In "direct_answer_text", start with: "I don't currently know how to do that, but here are some other items I can do:" and list out the core intelligence skills.
 
       Return ONLY a raw JSON object:
       {
-        "primary_channel": "direct_answer" | "list_videos" | "reindex" | "bulk_insights" | "specific_saved_video" | "video_sentiment" | "youtube_comments" | "youtube_video" | "competitor" | "reddit_comments" | "website" | "general_market" | "unsupported",
+        "primary_channel": "direct_answer" | "list_videos" | "reindex" | "bulk_insights" | "specific_saved_video" | "list_reddit_threads" | "show_reddit_analysis" | "delete_reddit_thread" | "video_sentiment" | "youtube_comments" | "youtube_video" | "competitor" | "reddit_comments" | "website" | "general_market" | "unsupported",
         "confidence": 0.95,
         "reasoning": "Explanation...",
         "extracted_target": "Specific URL, brand, or query topic if found",
@@ -760,14 +793,55 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
     // Heuristic Fallback
     const lower = query.toLowerCase();
+    const redditUrlMatch = query.match(/https?:\/\/(?:www\.)?reddit\.com\/[^\s]+/i);
+
     if (lower.includes('what can you do') || lower.includes('help') || lower.includes('capabilities') || lower.includes('skills')) {
       return { 
         primary_channel: 'direct_answer', 
         confidence: 0.95, 
         reasoning: 'Capabilities inquiry',
-        direct_answer_text: `I am the **Insights & Intelligence Agent** for **${companyName}**. Here is what I can do:\n\n• **Multimodal ABCD Ad Analysis**: Evaluate Google ABCD criteria (Attract, Brand, Connect, Direct) for any YouTube ad.\n• **YouTube Video & Comments Sentiment**: Pull authentic YouTube viewer comment threads using YouTube API and analyze creator-audience alignment.\n• **Competitor Benchmarking**: Compare ${companyName} positioning against rivals.\n• **Reddit Intelligence**: Mine subreddit discussions and organic consumer feedback.\n• **Website & Landing Page Audit**: Audit landing page conversion copy and UX messaging.\n• **Bulk Synthesis**: Aggregate cross-campaign intelligence across all indexed videos.`
+        direct_answer_text: `I am the **Insights & Intelligence Agent** for **${companyName}**. Here is what I can do:\n\n• **Reddit Intelligence & Thread Tracking**: Track, analyze, and inspect authentic Reddit threads with search grounding.\n• **Multimodal ABCD Ad Analysis**: Evaluate Google ABCD criteria (Attract, Brand, Connect, Direct) for any YouTube ad.\n• **YouTube Video & Comments Sentiment**: Pull authentic YouTube viewer comment threads using YouTube API and analyze creator-audience alignment.\n• **Competitor Benchmarking**: Compare ${companyName} positioning against rivals.\n• **Website & Landing Page Audit**: Audit landing page conversion copy and UX messaging.\n• **Bulk Synthesis**: Aggregate cross-campaign intelligence across all indexed videos.`
       };
     }
+
+    // Reddit Thread Specific Heuristics
+    if (
+      (lower.includes('reddit') && (lower.includes('what') || lower.includes('list') || lower.includes('show') || lower.includes('all') || lower.includes('catalog') || lower.includes('tracked') || lower.includes('analyzed'))) ||
+      lower.includes('what reddit threads') ||
+      lower.includes('list reddit threads') ||
+      lower.includes('show reddit threads') ||
+      lower.includes('which reddit threads')
+    ) {
+      return { primary_channel: 'list_reddit_threads', confidence: 0.95, reasoning: 'List analyzed reddit threads catalog request' };
+    }
+
+    if (lower.includes('delete') && (lower.includes('reddit') || lower.includes('thread'))) {
+      return { 
+        primary_channel: 'delete_reddit_thread', 
+        confidence: 0.95, 
+        reasoning: 'Delete reddit thread request',
+        extracted_target: query.replace(/delete|remove|reddit|thread/gi, '').trim()
+      };
+    }
+
+    if ((lower.includes('show analysis') || lower.includes('view analysis') || lower.includes('show reddit analysis')) && (lower.includes('reddit') || lower.includes('thread') || !lower.includes('video'))) {
+      return { 
+        primary_channel: 'show_reddit_analysis', 
+        confidence: 0.95, 
+        reasoning: 'Show saved reddit analysis request',
+        extracted_target: query.replace(/show|view|reddit|analysis|for|the/gi, '').trim()
+      };
+    }
+
+    if (redditUrlMatch || ((lower.includes('analyze') || lower.includes('check') || lower.includes('mine')) && lower.includes('reddit'))) {
+      return {
+        primary_channel: 'reddit_comments',
+        confidence: 0.95,
+        reasoning: 'Reddit thread analysis request',
+        extracted_target: redditUrlMatch ? redditUrlMatch[0] : query
+      };
+    }
+
     if (lower.includes('all insights') || lower.includes('list videos') || lower.includes('show videos') || lower.includes('my videos') || lower.includes('indexed videos')) {
       return { primary_channel: 'list_videos', confidence: 0.95, reasoning: 'List videos keyword match' };
     }
@@ -779,9 +853,6 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     }
     if (lower.includes('competitor') || lower.includes('vs ') || lower.includes('versus') || lower.includes('compare against') || lower.includes('benchmark')) {
       return { primary_channel: 'competitor', confidence: 0.9, reasoning: 'Competitor keyword match' };
-    }
-    if (lower.includes('reddit') || lower.includes('subreddit') || lower.includes('r/')) {
-      return { primary_channel: 'reddit_comments', confidence: 0.9, reasoning: 'Reddit keyword match' };
     }
     if (lower.includes('sentiment')) {
       return { primary_channel: 'video_sentiment', confidence: 0.95, reasoning: 'Sentiment keyword match' };
@@ -805,7 +876,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       primary_channel: 'unsupported',
       confidence: 0.95,
       reasoning: 'Default unsupported fallback',
-      direct_answer_text: `I don't currently know how to do that, but here are some other items I can do:\n\n• **Multimodal ABCD Ad Analysis**: Evaluate Google ABCD criteria (Attract, Brand, Connect, Direct) for any YouTube ad.\n• **YouTube Video & Comments Sentiment**: Pull authentic YouTube viewer comment threads using YouTube API and analyze creator-audience alignment.\n• **Competitor Benchmarking**: Compare ${companyName} positioning against rivals.\n• **Reddit Intelligence**: Mine subreddit discussions and organic consumer feedback.\n• **Website & Landing Page Audit**: Audit landing page conversion copy and UX messaging.\n• **Bulk Synthesis**: Aggregate cross-campaign intelligence across all indexed videos.`
+      direct_answer_text: `I don't currently know how to do that, but here are some other items I can do:\n\n• **Reddit Intelligence & Thread Tracking**: Track, analyze, and inspect authentic Reddit threads with search grounding.\n• **Multimodal ABCD Ad Analysis**: Evaluate Google ABCD criteria (Attract, Brand, Connect, Direct) for any YouTube ad.\n• **YouTube Video & Comments Sentiment**: Pull authentic YouTube viewer comment threads using YouTube API and analyze creator-audience alignment.\n• **Competitor Benchmarking**: Compare ${companyName} positioning against rivals.\n• **Website & Landing Page Audit**: Audit landing page conversion copy and UX messaging.\n• **Bulk Synthesis**: Aggregate cross-campaign intelligence across all indexed videos.`
     };
   };
 
@@ -1269,7 +1340,32 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       parsed.analyzed_topic = displayTitle;
       parsed.is_grounded = true;
 
-      // Persist to GCS as latest Reddit run
+      const threadId = (targetThread && 'id' in targetThread && targetThread.id) ? targetThread.id : `thread_${Date.now()}`;
+      const analysisId = `reddit_${threadId}_${Date.now()}`;
+
+      // 1. Persist individual analysis artifact to GCS
+      try {
+        await fetch('/api/insights/analysis', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            companyName,
+            analysisId,
+            result: {
+              ...parsed,
+              analysisId,
+              threadId,
+              timestamp: new Date().toISOString(),
+              query: displayTitle,
+              url: targetUrl
+            }
+          })
+        });
+      } catch (e) {
+        console.warn("Failed to persist reddit analysis artifact to GCS:", e);
+      }
+
+      // 2. Persist to GCS as latest Reddit run cache
       try {
         fetch('/api/save-run/reddit_latest_analysis', {
           method: 'POST',
@@ -1279,6 +1375,8 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
             runId: 'reddit_latest_analysis',
             data: {
               result: parsed,
+              analysisId,
+              threadId,
               timestamp: new Date().toISOString(),
               query: displayTitle,
               url: targetUrl
@@ -1286,6 +1384,41 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
           })
         }).catch(() => {});
       } catch (e) {}
+
+      // 3. Update thread in tracked catalog with score, summary, and analysisId
+      const updatedThreadInfo: Partial<TrackedRedditThread> = {
+        lastScore: parsed.sentiment_score,
+        analysisSummary: parsed.summary,
+        analysisId,
+        analyzedAt: new Date().toISOString(),
+        analysisResult: parsed
+      };
+
+      let threadExistsInCatalog = false;
+      const updatedCatalog = trackedThreads.map(t => {
+        if (t.id === threadId || (targetUrl && t.url === targetUrl)) {
+          threadExistsInCatalog = true;
+          return { ...t, ...updatedThreadInfo };
+        }
+        return t;
+      });
+
+      if (!threadExistsInCatalog && targetUrl) {
+        const subMatch = targetUrl.match(/\/r\/([a-zA-Z0-9_]+)/i);
+        const sub = subMatch ? `r/${subMatch[1]}` : (targetThread?.subreddit || 'r/soda');
+        const newT: TrackedRedditThread = {
+          id: threadId,
+          title: targetThread?.title || displayTitle,
+          url: targetUrl,
+          subreddit: sub,
+          dateAdded: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+          topic: targetThread?.topic || 'Community Feedback',
+          ...updatedThreadInfo
+        };
+        updatedCatalog.unshift(newT);
+      }
+
+      await saveTrackedThreads(updatedCatalog);
 
       const assistantMsg: ChatMessage = {
         id: `assistant_${Date.now()}`,
@@ -1349,6 +1482,139 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       };
       const updated = [...currentMessages, errorMsg];
       setMessages(updated);
+    } finally {
+      setIsLoading(false);
+      setStatusMessage('');
+    }
+  };
+
+  // Display saved Reddit analysis in chat
+  const showSavedRedditAnalysis = async (
+    thread: TrackedRedditThread | { url?: string; title?: string; id?: string; analysisId?: string },
+    currentMessages: ChatMessage[]
+  ) => {
+    setIsLoading(true);
+    const displayTitle = thread.title || thread.url || 'Reddit Thread';
+    setStatusMessage(`Retrieving saved Reddit analysis for "${displayTitle}" from GCS...`);
+
+    try {
+      let analysisResult: any = null;
+
+      // 1. Check if thread already has analysisResult attached
+      if ((thread as any).analysisResult) {
+        analysisResult = (thread as any).analysisResult;
+      }
+
+      // 2. Fetch by analysisId if available
+      const analysisId = (thread as any).analysisId || (thread.id ? `reddit_${thread.id}` : null);
+      if (!analysisResult && analysisId) {
+        try {
+          const res = await fetch(`/api/insights/analysis?companyName=${encodeURIComponent(companyName)}&analysisId=${encodeURIComponent(analysisId)}`);
+          if (res.ok) {
+            const data = await res.json();
+            analysisResult = data.result || data;
+          }
+        } catch (e) {
+          console.warn("Could not fetch analysis by ID:", e);
+        }
+      }
+
+      // 3. Fallback: Check latest saved Reddit analysis
+      if (!analysisResult) {
+        try {
+          const res = await fetch(`/api/load-run/reddit_latest_analysis?companyName=${encodeURIComponent(companyName)}`);
+          if (res.ok) {
+            const payload = await res.json();
+            const data = payload.data || payload;
+            if (data?.result) {
+              analysisResult = data.result;
+            }
+          }
+        } catch (e) {}
+      }
+
+      if (analysisResult) {
+        const assistantMsg: ChatMessage = {
+          id: `assistant_${Date.now()}`,
+          sender: 'assistant',
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          text: `Here is the **Saved Reddit Consumer Intelligence Analysis** for **"${displayTitle}"**:`,
+          channelType: 'reddit_comments',
+          redditResult: analysisResult
+        };
+        const updated = [...currentMessages, assistantMsg];
+        setMessages(updated);
+        saveChatSession(updated);
+      } else {
+        // If not found in GCS, run a fresh grounded analysis on the thread
+        await runRedditAnalysis(displayTitle, currentMessages, thread as TrackedRedditThread);
+      }
+    } catch (err: any) {
+      console.error("Failed to load saved reddit analysis:", err);
+      const errorMsg: ChatMessage = {
+        id: `assistant_error_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        error: `Could not load saved analysis for "${displayTitle}": ${err.message}`
+      };
+      const updated = [...currentMessages, errorMsg];
+      setMessages(updated);
+    } finally {
+      setIsLoading(false);
+      setStatusMessage('');
+    }
+  };
+
+  // Delete Reddit thread from GCS and catalog via chat
+  const handleDeleteRedditThreadFromChat = async (
+    thread: TrackedRedditThread,
+    currentMessages: ChatMessage[]
+  ) => {
+    setIsLoading(true);
+    setStatusMessage(`Deleting Reddit thread "${thread.title}" from GCS...`);
+    try {
+      // 1. Call backend delete endpoint to clean up GCS catalog & analysis
+      await fetch('/api/reddit/delete-thread', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          companyName,
+          threadId: thread.id,
+          url: thread.url
+        })
+      });
+
+      // 2. Update local state & localStorage
+      const updated = trackedThreads.filter(t => t.id !== thread.id && t.url !== thread.url);
+      setTrackedThreads(updated);
+      try {
+        localStorage.setItem(`reddit_tracked_threads_${companyName}`, JSON.stringify(updated));
+      } catch (e) {}
+
+      const assistantMsg: ChatMessage = {
+        id: `assistant_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: `🗑️ Successfully deleted **"${thread.title}"** from your tracked catalog and GCS storage. ${
+          updated.length > 0
+            ? `You have **${updated.length} thread(s)** remaining in your catalog:`
+            : `No tracked Reddit threads remaining. You can analyze a new thread anytime by saying **"analyze this reddit thread <url>"**!`
+        }`,
+        analyzedRedditThreads: updated.length > 0 ? updated : undefined
+      };
+      const newMsgList = [...currentMessages, assistantMsg];
+      setMessages(newMsgList);
+      saveChatSession(newMsgList);
+    } catch (err: any) {
+      console.error("Failed to delete reddit thread:", err);
+      const errorMsg: ChatMessage = {
+        id: `assistant_error_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        error: `Failed to delete thread "${thread.title}": ${err.message}`
+      };
+      const newMsgList = [...currentMessages, errorMsg];
+      setMessages(newMsgList);
     } finally {
       setIsLoading(false);
       setStatusMessage('');
@@ -1834,7 +2100,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
     try {
       const indexed = await fetchIndexedVideos();
-      const classification = await classifyGenericQuery(text, indexed);
+      const classification = await classifyGenericQuery(text, indexed, trackedThreads);
 
       // Route 0: Direct Conversational / Capability / Unsupported Fallback
       if (classification.primary_channel === 'direct_answer' || classification.primary_channel === 'unsupported') {
@@ -1939,6 +2205,85 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
         await executeBulkAnalysis(newMessages);
         return;
+      }
+
+      // Route 3b: Explicit Intent: "list_reddit_threads" / "what reddit threads are analyzed"
+      if (classification.primary_channel === 'list_reddit_threads') {
+        const assistantMsg: ChatMessage = {
+          id: `assistant_${Date.now()}`,
+          sender: 'assistant',
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          text: trackedThreads.length > 0
+            ? `I found **${trackedThreads.length} Reddit thread(s)** tracked & analyzed for **${companyName}** in cloud storage. You can view the full analysis, re-analyze, or delete any thread below:`
+            : `No tracked Reddit threads found for **${companyName}** yet. You can say **"analyze this reddit thread <url>"** anytime to add and analyze one!`,
+          analyzedRedditThreads: trackedThreads
+        };
+
+        const updated = [...newMessages, assistantMsg];
+        setMessages(updated);
+        saveChatSession(updated);
+        setIsLoading(false);
+        setStatusMessage('');
+        return;
+      }
+
+      // Route 3c: Explicit Intent: "delete_reddit_thread"
+      if (classification.primary_channel === 'delete_reddit_thread') {
+        const target = (classification.extracted_target || text).toLowerCase();
+        const matchedThread = trackedThreads.find(t => 
+          (t.id && target.includes(t.id.toLowerCase())) ||
+          (t.url && target.includes(t.url.toLowerCase())) ||
+          (t.title && target.includes(t.title.toLowerCase())) ||
+          (t.title && t.title.toLowerCase().split(' ').some(word => word.length > 4 && target.includes(word)))
+        );
+
+        if (matchedThread) {
+          await handleDeleteRedditThreadFromChat(matchedThread, newMessages);
+          return;
+        } else {
+          const assistantMsg: ChatMessage = {
+            id: `assistant_${Date.now()}`,
+            sender: 'assistant',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            text: `Which Reddit thread would you like to delete? Click **Delete** on any card below:`,
+            analyzedRedditThreads: trackedThreads
+          };
+          const updated = [...newMessages, assistantMsg];
+          setMessages(updated);
+          saveChatSession(updated);
+          setIsLoading(false);
+          setStatusMessage('');
+          return;
+        }
+      }
+
+      // Route 3d: Explicit Intent: "show_reddit_analysis"
+      if (classification.primary_channel === 'show_reddit_analysis') {
+        const target = (classification.extracted_target || text).toLowerCase();
+        const matchedThread = trackedThreads.find(t => 
+          (t.id && target.includes(t.id.toLowerCase())) ||
+          (t.url && target.includes(t.url.toLowerCase())) ||
+          (t.title && target.includes(t.title.toLowerCase())) ||
+          (t.title && t.title.toLowerCase().split(' ').some(word => word.length > 4 && target.includes(word)))
+        ) || trackedThreads[0];
+
+        if (matchedThread) {
+          await showSavedRedditAnalysis(matchedThread, newMessages);
+          return;
+        } else {
+          const assistantMsg: ChatMessage = {
+            id: `assistant_${Date.now()}`,
+            sender: 'assistant',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            text: `No analyzed Reddit threads found in your catalog. You can analyze one by saying **"analyze this reddit thread <url>"**.`,
+          };
+          const updated = [...newMessages, assistantMsg];
+          setMessages(updated);
+          saveChatSession(updated);
+          setIsLoading(false);
+          setStatusMessage('');
+          return;
+        }
       }
 
       // 4. Check for direct YouTube URL
@@ -2158,24 +2503,29 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       }
 
       if (classification.primary_channel === 'reddit_comments') {
-        const urlMatch = text.match(/https?:\/\/(?:www\.)?reddit\.com\/r\/[^\s]+/i);
+        const urlMatch = text.match(/https?:\/\/(?:www\.)?reddit\.com\/[^\s]+/i) ||
+                         (classification.extracted_target && classification.extracted_target.match(/https?:\/\/(?:www\.)?reddit\.com\/[^\s]+/i));
         if (urlMatch) {
-          const threadUrl = urlMatch[0];
-          if (!trackedThreads.some(t => t.url === threadUrl)) {
+          const threadUrl = urlMatch[0].replace(/[)>,;]+$/, '');
+          let existingThread = trackedThreads.find(t => t.url === threadUrl);
+          if (!existingThread) {
             const subMatch = threadUrl.match(/\/r\/([a-zA-Z0-9_]+)/i);
             const sub = subMatch ? `r/${subMatch[1]}` : 'r/reddit';
-            const autoTitle = threadUrl.split('/comments/')[1]?.split('/')[1]?.replace(/_/g, ' ') || 'Reddit Discussion';
-            const newT: TrackedRedditThread = {
+            const slugTitle = threadUrl.includes('/comments/')
+              ? threadUrl.split('/comments/')[1]?.split('/')[1]?.replace(/[-_]/g, ' ')
+              : '';
+            const autoTitle = slugTitle ? (slugTitle.charAt(0).toUpperCase() + slugTitle.slice(1)) : 'Reddit Discussion';
+            existingThread = {
               id: `thread_${Date.now()}`,
-              title: autoTitle.charAt(0).toUpperCase() + autoTitle.slice(1),
+              title: autoTitle,
               url: threadUrl,
               subreddit: sub,
               dateAdded: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
               topic: 'Imported from Chat'
             };
-            saveTrackedThreads([newT, ...trackedThreads]);
+            await saveTrackedThreads([existingThread, ...trackedThreads]);
           }
-          await runRedditAnalysis(text, newMessages, { url: threadUrl });
+          await runRedditAnalysis(existingThread.title, newMessages, existingThread);
           return;
         }
         await runRedditAnalysis(text, newMessages);
@@ -2282,6 +2632,25 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       await runCommentsSentimentAnalysis(option.payload?.topic || option.payload?.query || companyName, newMessages);
     } else if (option.action === 'run_reddit' && option.payload) {
       await runRedditAnalysis(option.payload.query || option.payload, newMessages, option.payload.thread);
+    } else if (option.action === 'show_reddit_analysis' && option.payload) {
+      await showSavedRedditAnalysis(option.payload, newMessages);
+    } else if (option.action === 'delete_reddit_thread' && option.payload) {
+      await handleDeleteRedditThreadFromChat(option.payload, newMessages);
+    } else if (option.action === 'list_reddit_threads') {
+      const assistantMsg: ChatMessage = {
+        id: `assistant_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: trackedThreads.length > 0 
+          ? `I found **${trackedThreads.length} Reddit thread(s)** tracked for **${companyName}**:`
+          : `No tracked Reddit threads found for **${companyName}** yet.`,
+        analyzedRedditThreads: trackedThreads
+      };
+      const updated = [...newMessages, assistantMsg];
+      setMessages(updated);
+      saveChatSession(updated);
+      setIsLoading(false);
+      return;
     } else if (option.action === 'run_website' || option.action === 'run_website_audit') {
       const targetUrl = option.payload?.url || config?.branding?.websiteUrl || `https://www.${companyName.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`;
     } else if (option.action === 'load_existing_bulk') {
@@ -2312,7 +2681,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     { title: "YouTube Ad ABCD", desc: "Evaluate 5s hook, brand visibility & call-to-action", prompt: "Evaluate YouTube commercial ABCD framework" },
     { title: "Video & Comments Sentiment", desc: "Emotional tone, viewer reactions & dialogue timeline", prompt: `Analyze consumer and comments sentiment for ${companyName} video ads` },
     { title: "Competitor Benchmark", desc: "Side-by-side strengths, flaws & counter-strategies", prompt: `Compare ${companyName} marketing and ad strategy against main competitors` },
-    { title: "Reddit Community Chatter", desc: "Subreddit complaints, unfiltered praise & product buzz", prompt: `What are consumers discussing about ${companyName} on Reddit?` },
+    { title: "Reddit Threads & Chatter", desc: "Track, analyze & view community discussions", prompt: "what reddit threads are analyzed" },
     { title: "Website Landing Page CRO", desc: "Audit page messaging, trust factors & UX friction", prompt: `Analyze landing page conversion and messaging for ${config?.branding?.websiteUrl || 'https://www.drpepper.com'}` }
   ];
 
@@ -3431,6 +3800,100 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                                   </a>
                                 )}
                               </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* Analyzed Reddit Threads Catalog Preview */}
+                  {msg.analyzedRedditThreads && msg.analyzedRedditThreads.length > 0 && (
+                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-gray-100">
+                      {msg.analyzedRedditThreads.map((thread, tIdx) => {
+                        const hasScore = typeof thread.lastScore === 'number';
+
+                        return (
+                          <div 
+                            key={thread.id || tIdx} 
+                            className="p-3.5 bg-gray-50 hover:bg-orange-50/40 border border-gray-200 hover:border-orange-300 rounded-2xl flex flex-col gap-2.5 transition-all shadow-2xs group"
+                          >
+                            <div className="flex items-start justify-between gap-2">
+                              <div className="flex items-center gap-2 min-w-0">
+                                <span className="p-1.5 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0">
+                                  <MessageSquare size={14} />
+                                </span>
+                                <span className="text-[10px] font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded-md border border-orange-200/60 truncate">
+                                  {thread.subreddit || 'r/reddit'}
+                                </span>
+                              </div>
+
+                              {hasScore && (
+                                <span className="text-[10px] font-extrabold text-orange-700 bg-orange-100 px-2 py-0.5 rounded-md shrink-0 font-mono">
+                                  ★ {thread.lastScore!.toFixed(1)}/10
+                                </span>
+                              )}
+                            </div>
+
+                            <div className="space-y-1">
+                              <p 
+                                onClick={() => showSavedRedditAnalysis(thread, messages)}
+                                className="text-xs font-bold text-gray-900 line-clamp-2 hover:text-orange-600 cursor-pointer transition-colors"
+                                title={thread.title}
+                              >
+                                {thread.title}
+                              </p>
+                              <p className="text-[11px] text-gray-500 line-clamp-2 leading-tight">
+                                {thread.analysisSummary || thread.topic || 'Reddit consumer discussion & comment sentiment'}
+                              </p>
+                            </div>
+
+                            <div className="flex items-center justify-between pt-1 border-t border-gray-200/50 text-[10px] text-gray-400">
+                              <span>Added {thread.dateAdded || 'Recently'}</span>
+                              {thread.analyzedAt && (
+                                <span className="text-emerald-600 font-medium">✓ Grounded</span>
+                              )}
+                            </div>
+
+                            <div className="flex items-center gap-2 pt-1 flex-wrap">
+                              <button
+                                onClick={() => showSavedRedditAnalysis(thread, messages)}
+                                className="px-2.5 py-1 text-[11px] font-bold bg-[#1A73E8] hover:bg-[#1557b0] text-white rounded-lg transition-all flex items-center gap-1 shadow-2xs cursor-pointer"
+                                title="View Saved Analysis in Chat"
+                              >
+                                <Eye size={12} />
+                                <span>Show Analysis</span>
+                              </button>
+
+                              <button
+                                onClick={() => runRedditAnalysis(thread.title, messages, thread)}
+                                className="px-2 py-1 text-[11px] font-semibold text-gray-600 hover:text-gray-900 hover:bg-gray-200/70 rounded-lg transition-colors flex items-center gap-1 cursor-pointer"
+                                title="Re-run fresh Reddit analysis with Gemini 3.7 Flash"
+                              >
+                                <RotateCw size={11} />
+                                <span>Re-analyze</span>
+                              </button>
+
+                              <button
+                                onClick={() => handleDeleteRedditThreadFromChat(thread, messages)}
+                                className="px-2 py-1 text-[11px] font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1 cursor-pointer"
+                                title="Delete thread from catalog and GCS storage"
+                              >
+                                <Trash2 size={11} />
+                                <span>Delete</span>
+                              </button>
+
+                              {thread.url && (
+                                <a
+                                  href={thread.url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-[11px] font-semibold text-gray-400 hover:text-gray-700 flex items-center gap-0.5 ml-auto"
+                                  title="View original discussion on Reddit"
+                                >
+                                  Reddit <ExternalLink size={10} />
+                                </a>
+                              )}
                             </div>
                           </div>
                         );

@@ -1644,6 +1644,101 @@ app.get('/api/reddit/thread', async (req, res) => {
     }
 });
 
+// Delete Reddit thread from tracked catalog and remove its individual analysis artifact
+app.post('/api/reddit/delete-thread', async (req, res) => {
+    const { threadId, url, companyName } = req.body;
+    const activeCompany = companyName || getActiveCompanyName();
+
+    if (!threadId && !url) {
+        return res.status(400).json({ error: "threadId or url is required" });
+    }
+
+    try {
+        let threads = [];
+        const localPath = path.join(__dirname, 'public', 'data', 'configuration', 'runs', sanitizeId(activeCompany), 'reddit_tracked_threads_run.json');
+        
+        // Try GCS first
+        try {
+            const { Storage } = await import('@google-cloud/storage');
+            const storage = new Storage();
+            const bucketName = getBucketName();
+            const gcsFile = storage.bucket(bucketName).file(`${activeCompany}/runs/reddit_tracked_threads.json`);
+            const [exists] = await gcsFile.exists();
+            if (exists) {
+                const [content] = await gcsFile.download();
+                const payload = JSON.parse(content.toString());
+                threads = Array.isArray(payload) ? payload : (payload.data || []);
+            }
+        } catch (gcsErr) {
+            console.warn("[delete-thread] GCS read warning:", gcsErr.message);
+        }
+
+        // Fallback to local
+        if (threads.length === 0 && fs.existsSync(localPath)) {
+            try {
+                const localContent = JSON.parse(fs.readFileSync(localPath, 'utf8'));
+                threads = Array.isArray(localContent) ? localContent : (localContent.data || []);
+            } catch (err) {}
+        }
+
+        const initialCount = threads.length;
+        const targetThread = threads.find(t => (threadId && t.id === threadId) || (url && t.url === url));
+        threads = threads.filter(t => {
+            if (threadId && t.id === threadId) return false;
+            if (url && t.url === url) return false;
+            return true;
+        });
+
+        // Save updated catalog to GCS & local
+        try {
+            const { Storage } = await import('@google-cloud/storage');
+            const storage = new Storage();
+            const bucketName = getBucketName();
+            const gcsFile = storage.bucket(bucketName).file(`${activeCompany}/runs/reddit_tracked_threads.json`);
+            await gcsFile.save(JSON.stringify(threads, null, 2), { contentType: 'application/json' });
+            console.log(`✅ [delete-thread] Updated reddit_tracked_threads in GCS (${initialCount} -> ${threads.length})`);
+        } catch (gcsSaveErr) {
+            console.warn("[delete-thread] GCS catalog save warning:", gcsSaveErr.message);
+        }
+
+        if (fs.existsSync(path.dirname(localPath))) {
+            try {
+                fs.writeFileSync(localPath, JSON.stringify(threads, null, 2));
+            } catch (err) {}
+        }
+
+        // Remove individual analysis from GCS and local if exists
+        const analysisKey = targetThread?.analysisId || (threadId ? `reddit_${sanitizeId(threadId)}` : null);
+        if (analysisKey) {
+            try {
+                const { Storage } = await import('@google-cloud/storage');
+                const storage = new Storage();
+                const bucketName = getBucketName();
+                const analysisFile = storage.bucket(bucketName).file(`${activeCompany}/analyses/${analysisKey}.json`);
+                await analysisFile.delete({ ignoreNotFound: true });
+            } catch (delErr) {
+                console.warn("[delete-thread] GCS analysis delete warning:", delErr.message);
+            }
+
+            const localAnalysisPath = path.join(__dirname, 'public', 'data', 'configuration', 'analyses', activeCompany, `${analysisKey}.json`);
+            if (fs.existsSync(localAnalysisPath)) {
+                try { fs.unlinkSync(localAnalysisPath); } catch (e) {}
+            }
+        }
+
+        res.json({
+            success: true,
+            deleted: true,
+            deletedThread: targetThread,
+            remainingCount: threads.length,
+            threads
+        });
+    } catch (e) {
+        console.error("[delete-thread] Error deleting thread:", e);
+        res.status(500).json({ error: e.message || "Failed to delete thread" });
+    }
+});
+
 app.get('/api/steam/appdetails', async (req, res) => {
     const { appId } = req.query;
     if (!appId) return res.status(400).json({ error: "appId is required" });
