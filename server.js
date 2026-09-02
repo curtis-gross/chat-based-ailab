@@ -1569,7 +1569,7 @@ app.get('/api/reddit/thread', async (req, res) => {
         if (!cleanUrl.startsWith('http')) {
             cleanUrl = `https://${cleanUrl}`;
         }
-        const jsonUrl = cleanUrl.split('?')[0].replace(/\/$/, '') + '.json?limit=50';
+        const jsonUrl = cleanUrl.split('?')[0].replace(/\/$/, '') + '.json?limit=100&depth=5';
 
         const response = await fetch(jsonUrl, {
             headers: {
@@ -1610,7 +1610,7 @@ app.get('/api/reddit/thread', async (req, res) => {
         const comments = [];
 
         const extractComments = (children, depth = 0) => {
-            if (!children || !Array.isArray(children) || depth > 3) return;
+            if (!children || !Array.isArray(children) || depth > 5) return;
             for (const child of children) {
                 if (child.kind !== 't1') continue;
                 const cData = child.data;
@@ -1623,7 +1623,7 @@ app.get('/api/reddit/thread', async (req, res) => {
                     permalink: cData.permalink ? `https://www.reddit.com${cData.permalink}` : thread.permalink,
                     created_utc: cData.created_utc
                 });
-                if (comments.length >= 40) return;
+                if (comments.length >= 100) return;
                 if (cData.replies && cData.replies.data && cData.replies.data.children) {
                     extractComments(cData.replies.data.children, depth + 1);
                 }
@@ -1641,6 +1641,78 @@ app.get('/api/reddit/thread', async (req, res) => {
     } catch (err) {
         console.error("[Reddit Thread Ingest] Error fetching Reddit thread:", err);
         res.status(500).json({ error: `Failed to fetch Reddit thread: ${err.message}` });
+    }
+});
+
+// Ingest Subreddit Top 10 Threads (Past Year) and Top 5 Hot Threads
+app.get('/api/reddit/subreddit', async (req, res) => {
+    let { subreddit } = req.query;
+    if (!subreddit) return res.status(400).json({ error: "subreddit is required" });
+
+    let cleanSub = String(subreddit).trim().replace(/^r\//i, '').replace(/^\/r\//i, '').replace(/[^a-zA-Z0-9_]/g, '');
+
+    try {
+        console.log(`\n--- [Reddit Subreddit Ingest] Ingesting r/${cleanSub} ---`);
+        const headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 MarkingAILab/1.0'
+        };
+
+        const topUrl = `https://www.reddit.com/r/${cleanSub}/top.json?t=year&limit=15`;
+        const hotUrl = `https://www.reddit.com/r/${cleanSub}/hot.json?limit=10`;
+
+        const [topRes, hotRes] = await Promise.allSettled([
+            fetch(topUrl, { headers }),
+            fetch(hotUrl, { headers })
+        ]);
+
+        let topThreads = [];
+        let hotThreads = [];
+
+        if (topRes.status === 'fulfilled' && topRes.value.ok) {
+            const topData = await topRes.value.json();
+            topThreads = (topData?.data?.children || []).map((c, idx) => ({
+                rank: idx + 1,
+                id: c.data.id,
+                title: c.data.title,
+                url: c.data.permalink ? `https://www.reddit.com${c.data.permalink}` : (c.data.url || `https://www.reddit.com/r/${cleanSub}`),
+                score: c.data.score || 0,
+                num_comments: c.data.num_comments || 0,
+                selftext: (c.data.selftext || '').slice(0, 350),
+                author: c.data.author ? `u/${c.data.author}` : 'u/anonymous',
+                created_utc: c.data.created_utc
+            }));
+        }
+
+        if (hotRes.status === 'fulfilled' && hotRes.value.ok) {
+            const hotData = await hotRes.value.json();
+            hotThreads = (hotData?.data?.children || []).map((c, idx) => ({
+                rank: idx + 1,
+                id: c.data.id,
+                title: c.data.title,
+                url: c.data.permalink ? `https://www.reddit.com${c.data.permalink}` : (c.data.url || `https://www.reddit.com/r/${cleanSub}`),
+                score: c.data.score || 0,
+                num_comments: c.data.num_comments || 0,
+                selftext: (c.data.selftext || '').slice(0, 350),
+                author: c.data.author ? `u/${c.data.author}` : 'u/anonymous',
+                created_utc: c.data.created_utc
+            }));
+        }
+
+        console.log(`[Reddit Subreddit Ingest] Ingested ${topThreads.length} annual top threads and ${hotThreads.length} hot threads for r/${cleanSub}.`);
+        res.json({
+            success: true,
+            subreddit: `r/${cleanSub}`,
+            topThreads: topThreads.slice(0, 10),
+            hotThreads: hotThreads.slice(0, 5)
+        });
+    } catch (err) {
+        console.warn("[Reddit Subreddit Ingest] Live ingest error, fallback to grounding:", err.message);
+        res.json({
+            success: false,
+            fallbackToGrounding: true,
+            subreddit: `r/${cleanSub}`,
+            message: `Reddit scraping blocked or unavailable (${err.message}). Grounding with Gemini 3.7 Flash.`
+        });
     }
 });
 
