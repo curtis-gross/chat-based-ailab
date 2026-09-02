@@ -1,65 +1,65 @@
 [
   {
-    "campaignName": "Semi-Annual Sale Fine Body Care Blowout",
-    "divisionId": "Fine Body Care",
-    "openRate": 0.48,
-    "clickRate": 0.24,
-    "clipRate": 0.19,
+    "campaignName": "Summer Paloma Fiesta: Mix With Squirt Glass Bottle",
+    "divisionId": "Citrus & Carbonated Soft Drinks",
+    "openRate": 0.54,
+    "clickRate": 0.29,
+    "clipRate": 0.24,
+    "redemptionRate": 0.21,
+    "conversionScore": 9.7
+  },
+  {
+    "campaignName": "Dr Pepper Fansville: College Football Tailgate 12-Pack Blitz",
+    "divisionId": "Flagship Pepper & Colas",
+    "openRate": 0.58,
+    "clickRate": 0.33,
+    "clipRate": 0.28,
+    "redemptionRate": 0.25,
+    "conversionScore": 9.9
+  },
+  {
+    "campaignName": "Dr Pepper Strawberries & Cream Summer Ice Cream Float Drop",
+    "divisionId": "Flavored Soda Innovations",
+    "openRate": 0.51,
+    "clickRate": 0.27,
+    "clipRate": 0.23,
+    "redemptionRate": 0.19,
+    "conversionScore": 9.5
+  },
+  {
+    "campaignName": "Squirt Ruby Red Citrus Punch Launch Event",
+    "divisionId": "Citrus & Carbonated Soft Drinks",
+    "openRate": 0.47,
+    "clickRate": 0.25,
+    "clipRate": 0.20,
+    "redemptionRate": 0.17,
+    "conversionScore": 9.2
+  },
+  {
+    "campaignName": "Dr Pepper Zero Sugar & Squirt Zero Sugar Wellness BOGO",
+    "divisionId": "Zero Sugar & Low Calorie",
+    "openRate": 0.49,
+    "clickRate": 0.26,
+    "clipRate": 0.21,
     "redemptionRate": 0.18,
     "conversionScore": 9.4
   },
   {
-    "campaignName": "3-Wick Candle Weekend BOGO Event",
-    "divisionId": "Home Fragrance & 3-Wick Candles",
-    "openRate": 0.52,
-    "clickRate": 0.28,
-    "clipRate": 0.25,
-    "redemptionRate": 0.22,
+    "campaignName": "Cinco de Mayo Authentic Mexican Squirt Party Pack",
+    "divisionId": "Cocktail Mixers & Import Glass",
+    "openRate": 0.53,
+    "clickRate": 0.30,
+    "clipRate": 0.26,
+    "redemptionRate": 0.23,
     "conversionScore": 9.6
   },
   {
-    "campaignName": "Wallflowers $3.95 Refill Flash Sale",
-    "divisionId": "Wallflowers & Plug-Ins",
-    "openRate": 0.56,
-    "clickRate": 0.31,
-    "clipRate": 0.28,
-    "redemptionRate": 0.26,
-    "conversionScore": 9.8
-  },
-  {
-    "campaignName": "Aromatherapy Stress Relief Wellness Launch",
-    "divisionId": "Aromatherapy & Wellness",
-    "openRate": 0.41,
-    "clickRate": 0.19,
-    "clipRate": 0.14,
-    "redemptionRate": 0.12,
-    "conversionScore": 8.8
-  },
-  {
-    "campaignName": "Fall Bakery Gourmand Candle Drop",
-    "divisionId": "Home Fragrance & 3-Wick Candles",
-    "openRate": 0.44,
-    "clickRate": 0.22,
+    "campaignName": "Dr Pepper Cherry & Cream Soda 20oz Cooler Flash Offer",
+    "divisionId": "Flavored Soda Innovations",
+    "openRate": 0.43,
+    "clickRate": 0.21,
     "clipRate": 0.17,
     "redemptionRate": 0.15,
-    "conversionScore": 9.1
-  },
-  {
-    "campaignName": "Foaming Hand Soap 5-for-$27 Bundle",
-    "divisionId": "Hand Soaps & Sanitizers",
-    "openRate": 0.39,
-    "clickRate": 0.17,
-    "clipRate": 0.15,
-    "redemptionRate": 0.14,
-    "conversionScore": 8.5
-  },
-  {
-    "campaignName": "Holiday Gift Crate & Basket Early Access",
-    "divisionId": "Gift Sets & Accessories",
-    "openRate": 0.46,
-    "clickRate": 0.23,
-    "clipRate": 0.18,
-    "redemptionRate": 0.16,
-    "conversionScore": 9.0
+    "conversionScore": 8.9
   }
 ]

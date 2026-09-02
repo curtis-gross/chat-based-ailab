@@ -128,6 +128,16 @@ graph TD
         CreativeWorkflowAgent --> S4[4. Product Element Versioning & Variant Swapping - 3-Thread Parallel Worker]
         CreativeWorkflowAgent --> S5[5. Omni / Veo Motion Video Generation Engine]
     end
+    subgraph Agent Playground Pipeline (Squirt & Dr Pepper Mesh)
+        IntakeAgent -->|Parse Beverage Brief & Taxonomy| FeasibilityAgent
+        FeasibilityAgent -->|Validate C360 Shopper Reach & Opt-Ins| PrioritizationAgent
+        PrioritizationAgent -->|Resolve Queue Conflicts & Historical Lift| ResearchAgent
+        ResearchAgent -->|Google Grounding: Beverage Flyers & CPG Benchmarks| CreativeAgent
+        CreativeAgent -->|Generate Email, SMS, Web Banners & Parallel Images| ValidationAgent
+        ValidationAgent -->|Audit Disclaimers, Flavors & Trademark Rules| IntegrationAgent
+        IntegrationAgent -->|Package Cryptographic Outbound REST Payload| JudgeAgent
+        JudgeAgent -->|Strategic Review, Pros/Cons & Hybrid ML Blueprint| FinalOrchestrator[Playground Console & SFMC Dispatch]
+    end
     subgraph Unified Chat Session History & Persistence
         ConversationalAgent -.-> HistorySystem[Session History Drawer: Pin/Star to Top, Inline Title Editing, GCS Persistence]
         StrategizeAgent -.-> HistorySystem

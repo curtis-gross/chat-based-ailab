@@ -8,8 +8,8 @@ export const creativeAgent = {
   tools: ["creative_concept_builder", "gcs_asset_uploader"],
   dataRequired: ["gcs_creative_assets_bucket"],
 
-  async run(campaignParamsJson, ai, companyName = "Bath & Body Works") {
-    const params = safeParseJson(campaignParamsJson, { name: "Active Campaign", objective: "General Promotion", divisionId: "Home Fragrance & 3-Wick Candles" });
+  async run(campaignParamsJson, ai, companyName = "Keurig Dr Pepper") {
+    const params = safeParseJson(campaignParamsJson, { name: "Active Campaign", objective: "General Promotion", divisionId: "Citrus & Carbonated Soft Drinks" });
     const isPetSmart = companyName.toLowerCase().includes("petsmart");
     const isInstacart = companyName.toLowerCase().includes("instacart");
 
@@ -17,27 +17,27 @@ export const creativeAgent = {
       ? "pet-loving/friendly tone" 
       : isInstacart
         ? "vibrant, family-friendly, and convenient tone"
-        : "sensory, luxurious, warm, fragrance-obsessed, and indulgent tone";
+        : "bold, refreshing, crisp, flavor-obsessed, and dynamic beverage brand tone";
 
     const imageThemeDescription = isPetSmart 
       ? "pet, animal, or pet-care retail setting image" 
       : isInstacart
         ? "fresh grocery ingredients, recipes, or convenient home delivery scene image"
-        : "warm, cozy home fragrance, 3-wick candle flame glow, fine body mist, wallflowers, or spa luxury setting image";
+        : "ice-cold carbonated soft drink cans or bottles on crushed ice with water droplets, vibrant citrus grapefruit splashes, college football tailgating, or refreshing summer Paloma cocktail setting";
 
-    const defaultTheme = `${companyName} Fragrance Rituals`;
+    const defaultTheme = `${companyName} Bold Refreshment`;
     
     const defaultHeadline = isPetSmart 
       ? "Save big on pet essentials." 
       : isInstacart
         ? "Vibrant organic groceries, delivered fast."
-        : "Transform your daily routine into a luxurious fragrance ritual.";
+        : "Crack open authentic flavor. Ice-cold refreshment guaranteed.";
 
     const defaultVisual = isPetSmart 
       ? "Clean retail layout with pet elements" 
       : isInstacart
         ? "Clean layout featuring fresh ingredients and convenient delivery packaging"
-        : "Sensory bath and body care layout with glowing candle light and rich fragrance notes";
+        : "Crisp beverage cans or glass bottles glistening with ice condensation, vibrant citrus or deep burgundy hues, bold energetic typography";
 
     try {
       const response = await ai.models.generateContent({
@@ -49,10 +49,10 @@ export const creativeAgent = {
         
         CRITICAL TASK:
         1. Examine the "pricingGrounding" field in the Campaign Context.
-        2. Extract the specific promotional products and the benchmark competitor pricing or recommended pricing (e.g. "$7.99/lb", "Save $2.00").
-        3. You MUST explicitly embed these exact products and pricing numbers into the copywriting body of all assets (Email, SMS, Display Banner). Do NOT use generic price placeholders (e.g. do not say "great discounts" if a price of "$8.99/lb" is available in the grounding).
+        2. Extract the specific promotional products and the benchmark competitor pricing or recommended pricing (e.g. "$5.99/12-pack", "Save $2.00", "Buy 2 Get 1 Free").
+        3. You MUST explicitly embed these exact products and pricing numbers into the copywriting body of all assets (Email, SMS, Display Banner). Do NOT use generic price placeholders (e.g. do not say "great discounts" if a price of "$5.99/12-pack" is available in the grounding).
         4. Do NOT swap products or invent pricing that contradicts the brief or pricing grounding data.
-        5. PRODUCT PACKAGING SPECIFICATION: For all product imagery, the product only has labeling and text on the very thick lid, not on the side of the container. Ensure image prompts ("imgText") specify that labeling appears strictly on the lid with clean unlabeled container sides.
+        5. PRODUCT PACKAGING SPECIFICATION: For beverage imagery, ensure image prompts ("imgText") specify authentic product packaging such as chilled 12oz aluminum cans, glass bottles, or multi-pack cartons glistening on ice.
         
         Return a JSON response conforming strictly to:
         {
@@ -67,7 +67,7 @@ export const creativeAgent = {
               "title": "Email Subject Line",
               "body": "Email body copywriting with ${toneDescription} containing the specific items and price promotions",
               "dimensions": "600x900px",
-              "imgText": "A detailed descriptive prompt for generating a ${imageThemeDescription} using Gemini Flash Lite Image. Must specify that labeling and text only appear on the very thick lid, not the side of the container."
+              "imgText": "A detailed descriptive prompt for generating a ${imageThemeDescription} using Gemini Flash Lite Image."
             },
             {
               "type": "SMS",
@@ -81,7 +81,7 @@ export const creativeAgent = {
               "title": "Web banner copy",
               "body": "Banner overlay text copywriting with specific price",
               "dimensions": "1200x628px",
-              "imgText": "A detailed descriptive prompt for generating a ${imageThemeDescription} using Gemini Flash Lite Image. Must specify that labeling and text only appear on the very thick lid, not the side of the container."
+              "imgText": "A detailed descriptive prompt for generating a ${imageThemeDescription} using Gemini Flash Lite Image."
             }
           ]
         }`,
@@ -131,7 +131,7 @@ export const creativeAgent = {
     }
   },
 
-  async generateImagesBackground(creativeObj, ai, onImageReady) {
+  async generateImagesBackground(creativeObj, ai, onImageReady, companyName = "Keurig Dr Pepper") {
     if (!creativeObj || !creativeObj.assets || !Array.isArray(creativeObj.assets)) return;
 
     console.log(`[Creative Agent - Async] Triggering concurrent image generation for ${creativeObj.assets.filter((a) => a.imgText && a.imgText !== "No Image").length} assets...`);
@@ -142,7 +142,7 @@ export const creativeAgent = {
 
       const runConfig = {
         model: "gemini-3.1-flash-lite-image",
-        contents: [`High-fidelity professional retail advertising creative for ${companyName || 'Bath & Body Works'}, clean lighting, warm sensory ambiance. Important: The product only has labeling and text on the very thick lid, not on the side of the container. Scene prompt: ${asset.imgText}`],
+        contents: [`High-fidelity professional retail advertising creative for ${companyName || 'Keurig Dr Pepper'}, clean crisp lighting, refreshing carbonated beverage product photography. Scene prompt: ${asset.imgText}`],
         config: {
           temperature: 1,
           topP: 0.95,

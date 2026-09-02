@@ -8,7 +8,7 @@ export const validationAgent = {
   tools: ["compliance_lint_checker"],
   dataRequired: ["compliance_registry.json"],
 
-  async run(draftCreativeText, ai, companyName = "Bath & Body Works") {
+  async run(draftCreativeText, ai, companyName = "Keurig Dr Pepper") {
     let creativeText = draftCreativeText;
     let contextText = "";
 
@@ -50,13 +50,13 @@ export const validationAgent = {
         ${JSON.stringify(complianceData, null, 2)}
         
         CRITICAL TASK:
-        1. Examine the original Campaign Brief (inside the Campaign Context) and find the requested products (e.g. "flat iron steak", "skirt steak").
+        1. Examine the original Campaign Brief (inside the Campaign Context) and find the requested products (e.g. "Squirt 12-pack", "Squirt Ruby Red", "Dr Pepper Strawberries & Cream", "Dr Pepper Zero Sugar").
         2. Examine the Research Agent's output (inside the Campaign Context) and find the product pricing benchmarks.
         3. Cross-verify that:
            - The products mentioned in the Creative Specifications match the original brief.
            - The pricing numbers mentioned in the Creative Specifications match the pricing grounding from the Research Agent.
            - No prices are assigned to the wrong products.
-        4. If there is ANY product mismatch, pricing mismatch, or forcing of unrelated pricing (e.g. forcing a ribeye price onto a flat iron steak creative), you MUST set the audit status to FAIL and detail the alignment error.
+        4. If there is ANY product mismatch, pricing mismatch, or forcing of unrelated pricing (e.g. forcing an unrelated competitor price onto a Squirt or Dr Pepper creative), you MUST set the audit status to FAIL and detail the alignment error.
         
         Perform a validation check and output a detailed HTML report explaining:
         - A checklist review (Prohibited words check, Competitor trademark exclusions, Mandatory disclosures present?).

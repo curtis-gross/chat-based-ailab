@@ -5,7 +5,7 @@ export const researchAgent = {
   tools: ["google_search_grounding"],
   dataRequired: [],
 
-  async run(campaignTheme, ai, companyName = "Bath & Body Works") {
+  async run(campaignTheme, ai, companyName = "Keurig Dr Pepper") {
     let themeText = campaignTheme;
     let divisionCategory = "";
     try {
@@ -19,14 +19,14 @@ export const researchAgent = {
     try {
       const response = await ai.models.generateContent({
         model: "gemini-3.5-flash-lite",
-        contents: `You are the ${companyName} Research Agent. Use Google Search Grounding to validate the proposed campaign concept and cross-reference with real-time external pricing flyer data and specialty beauty/fragrance retail market trends.
+        contents: `You are the ${companyName} Research Agent. Use Google Search Grounding to validate the proposed campaign concept and cross-reference with real-time external pricing flyer data and carbonated soft drink / CPG retail market trends.
         
         Campaign parameters context:
         "${campaignTheme}"
         
         CRITICAL TASK:
-        1. Parse the campaign parameters json above to identify the specific target products, items, or promotional focus (e.g. "3-wick candle", "fine fragrance mist", "wallflowers refill", "body cream").
-        2. Perform Google Search queries focusing STRICLY AND EXCLUSIVELY on finding current promotional deals and pricing benchmarks at major specialty fragrance & personal care retailers (such as Victoria's Secret, Yankee Candle, Goose Creek, Sephora, Ulta Beauty, or Target) for those EXACT products.
+        1. Parse the campaign parameters json above to identify the specific target products, items, or promotional focus (e.g. "Squirt 12-pack cans", "Squirt Ruby Red", "Mexican Squirt glass bottle", "Dr Pepper 12-pack cans", "Dr Pepper Strawberries & Cream", "Dr Pepper Zero Sugar 20oz bottle").
+        2. Perform Google Search queries focusing STRICTLY AND EXCLUSIVELY on finding current promotional deals and pricing benchmarks at major CPG soft drink retailers and grocery chains (such as Walmart, Kroger, Target, H-E-B, Albertsons, Costco, or 7-Eleven) and competitor beverage brands (such as Coca-Cola, Pepsi, Sprite, Fresca, Mountain Dew, Jarritos, or Pibb Xtra) for those EXACT products or categories.
         3. Do NOT benchmark unrelated products. If you must use comparable items due to low search volume, clearly explain why and state the price differences.
         
         Compare these competitor prices with standard pricing strategies and formulate a detailed HTML market analysis report explaining:

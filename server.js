@@ -3614,24 +3614,38 @@ app.post("/api/chat", async (req, res) => {
       
       const isPetSmart = companyName.toLowerCase().includes("petsmart");
       const isInstacart = companyName.toLowerCase().includes("instacart");
+      const isSquirt = message.toLowerCase().includes("squirt") || companyName.toLowerCase().includes("squirt");
+      const isDrPepper = message.toLowerCase().includes("pepper") || message.toLowerCase().includes("fansville") || companyName.toLowerCase().includes("pepper");
 
       const mockBrief = {
-        name: `${companyName} ${message.replace(/^(I want to |Please |Build a campaign for )/i, "").slice(0, 40)}`,
+        name: `${companyName || 'Keurig Dr Pepper'} ${message.replace(/^(I want to |Please |Build a campaign for )/i, "").slice(0, 40)}`,
         objective: isPetSmart
           ? "Promote premium pet products and care services to drive Treats loyalty app engagement."
           : isInstacart
             ? "Promote seasonal recipe bundles and brand partner deals to drive basket size and express delivery orders."
-            : "Promote featured supermarket products to drive incremental rewards app clip rates.",
+            : isSquirt
+              ? "Promote Squirt grapefruit citrus soda and Paloma cocktail / mocktail pairings to drive 12-pack and 2-liter retail volume."
+              : isDrPepper
+                ? "Promote Dr Pepper 23 flavors and Fansville college football tailgate multi-packs to drive seasonal CPG velocity."
+                : "Promote featured Squirt and Dr Pepper soft drink brands to drive multi-pack sales and digital coupon redemptions.",
         divisionId: isPetSmart
           ? (message.toLowerCase().includes("grooming") || message.toLowerCase().includes("service") ? "Pet Services & Boarding" : "Dog Food & Treats")
           : isInstacart
             ? "Produce & Pantry"
-            : (message.toLowerCase().includes("soap") || message.toLowerCase().includes("body") ? "Fine Body Care" : "Home Fragrance & 3-Wick Candles"),
+            : isSquirt
+              ? (message.toLowerCase().includes("cocktail") || message.toLowerCase().includes("paloma") || message.toLowerCase().includes("glass") ? "Cocktail Mixers & Import Glass" : message.toLowerCase().includes("zero") ? "Zero Sugar & Low Calorie" : "Citrus & Carbonated Soft Drinks")
+              : isDrPepper
+                ? (message.toLowerCase().includes("strawberr") || message.toLowerCase().includes("cream") ? "Flavored Soda Innovations" : message.toLowerCase().includes("zero") ? "Zero Sugar & Low Calorie" : "Flagship Pepper & Colas")
+                : "Citrus & Carbonated Soft Drinks",
         audienceSegment: isPetSmart
           ? `${companyName} Treats Loyalty Members & Pet Owners`
           : isInstacart
             ? `${companyName} Express Members & Busy Families`
-            : `${companyName} Rewards Active Members & Families`,
+            : isSquirt
+              ? "Squirt Citrus Refreshers & Paloma Mixologists"
+              : isDrPepper
+                ? "Dr Pepper 23 Flavors Fanatics & College Football Fans"
+                : "Dr Pepper & Squirt Soda Enthusiasts",
         projectedBudget: 45000,
         tier: "Tier 2 (Medium)",
         expectedStartDate: "2026-07-01",
@@ -3650,7 +3664,7 @@ app.post("/api/chat", async (req, res) => {
       logLine("[Root]: Handoff from Intake Agent to Feasibility Agent...");
       await new Promise(r => setTimeout(r, 1000));
 
-      const mockFeasibility = `FEASIBILITY REPORT:\n- Target Audience Reach: 18,450 active local households\n- ${companyName} C360 opt-in rate: 94.2%\n- Contact Frequency Caps: Checked. No active suppression flags present.\n- Result: FEASIBLE. Safe to continue.`;
+      const mockFeasibility = `FEASIBILITY REPORT:\n- Target Audience Reach: 18,450 active local households\n- ${companyName || 'Keurig Dr Pepper'} C360 opt-in rate: 94.2%\n- Contact Frequency Caps: Checked. No active suppression flags present.\n- Result: FEASIBLE. Safe to continue.`;
       state.artifacts.feasibility = mockFeasibility;
       saveCampaignState(state);
       sendEvent("agent_end", { agentId: "feasibility", agentName: "Feasibility Agent", result: mockFeasibility });
@@ -3680,7 +3694,11 @@ app.post("/api/chat", async (req, res) => {
         ? "MARKET RESEARCH REPORT:\n- Competitive Benchmark: Local flyer indexes show premium dog food items averaging $1.45/unit.\n- Recommended deal pricing: $1.19/unit is highly competitive, yielding 18% price advantage.\n- Consumer trend index indicates high Treats loyalty program enrollment search volume."
         : isInstacart
           ? "MARKET RESEARCH REPORT:\n- Competitive Benchmark: Local grocery stores on Instacart show fresh strawberry containers averaging $3.49/lb.\n- Recommended deal pricing: $2.99/lb is highly competitive, yielding 14% price advantage.\n- Consumer trend index indicates high summer fruit purchase search volume."
-          : "MARKET RESEARCH REPORT:\n- Competitive Benchmark: Local retail price indexes show premium fragrance items averaging $26.95/unit.\n- Recommended deal pricing: $24.50/unit is highly competitive, yielding a 12% price advantage.\n- Consumer trend index indicates high seasonal fragrance purchase search volume.";
+          : isSquirt
+            ? "MARKET RESEARCH REPORT:\n- Competitive Benchmark: Competitor citrus sodas (Sprite, Fresca, Jarritos) average $7.99 per 12-pack.\n- Recommended deal pricing: $5.99 per 12-pack or 3 for $15 delivers a 25% price advantage.\n- Consumer trend index indicates a 38% seasonal surge in Paloma cocktail and mocktail recipe searches."
+            : isDrPepper
+              ? "MARKET RESEARCH REPORT:\n- Competitive Benchmark: Major colas (Coca-Cola, Pepsi) average $8.49 per 12-pack.\n- Recommended deal pricing: $6.49 per 12-pack or Buy 2 Get 1 Free delivers high volume lift and a 23% basket advantage.\n- Consumer trend index indicates peak fan engagement around Fansville and college football season."
+              : "MARKET RESEARCH REPORT:\n- Competitive Benchmark: Soft drink circulars average $7.99 to $8.49 per 12-pack.\n- Recommended deal pricing: $5.99 per 12-pack or 3 for $15 is highly competitive.\n- Consumer trend index confirms high summer soda demand across regional grocery and mass retail.";
       state.artifacts.research = mockResearch;
       saveCampaignState(state);
       sendEvent("agent_end", { agentId: "research", agentName: "Research Agent", result: mockResearch });
@@ -3694,34 +3712,74 @@ app.post("/api/chat", async (req, res) => {
       await new Promise(r => setTimeout(r, 1200));
 
       const mockCreative = {
-        theme: isPetSmart ? `${companyName} Pampered Pets` : isInstacart ? `${companyName} Fresh Summer` : `${companyName} Fragrance Rituals`,
+        theme: isPetSmart 
+          ? `${companyName} Pampered Pets` 
+          : isInstacart 
+            ? `${companyName} Fresh Summer` 
+            : isSquirt
+              ? "Squirt Citrus Paloma Splash"
+              : isDrPepper
+                ? "Dr Pepper Fansville Tailgate Blitz"
+                : `${companyName || 'Keurig Dr Pepper'} Bold Refreshment`,
         headline: isPetSmart
           ? `Treat your pets to premium quality with exclusive deals on ${mockBrief.name}.`
           : isInstacart
             ? `Get fresh summer produce delivered to your door with ${companyName} Express.`
-            : `Transform your daily routine into a luxurious fragrance ritual with ${mockBrief.name}.`,
+            : isSquirt
+              ? "Unleash Crisp Grapefruit Flavor: Mix the Ultimate Paloma with Ice-Cold Squirt."
+              : isDrPepper
+                ? "Fuel Your Gameday with 23 One-of-a-Kind Flavors: Dr Pepper Tailgate Packs."
+                : `Crack open authentic flavor and bold refreshment with ${mockBrief.name}.`,
         subHeadline: isPetSmart
           ? `Healthy food and professional grooming. Use the ${companyName} app to get 2x Treats points.`
           : isInstacart
             ? `Order organic strawberries today and save 15% on delivery with Express.`
-            : `Sensory fragrance blends. Clip offers on the ${companyName} app to earn VIP rewards.`,
+            : isSquirt
+              ? "Save $2.00 on any two 12-packs of Squirt or Squirt Zero Sugar at participating retailers."
+              : isDrPepper
+                ? "Buy 2 Dr Pepper 12-Packs, Get 1 Free this week only at participating retailers."
+                : "Special multi-pack discounts valid this week only at participating retailers.",
         visualDirection: isPetSmart
           ? "Bright happy pets, clean modern layout, showing dogs playing and high-quality food bags."
           : isInstacart
             ? "Bright summer daylight, clean flat-lay layout showing fresh recipe ingredients."
-            : "Warm ambient candlelight, elegant retail presentation, soft natural daylight glow.",
+            : isSquirt
+              ? "Bright, ice-cold cans of Squirt glistening with condensation, fresh ruby grapefruit wedges, splash of sparkling citrus."
+              : isDrPepper
+                ? "Chilled Dr Pepper cans on stadium ice, college football tailgate atmosphere, deep burgundy and silver color palette."
+                : "Crisp beverage cans and bottles on crushed ice with water droplets and bold refreshment typography.",
         explainableCTRScore: 92,
         assets: [
           { 
             type: "Email", 
-            title: isPetSmart ? `${companyName} Treats Member Deals: ${mockBrief.name}` : isInstacart ? `${companyName} Fresh Summer Produce: ${mockBrief.name}` : `${companyName} Featured Promotion: ${mockBrief.name}`, 
+            title: isPetSmart 
+              ? `${companyName} Treats Member Deals: ${mockBrief.name}` 
+              : isInstacart 
+                ? `${companyName} Fresh Summer Produce: ${mockBrief.name}` 
+                : isSquirt
+                  ? `Mix the Ultimate Paloma with Ice-Cold Squirt: Special 12-Pack Savings`
+                  : isDrPepper
+                    ? `Fansville Gameday Special: Buy 2 Dr Pepper 12-Packs, Get 1 FREE`
+                    : `${companyName || 'Keurig Dr Pepper'} Featured Promotion: ${mockBrief.name}`, 
             body: isPetSmart
               ? `Dear Pet Parent,\n\nGive your furry friends the best. Shop our premium selection and get exclusive deals on the ${companyName} App to earn extra Treats points.\n\n*Offer valid at participating locations. Terms apply.`
               : isInstacart
                 ? `Dear Customer,\n\nMake the most of summer with fresh recipe ingredients. Order on the ${companyName} App to get free delivery with Express.\n\n*Offer valid at participating retailers. Terms apply.`
-                : `Dear Fragrance Lover,\n\nIndulge in sensory perfection with our newest campaign collection. Save on your favorite fragrances today on the ${companyName} App.\n\n*Offer valid at participating locations. Terms apply.`,
+                : isSquirt
+                  ? `Dear Refreshment Fan,\n\nElevate your summer gatherings with the authentic grapefruit citrus taste of Squirt. Whether you're mixing a signature tequila Paloma or pouring over ice, nothing quenches thirst like crisp Squirt.\n\nSave $2.00 on any two 12-packs this week at participating retailers.\n\n*Must be 21+ to consume alcohol. Please drink responsibly.`
+                  : isDrPepper
+                    ? `Dear Fansville Fan,\n\nGameday calls for 23 legendary flavors. Stock your tailgate with ice-cold Dr Pepper, Dr Pepper Zero Sugar, and Strawberries & Cream.\n\nBuy 2 Dr Pepper 12-packs, get 1 FREE this week only at participating grocery and mass retailers!\n\n*Terms apply.`
+                    : `Dear Shopper,\n\nEnjoy crisp, refreshing soda favorites. Stock up on multi-packs and save at participating retailers this week.\n\n*Terms apply.`,
             dimensions: "600x900px", 
-            imgText: isPetSmart ? "Happy golden retriever with a bag of premium Simply Nourish food." : isInstacart ? "A colorful flat-lay of fresh summer fruits, recipe ingredients, and an Instacart delivery bag." : "Fresh Bath & Body Works product display with warm studio lighting." 
+            imgText: isPetSmart 
+              ? "Happy golden retriever with a bag of premium Simply Nourish food." 
+              : isInstacart 
+                ? "A colorful flat-lay of fresh summer fruits, recipe ingredients, and an Instacart delivery bag." 
+                : isSquirt
+                  ? "Crisp ice-cold can and green glass bottle of Squirt with fresh grapefruit slices and sparkling citrus bubbles on crushed ice."
+                  : isDrPepper
+                    ? "Ice-cold Dr Pepper 12oz cans and 20oz bottles arranged on crushed ice at a sunny college football stadium tailgate."
+                    : "Crisp carbonated soft drink cans on crushed ice with vibrant lighting." 
           },
           { 
             type: "SMS", 
@@ -3730,16 +3788,44 @@ app.post("/api/chat", async (req, res) => {
               ? `${companyName} Special: Save on premium dog food and treats this week! Clip the coupon on your ${companyName} App.`
               : isInstacart
                 ? `${companyName} Special: Save on fresh strawberries this week! Order delivery on your ${companyName} App.`
-                : `${companyName} Special: Get fresh organic deals this week! Clip coupon on your ${companyName} App. Stop to optout.`,
+                : isSquirt
+                  ? "Squirt Alert: Beat the summer heat! Save $2 on any two 12-packs of Squirt or Squirt Zero Sugar at your local store this week. Text STOP to quit."
+                  : isDrPepper
+                    ? "Dr Pepper Gameday Alert: Buy 2 Dr Pepper 12-Packs, Get 1 FREE for the big game! Stock up now at your local retailer. Text STOP to quit."
+                    : `${companyName || 'Keurig Dr Pepper'} Special: Stock up on favorite soft drink multi-packs this week! Text STOP to quit.`,
             dimensions: "160 Chars", 
             imgText: "No Image" 
           },
           { 
             type: "Display Banner", 
-            title: isPetSmart ? `${companyName} Pampered Pets Hero Grid` : isInstacart ? `${companyName} Fresh Summer Hero Grid` : `${companyName} Harvest Hero Grid`, 
-            body: isPetSmart ? "Pamper your pets. Premium Treats member specials starting Wednesday." : isInstacart ? "Fresh organic strawberries delivered in as fast as 1 hour." : "Savor the freshness. Farm-fresh organic specials starting Wednesday.", 
+            title: isPetSmart 
+              ? `${companyName} Pampered Pets Hero Grid` 
+              : isInstacart 
+                ? `${companyName} Fresh Summer Hero Grid` 
+                : isSquirt
+                  ? "Squirt Paloma Fiesta Hero Banner"
+                  : isDrPepper
+                    ? "Dr Pepper Fansville Tailgate Banner"
+                    : `${companyName || 'Keurig Dr Pepper'} Bold Refreshment Hero Grid`, 
+            body: isPetSmart 
+              ? "Pamper your pets. Premium Treats member specials starting Wednesday." 
+              : isInstacart 
+                ? "Fresh organic strawberries delivered in as fast as 1 hour." 
+                : isSquirt
+                  ? "Crack open crisp grapefruit refreshment. Squirt 12-packs now 3 for $15."
+                  : isDrPepper
+                    ? "The official drink of Fansville. Dr Pepper 12-packs Buy 2 Get 1 FREE."
+                    : "Authentic refreshment. Stock up on 12-packs this week.", 
             dimensions: "1200x628px", 
-            imgText: isPetSmart ? "Playful cats and dogs surrounded by toys and premium kibble." : isInstacart ? "A clean, bright arrangement of fresh summer fruits and recipe ingredients." : "Organic products arranged on a textured board." 
+            imgText: isPetSmart 
+              ? "Playful cats and dogs surrounded by toys and premium kibble." 
+              : isInstacart 
+                ? "A clean, bright arrangement of fresh summer fruits and recipe ingredients." 
+                : isSquirt
+                  ? "Vibrant fiesta display with chilled Squirt cans, fresh ruby grapefruit, and sparkling glassware."
+                  : isDrPepper
+                    ? "Tailgate cooler packed with chilled Dr Pepper cans and tailgate gameday snacks."
+                    : "Chilled soda cans glistening on ice." 
           }
         ]
       };
@@ -3928,7 +4014,7 @@ app.post("/api/chat", async (req, res) => {
             try {
               state.artifacts.brief = JSON.parse(result);
             } catch {
-              state.artifacts.brief = { name: `${companyName || "Bath & Body Works"} Campaign Brief`, parsedText: result };
+              state.artifacts.brief = { name: `${companyName || "Keurig Dr Pepper"} Campaign Brief`, parsedText: result };
             }
           } else if (agentId === "feasibility") {
             state.artifacts.feasibility = result;
@@ -3952,7 +4038,7 @@ app.post("/api/chat", async (req, res) => {
                     sendEvent("state_update", state);
                   }
                 }
-              }).catch(asyncErr => {
+              }, companyName || "Keurig Dr Pepper").catch(asyncErr => {
                 console.error("[Server - Async callback error] Background image generation failed:", asyncErr);
               });
 

@@ -7,7 +7,7 @@ export const judgeAgent = {
   tools: ["campaign_critic_evaluator"],
   dataRequired: [],
 
-  async run(compositeContextJson, ai, companyName = "Bath & Body Works") {
+  async run(compositeContextJson, ai, companyName = "Keurig Dr Pepper") {
     const context = safeParseJson(compositeContextJson, { error: "Failed to parse composite campaign context." });
 
     try {

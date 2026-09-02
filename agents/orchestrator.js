@@ -28,7 +28,7 @@ export async function runOrchestration(
   chatHistory,
   ai,
   onProgress,
-  companyName = "Bath & Body Works"
+  companyName = "Keurig Dr Pepper"
 ) {
   try {
     if (userMessage === "APPROVE_CAMPAIGN") {
@@ -282,7 +282,7 @@ export async function runOrchestration(
   }
 }
 
-async function runCustomAgent(agentConfig, input, ai, companyName = "Albertsons") {
+async function runCustomAgent(agentConfig, input, ai, companyName = "Keurig Dr Pepper") {
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash-lite",

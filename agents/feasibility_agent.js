@@ -8,12 +8,12 @@ export const feasibilityAgent = {
   tools: ["c360_cohort_evaluator"],
   dataRequired: ["c360_opt_in.json"],
 
-  async run(campaignParamsJson, ai, companyName = "Bath & Body Works") {
+  async run(campaignParamsJson, ai, companyName = "Keurig Dr Pepper") {
     let params = {};
     try {
       params = JSON.parse(campaignParamsJson);
     } catch {
-      params = { name: "Active Campaign", divisionId: "Home Fragrance & 3-Wick Candles" };
+      params = { name: "Active Campaign", divisionId: "Citrus & Carbonated Soft Drinks" };
     }
 
     // Load simulated DB

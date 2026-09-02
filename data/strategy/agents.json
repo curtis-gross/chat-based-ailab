@@ -13,7 +13,7 @@
     ],
     "dataNeeded": [
       "Category taxonomy hierarchies",
-      "Retail fragrance & body care divisions dictionary"
+      "Retail beverage & soft drink divisions dictionary"
     ]
   },
   {
@@ -54,7 +54,7 @@
     "name": "Research Agent",
     "sub": "Market Trends Grounding",
     "color": "from-blue-500/10 to-sky-500/10 text-blue-600 border-blue-200/60",
-    "description": "Performs real-time search grounding to validate proposed campaigns. Benchmarks pricing and concepts against seasonal retail catalogs and fragrance trend indicators.",
+    "description": "Performs real-time search grounding to validate proposed campaigns. Benchmarks pricing and concepts against seasonal beverage retail catalogs, CPG market indices, and flavor trend indicators.",
     "inputs": "Theme objectives, target items, competitor exclusion briefs",
     "outputs": "Market validation logs, trend alignment scores",
     "toolsNeeded": [
@@ -63,7 +63,7 @@
     ],
     "dataNeeded": [
       "Retail competitive benchmark indices",
-      "Consumer fragrance trend indices"
+      "Consumer beverage & flavor trend indices"
     ]
   },
   {

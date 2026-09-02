@@ -1,20 +1,20 @@
 [
   {
-    "segmentId": "fragrance_aficionados",
-    "name": "Fine Body Care & Fragrance Collectors",
-    "enrolledShoppersCount": 85000,
+    "segmentId": "squirt_citrus_refreshers",
+    "name": "Squirt Citrus Refreshers & Paloma Mixologists",
+    "enrolledShoppersCount": 185000,
     "optInSMS": true,
     "optInEmail": true,
     "activeCampaignsCount": 1,
     "contactFrequencyLimits": {
-      "maxPerWeek": 2,
+      "maxPerWeek": 3,
       "rollingSent": 1
     }
   },
   {
-    "segmentId": "candle_collectors",
-    "name": "3-Wick Candle & Seasonal Home Decor Buyers",
-    "enrolledShoppersCount": 140000,
+    "segmentId": "drpepper_flavor_loyalists",
+    "name": "Dr Pepper 23 Flavors Fanatics & College Football Fans",
+    "enrolledShoppersCount": 340000,
     "optInSMS": true,
     "optInEmail": true,
     "activeCampaignsCount": 2,
@@ -24,11 +24,11 @@
     }
   },
   {
-    "segmentId": "aromatherapy_seekers",
-    "name": "Aromatherapy & Stress Relief Ritual Club",
-    "enrolledShoppersCount": 62000,
+    "segmentId": "zero_sugar_innovators",
+    "name": "Dr Pepper Zero Sugar & Squirt Zero Sugar Innovators",
+    "enrolledShoppersCount": 210000,
     "optInSMS": true,
-    "optInEmail": false,
+    "optInEmail": true,
     "activeCampaignsCount": 0,
     "contactFrequencyLimits": {
       "maxPerWeek": 2,
@@ -36,9 +36,9 @@
     }
   },
   {
-    "segmentId": "gourmand_lovers",
-    "name": "Bakery Gourmand & Sweet Scent Enthusiasts",
-    "enrolledShoppersCount": 95000,
+    "segmentId": "soda_collectors_limited_edition",
+    "name": "Limited Edition Flavor Hunters (Strawberries & Cream / Cream Soda / Ruby Red)",
+    "enrolledShoppersCount": 175000,
     "optInSMS": false,
     "optInEmail": true,
     "activeCampaignsCount": 1,
@@ -48,11 +48,11 @@
     }
   },
   {
-    "segmentId": "wallflowers_subscribers",
-    "name": "Wallflowers Plug-In Refill Subscribers",
-    "enrolledShoppersCount": 110000,
+    "segmentId": "convenience_fountain_drinkers",
+    "name": "C-Store, Gas Station & Quick-Serve Fountain Shoppers",
+    "enrolledShoppersCount": 290000,
     "optInSMS": true,
-    "optInEmail": true,
+    "optInEmail": false,
     "activeCampaignsCount": 0,
     "contactFrequencyLimits": {
       "maxPerWeek": 2,
@@ -60,10 +60,10 @@
     }
   },
   {
-    "segmentId": "gifting_shoppers",
-    "name": "Holiday & Birthday Gifting Shoppers",
-    "enrolledShoppersCount": 78000,
-    "optInSMS": false,
+    "segmentId": "hispanic_market_paloma_shoppers",
+    "name": "Mexican Squirt Glass Bottle & Hispanic Heritage Shoppers",
+    "enrolledShoppersCount": 155000,
+    "optInSMS": true,
     "optInEmail": true,
     "activeCampaignsCount": 1,
     "contactFrequencyLimits": {

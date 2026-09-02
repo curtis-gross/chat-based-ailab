@@ -8,12 +8,12 @@ export const prioritizationAgent = {
   tools: ["ranking_prioritization_engine"],
   dataRequired: ["m360_historical.json", "c360_opt_in.json"],
 
-  async run(campaignParamsJson, ai, companyName = "Bath & Body Works") {
+  async run(campaignParamsJson, ai, companyName = "Keurig Dr Pepper") {
     let params = {};
     try {
       params = JSON.parse(campaignParamsJson);
     } catch {
-      params = { name: "Active Campaign", divisionId: "Home Fragrance & 3-Wick Candles", tier: "Tier 2 (Medium)" };
+      params = { name: "Active Campaign", divisionId: "Citrus & Carbonated Soft Drinks", tier: "Tier 2 (Medium)" };
     }
 
     // Load simulated DB

@@ -7,7 +7,7 @@ export const integrationAgent = {
   tools: ["signatures_key_verifier", "payload_rest_transporter"],
   dataRequired: ["key_registry", "api_endpoints"],
 
-  async run(approvedDataJson, ai, companyName = "Bath & Body Works") {
+  async run(approvedDataJson, ai, companyName = "Keurig Dr Pepper") {
     const approvedData = safeParseJson(approvedDataJson, { name: "Active Campaign", status: "Approved" });
 
     try {

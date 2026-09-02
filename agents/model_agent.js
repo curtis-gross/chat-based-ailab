@@ -8,7 +8,7 @@ export const modelAgent = {
   tools: ["bigquery_ml_builder_specs"],
   dataRequired: ["m360_historical.json"],
 
-  async run(performanceDeltas, ai, companyName = "Bath & Body Works") {
+  async run(performanceDeltas, ai, companyName = "Keurig Dr Pepper") {
     let mockM360Data = [];
     try {
       const dbPath = path.join(process.cwd(), "data", "strategy", "m360_historical.json");
