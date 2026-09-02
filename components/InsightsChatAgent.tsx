@@ -294,25 +294,10 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         subreddit = 'r/community';
       }
 
-      // Try ingesting metadata from Reddit endpoint if it's a URL
-      let fetchedTitle = '';
-      if (url.startsWith('http') && url.includes('reddit.com/r/')) {
-        try {
-          const resp = await fetch(`/api/reddit/thread?url=${encodeURIComponent(url)}`);
-          if (resp.ok) {
-            const data = await resp.json();
-            if (data?.thread?.title) {
-              fetchedTitle = data.thread.title;
-              if (data.thread.subreddit) subreddit = data.thread.subreddit;
-            }
-          }
-        } catch (fErr) {
-          console.warn("Could not fetch remote thread title:", fErr);
-        }
-      }
-
-      const slugTitle = url.includes('/comments/') ? url.split('/comments/')[1]?.split('/')[1]?.replace(/_/g, ' ') : '';
-      const finalTitle = newThreadTitle.trim() || fetchedTitle || slugTitle || rawUrl;
+      const slugTitle = url.includes('/comments/') 
+        ? url.split('/comments/')[1]?.split('/')[1]?.replace(/[-_]/g, ' ') 
+        : '';
+      const finalTitle = newThreadTitle.trim() || slugTitle || rawUrl;
       const formattedTitle = finalTitle.charAt(0).toUpperCase() + finalTitle.slice(1);
 
       const newThread: TrackedRedditThread = {
