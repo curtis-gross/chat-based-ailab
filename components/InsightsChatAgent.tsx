@@ -4,6 +4,7 @@ import {
   Send, 
   Plus, 
   Film, 
+  Play, 
   CheckCircle2, 
   AlertCircle, 
   RotateCw, 
@@ -190,12 +191,37 @@ export const DEFAULT_REDDIT_THREADS: TrackedRedditThread[] = [
   }
 ];
 
+export interface YouTubeSearchItem {
+  videoId: string;
+  title: string;
+  description?: string;
+  channelTitle: string;
+  publishedAt: string;
+  thumbnail: string;
+  videoUrl: string;
+  viewCount: number;
+  formattedViews: string;
+  likeCount?: number;
+  commentCount?: number;
+  insightTakeaway?: string;
+  keyThemes?: string[];
+}
+
+export interface YouTubeSearchResult {
+  topic: string;
+  timeframe: string;
+  rankedBy: string;
+  totalFound: number;
+  items: YouTubeSearchItem[];
+  overallInsight?: string;
+}
+
 export interface ChatMessage {
   id: string;
   sender: 'user' | 'assistant';
   timestamp: string;
   text?: string;
-  channelType?: 'youtube_video' | 'youtube_comments' | 'video_sentiment' | 'competitor' | 'reddit_comments' | 'subreddit_analysis' | 'website' | 'bulk_insights' | 'general_market';
+  channelType?: 'youtube_video' | 'youtube_comments' | 'video_sentiment' | 'competitor' | 'reddit_comments' | 'subreddit_analysis' | 'website' | 'bulk_insights' | 'general_market' | 'youtube_search';
   clarifyingOptions?: {
     question: string;
     options: { label: string; action: string; payload?: any }[];
@@ -206,6 +232,7 @@ export interface ChatMessage {
   redditResult?: RedditAnalysisResult | any;
   subredditResult?: SubredditAnalysisResult | any;
   competitorResult?: any;
+  youtubeSearchResult?: YouTubeSearchResult;
   indexedVideos?: any[];
   analyzedRedditThreads?: TrackedRedditThread[];
   bulkResult?: any;
@@ -765,7 +792,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     indexedVideos: any[] = [],
     trackedRedditThreads: TrackedRedditThread[] = []
   ): Promise<{
-    primary_channel: 'direct_answer' | 'list_all_insights' | 'list_videos' | 'reindex' | 'bulk_insights' | 'specific_saved_video' | 'youtube_comments' | 'video_sentiment' | 'youtube_video' | 'competitor' | 'reddit_comments' | 'subreddit_analysis' | 'website' | 'general_market' | 'list_reddit_threads' | 'show_reddit_analysis' | 'delete_reddit_thread' | 'unsupported';
+    primary_channel: 'direct_answer' | 'list_all_insights' | 'list_videos' | 'reindex' | 'bulk_insights' | 'specific_saved_video' | 'youtube_comments' | 'video_sentiment' | 'youtube_video' | 'competitor' | 'reddit_comments' | 'subreddit_analysis' | 'website' | 'general_market' | 'list_reddit_threads' | 'show_reddit_analysis' | 'delete_reddit_thread' | 'youtube_search' | 'unsupported';
     confidence: number;
     reasoning: string;
     extracted_target?: string;
@@ -802,22 +829,24 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
          -> Set "extracted_target" to the thread/subreddit title, topic, or url.
       9. "delete_reddit_thread": The user wants to delete or remove a Reddit thread or subreddit from tracking/storage (e.g. "delete reddit thread", "remove this thread", "delete thread 1", "delete subreddit r/drpepper").
          -> Set "extracted_target" to the thread/subreddit title, ID, or url.
-      10. "subreddit_analysis": The user wants to analyze an ENTIRE SUBREDDIT community for top threads and hot discussions (e.g. "analyze subreddit r/drpepper", "get the top 10 threads from r/drpepper from the last year and provide urls", "analyze r/drpepper", "top threads from r/drpepper", "subreddit drpepper insights", "analyze r/soda").
+      10. "subreddit_analysis": The user wants to analyze an ENTIRE SUBREDDIT community for top threads and hot discussions (e.g. "analyze subreddit r/drpepper", "get the top 5 threads from r/drpepper from the last year and provide urls", "analyze r/drpepper", "top threads from r/drpepper", "subreddit drpepper insights", "analyze r/soda").
          -> Set "extracted_target" to the subreddit name (e.g. "r/drpepper" or "drpepper").
       11. "reddit_comments": Inquiry regarding a SPECIFIC Reddit thread, URL, consumer discussions, subreddit opinions on a product, or analyzing a thread link (e.g. "analyze this reddit thread https://...", "analyze squirt sentiment on reddit").
          -> Set "extracted_target" to the Reddit URL or topic query if provided.
-      12. "youtube_video": Inquiry regarding YouTube video ad creative, pacing, 5-second hook, visual storytelling, or ABCD ad scoring.
-      13. "video_sentiment": Inquiry regarding video emotional tone, viewer sentiment, sentiment score, sentiment analysis, comments sentiment, or video sentiment breakdown.
-      14. "youtube_comments": Inquiry regarding YouTube viewer feedback, comment section tone, audience reactions to a video, or comment discussion topics.
-      15. "competitor": Inquiry regarding competitor analysis, brand comparison (e.g. vs Coke, Pepsi, etc.), competitor benchmarking, or market counter-strategies.
-      16. "website": Inquiry regarding website landing page analysis, UX conversion, website copy, or target URL evaluation.
-      17. "general_market": Broad search trends, market keywords, or general consumer research.
-      18. "unsupported": The user is asking for something outside the scope of marketing intelligence, ad analysis, sentiment mining, competitor research, or video synthesis.
+      12. "youtube_search": The user wants to search YouTube for top videos or insights on a topic across the past year ranked by view count (e.g. "youtube search", "youtube search for Dr Pepper", "search youtube for ...", "top 5 youtube videos on ...", "find top youtube videos").
+         -> Set "extracted_target" to the topic entered by the user (or empty if just "youtube search").
+      13. "youtube_video": Inquiry regarding YouTube video ad creative, pacing, 5-second hook, visual storytelling, or ABCD ad scoring.
+      14. "video_sentiment": Inquiry regarding video emotional tone, viewer sentiment, sentiment score, sentiment analysis, comments sentiment, or video sentiment breakdown.
+      15. "youtube_comments": Inquiry regarding YouTube viewer feedback, comment section tone, audience reactions to a video, or comment discussion topics.
+      16. "competitor": Inquiry regarding competitor analysis, brand comparison (e.g. vs Coke, Pepsi, etc.), competitor benchmarking, or market counter-strategies.
+      17. "website": Inquiry regarding website landing page analysis, UX conversion, website copy, or target URL evaluation.
+      18. "general_market": Broad search trends, market keywords, or general consumer research.
+      19. "unsupported": The user is asking for something outside the scope of marketing intelligence, ad analysis, sentiment mining, competitor research, or video synthesis.
           -> In "direct_answer_text", start with: "I don't currently know how to do that, but here are some other items I can do:" and list out the core intelligence skills.
 
       Return ONLY a raw JSON object:
       {
-        "primary_channel": "direct_answer" | "list_all_insights" | "list_videos" | "reindex" | "bulk_insights" | "specific_saved_video" | "list_reddit_threads" | "show_reddit_analysis" | "delete_reddit_thread" | "subreddit_analysis" | "video_sentiment" | "youtube_comments" | "youtube_video" | "competitor" | "reddit_comments" | "website" | "general_market" | "unsupported",
+        "primary_channel": "direct_answer" | "list_all_insights" | "list_videos" | "reindex" | "bulk_insights" | "specific_saved_video" | "list_reddit_threads" | "show_reddit_analysis" | "delete_reddit_thread" | "subreddit_analysis" | "youtube_search" | "video_sentiment" | "youtube_comments" | "youtube_video" | "competitor" | "reddit_comments" | "website" | "general_market" | "unsupported",
         "confidence": 0.95,
         "reasoning": "Explanation...",
         "extracted_target": "Specific URL, brand, subreddit, or query topic if found",
@@ -853,7 +882,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         primary_channel: 'direct_answer', 
         confidence: 0.95, 
         reasoning: 'Capabilities inquiry',
-        direct_answer_text: `I am the **Insights & Intelligence Agent** for **${companyName}**. Here is what I can do:\n\n• **Subreddit Intelligence (Top 10 Annual + 5 Hot Threads)**: Mine entire subreddit communities (e.g. *r/drpepper*, *r/soda*) for annual top discussions with URLs, hot topics, and marketing takeaways.\n• **Reddit 100-Comment Ingestion & Sentiment Analysis**: Ingest up to 100 authentic Reddit comments to extract comment sentiment percentages and keyword intelligence.\n• **Multimodal ABCD Ad Analysis**: Evaluate Google ABCD criteria (Attract, Brand, Connect, Direct) for any YouTube ad.\n• **YouTube Video & Comments Sentiment**: Pull authentic YouTube viewer comment threads using YouTube API and analyze creator-audience alignment.\n• **Competitor Benchmarking**: Compare ${companyName} positioning against rivals.\n• **Website & Landing Page Audit**: Audit landing page conversion copy and UX messaging.\n• **Bulk Synthesis**: Aggregate cross-campaign intelligence across all indexed videos.`
+        direct_answer_text: `I am the **Insights & Intelligence Agent** for **${companyName}**. Here is what I can do:\n\n• **Subreddit Intelligence (Top 5 Annual + 5 Weekly Threads)**: Mine entire subreddit communities (e.g. *r/drpepper*, *r/soda*) for annual top discussions with URLs, hot topics, and marketing takeaways.\n• **Reddit 100-Comment Ingestion & Sentiment Analysis**: Ingest up to 100 authentic Reddit comments to extract comment sentiment percentages and keyword intelligence.\n• **Multimodal ABCD Ad Analysis**: Evaluate Google ABCD criteria (Attract, Brand, Connect, Direct) for any YouTube ad.\n• **YouTube Video & Comments Sentiment**: Pull authentic YouTube viewer comment threads using YouTube API and analyze creator-audience alignment.\n• **Competitor Benchmarking**: Compare ${companyName} positioning against rivals.\n• **Website & Landing Page Audit**: Audit landing page conversion copy and UX messaging.\n• **Bulk Synthesis**: Aggregate cross-campaign intelligence across all indexed videos.`
       };
     }
 
@@ -864,11 +893,11 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       (subredditMatch && (lower.includes('top') || lower.includes('threads') || lower.includes('analyze') || lower.includes('summary') || lower.includes('hot') || lower.includes('year') || lower.includes('subreddit') || lower.includes('url'))) ||
       lower.includes('analyze subreddit') ||
       lower.includes('subreddit analysis') ||
-      lower.includes('top 10 threads') ||
+      lower.includes('top 5 threads') ||
       lower.includes('top threads from r/') ||
       lower.includes('top threads in r/')
     ) {
-      const extractedSub = subredditMatch ? subredditMatch[1] : query.replace(/analyze|subreddit|top|10|threads|from|in|the|last|year|and|provide|urls|get/gi, '').trim().replace(/^r\//i, '');
+      const extractedSub = subredditMatch ? subredditMatch[1] : query.replace(/analyze|subreddit|top|5|threads|from|in|the|last|year|and|provide|urls|get/gi, '').trim().replace(/^r\//i, '');
       return {
         primary_channel: 'subreddit_analysis',
         confidence: 0.95,
@@ -955,6 +984,25 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     if (lower.includes('website') || lower.includes('landing page') || lower.includes('site')) {
       return { primary_channel: 'website', confidence: 0.85, reasoning: 'Website keyword match' };
     }
+    // YouTube Search Skill (Top 5 Videos by Views Across Last Year)
+    if (
+      lower.startsWith('youtube search') ||
+      lower.includes('search youtube') ||
+      lower.includes('youtube search') ||
+      (lower.includes('youtube') && (lower.includes('top 5') || lower.includes('views') || lower.includes('top video') || lower.includes('top videos') || lower.includes('search')))
+    ) {
+      let extractedTopic = query
+        .replace(/^(please\s+)?(can you\s+)?(search youtube for|youtube search for|youtube search|search youtube|find top \d+ youtube videos on|top \d+ youtube videos on|top youtube videos on|youtube videos on|top 5 youtube videos|top 5 videos)\s*/i, '')
+        .trim();
+      extractedTopic = extractedTopic.replace(/^["']|["']$/g, '').trim();
+      return {
+        primary_channel: 'youtube_search',
+        confidence: 0.95,
+        reasoning: 'YouTube search skill keyword match',
+        extracted_target: extractedTopic || companyName
+      };
+    }
+
     if (lower.includes('http') || lower.includes('youtube.com') || lower.includes('youtu.be')) {
       return { primary_channel: 'youtube_video', confidence: 0.9, reasoning: 'YouTube URL match' };
     }
@@ -1664,7 +1712,205 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     }
   };
 
-  // Run Grounded Subreddit Community Intelligence (Top 10 Annual Threads + Top 5 Hot Threads)
+  // Execute YouTube Search for Top 5 Videos by Views Across Last Year
+  const runYouTubeSearch = async (queryOrTopic: string, currentMessages: ChatMessage[]) => {
+    setIsLoading(true);
+    const cleanTopic = (queryOrTopic || companyName).trim();
+    setStatusMessage(`Searching YouTube API for top viewed videos on "${cleanTopic}" from the last year...`);
+
+    try {
+      // 1. Calculate 1 year ago ISO string
+      const oneYearAgo = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000).toISOString();
+
+      // 2. Query /api/youtube/search with order=viewCount and publishedAfter=oneYearAgo
+      const searchRes = await fetch(`/api/youtube/search?q=${encodeURIComponent(cleanTopic)}&order=viewCount&publishedAfter=${encodeURIComponent(oneYearAgo)}&maxResults=5`);
+      
+      if (!searchRes.ok) {
+        const errData = await searchRes.json().catch(() => null);
+        throw new Error(errData?.error || `YouTube Search API returned HTTP ${searchRes.status}`);
+      }
+
+      const videosData = await searchRes.json();
+      if (!Array.isArray(videosData) || videosData.length === 0) {
+        throw new Error(`No YouTube videos found for "${cleanTopic}" published within the last year.`);
+      }
+
+      const top5Videos = videosData.slice(0, 5);
+
+      // 3. Enrich each video with strategic takeaways using Gemini 3.7 Flash
+      setStatusMessage(`Synthesizing marketing takeaways for top 5 videos on "${cleanTopic}" with Gemini 3.7 Flash...`);
+
+      const enrichmentPrompt = `
+You are a Lead Video Marketing Analyst for ${companyName}.
+We searched YouTube for top videos on the topic "${cleanTopic}" published in the past year, ranked strictly by view count.
+
+Here are the top 5 videos retrieved with authentic views and metadata:
+${JSON.stringify(top5Videos.map((v: any, i: number) => ({
+  rank: i + 1,
+  videoId: v.videoId,
+  title: v.title,
+  channelTitle: v.channelTitle,
+  views: v.formattedViews || `${v.viewCount} views`,
+  publishedAt: v.publishedAt,
+  description: (v.description || '').substring(0, 200)
+})), null, 2)}
+
+Provide a concise, expert marketing breakdown in JSON format.
+Follow Zinsser's four principles: Simplicity, Brevity, Clarity, Humanity.
+Return ONLY valid JSON with this exact structure:
+{
+  "topic": "${cleanTopic}",
+  "overall_insight": "2-3 sentences summarizing the audience appetite, content formula, and strategic lesson for ${companyName} based on what earned the most views.",
+  "videos": [
+    {
+      "videoId": "string matching the input videoId",
+      "marketing_takeaway": "1-2 punchy sentences explaining what creative angle, hook, or consumer emotion made this video drive massive views.",
+      "key_themes": ["Theme 1", "Theme 2"]
+    }
+  ]
+}
+`;
+
+      let enrichedResult: any = null;
+      try {
+        const geminiRes = await callGenAiProxy("generateContent", {
+          model: 'gemini-3.7-flash',
+          contents: [{ role: "user", parts: [{ text: enrichmentPrompt }] }],
+          config: {
+            responseMimeType: "application/json",
+            temperature: 0.2
+          }
+        });
+        const textRes = extractTextFromResponse(geminiRes) || "";
+        enrichedResult = safeJsonParse(textRes, null);
+      } catch (geminiErr) {
+        console.warn("Gemini enrichment warning for YouTube search:", geminiErr);
+      }
+
+      // Merge enriched takeaways with authentic YouTube data
+      const enrichedItems: YouTubeSearchItem[] = top5Videos.map((v: any, idx: number) => {
+        const enriched = enrichedResult?.videos?.find((ev: any) => ev.videoId === v.videoId) || enrichedResult?.videos?.[idx];
+        return {
+          videoId: v.videoId,
+          title: v.title,
+          description: v.description,
+          channelTitle: v.channelTitle,
+          publishedAt: v.publishedAt,
+          thumbnail: v.thumbnail || `https://i.ytimg.com/vi/${v.videoId}/hqdefault.jpg`,
+          videoUrl: v.videoUrl || `https://www.youtube.com/watch?v=${v.videoId}`,
+          viewCount: v.viewCount || 0,
+          formattedViews: v.formattedViews || `${(v.viewCount || 0).toLocaleString()} views`,
+          likeCount: v.likeCount,
+          commentCount: v.commentCount,
+          insightTakeaway: enriched?.marketing_takeaway || `High-performing video driving massive organic audience reach on "${cleanTopic}".`,
+          keyThemes: enriched?.key_themes || ['High Engagement', cleanTopic]
+        };
+      });
+
+      const finalResult: YouTubeSearchResult = {
+        topic: cleanTopic,
+        timeframe: 'Past Year (Last 365 Days)',
+        rankedBy: 'Verified Views',
+        totalFound: top5Videos.length,
+        items: enrichedItems,
+        overallInsight: enrichedResult?.overall_insight || `Analysis of the top 5 videos shows strong viewer engagement with "${cleanTopic}", revealing high audience interest in authentic product integration and storytelling.`
+      };
+
+      // 4. Create Assistant message
+      const assistantMsg: ChatMessage = {
+        id: `assistant_yt_search_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: `Here are the **Top 5 YouTube Videos for "${cleanTopic}"** published in the **past year**, ranked by verified view count:`,
+        channelType: 'youtube_search',
+        youtubeSearchResult: finalResult,
+        clarifyingOptions: {
+          question: `Explore deeper insights for "${cleanTopic}":`,
+          options: [
+            { label: `📊 Run ABCD Ad Analysis on #1 Video`, action: 'run_abcd', payload: { url: enrichedItems[0]?.videoUrl, videoId: enrichedItems[0]?.videoId } },
+            { label: `💬 Analyze Audience Comments for #1 Video`, action: 'run_sentiment', payload: { url: enrichedItems[0]?.videoUrl, videoId: enrichedItems[0]?.videoId } },
+            { label: `🔍 Search Another Topic on YouTube`, action: 'run_youtube_search', payload: { topic: 'zero sugar soda' } }
+          ]
+        }
+      };
+
+      const updated = [...currentMessages, assistantMsg];
+      setMessages(updated);
+      saveChatSession(updated);
+
+      // Persist to GCS
+      try {
+        await fetch(`/api/save-run/youtube_search_latest`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            companyName,
+            featureId: 'youtube_search_latest',
+            data: {
+              ...finalResult,
+              savedAt: new Date().toISOString()
+            }
+          })
+        });
+      } catch (gcsErr) {
+        console.warn("Failed to persist YouTube search to GCS:", gcsErr);
+      }
+    } catch (err: any) {
+      console.error("YouTube search execution failed:", err);
+      const errorMsg: ChatMessage = {
+        id: `assistant_error_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        error: `YouTube Search Failed: ${err.message || 'Check network or YouTube API key.'}`
+      };
+      const updated = [...currentMessages, errorMsg];
+      setMessages(updated);
+      saveChatSession(updated);
+    } finally {
+      setIsLoading(false);
+      setStatusMessage('');
+    }
+  };
+
+  // Load last saved YouTube search from GCS
+  const loadLastYouTubeSearch = async (currentMessages: ChatMessage[]) => {
+    setIsLoading(true);
+    setStatusMessage('Loading most recent saved YouTube search from GCS...');
+    try {
+      const res = await fetch(`/api/load-run/youtube_search_latest?companyName=${encodeURIComponent(companyName)}`);
+      if (!res.ok) throw new Error('No previously saved YouTube search found.');
+      const payload = await res.json();
+      const data = payload.data || payload;
+      if (!data.items || !Array.isArray(data.items)) throw new Error('Saved YouTube search is empty.');
+
+      const assistantMsg: ChatMessage = {
+        id: `assistant_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: `Restored your last saved **YouTube Search Results** for **"${data.topic || companyName}"** (Top 5 by views across the last year):`,
+        channelType: 'youtube_search',
+        youtubeSearchResult: data
+      };
+      const updated = [...currentMessages, assistantMsg];
+      setMessages(updated);
+      saveChatSession(updated);
+    } catch (err: any) {
+      console.error("Failed to load last YouTube search:", err);
+      const errorMsg: ChatMessage = {
+        id: `assistant_error_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        error: `Could not load last saved YouTube search: ${err.message}`
+      };
+      const updated = [...currentMessages, errorMsg];
+      setMessages(updated);
+    } finally {
+      setIsLoading(false);
+      setStatusMessage('');
+    }
+  };
+
+  // Run Grounded Subreddit Community Intelligence (Top 5 Annual Threads + Top 5 Weekly Threads)
   const runSubredditAnalysis = async (
     subredditQuery: string,
     currentMessages: ChatMessage[],
@@ -1993,7 +2239,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **Subreddit Intelligence Report** for **${subDisplayName}** featuring the top 10 discussions from the past year, top 5 discussions from the last 7 days, and strategic marketer takeaways:`,
+        text: `Here is the **Subreddit Intelligence Report** for **${subDisplayName}** featuring the top 5 discussions from the past year, top 5 discussions from the last 7 days, and strategic marketer takeaways:`,
         channelType: 'subreddit_analysis',
         subredditResult: parsed
       };
@@ -2425,6 +2671,14 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         color: 'bg-cyan-50 text-cyan-700 border-cyan-200',
         badgeColor: 'bg-cyan-100 text-cyan-800',
         icon: MessageCircle
+      };
+    }
+    if (t === 'youtube_search') {
+      return {
+        label: 'YouTube Search (Top 5 Past Year)',
+        color: 'bg-red-50 text-red-700 border-red-200',
+        badgeColor: 'bg-red-100 text-red-800',
+        icon: Film
       };
     }
     if (t === 'reddit_sentiment' || t === 'reddit_comments') {
@@ -3115,6 +3369,12 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         return;
       }
 
+      if (classification.primary_channel === 'youtube_search') {
+        const targetTopic = classification.extracted_target || text;
+        await runYouTubeSearch(targetTopic, newMessages);
+        return;
+      }
+
       if (classification.primary_channel === 'youtube_comments') {
         await runCommentsSentimentAnalysis(text, newMessages);
         return;
@@ -3205,6 +3465,10 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       await runCompetitorAnalysis(option.payload?.topic || option.payload?.query || companyName, newMessages);
     } else if (option.action === 'run_sentiment' && option.payload) {
       await runVideoSentimentAnalysis(option.payload.url, option.payload.videoId, newMessages);
+    } else if (option.action === 'run_youtube_search') {
+      await runYouTubeSearch(option.payload?.topic || option.payload?.query || companyName, newMessages);
+    } else if (option.action === 'load_last_youtube_search') {
+      await loadLastYouTubeSearch(newMessages);
     } else if (option.action === 'run_comments_sentiment') {
       await runCommentsSentimentAnalysis(option.payload?.topic || option.payload?.query || companyName, newMessages);
     } else if (option.action === 'run_reddit' && option.payload) {
@@ -3257,6 +3521,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
   // Quick Action starter topics
   const suggestedTopics = [
+    { title: "YouTube Search (Top 5)", desc: "Top 5 videos across past year ranked by view count", prompt: `youtube search for ${companyName}` },
     { title: "YouTube Ad ABCD", desc: "Evaluate 5s hook, brand visibility & call-to-action", prompt: "Evaluate YouTube commercial ABCD framework" },
     { title: "Video & Comments Sentiment", desc: "Emotional tone, viewer reactions & dialogue timeline", prompt: `Analyze consumer and comments sentiment for ${companyName} video ads` },
     { title: "Competitor Benchmark", desc: "Side-by-side strengths, flaws & counter-strategies", prompt: `Compare ${companyName} marketing and ad strategy against main competitors` },
@@ -3334,7 +3599,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                 Multimodal Intelligence Channels
               </h3>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 {suggestedTopics.map((topic, idx) => (
                   <button
                     key={idx}
@@ -3356,6 +3621,13 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
               {/* Action Chips */}
               <div className="flex flex-wrap gap-2 pt-2">
+                <button
+                  onClick={() => handleSendMessage(`youtube search for ${companyName}`)}
+                  className="px-3.5 py-1.5 bg-white hover:bg-red-50/40 border border-gray-300 hover:border-red-400 text-gray-700 hover:text-red-600 rounded-full text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5"
+                >
+                  <Play size={13} className="text-red-600 fill-red-600" />
+                  YouTube Search (Top 5)
+                </button>
                 <button
                   onClick={() => handleSendMessage("Show all insights and indexed videos")}
                   className="px-3.5 py-1.5 bg-white hover:bg-gray-50 border border-gray-300 hover:border-[#1A73E8] text-gray-700 hover:text-[#1A73E8] rounded-full text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5"
@@ -4278,7 +4550,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                     </div>
                   )}
 
-                  {/* Subreddit Intelligence Report (Top 10 Annual + 5 Hot Threads) */}
+                  {/* Subreddit Intelligence Report (Top 5 Annual + 5 Weekly Threads) */}
                   {msg.subredditResult && (
                     <div className="mt-4 space-y-4 pt-3 border-t border-gray-100 text-gray-900">
                       {/* Header & Brand Affinity Score */}
@@ -4298,7 +4570,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                                 </span>
                               </div>
                               <span className="text-[10px] text-gray-500">
-                                Annual Top 10 + Real-time Hot Discussions Mining
+                                Annual Top 5 + Real-time Weekly Discussions Mining
                               </span>
                             </div>
                           </div>
@@ -4668,6 +4940,195 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                     </div>
                   )}
 
+                  {/* YouTube Search (Top 5 Videos Across Past Year by Views) */}
+                  {msg.youtubeSearchResult && (
+                    <div className="mt-4 space-y-3 pt-3 border-t border-gray-100 text-gray-900">
+                      {/* Card Header Banner */}
+                      <div className="p-4 bg-gradient-to-r from-red-50/90 via-orange-50/40 to-white border border-red-200/90 rounded-2xl space-y-2.5 shadow-2xs">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <span className="p-1.5 bg-red-100 text-red-600 rounded-lg flex items-center justify-center shrink-0">
+                              <Play size={16} className="fill-red-600 text-red-600" />
+                            </span>
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-extrabold text-red-950 font-mono">
+                                  Top 5 YouTube Videos: "{msg.youtubeSearchResult.topic}"
+                                </span>
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800 border border-red-200">
+                                  Past 12 Months
+                                </span>
+                              </div>
+                              <span className="text-[10px] text-gray-500">
+                                Ranked by Authentic View Count &bull; YouTube Data API v3
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <span className="px-2.5 py-1 bg-red-100 text-red-900 font-extrabold text-xs rounded-lg font-mono flex items-center gap-1">
+                              <Flame size={12} className="text-red-600" />
+                              Ranked by Views
+                            </span>
+                            <button
+                              onClick={() => loadLastYouTubeSearch(messages)}
+                              className="px-2.5 py-1 bg-white hover:bg-gray-50 border border-red-200 text-red-700 text-xs font-bold rounded-lg transition-colors flex items-center gap-1 shadow-2xs cursor-pointer"
+                              title="Load last saved YouTube search run from cloud storage"
+                            >
+                              <RotateCw size={11} />
+                              <span>Load Last</span>
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Executive / Overall Insight */}
+                        {msg.youtubeSearchResult.overallInsight && (
+                          <div className="pt-2 border-t border-red-100 flex items-start gap-1.5 text-xs text-gray-700 leading-relaxed font-medium">
+                            <Sparkles size={14} className="text-red-600 shrink-0 mt-0.5" />
+                            <p>{msg.youtubeSearchResult.overallInsight}</p>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Top 5 Videos List */}
+                      {msg.youtubeSearchResult.items && msg.youtubeSearchResult.items.length > 0 && (
+                        <div className="space-y-3">
+                          {msg.youtubeSearchResult.items.map((video, vIdx) => {
+                            const rank = vIdx + 1;
+                            const formattedDate = video.publishedAt 
+                              ? new Date(video.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                              : '';
+
+                            return (
+                              <div
+                                key={video.videoId || vIdx}
+                                className="p-3.5 bg-white hover:bg-red-50/20 border border-gray-200 hover:border-red-300 rounded-2xl flex flex-col sm:flex-row gap-3.5 items-start transition-all shadow-2xs group"
+                              >
+                                {/* Thumbnail with Rank Badge and Play Overlay */}
+                                <div className="w-full sm:w-44 h-26 bg-gray-900 rounded-xl overflow-hidden shrink-0 relative flex items-center justify-center">
+                                  <img
+                                    src={video.thumbnail || `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
+                                    alt={video.title}
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    onError={(e) => { (e.target as any).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300'; }}
+                                  />
+                                  <div className="absolute top-1.5 left-1.5 px-2 py-0.5 bg-black/80 text-white rounded-md text-[10px] font-mono font-extrabold flex items-center gap-1 shadow-xs">
+                                    <span className="text-red-400">#{rank}</span>
+                                  </div>
+                                  <div className="absolute bottom-1.5 right-1.5 px-2 py-0.5 bg-red-600/90 text-white rounded-md text-[10px] font-mono font-bold flex items-center gap-1 shadow-xs">
+                                    <Flame size={10} className="fill-white" />
+                                    <span>{video.formattedViews}</span>
+                                  </div>
+                                  <a
+                                    href={video.videoUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="absolute inset-0 bg-black/30 group-hover:bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                                    title="Watch on YouTube"
+                                  >
+                                    <span className="p-2 bg-red-600 text-white rounded-full shadow-md transform group-hover:scale-110 transition-transform">
+                                      <Play size={14} className="fill-white translate-x-0.5" />
+                                    </span>
+                                  </a>
+                                </div>
+
+                                {/* Content Details */}
+                                <div className="flex-1 min-w-0 space-y-2 w-full">
+                                  <div>
+                                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-red-50 text-red-700 border border-red-200">
+                                        {video.channelTitle}
+                                      </span>
+                                      {formattedDate && (
+                                        <span className="text-[10px] text-gray-500 flex items-center gap-1">
+                                          <Clock size={10} />
+                                          {formattedDate}
+                                        </span>
+                                      )}
+                                      <span className="text-[10px] font-extrabold text-red-700 bg-red-100/70 px-2 py-0.5 rounded-md font-mono ml-auto">
+                                        🔥 {video.formattedViews}
+                                      </span>
+                                    </div>
+
+                                    <a
+                                      href={video.videoUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-xs sm:text-sm font-bold text-gray-900 hover:text-red-700 hover:underline flex items-start gap-1 group/title"
+                                      title={video.title}
+                                    >
+                                      <span className="line-clamp-2">{video.title}</span>
+                                      <ExternalLink size={12} className="text-gray-400 group-hover/title:text-red-600 shrink-0 mt-0.5" />
+                                    </a>
+                                  </div>
+
+                                  {/* Strategic Marketer Takeaway */}
+                                  {video.insightTakeaway && (
+                                    <div className="p-2.5 bg-red-50/70 border border-red-200/80 rounded-xl text-xs text-red-950 flex items-start gap-2">
+                                      <Lightbulb size={13} className="text-red-600 shrink-0 mt-0.5" />
+                                      <div>
+                                        <span className="font-bold text-red-900">Marketer Takeaway: </span>
+                                        <span>{video.insightTakeaway}</span>
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  {/* Themes tags if any */}
+                                  {video.keyThemes && video.keyThemes.length > 0 && (
+                                    <div className="flex flex-wrap gap-1 items-center">
+                                      {video.keyThemes.map((theme, tIdx) => (
+                                        <span
+                                          key={tIdx}
+                                          className="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-[10px] font-medium flex items-center gap-1"
+                                        >
+                                          <Tag size={9} className="text-gray-500" />
+                                          {theme}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  )}
+
+                                  {/* Action Buttons: ABCD, Comment Sentiment, Watch */}
+                                  <div className="flex items-center gap-2 pt-1 flex-wrap">
+                                    <button
+                                      onClick={() => runVideoAnalysis(video.videoUrl, video.videoId, false, messages, 'abcd')}
+                                      className="px-2.5 py-1 text-[11px] font-bold bg-[#1A73E8] hover:bg-[#1557b0] text-white rounded-lg transition-all flex items-center gap-1 shadow-2xs cursor-pointer"
+                                      title="Run Multimodal ABCD Evaluation with Gemini 3.7 Flash"
+                                    >
+                                      <BarChart2 size={12} />
+                                      <span>Run ABCD Analysis</span>
+                                    </button>
+
+                                    <button
+                                      onClick={() => runCommentsSentimentAnalysis(video.videoUrl, messages)}
+                                      className="px-2.5 py-1 text-[11px] font-bold bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg transition-all flex items-center gap-1 shadow-2xs cursor-pointer"
+                                      title="Analyze audience comments and sentiment breakdown"
+                                    >
+                                      <MessageSquare size={12} />
+                                      <span>Audience Comments Sentiment</span>
+                                    </button>
+
+                                    <a
+                                      href={video.videoUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="px-2 py-1 text-[11px] font-semibold text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-200 rounded-lg transition-colors flex items-center gap-1 ml-auto"
+                                      title="Watch on YouTube"
+                                    >
+                                      <Play size={10} className="fill-current text-red-600" />
+                                      <span>Watch</span>
+                                      <ExternalLink size={10} />
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {/* Embedded ABCD Scorecard */}
                   {msg.analysisResult && (
                     <div className="mt-4 space-y-4 text-gray-900 border-t border-gray-100 pt-4">
@@ -4895,7 +5356,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                                 {thread.title}
                               </p>
                               <p className="text-[11px] text-gray-500 line-clamp-2 leading-tight">
-                                {thread.analysisSummary || (isSubreddit ? 'Top 10 Annual Threads + 5 Hot Discussions' : (thread.topic || 'Reddit consumer discussion & comment sentiment'))}
+                                {thread.analysisSummary || (isSubreddit ? 'Top 5 Annual Threads + 5 Weekly Discussions' : (thread.topic || 'Reddit consumer discussion & comment sentiment'))}
                               </p>
                             </div>
 
@@ -5742,6 +6203,16 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
                 {showPlusMenu && (
                   <div className="absolute bottom-full mb-2 left-0 w-72 bg-white border border-gray-200 rounded-2xl shadow-xl py-2 z-50 text-xs">
+                    <button
+                      onClick={() => {
+                        setShowPlusMenu(false);
+                        handleSendMessage(`youtube search for ${companyName}`);
+                      }}
+                      className="w-full px-3 py-2 text-left hover:bg-blue-50 text-gray-700 flex items-center gap-2"
+                    >
+                      <Play size={14} className="text-red-600 fill-red-600" />
+                      YouTube Search (Top 5 Past Year)
+                    </button>
                     <button
                       onClick={() => {
                         setShowPlusMenu(false);

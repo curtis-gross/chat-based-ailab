@@ -39,6 +39,9 @@ graph TD
         VideoModel -->|Extract Market & Cultural Video Trends| TrendEngine[Video Trend Mining & Velocity Engine]
         TrendEngine -->|Render Interactive Trends Table & Velocity Visual| ChatUI
         FlashLiteDispatcher -->|Competitor Benchmark & Matrix Analysis| FlashLiteReason[Gemini 3.5 Flash Lite Intelligence]
+        FlashLiteDispatcher -->|YouTube Search: Top 5 by Views (Last Year)| YTSearchEngine[YouTube Search & Insights Engine]
+        YTSearchEngine -->|Ingest Top 5 Videos, View Counts & Takeaways| ChatUI
+        YTSearchEngine -->|Persist Video Search Results| GCS
         FlashLiteDispatcher -->|Reddit 100-Comment Ingestion & Keyword Mining| RedditEngine[Reddit Live Ingestion & Grounding Engine]
         RedditEngine -->|Extract Comment Sentiment, Keywords & Permalinks| FlashLiteReason
         FlashLiteDispatcher -->|Subreddit Intelligence: Top 5 Annual + Top 5 Weekly Threads with Sentiment Enrichment| RedditEngine

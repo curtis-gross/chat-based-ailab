@@ -1325,19 +1325,19 @@ app.get('/api/youtube/search', async (req, res) => {
     const apiKey = process.env.YOUTUBE_API_KEY || process.env.GOOGLE_CLOUD_API_KEY || process.env.GEMINI_API_KEY || initialGeminiApiKey;
 
     if (!apiKey) {
-        console.warn("YouTube API key not configured, returning empty search results.");
-        return res.json([]);
+        console.warn("YouTube API key not configured.");
+        return res.status(500).json({ error: "YouTube API key not configured. Please supply YOUTUBE_API_KEY or GEMINI_API_KEY." });
     }
 
     try {
-        let apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=${maxResults}&q=${encodeURIComponent(q)}&key=${apiKey}&order=${encodeURIComponent(order)}`;
+        let apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=${Math.max(10, parseInt(maxResults, 10) || 5)}&q=${encodeURIComponent(q)}&key=${apiKey}&order=${encodeURIComponent(order)}`;
         if (publishedAfter) {
             apiUrl += `&publishedAfter=${encodeURIComponent(publishedAfter)}`;
         }
         const response = await fetch(apiUrl);
         if (response.ok) {
             const data = await response.json();
-            const items = (data.items || []).map(item => ({
+            const rawItems = (data.items || []).map(item => ({
                 videoId: item.id?.videoId,
                 title: item.snippet?.title,
                 description: item.snippet?.description,
@@ -1346,11 +1346,52 @@ app.get('/api/youtube/search', async (req, res) => {
                 thumbnail: item.snippet?.thumbnails?.high?.url || item.snippet?.thumbnails?.medium?.url || item.snippet?.thumbnails?.default?.url,
                 videoUrl: `https://www.youtube.com/watch?v=${item.id?.videoId}`
             })).filter(v => Boolean(v.videoId));
-            res.json(items);
+
+            // Fetch verified statistics (viewCount, likeCount, commentCount) from videos.list
+            const videoIds = rawItems.map(v => v.videoId).filter(Boolean);
+            if (videoIds.length > 0) {
+                try {
+                    const statsUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds.join(',')}&key=${apiKey}`;
+                    const statsRes = await fetch(statsUrl);
+                    if (statsRes.ok) {
+                        const statsData = await statsRes.json();
+                        const statsMap = new Map();
+                        (statsData.items || []).forEach(vItem => {
+                            statsMap.set(vItem.id, vItem.statistics || {});
+                        });
+
+                        const formatViews = (views) => {
+                            if (!views || isNaN(views)) return '0 views';
+                            const num = parseInt(views, 10);
+                            if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M views`;
+                            if (num >= 1000) return `${(num / 1000).toFixed(1)}K views`;
+                            return `${num.toLocaleString()} views`;
+                        };
+
+                        rawItems.forEach(item => {
+                            const stat = statsMap.get(item.videoId) || {};
+                            const rawViews = parseInt(stat.viewCount, 10) || 0;
+                            item.viewCount = rawViews;
+                            item.formattedViews = formatViews(rawViews);
+                            item.likeCount = parseInt(stat.likeCount, 10) || 0;
+                            item.commentCount = parseInt(stat.commentCount, 10) || 0;
+                        });
+
+                        if (order === 'viewCount') {
+                            rawItems.sort((a, b) => (b.viewCount || 0) - (a.viewCount || 0));
+                        }
+                    }
+                } catch (statErr) {
+                    console.warn("Could not fetch YouTube video statistics:", statErr);
+                }
+            }
+
+            const finalItems = rawItems.slice(0, parseInt(maxResults, 10) || 5);
+            res.json(finalItems);
         } else {
             const errText = await response.text();
             console.warn(`YouTube Data API search returned ${response.status}:`, errText);
-            res.json([]);
+            res.status(response.status).json({ error: `YouTube Data API error (${response.status}): ${errText}` });
         }
     } catch (e) {
         console.error("Failed to search YouTube:", e);
