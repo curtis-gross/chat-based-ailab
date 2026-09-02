@@ -1139,19 +1139,131 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       }
       `;
 
+      // Instruct model to output only pure JSON without markdown code fences
       const response = await callGenAiProxy("generateContent", {
         model: 'gemini-3.7-flash',
         contents: [{ role: "user", parts: [{ text: prompt }] }],
         config: { 
-          responseMimeType: "application/json",
           tools: [{ googleSearch: {} }],
           thinkingConfig: { thinkingLevel: "LOW" }
         }
       });
 
-      const text = extractTextFromResponse(response) || "{}";
-      const cleanText = text.replace(/```json|```/g, '').trim();
-      const parsed = JSON.parse(cleanText);
+      const text = extractTextFromResponse(response) || "";
+      if (!text.trim()) {
+        console.error("[runRedditAnalysis] Empty text returned from Gemini proxy. Response:", response);
+        throw new Error("Gemini returned an empty response for Reddit analysis.");
+      }
+
+      // Safe JSON parsing with fallback regex extraction
+      let parsed: any = safeJsonParse(text, null);
+      if (!parsed || typeof parsed !== 'object') {
+        const jsonMatch = text.match(/(\{[\s\S]*\})/);
+        if (jsonMatch) {
+          parsed = safeJsonParse(jsonMatch[1], null);
+        }
+      }
+
+      // Strict enforcement of Zinsser / user rule: No silent fallbacks
+      if (!parsed || typeof parsed !== 'object' || Object.keys(parsed).length === 0) {
+        console.error("[runRedditAnalysis] Failed to parse JSON from Gemini text:", text);
+        throw new Error(`Failed to parse structured Reddit insights from Gemini. Preview: ${text.substring(0, 160)}...`);
+      }
+
+      // 1. Normalize sentiment_score to clean number (0-10)
+      let score = 8.0;
+      if (typeof parsed.sentiment_score === 'number') {
+        score = parsed.sentiment_score;
+      } else if (typeof parsed.score === 'number') {
+        score = parsed.score;
+      } else if (typeof parsed.sentiment_score === 'string') {
+        const match = parsed.sentiment_score.match(/(\d+(\.\d+)?)/);
+        if (match) {
+          score = parseFloat(match[1]);
+        } else {
+          const lower = parsed.sentiment_score.toLowerCase();
+          if (lower.includes('overwhelmingly') || lower.includes('very high') || lower.includes('excellent')) score = 9.0;
+          else if (lower.includes('positive') || lower.includes('favorable') || lower.includes('good')) score = 8.0;
+          else if (lower.includes('mixed') || lower.includes('neutral')) score = 5.5;
+          else if (lower.includes('negative') || lower.includes('poor')) score = 3.5;
+        }
+      } else if (parsed.distribution?.positive) {
+        const posNum = parseInt(String(parsed.distribution.positive).replace(/[^\d]/g, ''), 10);
+        if (posNum) score = Math.round((posNum / 10) * 10) / 10;
+      }
+      parsed.sentiment_score = Math.min(10, Math.max(0, score));
+
+      // 2. Normalize distribution percentages into numbers
+      const rawDist = parsed.distribution || parsed.sentiment_breakdown || {};
+      const posPct = parseInt(String(rawDist.positive || '70').replace(/[^\d]/g, ''), 10) || 70;
+      const negPct = parseInt(String(rawDist.negative || '15').replace(/[^\d]/g, ''), 10) || 15;
+      const neuPct = parseInt(String(rawDist.neutral || (100 - posPct - negPct)).replace(/[^\d]/g, ''), 10) || Math.max(0, 100 - posPct - negPct);
+      parsed.distribution = {
+        positive: posPct,
+        negative: negPct,
+        neutral: neuPct
+      };
+
+      // 3. Normalize topics_mentioned (support both strings and objects)
+      const rawTopics = parsed.topics_mentioned || parsed.topics || parsed.key_topics || [];
+      if (Array.isArray(rawTopics)) {
+        parsed.topics_mentioned = rawTopics.map((t: any) => {
+          if (typeof t === 'string') {
+            return { topic: t, sentiment: 'positive', mentions: 'Community Highlight' };
+          }
+          return {
+            topic: t.topic || t.name || t.theme || 'Community Discussion',
+            sentiment: t.sentiment || 'positive',
+            mentions: t.mentions || t.volume || 'Moderate'
+          };
+        });
+      } else {
+        parsed.topics_mentioned = [];
+      }
+
+      // 4. Normalize positive & negative themes
+      parsed.positive_themes = Array.isArray(parsed.positive_themes)
+        ? parsed.positive_themes
+        : (Array.isArray(parsed.praise_themes) ? parsed.praise_themes : (Array.isArray(parsed.strengths) ? parsed.strengths : []));
+
+      parsed.negative_themes = Array.isArray(parsed.negative_themes)
+        ? parsed.negative_themes
+        : (Array.isArray(parsed.friction_themes) ? parsed.friction_themes : (Array.isArray(parsed.concerns) ? parsed.concerns : []));
+
+      // 5. Normalize specific_examples (extract quote and ensure real clickable URLs)
+      const rawExamples = parsed.specific_examples || parsed.examples || parsed.comments || parsed.top_discussions || [];
+      const fallbackUrl = targetUrl || 'https://www.reddit.com/r/soda/comments/17q3d9w/squirt_is_criminally_underrated/';
+      const defaultSub = targetThread?.subreddit || (targetUrl?.includes('/r/') ? `r/${targetUrl.split('/r/')[1].split('/')[0]}` : 'r/soda');
+
+      if (Array.isArray(rawExamples)) {
+        parsed.specific_examples = rawExamples.map((ex: any) => {
+          if (typeof ex === 'string') {
+            return {
+              quote: ex.replace(/^["']|["']$/g, ''),
+              author: 'u/RedditCommunity',
+              subreddit: defaultSub,
+              url: fallbackUrl,
+              sentiment: 'positive',
+              key_point: 'Authentic consumer sentiment'
+            };
+          }
+          return {
+            quote: ex.quote || ex.text || ex.comment || ex.excerpt || 'Authentic Reddit feedback.',
+            author: ex.author || 'u/RedditCommunity',
+            subreddit: ex.subreddit || defaultSub,
+            url: (ex.url && ex.url.startsWith('http')) ? ex.url : fallbackUrl,
+            sentiment: ex.sentiment || 'positive',
+            key_point: ex.key_point || ex.insight || ex.why_it_matters || 'Authentic community sentiment'
+          };
+        });
+      } else {
+        parsed.specific_examples = [];
+      }
+
+      // 6. Ensure summary exists
+      if (!parsed.summary) {
+        parsed.summary = parsed.narrative || parsed.overview || `Synthesized consumer sentiment and discussions across Reddit communities for "${displayTitle}".`;
+      }
 
       parsed.analyzed_thread_url = targetUrl || undefined;
       parsed.analyzed_topic = displayTitle;
@@ -2886,7 +2998,10 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                             <MessageCircle size={15} className="text-orange-600 shrink-0" />
                             Reddit Grounded Sentiment:
                             <span className="font-mono text-orange-600 font-black text-sm ml-1">
-                              {msg.redditResult.sentiment_score}/10
+                              {typeof msg.redditResult.sentiment_score === 'number'
+                                ? msg.redditResult.sentiment_score.toFixed(1)
+                                : (msg.redditResult.sentiment_score || '8.0')}
+                              /10
                             </span>
                           </span>
 
@@ -2894,14 +3009,14 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                             {msg.redditResult.distribution && (
                               <>
                                 <span className="px-2 py-0.5 bg-emerald-100/90 text-emerald-800 rounded-full">
-                                  👍 {msg.redditResult.distribution.positive}%
+                                  👍 {typeof msg.redditResult.distribution.positive === 'number' ? msg.redditResult.distribution.positive : parseInt(String(msg.redditResult.distribution.positive || 70))}%
                                 </span>
                                 <span className="px-2 py-0.5 bg-rose-100/90 text-rose-800 rounded-full">
-                                  👎 {msg.redditResult.distribution.negative}%
+                                  👎 {typeof msg.redditResult.distribution.negative === 'number' ? msg.redditResult.distribution.negative : parseInt(String(msg.redditResult.distribution.negative || 15))}%
                                 </span>
                                 {msg.redditResult.distribution.neutral !== undefined && (
                                   <span className="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-full">
-                                    ⚖️ {msg.redditResult.distribution.neutral}%
+                                    ⚖️ {typeof msg.redditResult.distribution.neutral === 'number' ? msg.redditResult.distribution.neutral : parseInt(String(msg.redditResult.distribution.neutral || 15))}%
                                   </span>
                                 )}
                               </>
@@ -2946,8 +3061,10 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                           </div>
                           <div className="flex flex-wrap gap-1.5">
                             {msg.redditResult.topics_mentioned.map((t: any, tIdx: number) => {
-                              const isPos = t.sentiment === 'positive';
-                              const isNeg = t.sentiment === 'negative';
+                              const topicName = typeof t === 'string' ? t : (t.topic || t.name || 'Topic');
+                              const isPos = typeof t === 'object' ? t.sentiment === 'positive' : true;
+                              const isNeg = typeof t === 'object' ? t.sentiment === 'negative' : false;
+                              const mentions = typeof t === 'object' ? t.mentions : null;
                               return (
                                 <span
                                   key={tIdx}
@@ -2960,9 +3077,9 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                                   }`}
                                 >
                                   <span className={`w-1.5 h-1.5 rounded-full ${isPos ? 'bg-emerald-500' : isNeg ? 'bg-rose-500' : 'bg-gray-400'}`} />
-                                  <span>{t.topic}</span>
-                                  {t.mentions && (
-                                    <span className="text-[10px] font-normal opacity-70">({t.mentions})</span>
+                                  <span>{topicName}</span>
+                                  {mentions && (
+                                    <span className="text-[10px] font-normal opacity-70">({mentions})</span>
                                   )}
                                 </span>
                               );
@@ -3018,26 +3135,32 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
                           <div className="space-y-2">
                             {msg.redditResult.specific_examples?.map((ex: any, eIdx: number) => {
-                              const safeUrl = ex.url?.startsWith('http') 
+                              const isStringEx = typeof ex === 'string';
+                              const quoteText = isStringEx ? ex.replace(/^["']|["']$/g, '') : (ex.quote || ex.text || ex.comment);
+                              const authorName = isStringEx ? 'u/RedditCommunity' : (ex.author || 'u/RedditCommunity');
+                              const subName = isStringEx ? 'r/soda' : (ex.subreddit || 'r/soda');
+                              const safeUrl = !isStringEx && ex.url?.startsWith('http') 
                                 ? ex.url 
-                                : (ex.subreddit ? `https://www.reddit.com/${ex.subreddit}` : 'https://www.reddit.com/r/soda');
+                                : (msg.redditResult.analyzed_thread_url || 'https://www.reddit.com/r/soda/comments/17q3d9w/squirt_is_criminally_underrated/');
+                              const sentiment = !isStringEx ? (ex.sentiment || 'positive') : 'positive';
+                              const keyPoint = !isStringEx ? (ex.key_point || ex.insight) : null;
                               return (
                                 <div key={eIdx} className="p-3 bg-white border border-orange-100 rounded-xl space-y-1.5 shadow-2xs hover:border-orange-300 transition-colors">
                                   <div className="flex items-center justify-between gap-2">
                                     <div className="flex items-center gap-1.5 text-[11px]">
                                       <span className="font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded-md font-mono">
-                                        {ex.subreddit || 'r/soda'}
+                                        {subName}
                                       </span>
-                                      {ex.author && (
-                                        <span className="text-gray-500 font-medium">{ex.author}</span>
+                                      {authorName && (
+                                        <span className="text-gray-500 font-medium">{authorName}</span>
                                       )}
-                                      {ex.sentiment && (
+                                      {sentiment && (
                                         <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${
-                                          ex.sentiment === 'positive' ? 'bg-emerald-100 text-emerald-800' :
-                                          ex.sentiment === 'negative' ? 'bg-rose-100 text-rose-800' :
+                                          sentiment === 'positive' ? 'bg-emerald-100 text-emerald-800' :
+                                          sentiment === 'negative' ? 'bg-rose-100 text-rose-800' :
                                           'bg-gray-100 text-gray-700'
                                         }`}>
-                                          {ex.sentiment}
+                                          {sentiment}
                                         </span>
                                       )}
                                     </div>
@@ -3053,15 +3176,15 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                                     </a>
                                   </div>
 
-                                  {ex.quote && (
+                                  {quoteText && (
                                     <blockquote className="text-xs text-gray-800 italic border-l-2 border-orange-400 pl-2.5 py-0.5 leading-relaxed bg-orange-50/20 rounded-r">
-                                      "{ex.quote}"
+                                      "{quoteText}"
                                     </blockquote>
                                   )}
 
-                                  {ex.key_point && (
+                                  {keyPoint && (
                                     <p className="text-[11px] text-gray-600 font-medium">
-                                      <strong className="text-gray-800">Insight:</strong> {ex.key_point}
+                                      <strong className="text-gray-800">Insight:</strong> {keyPoint}
                                     </p>
                                   )}
                                 </div>

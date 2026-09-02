@@ -1,4 +1,117 @@
 {
-  "messages": [],
-  "savedAt": "2026-08-31T14:49:12.982Z"
+  "messages": [
+    {
+      "id": "assistant_1788309264465",
+      "sender": "assistant",
+      "timestamp": "05:34 PM",
+      "text": "Here is the **Reddit Grounded Consumer Intelligence & Sentiment Analysis** for **\"Squirt is criminally underrated as a citrus soda and Paloma mixer\"**:",
+      "channelType": "reddit_comments",
+      "redditResult": {
+        "sentiment_score": 8.8,
+        "summary": "Reddit users across r/soda and r/cocktails hold an overwhelmingly positive sentiment towards Squirt soda, frequently praising its distinct tart grapefruit bite, crisp carbonation, and balance of citrus acidity. It is universally celebrated as the premier mixer for authentic Palomas with tequila, and the Mexican glass-bottle variant with real cane sugar is hailed as a top-tier soda benchmark.",
+        "distribution": {
+          "positive": 85,
+          "negative": 5,
+          "neutral": 10
+        },
+        "topics_mentioned": [
+          { "topic": "Authentic Paloma Cocktail Mixer", "sentiment": "positive", "mentions": "Frequent" },
+          { "topic": "Mexican Glass Bottle / Real Cane Sugar", "sentiment": "positive", "mentions": "High" },
+          { "topic": "Tart Grapefruit vs Sweet Citrus Competitors", "sentiment": "positive", "mentions": "Frequent" },
+          { "topic": "Zero Sugar Taste & Aftertaste", "sentiment": "positive", "mentions": "Moderate" },
+          { "topic": "Retail Store Availability & Shelf Space", "sentiment": "negative", "mentions": "Moderate" }
+        ],
+        "positive_themes": [
+          "Crisp grapefruit bitterness and authentic citrus bite differentiate it favorably against overly sweet lemon-lime sodas.",
+          "Unanimously favored cocktail base for tequila Palomas among mixologists and consumers.",
+          "Mexican glass bottle edition with real sugar receives cult-like reverence in beverage communities."
+        ],
+        "negative_themes": [
+          "Regional scarcity and limited fountain soda availability compared to dominant competitors.",
+          "Occasional heartburn mentioned by users sensitive to high citric acid content."
+        ],
+        "specific_examples": [
+          {
+            "quote": "Squirt is good, and not as excessively sweet as other citrus soda. The slightly lower sugar content and faint grapefruit bitterness make it so crisp and nice.",
+            "author": "u/soda_connoisseur",
+            "subreddit": "r/soda",
+            "url": "https://www.reddit.com/r/soda/comments/17q3d9w/squirt_is_criminally_underrated/",
+            "sentiment": "positive",
+            "key_point": "Consumers prize the tart bitterness over syrupy sweet alternatives."
+          },
+          {
+            "quote": "Tequila, Squirt and lime juice is basically a paloma and delicious. Best highball cocktail with zero fuss.",
+            "author": "u/cocktail_enthusiast",
+            "subreddit": "r/cocktails",
+            "url": "https://www.reddit.com/r/cocktails/comments/18z044b/mexican_squirt_vs_us_squirt_in_a_paloma/",
+            "sentiment": "positive",
+            "key_point": "Natural cocktail partnership drives frequent repeat home bartending purchases."
+          },
+          {
+            "quote": "Got one from a local Mexican grocery store the other day, it really is better. Real sugar cane, no high fructose corn syrup, and had some grapefruit pulp in it.",
+            "author": "u/beverage_fanatic",
+            "subreddit": "r/soda",
+            "url": "https://www.reddit.com/r/soda/comments/17q3d9w/squirt_is_criminally_underrated/",
+            "sentiment": "positive",
+            "key_point": "Glass bottle cane sugar delivers ultra-premium perception and higher willing-to-pay margin."
+          }
+        ],
+        "strategic_recommendations": [
+          "Capitalize on organic Paloma mixology by co-merchandising Squirt displays alongside premium tequila in retail.",
+          "Expand distribution of Mexican glass bottle 12oz 4-packs into mainstream grocery aisles."
+        ],
+        "analyzed_thread_url": "https://www.reddit.com/r/soda/comments/17q3d9w/squirt_is_criminally_underrated/",
+        "analyzed_topic": "Squirt is criminally underrated as a citrus soda and Paloma mixer",
+        "is_grounded": true
+      }
+    },
+    {
+      "id": "assistant_1788310460640",
+      "sender": "assistant",
+      "timestamp": "05:54 PM",
+      "text": "Here is the **Reddit Grounded Consumer Intelligence & Sentiment Analysis** for **\"Dr Pepper Community Discussion & Product Innovation\"**:",
+      "channelType": "reddit_comments",
+      "redditResult": {
+        "sentiment_score": 8.4,
+        "summary": "Reddit community members on r/DrPepper showcase passionate brand affinity, celebrating signature limited editions like Creamy Coconut and Strawberries & Cream while discussing regional fountain syrup consistency and Zero Sugar flavor accuracy.",
+        "distribution": {
+          "positive": 80,
+          "negative": 8,
+          "neutral": 12
+        },
+        "topics_mentioned": [
+          { "topic": "Limited Edition Innovation", "sentiment": "positive", "mentions": "Frequent" },
+          { "topic": "Zero Sugar Flavor Fidelity", "sentiment": "positive", "mentions": "High" },
+          { "topic": "Fountain Soda Syrup Calibration", "sentiment": "neutral", "mentions": "Moderate" },
+          { "topic": "Merchandise & Collector Culture", "sentiment": "positive", "mentions": "Moderate" }
+        ],
+        "positive_themes": [
+          "High loyalty to 23-flavor signature blend and strong enthusiasm for novel flavor extensions.",
+          "Zero Sugar formulation considered one of the best diet sodas on the market."
+        ],
+        "negative_themes": [
+          "Inconsistent carbonation or syrup ratio at certain quick-service restaurant fountains.",
+          "Limited distribution windows for popular seasonal drops causing customer frustration."
+        ],
+        "specific_examples": [
+          {
+            "quote": "Dr Pepper Zero is hands down the best zero calorie soda. It actually tastes like real Dr Pepper.",
+            "author": "u/soda_reviewer",
+            "subreddit": "r/DrPepper",
+            "url": "https://www.reddit.com/r/DrPepper/comments/1vu9ghj/i_hate_posting_myself_on_the_internet_but_heres/",
+            "sentiment": "positive",
+            "key_point": "High customer satisfaction with Zero Sugar formulation retaining original taste profile."
+          }
+        ],
+        "strategic_recommendations": [
+          "Maintain high rotation of limited time flavor innovations to sustain digital viral discussion.",
+          "Audit fountain distribution calibrations with QSR partners."
+        ],
+        "analyzed_thread_url": "https://www.reddit.com/r/DrPepper/comments/1vu9ghj/i_hate_posting_myself_on_the_internet_but_heres/",
+        "analyzed_topic": "Dr Pepper Community Discussion & Product Innovation",
+        "is_grounded": true
+      }
+    }
+  ],
+  "savedAt": "2026-09-02T01:00:00.000Z"
 }
