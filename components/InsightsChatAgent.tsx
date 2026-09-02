@@ -715,7 +715,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     indexedVideos: any[] = [],
     trackedRedditThreads: TrackedRedditThread[] = []
   ): Promise<{
-    primary_channel: 'direct_answer' | 'list_videos' | 'reindex' | 'bulk_insights' | 'specific_saved_video' | 'youtube_comments' | 'video_sentiment' | 'youtube_video' | 'competitor' | 'reddit_comments' | 'website' | 'general_market' | 'list_reddit_threads' | 'show_reddit_analysis' | 'delete_reddit_thread' | 'unsupported';
+    primary_channel: 'direct_answer' | 'list_all_insights' | 'list_videos' | 'reindex' | 'bulk_insights' | 'specific_saved_video' | 'youtube_comments' | 'video_sentiment' | 'youtube_video' | 'competitor' | 'reddit_comments' | 'website' | 'general_market' | 'list_reddit_threads' | 'show_reddit_analysis' | 'delete_reddit_thread' | 'unsupported';
     confidence: number;
     reasoning: string;
     extracted_target?: string;
@@ -741,30 +741,31 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       ROUTING DIRECTIVES:
       1. "direct_answer": The user is asking a conversational question, capability inquiry (e.g. "what can you do?", "what skills do you have?", "how does this work?"), or factual data question about the indexed videos or intelligence channels (e.g. "how many videos are in my catalog?", "explain the ABCD framework", "what is competitor benchmark?", "what channels can I analyze?").
          -> In "direct_answer_text", write a concise, direct, helpful answer in Simplified Technical English.
-      2. "list_videos": The user wants to list, view, show, or browse the indexed video catalog or all saved insights (e.g. "show all videos", "list my indexed videos", "all insights", "what videos do I have").
-      3. "reindex": The user wants to refresh, resync, or re-index the video catalog from cloud storage (e.g. "re-index", "refresh catalog").
-      4. "bulk_insights": The user wants to synthesize intelligence across ALL indexed video assets (e.g. "bulk insights", "cross-campaign synthesis").
-      5. "specific_saved_video": The user is asking for insights about a specific previously indexed video by title or keyword (e.g. "give me insights on Fansville", "show analysis for the 2024 college football ad").
+      2. "list_all_insights": The user wants to see all stored insights, or asks what insights are available/saved across all channels (e.g. "what insights do you have", "what insights do we have", "all insights", "show all insights", "what insights are saved", "show insights", "list insights"). Both indexed video ad analyses and tracked Reddit discussions will be presented together.
+      3. "list_videos": The user specifically wants to list, view, show, or browse only the indexed video catalog (e.g. "show all videos", "list my indexed videos", "what videos do I have", "show video ads").
+      4. "reindex": The user wants to refresh, resync, or re-index the video catalog from cloud storage (e.g. "re-index", "refresh catalog").
+      5. "bulk_insights": The user wants to synthesize intelligence across ALL indexed video assets (e.g. "bulk insights", "cross-campaign synthesis").
+      6. "specific_saved_video": The user is asking for insights about a specific previously indexed video by title or keyword (e.g. "give me insights on Fansville", "show analysis for the 2024 college football ad").
          -> Set "extracted_target" to the matched video title or ID.
-      6. "list_reddit_threads": The user wants to see, list, view, or browse the tracked/analyzed Reddit threads (e.g. "what reddit threads are analyzed", "list reddit threads", "show tracked threads", "show analyzed reddit threads", "what threads do we have").
-      7. "show_reddit_analysis": The user wants to view or display the saved analysis for a specific Reddit thread (e.g. "show analysis for Squirt", "show reddit analysis", "view reddit analysis").
+      7. "list_reddit_threads": The user wants to see, list, view, or browse the tracked/analyzed Reddit threads (e.g. "what reddit threads are analyzed", "list reddit threads", "show tracked threads", "show analyzed reddit threads", "what threads do we have").
+      8. "show_reddit_analysis": The user wants to view or display the saved analysis for a specific Reddit thread (e.g. "show analysis for Squirt", "show reddit analysis", "view reddit analysis").
          -> Set "extracted_target" to the thread title, topic, or url.
-      8. "delete_reddit_thread": The user wants to delete or remove a Reddit thread from tracking/storage (e.g. "delete reddit thread", "remove this thread", "delete thread 1").
+      9. "delete_reddit_thread": The user wants to delete or remove a Reddit thread from tracking/storage (e.g. "delete reddit thread", "remove this thread", "delete thread 1").
          -> Set "extracted_target" to the thread title, ID, or url.
-      9. "reddit_comments": Inquiry regarding Reddit consumer discussions, subreddit opinions, consumer reviews on Reddit, organic customer complaints/praise, or analyzing a new thread (e.g. "analyze this reddit thread https://...").
+      10. "reddit_comments": Inquiry regarding Reddit consumer discussions, subreddit opinions, consumer reviews on Reddit, organic customer complaints/praise, or analyzing a new thread (e.g. "analyze this reddit thread https://...").
          -> Set "extracted_target" to the Reddit URL or topic query if provided.
-      10. "youtube_video": Inquiry regarding YouTube video ad creative, pacing, 5-second hook, visual storytelling, or ABCD ad scoring. (Do NOT select this if the user asks for sentiment, emotional tone, or viewer reactions).
-      11. "video_sentiment": Inquiry regarding video emotional tone, viewer sentiment, sentiment score, sentiment analysis, comments sentiment, or video sentiment breakdown.
-      12. "youtube_comments": Inquiry regarding YouTube viewer feedback, comment section tone, audience reactions to a video, or comment discussion topics.
-      13. "competitor": Inquiry regarding competitor analysis, brand comparison (e.g. vs Coke, Pepsi, etc.), competitor benchmarking, or market counter-strategies.
-      14. "website": Inquiry regarding website landing page analysis, UX conversion, website copy, or target URL evaluation.
-      15. "general_market": Broad search trends, market keywords, or general consumer research.
-      16. "unsupported": The user is asking for something outside the scope of marketing intelligence, ad analysis, sentiment mining, competitor research, or video synthesis (e.g. coding, math, flight booking, weather, ordering groceries, non-intelligence tasks).
+      11. "youtube_video": Inquiry regarding YouTube video ad creative, pacing, 5-second hook, visual storytelling, or ABCD ad scoring. (Do NOT select this if the user asks for sentiment, emotional tone, or viewer reactions).
+      12. "video_sentiment": Inquiry regarding video emotional tone, viewer sentiment, sentiment score, sentiment analysis, comments sentiment, or video sentiment breakdown.
+      13. "youtube_comments": Inquiry regarding YouTube viewer feedback, comment section tone, audience reactions to a video, or comment discussion topics.
+      14. "competitor": Inquiry regarding competitor analysis, brand comparison (e.g. vs Coke, Pepsi, etc.), competitor benchmarking, or market counter-strategies.
+      15. "website": Inquiry regarding website landing page analysis, UX conversion, website copy, or target URL evaluation.
+      16. "general_market": Broad search trends, market keywords, or general consumer research.
+      17. "unsupported": The user is asking for something outside the scope of marketing intelligence, ad analysis, sentiment mining, competitor research, or video synthesis (e.g. coding, math, flight booking, weather, ordering groceries, non-intelligence tasks).
           -> In "direct_answer_text", start with: "I don't currently know how to do that, but here are some other items I can do:" and list out the core intelligence skills.
 
       Return ONLY a raw JSON object:
       {
-        "primary_channel": "direct_answer" | "list_videos" | "reindex" | "bulk_insights" | "specific_saved_video" | "list_reddit_threads" | "show_reddit_analysis" | "delete_reddit_thread" | "video_sentiment" | "youtube_comments" | "youtube_video" | "competitor" | "reddit_comments" | "website" | "general_market" | "unsupported",
+        "primary_channel": "direct_answer" | "list_all_insights" | "list_videos" | "reindex" | "bulk_insights" | "specific_saved_video" | "list_reddit_threads" | "show_reddit_analysis" | "delete_reddit_thread" | "video_sentiment" | "youtube_comments" | "youtube_video" | "competitor" | "reddit_comments" | "website" | "general_market" | "unsupported",
         "confidence": 0.95,
         "reasoning": "Explanation...",
         "extracted_target": "Specific URL, brand, or query topic if found",
@@ -842,7 +843,24 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       };
     }
 
-    if (lower.includes('all insights') || lower.includes('list videos') || lower.includes('show videos') || lower.includes('my videos') || lower.includes('indexed videos')) {
+    // Unified Insights Query (Videos + Reddit)
+    if (
+      lower.includes('what insights') ||
+      lower.includes('all insights') ||
+      lower.includes('show all insights') ||
+      lower.includes('show insights') ||
+      lower.includes('list insights') ||
+      lower.includes('saved insights') ||
+      lower.includes('my insights') ||
+      lower.includes('insights do you have') ||
+      lower.includes('insights do we have') ||
+      lower.trim() === 'insights' ||
+      lower.trim() === 'what do you have'
+    ) {
+      return { primary_channel: 'list_all_insights', confidence: 0.95, reasoning: 'Unified insights query for both video and reddit catalogs' };
+    }
+
+    if (lower.includes('list videos') || lower.includes('show videos') || lower.includes('my videos') || lower.includes('indexed videos') || lower.includes('video catalog')) {
       return { primary_channel: 'list_videos', confidence: 0.95, reasoning: 'List videos keyword match' };
     }
     if (lower.includes('re-index') || lower.includes('reindex')) {
@@ -2130,7 +2148,40 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         return;
       }
 
-      // Route 1: Explicit Intent: "all insights", "list videos"
+      // Route 1a: Explicit Intent: "what insights do you have", "all insights", "show insights"
+      if (classification.primary_channel === 'list_all_insights') {
+        const hasVideos = indexed.length > 0;
+        const hasReddit = trackedThreads.length > 0;
+
+        let responseText = '';
+        if (hasVideos && hasReddit) {
+          responseText = `Here are all saved insights for **${companyName}**, covering both **${indexed.length} video ad analysis(es)** and **${trackedThreads.length} tracked Reddit discussion(s)**:`;
+        } else if (hasVideos) {
+          responseText = `I found **${indexed.length} video ad analysis(es)** for **${companyName}**. (No Reddit threads are analyzed yet—say *"analyze this reddit thread <url>"* to add one):`;
+        } else if (hasReddit) {
+          responseText = `I found **${trackedThreads.length} tracked Reddit discussion(s)** for **${companyName}**. (No video ads are indexed yet—paste any YouTube URL to analyze one):`;
+        } else {
+          responseText = `No saved insights found for **${companyName}** yet. You can paste a YouTube video ad link or say *"analyze this reddit thread <url>"* to start building your library!`;
+        }
+
+        const assistantMsg: ChatMessage = {
+          id: `assistant_${Date.now()}`,
+          sender: 'assistant',
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          text: responseText,
+          indexedVideos: hasVideos ? indexed : undefined,
+          analyzedRedditThreads: hasReddit ? trackedThreads : undefined
+        };
+
+        const updated = [...newMessages, assistantMsg];
+        setMessages(updated);
+        saveChatSession(updated);
+        setIsLoading(false);
+        setStatusMessage('');
+        return;
+      }
+
+      // Route 1: Explicit Intent: "list videos"
       if (classification.primary_channel === 'list_videos') {
         const assistantMsg: ChatMessage = {
           id: `assistant_${Date.now()}`,
@@ -2681,7 +2732,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     { title: "YouTube Ad ABCD", desc: "Evaluate 5s hook, brand visibility & call-to-action", prompt: "Evaluate YouTube commercial ABCD framework" },
     { title: "Video & Comments Sentiment", desc: "Emotional tone, viewer reactions & dialogue timeline", prompt: `Analyze consumer and comments sentiment for ${companyName} video ads` },
     { title: "Competitor Benchmark", desc: "Side-by-side strengths, flaws & counter-strategies", prompt: `Compare ${companyName} marketing and ad strategy against main competitors` },
-    { title: "Reddit Threads & Chatter", desc: "Track, analyze & view community discussions", prompt: "what reddit threads are analyzed" },
+    { title: "All Insights & Catalog", desc: "View all saved video ads and Reddit threads", prompt: "what insights do you have" },
     { title: "Website Landing Page CRO", desc: "Audit page messaging, trust factors & UX friction", prompt: `Analyze landing page conversion and messaging for ${config?.branding?.websiteUrl || 'https://www.drpepper.com'}` }
   ];
 
@@ -2702,19 +2753,6 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         </div>
 
         <div className="flex items-center gap-2">
-          {/* Reddit Thread Hub Button */}
-          <button
-            onClick={() => setShowRedditModal(true)}
-            className="px-3 py-1.5 text-xs font-semibold text-orange-800 hover:text-orange-950 bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-xl transition-all flex items-center gap-1.5 shadow-2xs"
-            title="Manage Tracked Reddit Threads & Grounded Intelligence"
-          >
-            <MessageCircle size={13} className="text-orange-600" />
-            <span>Reddit Threads</span>
-            <span className="ml-0.5 px-1.5 py-0.2 bg-orange-200/80 text-orange-900 text-[10px] font-black rounded-full">
-              {trackedThreads.length}
-            </span>
-          </button>
-
           {/* History Drawer Toggle Button */}
           <button
             onClick={() => setShowHistoryDrawer(!showHistoryDrawer)}
@@ -3707,8 +3745,13 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
                   {/* Indexed Videos Catalog Preview */}
                   {msg.indexedVideos && msg.indexedVideos.length > 0 && (
-                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-gray-100">
-                      {msg.indexedVideos.map((item, vIdx) => {
+                    <div className="mt-3 pt-2 border-t border-gray-100 space-y-2">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-gray-800">
+                        <Film size={14} className="text-[#1A73E8]" />
+                        <span>Video Ad Intelligence ({msg.indexedVideos.length})</span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {msg.indexedVideos.map((item, vIdx) => {
                         const vidId = item.videos?.[0] || item.id || item.videoId;
                         const hasScore = item.scores && typeof item.scores === 'object';
                         const typeMeta = getAnalysisTypeMeta(item.type, item);
@@ -3804,13 +3847,19 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                           </div>
                         );
                       })}
+                      </div>
                     </div>
                   )}
 
                   {/* Analyzed Reddit Threads Catalog Preview */}
                   {msg.analyzedRedditThreads && msg.analyzedRedditThreads.length > 0 && (
-                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-gray-100">
-                      {msg.analyzedRedditThreads.map((thread, tIdx) => {
+                    <div className="mt-3 pt-2 border-t border-gray-100 space-y-2">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-gray-800">
+                        <MessageSquare size={14} className="text-orange-600" />
+                        <span>Reddit Community Discussions ({msg.analyzedRedditThreads.length})</span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {msg.analyzedRedditThreads.map((thread, tIdx) => {
                         const hasScore = typeof thread.lastScore === 'number';
 
                         return (
@@ -3898,6 +3947,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                           </div>
                         );
                       })}
+                      </div>
                     </div>
                   )}
 
