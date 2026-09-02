@@ -1516,6 +1516,90 @@ app.get('/api/steam/reviews', async (req, res) => {
     }
 });
 
+// Ingest Reddit thread metadata and comments for grounded sentiment analysis
+app.get('/api/reddit/thread', async (req, res) => {
+    const { url } = req.query;
+    if (!url) return res.status(400).json({ error: "Reddit url is required" });
+
+    try {
+        console.log(`\n--- [Reddit Thread Ingest] Ingesting URL: ${url} ---`);
+        let cleanUrl = String(url).trim();
+        if (!cleanUrl.startsWith('http')) {
+            cleanUrl = `https://${cleanUrl}`;
+        }
+        const jsonUrl = cleanUrl.split('?')[0].replace(/\/$/, '') + '.json?limit=50';
+
+        const response = await fetch(jsonUrl, {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 MarkingAILab/1.0'
+            }
+        });
+
+        if (!response.ok) {
+            console.warn(`[Reddit Thread Ingest] Reddit HTTP ${response.status}: ${response.statusText}`);
+            return res.status(response.status).json({
+                error: `Reddit returned HTTP ${response.status}: ${response.statusText}`,
+                status: response.status
+            });
+        }
+
+        const data = await response.json();
+        if (!Array.isArray(data) || data.length === 0) {
+            return res.status(404).json({ error: "No thread data found in Reddit response" });
+        }
+
+        const postData = data[0]?.data?.children?.[0]?.data || {};
+        const thread = {
+            id: postData.id,
+            title: postData.title,
+            author: postData.author ? `u/${postData.author}` : 'u/anonymous',
+            subreddit: postData.subreddit_name_prefixed || (postData.subreddit ? `r/${postData.subreddit}` : 'r/reddit'),
+            score: postData.score || 0,
+            num_comments: postData.num_comments || 0,
+            selftext: postData.selftext || '',
+            url: postData.url || cleanUrl,
+            permalink: postData.permalink ? `https://www.reddit.com${postData.permalink}` : cleanUrl,
+            created_utc: postData.created_utc
+        };
+
+        const rawComments = data[1]?.data?.children || [];
+        const comments = [];
+
+        const extractComments = (children, depth = 0) => {
+            if (!children || !Array.isArray(children) || depth > 3) return;
+            for (const child of children) {
+                if (child.kind !== 't1') continue;
+                const cData = child.data;
+                if (!cData || !cData.body || cData.body === '[deleted]' || cData.body === '[removed]') continue;
+                comments.push({
+                    id: cData.id,
+                    author: cData.author ? `u/${cData.author}` : 'u/anonymous',
+                    body: cData.body.trim(),
+                    score: cData.score || 0,
+                    permalink: cData.permalink ? `https://www.reddit.com${cData.permalink}` : thread.permalink,
+                    created_utc: cData.created_utc
+                });
+                if (comments.length >= 40) return;
+                if (cData.replies && cData.replies.data && cData.replies.data.children) {
+                    extractComments(cData.replies.data.children, depth + 1);
+                }
+            }
+        };
+
+        extractComments(rawComments);
+
+        console.log(`[Reddit Thread Ingest] Successfully ingested thread "${thread.title}" with ${comments.length} comments.`);
+        res.json({
+            success: true,
+            thread,
+            comments
+        });
+    } catch (err) {
+        console.error("[Reddit Thread Ingest] Error fetching Reddit thread:", err);
+        res.status(500).json({ error: `Failed to fetch Reddit thread: ${err.message}` });
+    }
+});
+
 app.get('/api/steam/appdetails', async (req, res) => {
     const { appId } = req.query;
     if (!appId) return res.status(400).json({ error: "appId is required" });

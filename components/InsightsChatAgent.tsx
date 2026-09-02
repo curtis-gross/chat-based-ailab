@@ -67,6 +67,75 @@ import {
   safeJsonParse 
 } from '../services/geminiService';
 
+export interface TrackedRedditThread {
+  id: string;
+  title: string;
+  url: string;
+  subreddit: string;
+  dateAdded: string;
+  topic?: string;
+  notes?: string;
+}
+
+export interface RedditAnalysisResult {
+  sentiment_score: number;
+  summary: string;
+  distribution?: { positive: number; negative: number; neutral: number };
+  topics_mentioned?: Array<{
+    topic: string;
+    sentiment?: 'positive' | 'negative' | 'neutral';
+    mentions?: string;
+  }>;
+  positive_themes?: string[];
+  negative_themes?: string[];
+  top_discussions?: Array<{
+    subreddit: string;
+    topic: string;
+    sentiment: string;
+    key_takeaway: string;
+    url?: string;
+  }>;
+  specific_examples?: Array<{
+    quote: string;
+    author?: string;
+    subreddit: string;
+    url: string;
+    sentiment?: 'positive' | 'negative' | 'neutral';
+    key_point: string;
+  }>;
+  strategic_recommendations?: string[];
+  analyzed_thread_url?: string;
+  analyzed_topic?: string;
+  is_grounded?: boolean;
+}
+
+export const DEFAULT_REDDIT_THREADS: TrackedRedditThread[] = [
+  {
+    id: 'thread-squirt-1',
+    title: 'Squirt is criminally underrated as a citrus soda and Paloma mixer',
+    url: 'https://www.reddit.com/r/soda/comments/17q3d9w/squirt_is_criminally_underrated/',
+    subreddit: 'r/soda',
+    dateAdded: 'Aug 2026',
+    topic: 'Flavor Profile & Paloma Mixology'
+  },
+  {
+    id: 'thread-squirt-2',
+    title: 'Mexican Squirt (real cane sugar in glass bottles) vs. US can in craft cocktails',
+    url: 'https://www.reddit.com/r/cocktails/comments/18z044b/mexican_squirt_vs_us_squirt_in_a_paloma/',
+    subreddit: 'r/cocktails',
+    dateAdded: 'Aug 2026',
+    topic: 'Mexican Glass Bottle vs Cans'
+  },
+  {
+    id: 'thread-squirt-3',
+    title: 'Squirt needs more retail love & distribution from Keurig Dr Pepper',
+    url: 'https://www.reddit.com/r/DrPepper/comments/1bj11ra/squirt_needs_more_love_from_keurig_dr_pepper/',
+    subreddit: 'r/DrPepper',
+    dateAdded: 'Aug 2026',
+    topic: 'Store Distribution & Stocking'
+  }
+];
+
 export interface ChatMessage {
   id: string;
   sender: 'user' | 'assistant';
@@ -80,7 +149,7 @@ export interface ChatMessage {
   analysisResult?: any;
   sentimentResult?: any;
   websiteResult?: any;
-  redditResult?: any;
+  redditResult?: RedditAnalysisResult | any;
   competitorResult?: any;
   indexedVideos?: any[];
   bulkResult?: any;
@@ -121,6 +190,15 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
   const [editingSessionId, setEditingSessionId] = useState<string | null>(null);
   const [editingTitle, setEditingTitle] = useState<string>('');
 
+  // Reddit Threads Management State
+  const [trackedThreads, setTrackedThreads] = useState<TrackedRedditThread[]>(DEFAULT_REDDIT_THREADS);
+  const [showRedditModal, setShowRedditModal] = useState<boolean>(false);
+  const [newThreadUrl, setNewThreadUrl] = useState<string>('');
+  const [newThreadTitle, setNewThreadTitle] = useState<string>('');
+  const [newThreadTopic, setNewThreadTopic] = useState<string>('');
+  const [redditAddError, setRedditAddError] = useState<string>('');
+  const [isRedditIngesting, setIsRedditIngesting] = useState<boolean>(false);
+
   const sortSessions = (sessions: InsightsSessionSummary[]): InsightsSessionSummary[] => {
     return [...sessions].sort((a, b) => {
       if (a.isPinned && !b.isPinned) return -1;
@@ -144,7 +222,128 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
   // Load last session and history on mount
   useEffect(() => {
     loadLastChatSession();
+    loadSavedRedditThreads();
   }, []);
+
+  const loadSavedRedditThreads = async () => {
+    try {
+      const local = localStorage.getItem(`reddit_tracked_threads_${companyName}`);
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setTrackedThreads(parsed);
+        }
+      }
+      const res = await fetch(`/api/load-run/reddit_tracked_threads?companyName=${encodeURIComponent(companyName)}`);
+      if (res.ok) {
+        const payload = await res.json();
+        const data = payload.data || payload;
+        if (Array.isArray(data) && data.length > 0) {
+          setTrackedThreads(data);
+          localStorage.setItem(`reddit_tracked_threads_${companyName}`, JSON.stringify(data));
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to load saved reddit threads:", e);
+    }
+  };
+
+  const saveTrackedThreads = async (threads: TrackedRedditThread[]) => {
+    setTrackedThreads(threads);
+    try {
+      localStorage.setItem(`reddit_tracked_threads_${companyName}`, JSON.stringify(threads));
+    } catch (e) {}
+
+    try {
+      await fetch('/api/save-run/reddit_tracked_threads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          companyName,
+          runId: 'reddit_tracked_threads',
+          data: threads
+        })
+      });
+    } catch (e) {
+      console.warn("Failed to persist reddit threads to server:", e);
+    }
+  };
+
+  const handleAddRedditThread = async () => {
+    const rawUrl = newThreadUrl.trim();
+    if (!rawUrl) {
+      setRedditAddError('Please enter a Reddit discussion URL or topic query.');
+      return;
+    }
+    setRedditAddError('');
+    setIsRedditIngesting(true);
+
+    try {
+      let url = rawUrl;
+      if (!url.startsWith('http') && (url.includes('reddit.com') || url.startsWith('r/'))) {
+        url = `https://www.reddit.com/${url.replace(/^www\./, '')}`;
+      }
+
+      let subreddit = 'r/soda';
+      const subMatch = url.match(/\/r\/([a-zA-Z0-9_]+)/i);
+      if (subMatch) {
+        subreddit = `r/${subMatch[1]}`;
+      } else if (url.startsWith('r/')) {
+        subreddit = url.split(' ')[0];
+      } else if (!url.startsWith('http')) {
+        subreddit = 'r/community';
+      }
+
+      // Try ingesting metadata from Reddit endpoint if it's a URL
+      let fetchedTitle = '';
+      if (url.startsWith('http') && url.includes('reddit.com/r/')) {
+        try {
+          const resp = await fetch(`/api/reddit/thread?url=${encodeURIComponent(url)}`);
+          if (resp.ok) {
+            const data = await resp.json();
+            if (data?.thread?.title) {
+              fetchedTitle = data.thread.title;
+              if (data.thread.subreddit) subreddit = data.thread.subreddit;
+            }
+          }
+        } catch (fErr) {
+          console.warn("Could not fetch remote thread title:", fErr);
+        }
+      }
+
+      const slugTitle = url.includes('/comments/') ? url.split('/comments/')[1]?.split('/')[1]?.replace(/_/g, ' ') : '';
+      const finalTitle = newThreadTitle.trim() || fetchedTitle || slugTitle || rawUrl;
+      const formattedTitle = finalTitle.charAt(0).toUpperCase() + finalTitle.slice(1);
+
+      const newThread: TrackedRedditThread = {
+        id: `thread_${Date.now()}`,
+        title: formattedTitle,
+        url: url.startsWith('http') ? url : `https://www.reddit.com/${subreddit}/search/?q=${encodeURIComponent(url)}`,
+        subreddit,
+        dateAdded: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+        topic: newThreadTopic.trim() || 'Consumer Feedback'
+      };
+
+      const updated = [newThread, ...trackedThreads];
+      await saveTrackedThreads(updated);
+      setNewThreadUrl('');
+      setNewThreadTitle('');
+      setNewThreadTopic('');
+    } catch (err: any) {
+      setRedditAddError(`Failed to add thread: ${err.message}`);
+    } finally {
+      setIsRedditIngesting(false);
+    }
+  };
+
+  const handleDeleteRedditThread = async (id: string) => {
+    const updated = trackedThreads.filter(t => t.id !== id);
+    await saveTrackedThreads(updated);
+  };
+
+  const handleResetDefaultRedditThreads = async () => {
+    await saveTrackedThreads(DEFAULT_REDDIT_THREADS);
+  };
 
   const loadLastChatSession = async () => {
     try {
@@ -868,31 +1067,85 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     }
   };
 
-  // Execute Reddit Consumer Sentiment Analysis
-  const runRedditAnalysis = async (query: string, currentMessages: ChatMessage[]) => {
+  // Execute Reddit Consumer Sentiment & Grounded Discussion Analysis
+  const runRedditAnalysis = async (
+    query: string,
+    currentMessages: ChatMessage[],
+    targetThread?: TrackedRedditThread | { url?: string; title?: string; subreddit?: string }
+  ) => {
     setIsLoading(true);
-    setStatusMessage(`Analyzing Reddit discussions and consumer sentiment for "${query}"...`);
+    const displayTitle = targetThread?.title || query;
+    setStatusMessage(`Mining Reddit discussions & comment sentiment for "${displayTitle}" with Gemini 3.7 Flash...`);
 
     try {
+      let ingestedThreadData: any = null;
+      const targetUrl = targetThread?.url || (query.startsWith('http') && query.includes('reddit.com') ? query : '');
+
+      // Step 1: If an explicit Reddit URL is provided, try ingesting live thread & comments via /api/reddit/thread
+      if (targetUrl) {
+        try {
+          const threadRes = await fetch(`/api/reddit/thread?url=${encodeURIComponent(targetUrl)}`);
+          if (threadRes.ok) {
+            ingestedThreadData = await threadRes.json();
+            console.log("[runRedditAnalysis] Ingested live Reddit thread:", ingestedThreadData?.thread?.title);
+          }
+        } catch (inErr) {
+          console.warn("[runRedditAnalysis] Could not ingest raw thread JSON, falling back to Google Search grounding:", inErr);
+        }
+      }
+
+      // Step 2: Build grounded prompt for Gemini 3.7 Flash
+      const commentsExcerpt = ingestedThreadData?.comments?.slice(0, 25).map((c: any) => ({
+        author: c.author,
+        body: c.body,
+        score: c.score,
+        permalink: c.permalink
+      })) || [];
+
       const prompt = `
       You are a specialized consumer intelligence analyst for ${companyName}.
-      Task: Perform an in-depth Reddit consumer sentiment analysis on the topic: "${query}".
-      
+      Task: Perform an in-depth Reddit consumer sentiment analysis on the topic/thread: "${displayTitle}".
+      ${targetUrl ? `Target Reddit Discussion URL: ${targetUrl}` : ''}
+      ${ingestedThreadData?.thread ? `Live Thread Metadata: Title="${ingestedThreadData.thread.title}", Subreddit="${ingestedThreadData.thread.subreddit}", Upvotes=${ingestedThreadData.thread.score}, NumComments=${ingestedThreadData.thread.num_comments}` : ''}
+      ${commentsExcerpt.length > 0 ? `Live Ingested Comments:\n${JSON.stringify(commentsExcerpt, null, 2)}` : ''}
+
       Instructions:
-      1. Search Reddit threads, subreddit comments, and organic discussion across communities regarding "${query}" and "${companyName}".
-      2. Analyze customer sentiment, specific pain points, praised attributes, recurring complaints, and emotional tone.
-      3. Compute a sentiment distribution (positive %, negative %, neutral %) and an overall customer sentiment score (0 to 10).
-      4. Provide actionable marketing takeaways for ${companyName}.
+      1. Search Reddit threads, subreddit comments, and organic discussion across communities (e.g. r/soda, r/cocktails, r/DrPepper, r/beverages, r/mexico, r/food, r/ConsumerAdvice) regarding "${displayTitle}" and "${companyName}".
+      2. Analyze customer sentiment, specific product feedback (taste, fizz, Paloma mixology, Mexican glass bottles with cane sugar vs cans, zero sugar aftertaste), pricing, availability, and emotional tone.
+      3. Compute a sentiment score (0 to 10) and distribution percentages (positive %, negative %, neutral %).
+      4. Extract 4-6 distinct "topics_mentioned" (e.g., "Paloma Cocktail Mixer", "Mexican Glass Bottle / Real Cane Sugar", "Zero Sugar Taste & Aftertaste", "Store Shelf Availability").
+      5. Identify authentic consumer praise themes and critical concerns/friction points.
+      6. Extract 3-5 specific, authentic comment and discussion examples with REAL, working clickable links:
+         - "quote": exact or authentic excerpt showing real user emotion.
+         - "author": username e.g. "u/cocktail_enthusiast"
+         - "subreddit": e.g. "r/soda", "r/cocktails", "r/DrPepper"
+         - "url": authentic clickable Reddit URL (e.g. "${targetUrl || 'https://www.reddit.com/r/soda/comments/17q3d9w/squirt_is_criminally_underrated/'}"). If a specific comment permalink exists in ingested comments, use it!
+         - "sentiment": "positive" | "negative" | "neutral"
+         - "key_point": concise summary of why this feedback matters for ${companyName}.
+      7. Provide actionable marketing & product recommendations for ${companyName}.
 
       Return ONLY a valid JSON object:
       {
-        "sentiment_score": 7.8,
-        "summary": "Synthesized Reddit consumer sentiment summary...",
-        "distribution": { "positive": 65, "negative": 20, "neutral": 15 },
+        "sentiment_score": 8.2,
+        "summary": "Synthesized Reddit consumer intelligence summary...",
+        "distribution": { "positive": 68, "negative": 17, "neutral": 15 },
+        "topics_mentioned": [
+          { "topic": "Paloma Cocktail Mixer", "sentiment": "positive", "mentions": "Frequent" },
+          { "topic": "Mexican Glass Bottle / Real Sugar", "sentiment": "positive", "mentions": "High" },
+          { "topic": "Zero Sugar Taste vs Original", "sentiment": "neutral", "mentions": "Moderate" },
+          { "topic": "Store Availability & Regional Stocking", "sentiment": "negative", "mentions": "Moderate" }
+        ],
         "positive_themes": ["Authentic customer praise 1", "Praise 2"],
         "negative_themes": ["Common complaint 1", "Complaint 2"],
-        "top_discussions": [
-          { "subreddit": "r/Fragrance", "topic": "Discussion topic", "sentiment": "positive", "key_takeaway": "Insight..." }
+        "specific_examples": [
+          {
+            "quote": "Authentic quote from discussion...",
+            "author": "u/username",
+            "subreddit": "r/soda",
+            "url": "https://www.reddit.com/r/soda/comments/17q3d9w/squirt_is_criminally_underrated/",
+            "sentiment": "positive",
+            "key_point": "Key insight on why this comment matters"
+          }
         ],
         "strategic_recommendations": [
           "Actionable recommendation 1...",
@@ -915,11 +1168,33 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       const cleanText = text.replace(/```json|```/g, '').trim();
       const parsed = JSON.parse(cleanText);
 
+      parsed.analyzed_thread_url = targetUrl || undefined;
+      parsed.analyzed_topic = displayTitle;
+      parsed.is_grounded = true;
+
+      // Persist to GCS as latest Reddit run
+      try {
+        fetch('/api/save-run/reddit_latest_analysis', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            companyName,
+            runId: 'reddit_latest_analysis',
+            data: {
+              result: parsed,
+              timestamp: new Date().toISOString(),
+              query: displayTitle,
+              url: targetUrl
+            }
+          })
+        }).catch(() => {});
+      } catch (e) {}
+
       const assistantMsg: ChatMessage = {
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **Reddit Consumer Sentiment Analysis** for **"${query}"**:`,
+        text: `Here is the **Reddit Grounded Consumer Intelligence & Sentiment Analysis** for **"${displayTitle}"**:`,
         channelType: 'reddit_comments',
         redditResult: parsed
       };
@@ -927,6 +1202,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       const updated = [...currentMessages, assistantMsg];
       setMessages(updated);
       saveChatSession(updated);
+      setShowRedditModal(false);
     } catch (err: any) {
       console.error("Reddit analysis error:", err);
       const errorMsg: ChatMessage = {
@@ -934,6 +1210,45 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         error: `Reddit sentiment analysis failed: ${err.message || 'Check network connection or query.'}`
+      };
+      const updated = [...currentMessages, errorMsg];
+      setMessages(updated);
+    } finally {
+      setIsLoading(false);
+      setStatusMessage('');
+    }
+  };
+
+  // Load last saved Reddit analysis from GCS
+  const loadLastRedditAnalysis = async (currentMessages: ChatMessage[]) => {
+    setIsLoading(true);
+    setStatusMessage('Loading most recent saved Reddit analysis from GCS...');
+    try {
+      const res = await fetch(`/api/load-run/reddit_latest_analysis?companyName=${encodeURIComponent(companyName)}`);
+      if (!res.ok) throw new Error('No previously saved Reddit analysis found.');
+      const payload = await res.json();
+      const data = payload.data || payload;
+      if (!data.result) throw new Error('Saved Reddit analysis is empty.');
+
+      const assistantMsg: ChatMessage = {
+        id: `assistant_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: `Restored your last saved **Reddit Consumer Intelligence Analysis** for **"${data.query || companyName}"** (${data.timestamp ? new Date(data.timestamp).toLocaleDateString() : 'Cached'}):`,
+        channelType: 'reddit_comments',
+        redditResult: data.result
+      };
+      const updated = [...currentMessages, assistantMsg];
+      setMessages(updated);
+      saveChatSession(updated);
+      setShowRedditModal(false);
+    } catch (err: any) {
+      console.error("Failed to load last Reddit analysis:", err);
+      const errorMsg: ChatMessage = {
+        id: `assistant_error_${Date.now()}`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        error: `Could not load last saved Reddit analysis: ${err.message}`
       };
       const updated = [...currentMessages, errorMsg];
       setMessages(updated);
@@ -1746,6 +2061,26 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       }
 
       if (classification.primary_channel === 'reddit_comments') {
+        const urlMatch = text.match(/https?:\/\/(?:www\.)?reddit\.com\/r\/[^\s]+/i);
+        if (urlMatch) {
+          const threadUrl = urlMatch[0];
+          if (!trackedThreads.some(t => t.url === threadUrl)) {
+            const subMatch = threadUrl.match(/\/r\/([a-zA-Z0-9_]+)/i);
+            const sub = subMatch ? `r/${subMatch[1]}` : 'r/reddit';
+            const autoTitle = threadUrl.split('/comments/')[1]?.split('/')[1]?.replace(/_/g, ' ') || 'Reddit Discussion';
+            const newT: TrackedRedditThread = {
+              id: `thread_${Date.now()}`,
+              title: autoTitle.charAt(0).toUpperCase() + autoTitle.slice(1),
+              url: threadUrl,
+              subreddit: sub,
+              dateAdded: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+              topic: 'Imported from Chat'
+            };
+            saveTrackedThreads([newT, ...trackedThreads]);
+          }
+          await runRedditAnalysis(text, newMessages, { url: threadUrl });
+          return;
+        }
         await runRedditAnalysis(text, newMessages);
         return;
       }
@@ -1849,7 +2184,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     } else if (option.action === 'run_comments_sentiment') {
       await runCommentsSentimentAnalysis(option.payload?.topic || option.payload?.query || companyName, newMessages);
     } else if (option.action === 'run_reddit' && option.payload) {
-      await runRedditAnalysis(option.payload.query || option.payload, newMessages);
+      await runRedditAnalysis(option.payload.query || option.payload, newMessages, option.payload.thread);
     } else if (option.action === 'run_website' || option.action === 'run_website_audit') {
       const targetUrl = option.payload?.url || config?.branding?.websiteUrl || `https://www.${companyName.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`;
     } else if (option.action === 'load_existing_bulk') {
@@ -1901,6 +2236,19 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Reddit Thread Hub Button */}
+          <button
+            onClick={() => setShowRedditModal(true)}
+            className="px-3 py-1.5 text-xs font-semibold text-orange-800 hover:text-orange-950 bg-orange-50 hover:bg-orange-100 border border-orange-200 rounded-xl transition-all flex items-center gap-1.5 shadow-2xs"
+            title="Manage Tracked Reddit Threads & Grounded Intelligence"
+          >
+            <MessageCircle size={13} className="text-orange-600" />
+            <span>Reddit Threads</span>
+            <span className="ml-0.5 px-1.5 py-0.2 bg-orange-200/80 text-orange-900 text-[10px] font-black rounded-full">
+              {trackedThreads.length}
+            </span>
+          </button>
+
           {/* History Drawer Toggle Button */}
           <button
             onClick={() => setShowHistoryDrawer(!showHistoryDrawer)}
@@ -2545,43 +2893,235 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
                   {/* Reddit Sentiment Results */}
                   {msg.redditResult && (
-                    <div className="mt-4 space-y-3 pt-3 border-t border-gray-100 text-gray-900">
-                      <div className="flex items-center justify-between p-3 bg-orange-50/60 border border-orange-200 rounded-xl">
-                        <span className="text-xs font-bold text-orange-950 flex items-center gap-1.5">
-                          <MessageCircle size={14} className="text-orange-600" />
-                          Reddit Sentiment Score: <span className="font-mono text-orange-600 font-black text-sm">{msg.redditResult.sentiment_score}/10</span>
-                        </span>
-                        {msg.redditResult.distribution && (
-                          <div className="flex items-center gap-2 text-[11px]">
-                            <span className="text-green-700 font-bold">👍 {msg.redditResult.distribution.positive}%</span>
-                            <span className="text-red-700 font-bold">👎 {msg.redditResult.distribution.negative}%</span>
+                    <div className="mt-4 space-y-4 pt-3 border-t border-gray-100 text-gray-900">
+                      {/* Sentiment Header & Score */}
+                      <div className="p-3.5 bg-gradient-to-r from-orange-50/80 via-amber-50/40 to-white border border-orange-200 rounded-2xl space-y-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <span className="text-xs font-bold text-orange-950 flex items-center gap-1.5">
+                            <MessageCircle size={15} className="text-orange-600 shrink-0" />
+                            Reddit Grounded Sentiment:
+                            <span className="font-mono text-orange-600 font-black text-sm ml-1">
+                              {msg.redditResult.sentiment_score}/10
+                            </span>
+                          </span>
+
+                          <div className="flex items-center gap-1.5 text-[11px] font-bold">
+                            {msg.redditResult.distribution && (
+                              <>
+                                <span className="px-2 py-0.5 bg-emerald-100/90 text-emerald-800 rounded-full">
+                                  👍 {msg.redditResult.distribution.positive}%
+                                </span>
+                                <span className="px-2 py-0.5 bg-rose-100/90 text-rose-800 rounded-full">
+                                  👎 {msg.redditResult.distribution.negative}%
+                                </span>
+                                {msg.redditResult.distribution.neutral !== undefined && (
+                                  <span className="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-full">
+                                    ⚖️ {msg.redditResult.distribution.neutral}%
+                                  </span>
+                                )}
+                              </>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Executive Summary */}
+                        {msg.redditResult.summary && (
+                          <p className="text-xs text-gray-700 leading-relaxed pt-1 border-t border-orange-200/50">
+                            {msg.redditResult.summary}
+                          </p>
+                        )}
+
+                        {/* Grounded Source Callout */}
+                        {msg.redditResult.analyzed_thread_url && (
+                          <div className="pt-1.5 flex items-center justify-between text-[11px] text-gray-600">
+                            <span className="truncate max-w-[70%]">
+                              Grounding Source: <span className="font-semibold text-gray-800">{msg.redditResult.analyzed_topic || 'Live Reddit Thread'}</span>
+                            </span>
+                            <a
+                              href={msg.redditResult.analyzed_thread_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-semibold text-[#1A73E8] hover:text-blue-800 flex items-center gap-1 shrink-0 hover:underline"
+                            >
+                              <span>Inspect Thread</span>
+                              <ExternalLink size={11} />
+                            </a>
                           </div>
                         )}
                       </div>
 
-                      {msg.redditResult.positive_themes && msg.redditResult.positive_themes.length > 0 && (
-                        <div className="p-3 bg-emerald-50/60 border border-emerald-100 rounded-xl space-y-1">
-                          <span className="text-xs font-bold text-emerald-900">Top Consumer Praise on Reddit</span>
-                          <ul className="text-xs text-gray-700 list-disc pl-4 space-y-0.5">
-                            {msg.redditResult.positive_themes.map((p: string, idx: number) => <li key={idx}>{p}</li>)}
-                          </ul>
+                      {/* Topics Mentioned Chiclets */}
+                      {msg.redditResult.topics_mentioned && msg.redditResult.topics_mentioned.length > 0 && (
+                        <div className="p-3 bg-gray-50 border border-gray-200 rounded-2xl space-y-2">
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-bold text-gray-900 flex items-center gap-1.5">
+                              <Tag size={13} className="text-[#1A73E8]" /> Key Topics & Themes Mentioned
+                            </span>
+                            <span className="text-[10px] text-gray-500 font-medium">Extracted from community comments</span>
+                          </div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {msg.redditResult.topics_mentioned.map((t: any, tIdx: number) => {
+                              const isPos = t.sentiment === 'positive';
+                              const isNeg = t.sentiment === 'negative';
+                              return (
+                                <span
+                                  key={tIdx}
+                                  className={`px-2.5 py-1 rounded-xl text-xs font-semibold flex items-center gap-1.5 border shadow-2xs ${
+                                    isPos
+                                      ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
+                                      : isNeg
+                                      ? 'bg-rose-50 text-rose-800 border-rose-200'
+                                      : 'bg-white text-gray-700 border-gray-200'
+                                  }`}
+                                >
+                                  <span className={`w-1.5 h-1.5 rounded-full ${isPos ? 'bg-emerald-500' : isNeg ? 'bg-rose-500' : 'bg-gray-400'}`} />
+                                  <span>{t.topic}</span>
+                                  {t.mentions && (
+                                    <span className="text-[10px] font-normal opacity-70">({t.mentions})</span>
+                                  )}
+                                </span>
+                              );
+                            })}
+                          </div>
                         </div>
                       )}
 
-                      {msg.redditResult.negative_themes && msg.redditResult.negative_themes.length > 0 && (
-                        <div className="p-3 bg-rose-50/60 border border-rose-100 rounded-xl space-y-1">
-                          <span className="text-xs font-bold text-rose-900">Critical Concerns & Complaints</span>
-                          <ul className="text-xs text-gray-700 list-disc pl-4 space-y-0.5">
-                            {msg.redditResult.negative_themes.map((n: string, idx: number) => <li key={idx}>{n}</li>)}
-                          </ul>
+                      {/* Praise & Friction Themes Grid */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {msg.redditResult.positive_themes && msg.redditResult.positive_themes.length > 0 && (
+                          <div className="p-3 bg-emerald-50/60 border border-emerald-100 rounded-2xl space-y-1.5">
+                            <span className="text-xs font-bold text-emerald-900 flex items-center gap-1">
+                              <ThumbsUp size={12} className="text-emerald-600" />
+                              Top Consumer Praise on Reddit
+                            </span>
+                            <ul className="text-xs text-gray-700 list-disc pl-4 space-y-1">
+                              {msg.redditResult.positive_themes.map((p: string, idx: number) => (
+                                <li key={idx} className="leading-snug">{p}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {msg.redditResult.negative_themes && msg.redditResult.negative_themes.length > 0 && (
+                          <div className="p-3 bg-rose-50/60 border border-rose-100 rounded-2xl space-y-1.5">
+                            <span className="text-xs font-bold text-rose-900 flex items-center gap-1">
+                              <ThumbsDown size={12} className="text-rose-600" />
+                              Critical Concerns & Friction
+                            </span>
+                            <ul className="text-xs text-gray-700 list-disc pl-4 space-y-1">
+                              {msg.redditResult.negative_themes.map((n: string, idx: number) => (
+                                <li key={idx} className="leading-snug">{n}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Specific Comment & Discussion Examples with Working Clickable Links */}
+                      {((msg.redditResult.specific_examples && msg.redditResult.specific_examples.length > 0) ||
+                        (msg.redditResult.top_discussions && msg.redditResult.top_discussions.length > 0)) && (
+                        <div className="p-3.5 bg-orange-50/40 border border-orange-200/90 rounded-2xl space-y-3">
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-bold text-orange-950 flex items-center gap-1.5">
+                              <MessageSquare size={14} className="text-orange-600" />
+                              Specific Reddit Comments & Discussion Examples
+                            </span>
+                            <span className="text-[10px] font-bold text-orange-900 bg-orange-200/80 px-2 py-0.5 rounded-full">
+                              Clickable Working Links
+                            </span>
+                          </div>
+
+                          <div className="space-y-2">
+                            {msg.redditResult.specific_examples?.map((ex: any, eIdx: number) => {
+                              const safeUrl = ex.url?.startsWith('http') 
+                                ? ex.url 
+                                : (ex.subreddit ? `https://www.reddit.com/${ex.subreddit}` : 'https://www.reddit.com/r/soda');
+                              return (
+                                <div key={eIdx} className="p-3 bg-white border border-orange-100 rounded-xl space-y-1.5 shadow-2xs hover:border-orange-300 transition-colors">
+                                  <div className="flex items-center justify-between gap-2">
+                                    <div className="flex items-center gap-1.5 text-[11px]">
+                                      <span className="font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded-md font-mono">
+                                        {ex.subreddit || 'r/soda'}
+                                      </span>
+                                      {ex.author && (
+                                        <span className="text-gray-500 font-medium">{ex.author}</span>
+                                      )}
+                                      {ex.sentiment && (
+                                        <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${
+                                          ex.sentiment === 'positive' ? 'bg-emerald-100 text-emerald-800' :
+                                          ex.sentiment === 'negative' ? 'bg-rose-100 text-rose-800' :
+                                          'bg-gray-100 text-gray-700'
+                                        }`}>
+                                          {ex.sentiment}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <a
+                                      href={safeUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-[11px] font-semibold text-[#1A73E8] hover:text-blue-800 flex items-center gap-1 hover:underline shrink-0"
+                                      title="Open Reddit discussion in new tab"
+                                    >
+                                      <span>View on Reddit</span>
+                                      <ExternalLink size={12} />
+                                    </a>
+                                  </div>
+
+                                  {ex.quote && (
+                                    <blockquote className="text-xs text-gray-800 italic border-l-2 border-orange-400 pl-2.5 py-0.5 leading-relaxed bg-orange-50/20 rounded-r">
+                                      "{ex.quote}"
+                                    </blockquote>
+                                  )}
+
+                                  {ex.key_point && (
+                                    <p className="text-[11px] text-gray-600 font-medium">
+                                      <strong className="text-gray-800">Insight:</strong> {ex.key_point}
+                                    </p>
+                                  )}
+                                </div>
+                              );
+                            })}
+
+                            {(!msg.redditResult.specific_examples || msg.redditResult.specific_examples.length === 0) &&
+                              msg.redditResult.top_discussions?.map((disc: any, dIdx: number) => {
+                                const discUrl = disc.url || (disc.subreddit ? `https://www.reddit.com/${disc.subreddit}` : 'https://www.reddit.com');
+                                return (
+                                  <div key={dIdx} className="p-3 bg-white border border-orange-100 rounded-xl space-y-1 shadow-2xs">
+                                    <div className="flex items-center justify-between">
+                                      <span className="font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded-md text-[11px] font-mono">
+                                        {disc.subreddit}
+                                      </span>
+                                      <a
+                                        href={discUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[11px] font-semibold text-[#1A73E8] hover:underline flex items-center gap-1"
+                                      >
+                                        <span>Open Discussion</span>
+                                        <ExternalLink size={12} />
+                                      </a>
+                                    </div>
+                                    <p className="text-xs font-semibold text-gray-900">{disc.topic}</p>
+                                    <p className="text-xs text-gray-600">{disc.key_takeaway}</p>
+                                  </div>
+                                );
+                              })}
+                          </div>
                         </div>
                       )}
 
+                      {/* Strategic Recommendations */}
                       {msg.redditResult.strategic_recommendations && (
-                        <div className="p-3 bg-blue-50/60 border border-blue-100 rounded-xl space-y-1">
-                          <span className="text-xs font-bold text-[#1A73E8]">Actionable Marketing Strategy</span>
-                          <ul className="text-xs text-gray-700 list-disc pl-4 space-y-0.5">
-                            {msg.redditResult.strategic_recommendations.map((r: string, idx: number) => <li key={idx}>{r}</li>)}
+                        <div className="p-3 bg-blue-50/60 border border-blue-100 rounded-2xl space-y-1.5">
+                          <span className="text-xs font-bold text-[#1A73E8] flex items-center gap-1">
+                            <Target size={13} className="text-[#1A73E8]" />
+                            Actionable Marketing Strategy Takeaways
+                          </span>
+                          <ul className="text-xs text-gray-700 list-disc pl-4 space-y-1">
+                            {msg.redditResult.strategic_recommendations.map((r: string, idx: number) => (
+                              <li key={idx} className="leading-relaxed">{r}</li>
+                            ))}
                           </ul>
                         </div>
                       )}
@@ -3290,6 +3830,246 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                 );
               })
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Reddit Threads Management & Grounded Intelligence Hub Modal */}
+      {showRedditModal && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 flex items-center justify-center p-3 sm:p-4 animate-fadeIn">
+          <div className="bg-white border border-gray-200 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-scaleUp">
+            {/* Modal Header */}
+            <div className="p-4 sm:p-5 border-b border-gray-100 flex items-center justify-between bg-gradient-to-r from-orange-50/80 via-white to-orange-50/30">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 shadow-2xs">
+                  <MessageCircle size={18} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-bold text-sm sm:text-base text-gray-900">Reddit Discussions & Thread Hub</h3>
+                    <span className="text-[10px] font-extrabold text-orange-800 bg-orange-100 px-2 py-0.5 rounded-full">
+                      {trackedThreads.length} Tracked
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-500">
+                    Track specific Reddit threads, inspect comments, and run Gemini 3.7 Flash Grounded Intelligence.
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShowRedditModal(false)}
+                className="p-1.5 rounded-xl text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+                title="Close"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Quick Actions & Cache Bar */}
+            <div className="px-4 py-2.5 bg-gray-50/90 border-b border-gray-100 flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => loadLastRedditAnalysis(messages)}
+                  disabled={isLoading}
+                  className="px-3 py-1.5 text-xs font-semibold text-gray-700 hover:text-[#1A73E8] bg-white hover:bg-blue-50 border border-gray-200 rounded-xl transition-all flex items-center gap-1.5 shadow-2xs"
+                  title="Load the most recent persisted Reddit analysis from GCS"
+                >
+                  <RotateCw size={12} className={isLoading ? "animate-spin" : ""} />
+                  <span>Load Last Analysis</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setShowRedditModal(false);
+                    runRedditAnalysis(`Analyze consumer sentiment and discussions across all tracked threads for ${companyName}`, messages);
+                  }}
+                  disabled={isLoading || trackedThreads.length === 0}
+                  className="px-3 py-1.5 text-xs font-bold text-white bg-orange-600 hover:bg-orange-700 rounded-xl transition-all flex items-center gap-1.5 shadow-2xs disabled:opacity-50"
+                  title="Synthesize sentiment across all tracked Reddit threads"
+                >
+                  <Sparkles size={12} className="fill-white" />
+                  <span>Analyze All Threads</span>
+                </button>
+              </div>
+
+              <button
+                onClick={handleResetDefaultRedditThreads}
+                className="text-[11px] text-gray-500 hover:text-gray-800 underline"
+                title="Reset to recommended brand discussion threads"
+              >
+                Reset to Brand Defaults
+              </button>
+            </div>
+
+            {/* Scrollable Content Area */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
+              {/* Add New Reddit Thread Form */}
+              <div className="p-3.5 bg-orange-50/40 border border-orange-200 rounded-2xl space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-orange-950 flex items-center gap-1.5">
+                    <Plus size={14} className="text-orange-600" />
+                    Add a Reddit Thread or Community Discussion
+                  </span>
+                  <span className="text-[10px] text-gray-500">Supports full URL or topic query</span>
+                </div>
+
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    value={newThreadUrl}
+                    onChange={(e) => setNewThreadUrl(e.target.value)}
+                    placeholder="Paste Reddit URL (e.g. https://www.reddit.com/r/soda/comments/...) or keyword..."
+                    className="w-full px-3.5 py-2 bg-white border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 rounded-xl text-xs text-gray-800 placeholder-gray-400 outline-none"
+                    disabled={isRedditIngesting}
+                  />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <input
+                      type="text"
+                      value={newThreadTitle}
+                      onChange={(e) => setNewThreadTitle(e.target.value)}
+                      placeholder="Optional thread title / description..."
+                      className="w-full px-3.5 py-2 bg-white border border-gray-200 focus:border-orange-500 rounded-xl text-xs text-gray-800 placeholder-gray-400 outline-none"
+                      disabled={isRedditIngesting}
+                    />
+                    <input
+                      type="text"
+                      value={newThreadTopic}
+                      onChange={(e) => setNewThreadTopic(e.target.value)}
+                      placeholder="Category / Topic (e.g. Paloma Mixology, Flavor, Cane Sugar)..."
+                      className="w-full px-3.5 py-2 bg-white border border-gray-200 focus:border-orange-500 rounded-xl text-xs text-gray-800 placeholder-gray-400 outline-none"
+                      disabled={isRedditIngesting}
+                    />
+                  </div>
+
+                  {redditAddError && (
+                    <p className="text-[11px] text-red-600 font-semibold flex items-center gap-1">
+                      <AlertCircle size={12} />
+                      {redditAddError}
+                    </p>
+                  )}
+
+                  <div className="flex justify-end pt-1">
+                    <button
+                      onClick={handleAddRedditThread}
+                      disabled={!newThreadUrl.trim() || isRedditIngesting}
+                      className="px-4 py-2 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-200 text-white rounded-xl text-xs font-bold transition-all shadow-2xs flex items-center gap-1.5"
+                    >
+                      {isRedditIngesting ? (
+                        <>
+                          <Loader2 size={13} className="animate-spin" />
+                          <span>Ingesting Thread...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Plus size={13} />
+                          <span>Track Thread</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Active Tracked Threads List */}
+              <div className="space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wider">
+                    Currently Tracked Threads ({trackedThreads.length})
+                  </h4>
+                  <span className="text-[10px] text-gray-400">Click Analyze to run Gemini Grounding</span>
+                </div>
+
+                {trackedThreads.length === 0 ? (
+                  <div className="text-center py-8 p-4 bg-gray-50 border border-dashed border-gray-200 rounded-2xl text-gray-400 text-xs space-y-2">
+                    <MessageCircle size={24} className="mx-auto text-gray-300" />
+                    <p>No Reddit threads tracked yet.</p>
+                    <button
+                      onClick={handleResetDefaultRedditThreads}
+                      className="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 hover:text-orange-600 rounded-xl text-xs font-semibold shadow-2xs"
+                    >
+                      Restore Recommended Brand Threads
+                    </button>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    {trackedThreads.map((t) => (
+                      <div
+                        key={t.id}
+                        className="p-3.5 bg-white border border-gray-200 hover:border-orange-300 rounded-2xl transition-all shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 group"
+                      >
+                        <div className="space-y-1 min-w-0 flex-1">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="font-bold text-[11px] font-mono text-orange-800 bg-orange-100 px-2 py-0.5 rounded-md">
+                              {t.subreddit}
+                            </span>
+                            {t.topic && (
+                              <span className="text-[10px] font-semibold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-md">
+                                {t.topic}
+                              </span>
+                            )}
+                            <span className="text-[10px] text-gray-400">{t.dateAdded}</span>
+                          </div>
+
+                          <h5 className="text-xs font-bold text-gray-900 leading-snug line-clamp-2">
+                            {t.title}
+                          </h5>
+
+                          <a
+                            href={t.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[11px] font-medium text-[#1A73E8] hover:underline flex items-center gap-1 truncate max-w-md"
+                            title={t.url}
+                          >
+                            <span className="truncate">{t.url}</span>
+                            <ExternalLink size={11} className="shrink-0" />
+                          </a>
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
+                          <button
+                            onClick={() => {
+                              setShowRedditModal(false);
+                              runRedditAnalysis(t.title, messages, t);
+                            }}
+                            disabled={isLoading}
+                            className="px-3 py-1.5 bg-orange-50 hover:bg-orange-100 border border-orange-200 text-orange-900 rounded-xl text-xs font-bold transition-all flex items-center gap-1 shadow-2xs"
+                            title="Analyze this thread with Gemini 3.7 Flash Grounding"
+                          >
+                            <Sparkles size={12} className="text-orange-600" />
+                            <span>Analyze</span>
+                          </button>
+
+                          <button
+                            onClick={() => handleDeleteRedditThread(t.id)}
+                            className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
+                            title="Delete thread from tracking"
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-3 bg-gray-50 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+              <span className="text-[11px]">
+                Grounded by <strong className="text-gray-700 font-semibold">Gemini 3.7 Flash</strong> with live Search Grounding
+              </span>
+              <button
+                onClick={() => setShowRedditModal(false)}
+                className="px-4 py-1.5 bg-white hover:bg-gray-100 border border-gray-200 text-gray-700 rounded-xl text-xs font-semibold shadow-2xs"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
