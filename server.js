@@ -3952,6 +3952,9 @@ app.post("/api/chat", async (req, res) => {
 });
 
 
+// Explicit empty favicon handler to clear browser icon cache and avoid 200 HTML fallback
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'dist')));
 

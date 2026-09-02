@@ -746,9 +746,9 @@ export const CreativeChatAgent: React.FC = () => {
             payload: { videoRef, promptPreset: "Enhance lighting to dramatic commercial studio spotlights with rich cinematic contrast" }
           },
           {
-            label: "🍳 Culinary Product Integration (e.g., Place French Blue Le Creuset Dutch oven on table)",
+            label: "🥫 Product Integration / Flavor Swap (e.g., Insert cold Squirt Zero Sugar can)",
             action: "prompt_for_video_edit",
-            payload: { videoRef, promptPreset: "Place an enameled French Blue Le Creuset Dutch oven simmering coq au vin on a marble countertop" }
+            payload: { videoRef, promptPreset: "Insert a cold crisp Squirt Zero Sugar can with condensation on the table" }
           }
         ]
       }
@@ -1488,10 +1488,10 @@ export const CreativeChatAgent: React.FC = () => {
       3. "modify_storyboard": The user requests narrative, script, or timing modifications to the existing storyboard (e.g. "change scene 2 to be faster", "make scene 1 outdoors at a tailgate", "tweak the voiceover in scene 3", "modify the ending to be happier").
       4. "modify_scene_visuals": The user requests modifications or re-rolling of a specific scene image (e.g. "regenerate scene 2 image", "change scene 1 visual", "re-roll scene 3 with more ice", "scene 2 image should have sunlight").
          -> Set "scene_number" to the integer scene number (e.g. 1, 2, 3) or null.
-      5. "create_storyboard_video": The user wants to create, storyboard, or generate a 10-second commercial video from a concept, narrative, or image (e.g. "generate a video where artisan sourdough is baked in a Dutch oven", "create an omni video of the cookware", "storyboard a commercial for me", "turn this into an omni video", "make the culinary image into an omni video", "make a video of...").
+      5. "create_storyboard_video": The user wants to create, storyboard, or generate a 10-second commercial video from a concept, narrative, or image (e.g. "generate a video where a Paloma is crafted with Squirt", "create an omni video of the can", "storyboard a commercial for me", "turn this into an omni video", "make the squirt citrus image into an omni video", "make a video of...").
          -> Set "referenced_asset_query" to any specific image name/phrase referenced or null.
          -> Set "extracted_video_prompt" to the narrative direction or motion prompt.
-      6. "query_catalog": The user is asking to retrieve, find, show, search, get, or list past images, edits, uploaded assets, or videos from GCS/history (e.g. "get me the last 3 images I edited", "show me the marble kitchen image", "find my Williams-Sonoma edits", "what images have I generated so far?", "list my past edits", "show previous assets", "grab the last image").
+      6. "query_catalog": The user is asking to retrieve, find, show, search, get, or list past images, edits, uploaded assets, or videos from GCS/history (e.g. "get me the last 3 images I edited", "show me the yellow background image", "find my Squirt edits", "what images have I generated so far?", "list my past edits", "show previous assets", "grab the last image").
       7. "direct_answer": The user is asking a conversational question, capability inquiry (e.g. "what can you do?", "what aspect ratios are supported?", "how does video editing work?"), or general help.
          -> In "direct_answer_text", write a concise, direct, helpful answer in Simplified Technical English explaining all 4 creative studio features.
       8. "generate_aspect_ratios": The user wants to generate multi-aspect ratio variations across all 9 formats (1:1, 4:3, 16:9, 9:16, 3:2, 2:3, 4:5, 5:4, 21:9).
@@ -1588,7 +1588,7 @@ export const CreativeChatAgent: React.FC = () => {
 
   // Helper to resolve target image from active state, reference query, recent thread, or catalog
   const resolveTargetImage = async (refQuery?: string): Promise<{ urlOrBase64: string; name?: string } | null> => {
-    // 1. If a specific reference query was mentioned (e.g. "dutch oven image", "marble kitchen island")
+    // 1. If a specific reference query was mentioned (e.g. "squirt paloma image", "citrus barbecue image")
     if (refQuery && refQuery.trim().length > 1) {
       try {
         const cat = await loadCreativeCatalog(companyName);
@@ -1919,7 +1919,7 @@ export const CreativeChatAgent: React.FC = () => {
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Describe your commercial storyline or narrative concept for the 10-second video (e.g. *"A gourmet Sunday afternoon in a sunlit kitchen baking artisan sourdough in an enameled Dutch oven with fresh rosemary"*):`
+        text: `Describe your commercial storyline or narrative concept for the 10-second video (e.g. *"A refreshing summer afternoon on a sunlit patio crafting an ice-cold Squirt Paloma with fresh lime"*):`
       };
       setMessages([...thread, assistantPromptMsg]);
     } else if (option.action === 'generate_aspect_ratios') {
@@ -1930,7 +1930,7 @@ export const CreativeChatAgent: React.FC = () => {
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Tell me how you would like to edit this image (e.g. *"Change background to a sunlit luxury marble kitchen"*, *"Add fresh rosemary sprigs and sourdough loaf"*, *"Make lighting warm evening dinner party"*):`
+        text: `Tell me how you would like to edit this image (e.g. *"Change background to a sunny backyard barbecue"*, *"Add a cold Squirt can"*, *"Make lighting dramatic sunset"*):`
       };
       setMessages([...thread, assistantPromptMsg]);
     } else if (option.action === 'edit_catalog_asset') {
@@ -1984,8 +1984,8 @@ export const CreativeChatAgent: React.FC = () => {
       videoInputRef.current?.click();
     } else if (option.action === 'use_sample_image') {
       try {
-        const sampleUrl = '/images/default-pot.png';
-        handleNewImageUploaded(sampleUrl, 'default-pot.png');
+        const sampleUrl = '/images/squirt_sample_ad.jpg';
+        handleNewImageUploaded(sampleUrl, 'squirt_sample_ad.jpg');
       } catch (e) {
         console.error("Failed to load sample image:", e);
       }
@@ -2261,14 +2261,14 @@ export const CreativeChatAgent: React.FC = () => {
                 </button>
 
                 <button
-                  onClick={() => handleSendMessage("Place an enameled French Blue Dutch oven with artisan sourdough on a marble kitchen island")}
+                  onClick={() => handleSendMessage("Place a cold Squirt Zero Sugar can with condensation on the table")}
                   className="p-4 bg-white hover:bg-pink-50/50 border border-gray-200 hover:border-pink-600 rounded-2xl text-left transition-all duration-200 shadow-xs hover:shadow-md flex flex-col justify-between h-32 group"
                 >
                   <span className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-pink-700 transition-colors leading-tight">
                     Product Integration
                   </span>
                   <div className="flex justify-between items-center w-full mt-2">
-                    <span className="text-[11px] text-gray-500 line-clamp-2">Place French Dutch oven on marble island.</span>
+                    <span className="text-[11px] text-gray-500 line-clamp-2">Insert crisp can with condensation drops.</span>
                     <div className="p-1.5 rounded-full bg-gray-50 group-hover:bg-pink-100 text-gray-400 group-hover:text-pink-700 shrink-0 ml-1">
                       <Lightbulb size={14} />
                     </div>
@@ -2550,8 +2550,9 @@ export const CreativeChatAgent: React.FC = () => {
                             <video 
                               src={formatVideoSrc(msg.editedVideoResult.editedVideo)} 
                               controls 
-                              autoPlay
                               loop
+                              preload="metadata"
+                              autoPlay={false}
                               className="w-full h-full object-contain"
                             />
                           </div>
