@@ -191,6 +191,8 @@ app.post('/api/genai/generateContent', checkAi, async (req, res) => {
                 }
                 return c;
             });
+        }
+
         // Vertex AI does not support controlled generation (responseMimeType or responseSchema) when search grounding tools are attached
         if (config && config.tools && Array.isArray(config.tools) && config.tools.some(t => t.googleSearch || t.google_search)) {
             if (config.responseMimeType) {
