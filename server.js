@@ -1506,51 +1506,12 @@ app.get('/api/youtube/comments', async (req, res) => {
         }
     }
 
-    // Fallback: If YouTube API returned 404 (videoNotFound / private) or 0 comments, use Gemini Grounding
+    // No Silent Fallbacks: If YouTube API returned 0 comments, comments are disabled, or video has no public comments,
+    // return genuine empty array []. Never fabricate or hallucinate synthetic comments.
     if (allComments.length === 0) {
-        const companyName = getActiveCompanyName();
-        console.log(`[YouTube Comments Fallback] Ingesting authentic YouTube community comments for video ${videoId} via Gemini Grounding...`);
-        try {
-            const client = aiGlobal || ai;
-            if (client) {
-                const prompt = `Search and extract 35 authentic viewer comments and community feedback for YouTube video ID "${videoId}" or "${companyName}" commercial video reactions.
-Return a valid JSON array of objects:
-[
-  {
-    "author": "YouTube Viewer",
-    "text": "Exact viewer quote discussing the ad creative, humor, taste, product, or messaging",
-    "likeCount": 12
-  }
-]
-Return JSON only.`;
-
-                const resp = await client.models.generateContent({
-                    model: 'gemini-3.5-flash',
-                    contents: prompt,
-                    config: {
-                        tools: [{ googleSearch: {} }]
-                    }
-                });
-
-                const text = resp.candidates?.[0]?.content?.parts?.[0]?.text || '';
-                const jsonMatch = text.match(/\[[\s\S]*\]/);
-                if (jsonMatch) {
-                    const groundedList = JSON.parse(jsonMatch[0]);
-                    groundedList.forEach((c, idx) => {
-                        allComments.push({
-                            id: `yt-grounded-${idx}-${videoId}`,
-                            author: c.author || "YouTube Community Member",
-                            text: c.text,
-                            likeCount: c.likeCount || 5,
-                            publishedAt: new Date().toISOString()
-                        });
-                    });
-                    console.log(`[YouTube Comments Fallback] Grounded ${allComments.length} authentic comments for ${videoId}`);
-                }
-            }
-        } catch (groundErr) {
-            console.warn("YouTube grounding fallback failed:", groundErr.message);
-        }
+        console.log(`[YouTube Comments] Ingested 0 comments for video ${videoId} (comments disabled or none submitted). Returning empty list without synthetic fallback per No-Silent-Fallbacks rule.`);
+    } else {
+        console.log(`[YouTube Comments] Ingested ${allComments.length} authentic comments from YouTube API for video ${videoId}`);
     }
 
     res.json(allComments);

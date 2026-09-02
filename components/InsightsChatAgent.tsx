@@ -1071,12 +1071,15 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       await persistAnalysis(videoId, videoUrl, { ...result, title: displayTitle }, 'sentiment_video', displayTitle);
 
       const commentsCount = result.raw_comments_count || result.sample_comments?.length || 0;
+      const commentsReportText = commentsCount > 0 
+        ? `(${commentsCount} real comments ingested via YouTube API)` 
+        : `(No viewer comments available on YouTube)`;
 
       const assistantMsg: ChatMessage = {
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **Unified YouTube Video & Audience Comments Sentiment Report** (${commentsCount} real comments ingested via YouTube API) for **${displayTitle}**:`,
+        text: `Here is the **Unified YouTube Video & Audience Comments Sentiment Report** ${commentsReportText} for **${displayTitle}**:`,
         channelType: 'video_sentiment',
         sentimentResult: {
           ...result,
@@ -1150,22 +1153,24 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       if (rawComments.length > 0) {
         commentsData = await analyzeCommentsSentiment(rawComments, companyName, false);
       } else {
-        // Fallback to grounded search if no video found
-        const searchRes = await groundedSearch(`Audience comments, sentiment, and consumer reactions on ${companyName}: ${queryOrTopic}`, companyName);
-        if (searchRes) {
-          commentsData = {
-            summary: searchRes.summary || `Synthesized viewer feedback on ${companyName}.`,
-            trends: {
-              positive: searchRes.positive_themes || ["High customer enthusiasm", "Strong brand recognition"],
-              negative: searchRes.negative_themes || ["Price concerns", "Availability feedback"]
-            },
-            counts: { positive: 65, negative: 20, neutral: 15 }
-          };
-        }
+        // No comments available on YouTube or comments disabled
+        commentsData = {
+          summary: targetVideoId
+            ? `No public viewer comments are available on YouTube for this video (comments may be disabled or none have been submitted yet).`
+            : `No comments found for "${queryOrTopic}".`,
+          trends: {
+            positive: [],
+            negative: [],
+            neutral: []
+          },
+          counts: null
+        };
       }
 
       const finalTitle = videoTitle || explicitTitle || (targetVideoId ? `YouTube Video [${targetVideoId}]` : queryOrTopic);
-      const sentimentScore = commentsData?.counts?.positive ? (commentsData.counts.positive / 10).toFixed(1) : '7.5';
+      const sentimentScore = rawComments.length > 0 && commentsData?.counts?.positive 
+        ? ((commentsData.counts.positive / (rawComments.length || 1)) * 10).toFixed(1) 
+        : 'N/A';
 
       const sentimentResultPayload = {
         videoId: targetVideoId,
@@ -1174,8 +1179,9 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         summary: commentsData?.summary,
         sentiment_score: sentimentScore,
         overall_sentiment_score: sentimentScore,
-        counts: commentsData?.counts,
+        counts: rawComments.length > 0 ? commentsData?.counts : null,
         trends: commentsData?.trends,
+        raw_comments_count: rawComments.length,
         sample_comments: rawComments.slice(0, 8),
         sentiment: {
           positive: commentsData?.trends?.positive || [],
@@ -1184,7 +1190,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         }
       };
 
-      if (targetVideoId && commentsData) {
+      if (targetVideoId && commentsData && rawComments.length > 0) {
         setStatusMessage('Saving audience sentiment analysis and indexing video to cloud storage...');
         await persistAnalysis(
           targetVideoId,
@@ -1199,7 +1205,9 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **YouTube Comments Sentiment Breakdown** for **${finalTitle}** (${rawComments.length} comments ingested via YouTube API):`,
+        text: rawComments.length > 0
+          ? `Here is the **YouTube Comments Sentiment Breakdown** for **${finalTitle}** (${rawComments.length} comments ingested via YouTube API):`
+          : `No public viewer comments were found on YouTube for **${finalTitle}** (comments are disabled or none have been submitted yet). No synthetic or hallucinated comments were generated.`,
         channelType: 'youtube_comments',
         sentimentResult: sentimentResultPayload
       };
@@ -3812,11 +3820,14 @@ Return ONLY valid JSON with this exact structure:
                             <Smile size={14} className="text-[#1A73E8]" />
                             Video & Audience Sentiment
                           </span>
-                          {msg.sentimentResult.sentiment_score !== undefined && (
-                            <span className="text-xs font-bold font-mono text-[#1A73E8] bg-blue-100 px-2 py-0.5 rounded-full">
-                              Score: {msg.sentimentResult.sentiment_score}/10
-                            </span>
-                          )}
+                          {(msg.sentimentResult.overall_sentiment_score !== undefined || msg.sentimentResult.sentiment_score !== undefined) && (() => {
+                            const sc = msg.sentimentResult.overall_sentiment_score ?? msg.sentimentResult.sentiment_score;
+                            return (
+                              <span className="text-xs font-bold font-mono text-[#1A73E8] bg-blue-100 px-2 py-0.5 rounded-full">
+                                Score: {sc !== 'N/A' && !isNaN(Number(sc)) ? `${sc}/10` : (sc || 'N/A')}
+                              </span>
+                            );
+                          })()}
                         </div>
                         {msg.sentimentResult.summary && (
                           <p className="text-xs text-gray-700 leading-relaxed">{msg.sentimentResult.summary}</p>
@@ -3838,16 +3849,17 @@ Return ONLY valid JSON with this exact structure:
 
                         // Compute Comments Breakdown percentages
                         const cBreakdown = msg.sentimentResult.comments_breakdown || msg.sentimentResult.comments_sentiment?.breakdown || msg.sentimentResult.counts;
-                        const cPosCount = cBreakdown?.positive ?? 65;
-                        const cNegCount = cBreakdown?.negative ?? 20;
-                        const cNeuCount = cBreakdown?.neutral ?? 15;
-                        const cTotal = cPosCount + cNegCount + cNeuCount || 100;
+                        const commentsCount = msg.sentimentResult.raw_comments_count ?? msg.sentimentResult.sample_comments?.length ?? 0;
+                        const hasRealComments = commentsCount > 0 && !!cBreakdown;
 
-                        const cPosPct = cBreakdown?.positive_pct ?? Math.round((cPosCount / cTotal) * 100);
-                        const cNegPct = cBreakdown?.negative_pct ?? Math.round((cNegCount / cTotal) * 100);
-                        const cNeuPct = Math.max(0, 100 - (cPosPct + cNegPct));
+                        const cPosCount = hasRealComments ? (cBreakdown?.positive ?? 0) : 0;
+                        const cNegCount = hasRealComments ? (cBreakdown?.negative ?? 0) : 0;
+                        const cNeuCount = hasRealComments ? (cBreakdown?.neutral ?? 0) : 0;
+                        const cTotal = cPosCount + cNegCount + cNeuCount;
 
-                        const commentsCount = msg.sentimentResult.raw_comments_count || msg.sentimentResult.sample_comments?.length || 100;
+                        const cPosPct = (hasRealComments && cTotal > 0) ? (cBreakdown?.positive_pct ?? Math.round((cPosCount / cTotal) * 100)) : 0;
+                        const cNegPct = (hasRealComments && cTotal > 0) ? (cBreakdown?.negative_pct ?? Math.round((cNegCount / cTotal) * 100)) : 0;
+                        const cNeuPct = (hasRealComments && cTotal > 0) ? Math.max(0, 100 - (cPosPct + cNegPct)) : 0;
 
                         return (
                           <div className="p-4 bg-white border border-gray-200 rounded-2xl shadow-xs space-y-3.5">
@@ -3861,7 +3873,9 @@ Return ONLY valid JSON with this exact structure:
                                     Sentiment Comparative Distribution
                                   </h4>
                                   <p className="text-[11px] text-gray-500 font-medium">
-                                    Creator Video Tone vs. Audience Comments Reaction ({commentsCount} Ingested)
+                                    {hasRealComments 
+                                      ? `Creator Video Tone vs. Audience Comments Reaction (${commentsCount} Ingested)` 
+                                      : `Creator Video Tone (No Audience Comments on YouTube)`}
                                   </p>
                                 </div>
                               </div>
@@ -3965,65 +3979,77 @@ Return ONLY valid JSON with this exact structure:
                               </div>
 
                               {/* Track 2: Audience Comments Sentiment */}
-                              <div className="space-y-1.5 bg-gray-50/80 p-3 rounded-xl border border-gray-100">
-                                <div className="flex items-center justify-between text-xs">
-                                  <span className="font-extrabold text-gray-800 flex items-center gap-1.5">
-                                    <MessageCircle size={13} className="text-indigo-600" />
-                                    Audience Comments Reaction ({commentsCount} YouTube API Comments)
-                                  </span>
-                                  <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold">
-                                    <span className="text-emerald-700">{cPosPct}% Pos</span>
-                                    <span className="text-gray-300">•</span>
-                                    <span className="text-amber-700">{cNeuPct}% Neu</span>
-                                    <span className="text-gray-300">•</span>
-                                    <span className="text-rose-700">{cNegPct}% Neg</span>
+                              {hasRealComments ? (
+                                <div className="space-y-1.5 bg-gray-50/80 p-3 rounded-xl border border-gray-100">
+                                  <div className="flex items-center justify-between text-xs">
+                                    <span className="font-extrabold text-gray-800 flex items-center gap-1.5">
+                                      <MessageCircle size={13} className="text-indigo-600" />
+                                      Audience Comments Reaction ({commentsCount} YouTube API Comments)
+                                    </span>
+                                    <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold">
+                                      <span className="text-emerald-700">{cPosPct}% Pos</span>
+                                      <span className="text-gray-300">•</span>
+                                      <span className="text-amber-700">{cNeuPct}% Neu</span>
+                                      <span className="text-gray-300">•</span>
+                                      <span className="text-rose-700">{cNegPct}% Neg</span>
+                                    </div>
                                   </div>
-                                </div>
 
-                                {/* Stacked Progress Bar */}
-                                <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden flex shadow-inner">
-                                  <div 
-                                    style={{ width: `${cPosPct}%` }} 
-                                    className="bg-emerald-500 h-full transition-all duration-500 relative group flex items-center justify-center"
-                                    title={`Comments Positive: ${cPosPct}% (${cPosCount} comments)`}
-                                  >
-                                    {cPosPct >= 12 && <span className="text-[9px] font-black text-white px-1 truncate">{cPosPct}%</span>}
-                                  </div>
-                                  <div 
-                                    style={{ width: `${cNeuPct}%` }} 
-                                    className="bg-amber-400 h-full transition-all duration-500 relative group flex items-center justify-center"
-                                    title={`Comments Neutral: ${cNeuPct}% (${cNeuCount} comments)`}
-                                  >
-                                    {cNeuPct >= 12 && <span className="text-[9px] font-black text-amber-950 px-1 truncate">{cNeuPct}%</span>}
-                                  </div>
-                                  <div 
-                                    style={{ width: `${cNegPct}%` }} 
-                                    className="bg-rose-500 h-full transition-all duration-500 relative group flex items-center justify-center"
-                                    title={`Comments Negative: ${cNegPct}% (${cNegCount} comments)`}
-                                  >
-                                    {cNegPct >= 12 && <span className="text-[9px] font-black text-white px-1 truncate">{cNegPct}%</span>}
+                                  {/* Stacked Progress Bar */}
+                                  <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden flex shadow-inner">
+                                    <div 
+                                      style={{ width: `${cPosPct}%` }} 
+                                      className="bg-emerald-500 h-full transition-all duration-500 relative group flex items-center justify-center"
+                                      title={`Comments Positive: ${cPosPct}% (${cPosCount} comments)`}
+                                    >
+                                      {cPosPct >= 12 && <span className="text-[9px] font-black text-white px-1 truncate">{cPosPct}%</span>}
+                                    </div>
+                                    <div 
+                                      style={{ width: `${cNeuPct}%` }} 
+                                      className="bg-amber-400 h-full transition-all duration-500 relative group flex items-center justify-center"
+                                      title={`Comments Neutral: ${cNeuPct}% (${cNeuCount} comments)`}
+                                    >
+                                      {cNeuPct >= 12 && <span className="text-[9px] font-black text-amber-950 px-1 truncate">{cNeuPct}%</span>}
+                                    </div>
+                                    <div 
+                                      style={{ width: `${cNegPct}%` }} 
+                                      className="bg-rose-500 h-full transition-all duration-500 relative group flex items-center justify-center"
+                                      title={`Comments Negative: ${cNegPct}% (${cNegCount} comments)`}
+                                    >
+                                      {cNegPct >= 12 && <span className="text-[9px] font-black text-white px-1 truncate">{cNegPct}%</span>}
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
+                              ) : (
+                                <div className="p-3 bg-amber-50/70 border border-amber-200/70 rounded-xl flex items-start gap-2.5 text-xs text-amber-900">
+                                  <Info size={15} className="text-amber-600 shrink-0 mt-0.5" />
+                                  <div className="leading-snug">
+                                    <span className="font-bold text-amber-950">Audience Comments Unavailable: </span>
+                                    <span>No public viewer comments are available on YouTube for this video (comments are disabled or none have been submitted yet).</span>
+                                  </div>
+                                </div>
+                              )}
                             </div>
 
                             {/* Resonance Delta Callout */}
-                            <div className="p-2.5 bg-blue-50/50 border border-blue-100 rounded-xl flex items-center justify-between text-xs">
-                              <div className="flex items-center gap-1.5 text-gray-700 min-w-0 pr-2">
-                                <TrendingUp size={13} className="text-[#1A73E8] shrink-0" />
-                                <span className="font-semibold text-gray-900 shrink-0">Resonance Delta:</span>
-                                <span className="text-gray-600 truncate">
-                                  {Math.abs(cPosPct - vPosPct) <= 10 
-                                    ? "Audience sentiment strongly matches video tone with high resonance." 
-                                    : cPosPct < vPosPct 
-                                    ? `Audience comments reflect ${vPosPct - cPosPct}% higher friction than creator narrative.` 
-                                    : `Audience reaction is ${cPosPct - vPosPct}% more positive than baseline video presentation.`}
+                            {hasRealComments && (
+                              <div className="p-2.5 bg-blue-50/50 border border-blue-100 rounded-xl flex items-center justify-between text-xs">
+                                <div className="flex items-center gap-1.5 text-gray-700 min-w-0 pr-2">
+                                  <TrendingUp size={13} className="text-[#1A73E8] shrink-0" />
+                                  <span className="font-semibold text-gray-900 shrink-0">Resonance Delta:</span>
+                                  <span className="text-gray-600 truncate">
+                                    {Math.abs(cPosPct - vPosPct) <= 10 
+                                      ? "Audience sentiment strongly matches video tone with high resonance." 
+                                      : cPosPct < vPosPct 
+                                      ? `Audience comments reflect ${vPosPct - cPosPct}% higher friction than creator narrative.` 
+                                      : `Audience reaction is ${cPosPct - vPosPct}% more positive than baseline video presentation.`}
+                                  </span>
+                                </div>
+                                <span className="font-mono font-black text-xs text-[#1A73E8] bg-white px-2 py-0.5 rounded-md border border-blue-200 shrink-0">
+                                  {cPosPct >= vPosPct ? `+${cPosPct - vPosPct}%` : `-${vPosPct - cPosPct}%`}
                                 </span>
                               </div>
-                              <span className="font-mono font-black text-xs text-[#1A73E8] bg-white px-2 py-0.5 rounded-md border border-blue-200 shrink-0">
-                                {cPosPct >= vPosPct ? `+${cPosPct - vPosPct}%` : `-${vPosPct - cPosPct}%`}
-                              </span>
-                            </div>
+                            )}
                           </div>
                         );
                       })()}
@@ -4124,7 +4150,7 @@ Return ONLY valid JSON with this exact structure:
                       )}
 
                       {/* Real Ingested YouTube Comments Sample Feed */}
-                      {msg.sentimentResult.sample_comments && msg.sentimentResult.sample_comments.length > 0 && (
+                      {(msg.sentimentResult.raw_comments_count ?? 0) > 0 && msg.sentimentResult.sample_comments && msg.sentimentResult.sample_comments.length > 0 && (
                         <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-2 text-xs">
                           <span className="font-bold text-gray-900 flex items-center gap-1.5">
                             <MessageCircle size={13} className="text-[#1A73E8]" /> Authentic YouTube Viewer Comments (via YouTube API)

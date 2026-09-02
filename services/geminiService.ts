@@ -686,10 +686,10 @@ export const generateAudienceSegments = async (context: string): Promise<any[]> 
                     Company Context: ${context}
                     
                     **IMPORTANT**: If the company context indicates a retail or product-based company (like fashion, body care, fitness apparel, etc.), ensure that the generated segments, bios, and next best actions use product-focused language rather than subscription or insurance-focused language.
-                    **WILLIAMS-SONOMA / CULINARY RETAIL SPECIALIZATION**: If the context indicates Williams-Sonoma or gourmet kitchen retail, align the 3 generated segments to:
-                    1. "The Heirloom Traditionalist" (Core values: heirloom durability, timeless French culinary tradition, lifetime performance; desires investment cookware pieces that last generations, master slow braising, and present elegantly on table; competitors: Le Creuset Boutique, Staub, Sur La Table, All-Clad; recommended: Williams Sonoma Thermo-Clad Stainless 10-Piece Set, Le Creuset Enameled Cast Iron Dutch Oven).
-                    2. "The Aesthetic Host & Mixologist" (Core values: visual elegance, effortless hospitality, modern entertaining, bar-cart curation; desires striking crystal glassware, marble cheese boards, aesthetic cocktail tools, and gourmet pantry accents; competitors: Crate & Barrel, CB2, Anthropologie Home; recommended: Williams Sonoma Dorset Crystal Cocktail Coupes, Marble & Brass Serveware, Artisan Agrumato Olive Oil).
-                    3. "The Kitchen Tech Purist" (Core values: culinary precision, thermal accuracy, Japanese blade craft, cutting-edge smart electrics; desires professional-grade smart kitchen electrics, VG-MAX Japanese cutlery, and exact-temperature precision tools; competitors: Sur La Table, Seattle Coffee Gear, Hedley & Bennett, Zwilling; recommended: Breville Barista Touch Impress Espresso Machine, Shun Classic 8" Damascus Chef Knife, Vitamix A3500 Smart Ascent Blender).
+                    **SQUIRT / CITRUS BEVERAGE SPECIALIZATION**: If the context indicates Squirt or citrus soda, align the 3 generated segments to:
+                    1. "The Cultural Traditionalist" (Core values: cultural continuity, family gathering, authentic heritage; desires familiar staples that pair naturally with traditional food and celebrations; competitors: Jarritos Toronja, Fresca, Peñafiel; recommended: Squirt Original 2L/12-packs & Mexican Squirt glass bottles).
+                    2. "The Modern Mixologist" (Core values: elevating social experiences, culinary discovery, aesthetic hosting; desires premium yet unpretentious mixer with real grapefruit bite for cocktails; competitors: Fever-Tree Pink Grapefruit, Q Mixers, Topo Chico; recommended: Squirt Zero Sugar, Ruby Red, 7.5 oz mini-cans).
+                    3. "The Nostalgic Flavor Purist" (Core values: comfort in timeless taste, anti-trend reliability, no-nonsense refreshment; desires crisp tart citrus flavor consistent over decades; competitors: Fresca, Sun Drop, Mountain Dew; recommended: Squirt Original, Squirt Zero Sugar 12-packs & 20 oz bottles).
                     
                     For each audience, provide the following fields in the JSON structure:
                     1. "name": A compelling Segment Name (e.g., "The Busy Parent", "The Trendsetter")
@@ -4558,6 +4558,15 @@ export const analyzeCreatorPartnerVideo = async (videoUrl: string, companyName: 
 
 export const analyzeCommentsSentiment = async (comments: any[], companyName: string = "AI", isCompetitor: boolean = false): Promise<any> => {
     try {
+        if (!comments || comments.length === 0) {
+            return {
+                counts: { positive: 0, negative: 0, neutral: 0 },
+                trends: { positive: [], negative: [], neutral: [] },
+                summary: "No viewer comments available on YouTube for this video (comments disabled or none submitted).",
+                breakdown: []
+            };
+        }
+
         const competitorInstruction = isCompetitor ? `
         **CRITICAL NOTE:** These comments are for a COMPETITOR of ${companyName}. 
         Skew your insights towards helping ${companyName} understand what this competitor is doing well, where they are weak, and what ${companyName} can learn from them.` : ``;
@@ -4654,7 +4663,8 @@ export const analyzeYouTubeSentiment = async (videoUrl: string, companyName: str
 
         // Step 2: Run Comments Sentiment analysis on real ingested comments
         let commentsResult: any = null;
-        if (rawComments && rawComments.length > 0) {
+        const hasComments = rawComments && rawComments.length > 0;
+        if (hasComments) {
             try {
                 commentsResult = await analyzeCommentsSentiment(rawComments, companyName, isCompetitor);
             } catch (cErr) {
@@ -4668,11 +4678,29 @@ export const analyzeYouTubeSentiment = async (videoUrl: string, companyName: str
         const posCom = commentsResult?.counts?.positive || 0;
         const negCom = commentsResult?.counts?.negative || 0;
         const neuCom = commentsResult?.counts?.neutral || 0;
-        const totalCom = posCom + negCom + neuCom || (rawComments.length || 20);
+        const totalCom = posCom + negCom + neuCom;
 
         const videoScore = (posVid + negVid) > 0 ? Math.round((posVid / (posVid + negVid)) * 100) : 75;
-        const commentsScore = totalCom > 0 ? Math.round((posCom / totalCom) * 100) : 70;
-        const overallScore = Math.round((videoScore * 0.45) + (commentsScore * 0.55));
+        const commentsScore = (hasComments && totalCom > 0) ? Math.round((posCom / totalCom) * 100) : null;
+        const overallScore = (hasComments && commentsScore !== null)
+            ? Math.round((videoScore * 0.45) + (commentsScore * 0.55))
+            : videoScore;
+
+        const commentsSection = hasComments ? `
+        COMMENTS AUDIENCE ANALYSIS (${rawComments.length} comments analyzed via YouTube API):
+        - Audience Summary: ${commentsResult?.summary || 'Audience discussion.'}
+        - Positive trends: ${JSON.stringify(commentsResult?.trends?.positive || [])}
+        - Negative trends: ${JSON.stringify(commentsResult?.trends?.negative || [])}
+        - Sample breakdown: ${JSON.stringify((commentsResult?.breakdown || []).slice(0, 8))}
+        ` : `
+        COMMENTS AUDIENCE ANALYSIS:
+        CRITICAL NOTE: There are ZERO viewer comments on this video (comments disabled or none submitted).
+        DO NOT hallucinate, invent, or assume any viewer comments or audience consensus.
+        `;
+
+        const alignmentDirective = hasComments
+            ? `3. "alignment": Compare the creator's video tone against the audience's comments. (status: "Aligned" | "Divergent" | "Mixed", explanation, creator_stance, audience_consensus).`
+            : `3. "alignment": Since there are 0 comments on YouTube, set status: "Not Applicable", explanation: "Audience comments are disabled or unavailable for this video.", creator_stance: "Creator video narrative evaluated.", audience_consensus: "No public viewer comments available on YouTube."`;
 
         const synthesisPrompt = `
         You are a Master Social & Video Intelligence Director for ${companyName}.
@@ -4685,17 +4713,13 @@ export const analyzeYouTubeSentiment = async (videoUrl: string, companyName: str
         - Trends identified in video: ${JSON.stringify(videoResult?.trends || [])}
         - Core talking points: ${JSON.stringify((videoResult?.talking_points || []).slice(0, 5))}
 
-        COMMENTS AUDIENCE ANALYSIS (${rawComments.length} comments analyzed via YouTube API):
-        - Audience Summary: ${commentsResult?.summary || 'Audience discussion.'}
-        - Positive trends: ${JSON.stringify(commentsResult?.trends?.positive || [])}
-        - Negative trends: ${JSON.stringify(commentsResult?.trends?.negative || [])}
-        - Sample breakdown: ${JSON.stringify((commentsResult?.breakdown || []).slice(0, 8))}
+        ${commentsSection}
 
         OUTPUT DIRECTIVES:
-        1. "summary": Executive 2-3 sentence paragraph synthesizing the overall video content reception and viewer audience sentiment.
+        1. "summary": Executive 2-3 sentence paragraph synthesizing the overall video content reception${hasComments ? ' and viewer audience sentiment' : ' (audience comments unavailable on YouTube)'}.
         2. "video_score_brief": Short brief on the video's sentiment scores in text alongside the visuals. Specifically explain what was considered to potentially be negative or critical (even in an overwhelmingly positive video) so the user understands why any negative percentage was assigned.
-        3. "alignment": Compare the creator's video tone against the audience's comments. (status: "Aligned" | "Divergent" | "Mixed", explanation, creator_stance, audience_consensus).
-        4. "strategic_takeaways": 3-4 actionable recommendations based on the combined video + comments findings.
+        ${alignmentDirective}
+        4. "strategic_takeaways": 3-4 actionable recommendations based on the findings.
 
         Output ONLY valid raw JSON:
         {
@@ -4706,10 +4730,10 @@ export const analyzeYouTubeSentiment = async (videoUrl: string, companyName: str
                 "positive_rationale": "Primary drivers of positive sentiment..."
             },
             "alignment": {
-                "status": "Aligned",
-                "explanation": "Explanation...",
+                "status": "${hasComments ? 'Aligned' : 'Not Applicable'}",
+                "explanation": "${hasComments ? 'Explanation...' : 'Audience comments are disabled or unavailable for this video.'}",
                 "creator_stance": "Creator position...",
-                "audience_consensus": "Audience response..."
+                "audience_consensus": "${hasComments ? 'Audience response...' : 'No public viewer comments available on YouTube.'}"
             },
             "strategic_takeaways": [
                 { "priority": "High", "area": "Creative Messaging", "recommendation": "Recommendation...", "impact": "Expected impact..." }
@@ -4756,20 +4780,15 @@ export const analyzeYouTubeSentiment = async (videoUrl: string, companyName: str
             neutral_pct: 20
         };
 
-        // Calculate explicit Audience Comments sentiment breakdown
-        const comPosCount = commentsResult?.counts?.positive ?? Math.round(totalCom * 0.65);
-        const comNegCount = commentsResult?.counts?.negative ?? Math.round(totalCom * 0.20);
-        const comNeuCount = commentsResult?.counts?.neutral ?? Math.round(totalCom * 0.15);
-        const totalComCount = comPosCount + comNegCount + comNeuCount || 100;
-
-        const commentsBreakdown = {
-            positive: comPosCount,
-            negative: comNegCount,
-            neutral: comNeuCount,
-            positive_pct: Math.round((comPosCount / totalComCount) * 100),
-            negative_pct: Math.round((comNegCount / totalComCount) * 100),
-            neutral_pct: Math.max(0, 100 - (Math.round((comPosCount / totalComCount) * 100) + Math.round((comNegCount / totalComCount) * 100)))
-        };
+        // Calculate explicit Audience Comments sentiment breakdown (null if 0 comments)
+        const commentsBreakdown = (hasComments && totalCom > 0) ? {
+            positive: posCom,
+            negative: negCom,
+            neutral: neuCom,
+            positive_pct: Math.round((posCom / totalCom) * 100),
+            negative_pct: Math.round((negCom / totalCom) * 100),
+            neutral_pct: Math.max(0, 100 - (Math.round((posCom / totalCom) * 100) + Math.round((negCom / totalCom) * 100)))
+        } : null;
 
         // Construct robust video_score_brief with automatic fallback for any legacy or missing fields
         const rawNegativeNotes = videoResult?.sentiment?.negative || [];
@@ -4791,9 +4810,14 @@ export const analyzeYouTubeSentiment = async (videoUrl: string, companyName: str
             videoId,
             videoUrl: fullUrl,
             overall_sentiment_score: (overallScore / 10).toFixed(1),
-            summary: synthData?.summary || videoResult?.summary || commentsResult?.summary || "Unified video and comments sentiment analysis completed.",
+            summary: synthData?.summary || videoResult?.summary || (hasComments ? commentsResult?.summary : "Unified video sentiment analysis completed."),
             video_score_brief: videoScoreBrief,
-            alignment: synthData?.alignment,
+            alignment: hasComments ? synthData?.alignment : {
+                status: "Not Applicable",
+                explanation: "Audience comments are disabled or unavailable on YouTube for this video.",
+                creator_stance: "Creator video narrative evaluated.",
+                audience_consensus: "No public viewer comments available on YouTube."
+            },
             strategic_takeaways: synthData?.strategic_takeaways,
             video_breakdown: videoBreakdown,
             comments_breakdown: commentsBreakdown,
@@ -4802,16 +4826,16 @@ export const analyzeYouTubeSentiment = async (videoUrl: string, companyName: str
                 score_brief: videoScoreBrief,
                 breakdown: videoBreakdown
             },
-            comments_sentiment: {
+            comments_sentiment: hasComments ? {
                 ...commentsResult,
                 breakdown: commentsBreakdown
-            },
+            } : null,
             raw_comments_count: rawComments.length,
             sample_comments: rawComments.slice(0, 10),
             counts: commentsBreakdown,
             trends: (videoResult?.trends && videoResult.trends.length > 0) ? videoResult.trends : (commentsResult?.trends || []),
             video_trends: videoResult?.trends || [],
-            comment_trends: commentsResult?.trends || null,
+            comment_trends: hasComments ? (commentsResult?.trends || null) : null,
             talking_points: videoResult?.talking_points,
             word_cloud: videoResult?.word_cloud,
             music: videoResult?.music,
@@ -6905,15 +6929,15 @@ export interface GoogleAdsGenerationParams {
 export const generateGoogleAdsCampaign = async (
     params: GoogleAdsGenerationParams
 ): Promise<GoogleAdsCampaignPackage> => {
-    const brandName = params.brandContext || brandConfig.companyName || 'WSI (Williams-Sonoma)';
+    const brandName = params.brandContext || brandConfig.companyName || 'Squirt';
     
     const personaSummary = params.targetPersonas.map((p, idx) => `
     Persona ${idx + 1}: ${p.name} (${p.personaName || 'Representative'})
     - Core Driver: ${p.coreValues || 'N/A'}
     - Desires: ${p.whatTheyWant || 'N/A'}
-    - Demographics: Age ${p.ageRange || '28-60'}, Income ${p.incomeRange || '$85k-$250k+'}
-    - Competitors: ${(p.competitorBrands || []).join(', ') || 'Sur La Table, Crate & Barrel'}
-    - Products: ${(p.recommendedProducts || []).join(', ') || 'Thermo-Clad Cookware, Le Creuset Dutch Oven'}
+    - Demographics: Age ${p.ageRange || '21-50'}, Income ${p.incomeRange || '$45k-$100k'}
+    - Competitors: ${(p.competitorBrands || []).join(', ') || 'Fresca, Jarritos'}
+    - Products: ${(p.recommendedProducts || []).join(', ') || 'Original, Zero Sugar'}
     - Key Characteristics: ${p.keyCharacteristics || 'N/A'}
     `).join('\n');
 
@@ -6947,15 +6971,15 @@ export const generateGoogleAdsCampaign = async (
        - Strictly MAXIMUM 90 CHARACTERS each.
     4. AD GROUPS:
        - Create 3 dedicated Ad Groups mapping directly to the personas:
-         * Ad Group 1: The Heirloom Culinary Traditionalist (French enameled cast iron, Dutch ovens, heritage braising, Thermo-Clad sets)
-         * Ad Group 2: The Aesthetic Host & Mixologist (Crystal glassware, Dorset barware, entertaining platters, tablescapes, gourmet pantry)
-         * Ad Group 3: The Gourmet Kitchen Purist (Japanese cutlery, Shun knives, Breville espresso, Vitamix blenders, precision tools)
+         * Ad Group 1: The Modern Mixologist (Paloma mixer, craft cocktails, 7.5 oz mini cans, patio hosting)
+         * Ad Group 2: The Cultural Traditionalist (Mexican Squirt real cane sugar glass bottles, 2L family packs, food pairings)
+         * Ad Group 3: The Nostalgic Flavor Purist (Classic crisp grapefruit soda, anti-trend, 12-pack cans, zero sugar)
        - For each Ad Group, provide:
          * 5-7 high-intent keywords with Google Ads match notations:
-           - Exact Match: enclosed in square brackets e.g. [le creuset dutch oven]
-           - Phrase Match: enclosed in double quotes e.g. "best stainless steel cookware set"
-           - Broad Match: standard keywords e.g. williams sonoma espresso machine sale
-         * Estimated CPC ($0.80 - $3.50)
+           - Exact Match: enclosed in square brackets e.g. [paloma cocktail mixer]
+           - Phrase Match: enclosed in double quotes e.g. "best grapefruit soda for paloma"
+           - Broad Match: standard keywords e.g. squirt zero sugar mini cans
+         * Estimated CPC ($0.80 - $2.50)
          * Search Intent ('High Commercial', 'Transactional', 'Informational', or 'Competitor Conquesting')
          * Persona Trigger explanation
          * 3-5 Negative Keywords specifically for that Ad Group
@@ -7123,25 +7147,25 @@ export const generateGoogleAdsCampaign = async (
             targetGeos: Array.isArray(parsed.targetGeos) ? parsed.targetGeos : [params.geoFocus],
             targetLanguages: Array.isArray(parsed.targetLanguages) ? parsed.targetLanguages : ['English', 'Spanish'],
             adSchedule: parsed.adSchedule || 'All hours (bid-adjusted for peak afternoon & weekend hours)',
-            strategicRationale: parsed.strategicRationale || 'Campaign structured across persona-specific ad groups with tailored search intent and heirloom culinary craftsmanship messaging.',
+            strategicRationale: parsed.strategicRationale || 'Campaign structured across persona-specific ad groups with tailored search intent and real grapefruit tartness messaging.',
             personasInvolved: Array.isArray(parsed.personasInvolved) ? parsed.personasInvolved : params.targetPersonas.map(p => p.name),
             adGroups,
             sitelinks: (parsed.sitelinks || []).map((s: any) => ({
-                linkText: sanitizeText(s.linkText || 'Shop Williams-Sonoma', 25),
-                line1: sanitizeText(s.line1 || 'Heirloom cookware & cutlery', 35),
-                line2: sanitizeText(s.line2 || 'Free shipping on eligible orders', 35),
-                url: s.url || 'https://www.williams-sonoma.com'
+                linkText: sanitizeText(s.linkText || 'Shop Squirt', 25),
+                line1: sanitizeText(s.line1 || 'Find store availability near you', 35),
+                line2: sanitizeText(s.line2 || 'Original and Zero Sugar citrus', 35),
+                url: s.url || 'https://www.squirtsoda.com'
             })),
             callouts: (parsed.callouts || []).map((c: string) => sanitizeText(c, 25)),
             structuredSnippets: {
-                header: parsed.structuredSnippets?.header || 'Departments',
-                values: (parsed.structuredSnippets?.values || ['Cookware', 'Cutlery', 'Electrics', 'Tabletop & Bar']).map((v: string) => sanitizeText(v, 25))
+                header: parsed.structuredSnippets?.header || 'Varieties',
+                values: (parsed.structuredSnippets?.values || ['Original Citrus', 'Zero Sugar', 'Ruby Red', 'Mexican Glass Bottle']).map((v: string) => sanitizeText(v, 25))
             },
             audienceSignals: (parsed.audienceSignals || []).map((a: any) => ({
                 category: a.category || 'Custom Intent',
-                name: a.name || 'Gourmet Kitchen Shoppers',
+                name: a.name || 'Citrus Beverage Shoppers',
                 details: a.details || '',
-                personaLink: a.personaLink || 'The Heirloom Culinary Traditionalist'
+                personaLink: a.personaLink || 'The Modern Mixologist'
             })),
             timestamp: new Date().toISOString()
         };
