@@ -726,7 +726,13 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
   };
 
   // Save new video analysis to table & analysis storage
-  const persistAnalysis = async (videoId: string, videoUrl: string, analysisResult: any, type: string = 'abcd') => {
+  const persistAnalysis = async (
+    videoId: string, 
+    videoUrl: string, 
+    analysisResult: any, 
+    type: string = 'abcd',
+    customTitle?: string
+  ) => {
     try {
       const analysisId = `analysis_${videoId}_${Date.now()}`;
       await fetch('/api/insights/analysis', {
@@ -737,6 +743,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
           analysisId,
           result: {
             ...analysisResult,
+            title: customTitle || analysisResult.title,
             videoId,
             videoUrl,
             timestamp: new Date().toISOString()
@@ -749,9 +756,21 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         (item.videos && item.videos.includes(videoId)) || item.videoId === videoId || item.id === videoId
       );
 
-      const title = analysisResult.summary 
-        ? analysisResult.summary.slice(0, 50) + "..." 
-        : `${companyName} Video Ad Analysis`;
+      const title = customTitle 
+        || analysisResult.title 
+        || (analysisResult.summary ? (analysisResult.summary.length > 70 ? analysisResult.summary.slice(0, 67) + "..." : analysisResult.summary) : `${companyName} Video Analysis [${videoId}]`);
+
+      // Extract scores cleanly for both ABCD scorecard and audience sentiment
+      let calculatedScores = null;
+      if (analysisResult.abcd_scores) {
+        calculatedScores = analysisResult.abcd_scores;
+      } else if (analysisResult.overall_sentiment_score) {
+        calculatedScores = { overall: parseFloat(analysisResult.overall_sentiment_score) };
+      } else if (analysisResult.sentiment_score) {
+        calculatedScores = { overall: parseFloat(analysisResult.sentiment_score) };
+      } else if (analysisResult.counts?.positive) {
+        calculatedScores = { overall: parseFloat((analysisResult.counts.positive / 10).toFixed(1)) };
+      }
 
       const newEntry = {
         id: videoId,
@@ -761,7 +780,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         videos: [videoId],
         timestamp: new Date().toISOString(),
         title,
-        scores: analysisResult.abcd_scores || null,
+        scores: calculatedScores,
         summary: analysisResult.summary || ''
       };
 
@@ -781,7 +800,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
 
       return analysisId;
     } catch (err) {
-      console.error("Failed to persist analysis to GCS:", err);
+      console.error("Failed to persist analysis to storage:", err);
       return null;
     }
   };
@@ -818,7 +837,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       ROUTING DIRECTIVES:
       1. "direct_answer": The user is asking a conversational question, capability inquiry (e.g. "what can you do?", "what skills do you have?", "how does this work?"), or factual data question about the indexed videos or intelligence channels (e.g. "how many videos are in my catalog?", "explain the ABCD framework", "what is competitor benchmark?", "what channels can I analyze?").
          -> In "direct_answer_text", write a concise, direct, helpful answer in Simplified Technical English.
-      2. "list_all_insights": The user wants to see all stored insights, or asks what insights are available/saved across all channels (e.g. "what insights do you have", "what insights do we have", "all insights", "show all insights", "what insights are saved", "show insights", "list insights"). Both indexed video ad analyses and tracked Reddit discussions/subreddits will be presented together.
+      2. "list_all_insights": The user wants to see all stored insights, or asks what insights/analyses are available/saved across all channels (e.g. "what insights do you have", "what insights do we have", "all insights", "show all insights", "what insights are saved", "show insights", "list insights", "show all indexed content", "show all analysis", "show all analyses", "all analysis", "all analyses", "show all indexed", "indexed content", "show indexed content", "show all content", "all content", "show catalog"). Both indexed video ad analyses and tracked Reddit discussions/subreddits will be presented together.
       3. "list_videos": The user specifically wants to list, view, show, or browse only the indexed video catalog (e.g. "show all videos", "list my indexed videos", "what videos do I have", "show video ads").
       4. "reindex": The user wants to refresh, resync, or re-index the video catalog from cloud storage (e.g. "re-index", "refresh catalog").
       5. "bulk_insights": The user wants to synthesize intelligence across ALL indexed video assets (e.g. "bulk insights", "cross-campaign synthesis").
@@ -957,6 +976,16 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       lower.includes('my insights') ||
       lower.includes('insights do you have') ||
       lower.includes('insights do we have') ||
+      lower.includes('show all indexed content') ||
+      lower.includes('show all analysis') ||
+      lower.includes('show all analyses') ||
+      lower.includes('all analysis') ||
+      lower.includes('all analyses') ||
+      lower.includes('show all indexed') ||
+      lower.includes('indexed content') ||
+      lower.includes('show all content') ||
+      lower.includes('all content') ||
+      lower.includes('show catalog') ||
       lower.trim() === 'insights' ||
       lower.trim() === 'what do you have'
     ) {
@@ -1024,7 +1053,8 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
   const runVideoSentimentAnalysis = async (
     videoUrl: string, 
     videoId: string, 
-    currentMessages: ChatMessage[]
+    currentMessages: ChatMessage[],
+    videoTitle?: string
   ) => {
     setIsLoading(true);
     setStatusMessage(`Ingesting YouTube comments via YouTube API and evaluating video sentiment for [${videoId}] with Gemini 3.7 Flash...`);
@@ -1036,7 +1066,9 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         throw new Error("Received empty response from unified YouTube sentiment analyzer.");
       }
 
-      await persistAnalysis(videoId, videoUrl, result, 'sentiment_video');
+      const displayTitle = videoTitle || result.title || `${companyName} Video [${videoId}]`;
+      setStatusMessage('Saving audience sentiment analysis and indexing video to cloud storage...');
+      await persistAnalysis(videoId, videoUrl, { ...result, title: displayTitle }, 'sentiment_video', displayTitle);
 
       const commentsCount = result.raw_comments_count || result.sample_comments?.length || 0;
 
@@ -1044,10 +1076,11 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **Unified YouTube Video & Audience Comments Sentiment Report** (${commentsCount} real comments ingested via YouTube API) for [\`${videoId}\`]:`,
+        text: `Here is the **Unified YouTube Video & Audience Comments Sentiment Report** (${commentsCount} real comments ingested via YouTube API) for **${displayTitle}**:`,
         channelType: 'video_sentiment',
         sentimentResult: {
           ...result,
+          title: displayTitle,
           videoId,
           videoUrl
         }
@@ -1073,14 +1106,18 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
   };
 
   // Execute Comments Sentiment Analysis using YouTube Data API
-  const runCommentsSentimentAnalysis = async (queryOrTopic: string, currentMessages: ChatMessage[]) => {
+  const runCommentsSentimentAnalysis = async (
+    queryOrTopic: string, 
+    currentMessages: ChatMessage[],
+    explicitTitle?: string
+  ) => {
     setIsLoading(true);
     setStatusMessage(`Searching YouTube API and ingesting viewer comments for "${queryOrTopic}" with Gemini 3.7 Flash...`);
 
     try {
       const vidMatch = extractYouTubeInfo(queryOrTopic);
       let targetVideoId = vidMatch?.videoId || '';
-      let videoTitle = '';
+      let videoTitle = explicitTitle || '';
 
       // If no direct YouTube URL, search YouTube API for top video
       if (!targetVideoId) {
@@ -1090,7 +1127,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
             const vids = await searchRes.json();
             if (Array.isArray(vids) && vids.length > 0 && vids[0].videoId) {
               targetVideoId = vids[0].videoId;
-              videoTitle = vids[0].title || '';
+              videoTitle = videoTitle || vids[0].title || '';
             }
           }
         } catch (sErr) {
@@ -1127,26 +1164,44 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         }
       }
 
+      const finalTitle = videoTitle || explicitTitle || (targetVideoId ? `YouTube Video [${targetVideoId}]` : queryOrTopic);
+      const sentimentScore = commentsData?.counts?.positive ? (commentsData.counts.positive / 10).toFixed(1) : '7.5';
+
+      const sentimentResultPayload = {
+        videoId: targetVideoId,
+        videoUrl: targetVideoId ? `https://www.youtube.com/watch?v=${targetVideoId}` : undefined,
+        title: finalTitle,
+        summary: commentsData?.summary,
+        sentiment_score: sentimentScore,
+        overall_sentiment_score: sentimentScore,
+        counts: commentsData?.counts,
+        trends: commentsData?.trends,
+        sample_comments: rawComments.slice(0, 8),
+        sentiment: {
+          positive: commentsData?.trends?.positive || [],
+          negative: commentsData?.trends?.negative || [],
+          neutral: commentsData?.trends?.neutral || []
+        }
+      };
+
+      if (targetVideoId && commentsData) {
+        setStatusMessage('Saving audience sentiment analysis and indexing video to cloud storage...');
+        await persistAnalysis(
+          targetVideoId,
+          `https://www.youtube.com/watch?v=${targetVideoId}`,
+          sentimentResultPayload,
+          'sentiment_comments',
+          finalTitle
+        );
+      }
+
       const assistantMsg: ChatMessage = {
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **YouTube Comments Sentiment Breakdown** ${targetVideoId ? `for **${videoTitle || `YouTube Video [${targetVideoId}]`}** (${rawComments.length} comments ingested via YouTube API)` : `for "${queryOrTopic}"`}:`,
+        text: `Here is the **YouTube Comments Sentiment Breakdown** for **${finalTitle}** (${rawComments.length} comments ingested via YouTube API):`,
         channelType: 'youtube_comments',
-        sentimentResult: {
-          videoId: targetVideoId,
-          videoUrl: targetVideoId ? `https://www.youtube.com/watch?v=${targetVideoId}` : undefined,
-          summary: commentsData?.summary,
-          sentiment_score: commentsData?.counts?.positive ? (commentsData.counts.positive / 10).toFixed(1) : '7.5',
-          counts: commentsData?.counts,
-          trends: commentsData?.trends,
-          sample_comments: rawComments.slice(0, 8),
-          sentiment: {
-            positive: commentsData?.trends?.positive || [],
-            negative: commentsData?.trends?.negative || [],
-            neutral: commentsData?.trends?.neutral || []
-          }
-        }
+        sentimentResult: sentimentResultPayload
       };
 
       const updated = [...currentMessages, assistantMsg];
@@ -2447,10 +2502,11 @@ Return ONLY valid JSON with this exact structure:
     videoId: string, 
     isCompetitor: boolean = false, 
     currentMessages: ChatMessage[],
-    type: string = 'abcd'
+    type: string = 'abcd',
+    videoTitle?: string
   ) => {
     if (type === 'sentiment_video' || type === 'sentiment') {
-      return runVideoSentimentAnalysis(videoUrl, videoId, currentMessages);
+      return runVideoSentimentAnalysis(videoUrl, videoId, currentMessages, videoTitle);
     }
 
     setIsLoading(true);
@@ -2463,14 +2519,15 @@ Return ONLY valid JSON with this exact structure:
         throw new Error("Received empty response from multimodal video analyzer.");
       }
 
+      const displayTitle = videoTitle || result.title || `${companyName} Video [${videoId}]`;
       setStatusMessage('Saving analysis and indexing video to cloud storage...');
-      await persistAnalysis(videoId, videoUrl, result, isCompetitor ? 'competitor_abcd' : type);
+      await persistAnalysis(videoId, videoUrl, { ...result, title: displayTitle }, isCompetitor ? 'competitor_abcd' : type, displayTitle);
 
       const assistantMsg: ChatMessage = {
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **${isCompetitor ? 'Competitor ' : ''}ABCD Framework Report** for YouTube Video [${videoId}]:`,
+        text: `Here is the **${isCompetitor ? 'Competitor ' : ''}ABCD Framework Report** for **${displayTitle}**:`,
         channelType: 'youtube_video',
         analysisResult: result
       };
@@ -5091,18 +5148,18 @@ Return ONLY valid JSON with this exact structure:
                                   {/* Action Buttons: ABCD, Comment Sentiment, Watch */}
                                   <div className="flex items-center gap-2 pt-1 flex-wrap">
                                     <button
-                                      onClick={() => runVideoAnalysis(video.videoUrl, video.videoId, false, messages, 'abcd')}
+                                      onClick={() => runVideoAnalysis(video.videoUrl, video.videoId, false, messages, 'abcd', video.title)}
                                       className="px-2.5 py-1 text-[11px] font-bold bg-[#1A73E8] hover:bg-[#1557b0] text-white rounded-lg transition-all flex items-center gap-1 shadow-2xs cursor-pointer"
-                                      title="Run Multimodal ABCD Evaluation with Gemini 3.7 Flash"
+                                      title="Run Multimodal ABCD Evaluation with Gemini 3.7 Flash and Index into Catalog"
                                     >
                                       <BarChart2 size={12} />
                                       <span>Run ABCD Analysis</span>
                                     </button>
 
                                     <button
-                                      onClick={() => runCommentsSentimentAnalysis(video.videoUrl, messages)}
+                                      onClick={() => runVideoSentimentAnalysis(video.videoUrl, video.videoId, messages, video.title)}
                                       className="px-2.5 py-1 text-[11px] font-bold bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg transition-all flex items-center gap-1 shadow-2xs cursor-pointer"
-                                      title="Analyze audience comments and sentiment breakdown"
+                                      title="Analyze audience comments sentiment with Gemini 3.7 Flash and Index into Catalog"
                                     >
                                       <MessageSquare size={12} />
                                       <span>Audience Comments Sentiment</span>

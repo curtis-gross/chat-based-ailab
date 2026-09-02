@@ -868,7 +868,10 @@ app.post('/api/save-gcs', async (req, res) => {
 app.get('/api/insights/table', async (req, res) => {
     const { companyName } = req.query;
     const activeCompany = companyName || getActiveCompanyName();
+    const localDir = path.join(__dirname, 'public', 'data', 'configuration', 'analyses', activeCompany);
+    const localTablePath = path.join(localDir, 'insights_table.json');
 
+    // 1. Try GCS First
     try {
         const { Storage } = await import('@google-cloud/storage');
         const storage = new Storage();
@@ -879,14 +882,60 @@ app.get('/api/insights/table', async (req, res) => {
         const [exists] = await file.exists();
         if (exists) {
             const [content] = await file.download();
-            res.json(JSON.parse(content.toString()));
-        } else {
-            res.json([]);
+            const parsed = JSON.parse(content.toString());
+            // Sync to local disk as warm cache
+            try {
+                if (!fs.existsSync(localDir)) fs.mkdirSync(localDir, { recursive: true });
+                fs.writeFileSync(localTablePath, JSON.stringify(parsed, null, 2));
+            } catch (_) {}
+            return res.json(parsed);
         }
     } catch (e) {
-        console.error("GCS read failed:", e.message);
-        res.status(500).json({ error: `Failed to read from GCS: ${e.message}` });
+        console.warn("GCS read failed for insights_table:", e.message);
     }
+
+    // 2. Try Local Disk Fallback
+    try {
+        if (fs.existsSync(localTablePath)) {
+            const content = fs.readFileSync(localTablePath, 'utf8');
+            return res.json(JSON.parse(content));
+        }
+    } catch (localErr) {
+        console.warn("Local read failed for insights_table:", localErr.message);
+    }
+
+    // 3. Auto-discover existing local analysis files if table is uninitialized
+    try {
+        if (fs.existsSync(localDir)) {
+            const files = fs.readdirSync(localDir);
+            const discovered = [];
+            for (const f of files) {
+                if (f.startsWith('analysis_') && f.endsWith('.json')) {
+                    try {
+                        const fileContent = JSON.parse(fs.readFileSync(path.join(localDir, f), 'utf8'));
+                        const vId = fileContent.videoId || f.replace(/^analysis_/, '').replace(/\.json$/, '').split('_')[0];
+                        discovered.push({
+                            id: vId,
+                            analysisId: f.replace(/\.json$/, ''),
+                            company: activeCompany,
+                            type: fileContent.type || 'abcd',
+                            videos: [vId],
+                            timestamp: fileContent.timestamp || new Date().toISOString(),
+                            title: fileContent.title || fileContent.summary?.slice(0, 60) || `${activeCompany} Analysis [${vId}]`,
+                            scores: fileContent.abcd_scores || (fileContent.overall_sentiment_score ? { overall: parseFloat(fileContent.overall_sentiment_score) } : null),
+                            summary: fileContent.summary || ''
+                        });
+                    } catch (_) {}
+                }
+            }
+            if (discovered.length > 0) {
+                fs.writeFileSync(localTablePath, JSON.stringify(discovered, null, 2));
+                return res.json(discovered);
+            }
+        }
+    } catch (_) {}
+
+    res.json([]);
 });
 
 app.post('/api/insights/table', async (req, res) => {
@@ -894,6 +943,19 @@ app.post('/api/insights/table', async (req, res) => {
     const activeCompany = companyName || getActiveCompanyName();
     if (!data) return res.status(400).json({ error: "data is required" });
 
+    // 1. Save locally
+    const localDir = path.join(__dirname, 'public', 'data', 'configuration', 'analyses', activeCompany);
+    const localTablePath = path.join(localDir, 'insights_table.json');
+    try {
+        if (!fs.existsSync(localDir)) {
+            fs.mkdirSync(localDir, { recursive: true });
+        }
+        fs.writeFileSync(localTablePath, JSON.stringify(data, null, 2));
+    } catch (localErr) {
+        console.warn("Local save failed for insights_table:", localErr.message);
+    }
+
+    // 2. Save to GCS
     try {
         const { Storage } = await import('@google-cloud/storage');
         const storage = new Storage();
@@ -904,12 +966,12 @@ app.post('/api/insights/table', async (req, res) => {
         await file.save(JSON.stringify(data, null, 2), {
             contentType: 'application/json',
         });
-
-        res.json({ success: true });
+        console.log(`✅ [GCS SAVE] Saved insights_table.json to gs://${bucketName}/${fileName}`);
     } catch (e) {
-        console.error("GCS save failed:", e.message);
-        res.status(500).json({ error: `Failed to save to GCS: ${e.message}` });
+        console.warn("GCS save failed for insights_table:", e.message);
     }
+
+    res.json({ success: true });
 });
 
 app.get('/api/insights/analysis', async (req, res) => {

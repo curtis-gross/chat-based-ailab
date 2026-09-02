@@ -42,6 +42,7 @@ graph TD
         FlashLiteDispatcher -->|YouTube Search: Top 5 by Views (Last Year)| YTSearchEngine[YouTube Search & Insights Engine]
         YTSearchEngine -->|Ingest Top 5 Videos, View Counts & Takeaways| ChatUI
         YTSearchEngine -->|Persist Video Search Results| GCS
+        YTSearchEngine -->|1-Click ABCD & Audience Sentiment Indexing| GCS
         FlashLiteDispatcher -->|Reddit 100-Comment Ingestion & Keyword Mining| RedditEngine[Reddit Live Ingestion & Grounding Engine]
         RedditEngine -->|Extract Comment Sentiment, Keywords & Permalinks| FlashLiteReason
         FlashLiteDispatcher -->|Subreddit Intelligence: Top 5 Annual + Top 5 Weekly Threads with Sentiment Enrichment| RedditEngine
