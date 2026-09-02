@@ -41,7 +41,7 @@ graph TD
         FlashLiteDispatcher -->|Competitor Benchmark & Matrix Analysis| FlashLiteReason[Gemini 3.5 Flash Lite Intelligence]
         FlashLiteDispatcher -->|Reddit 100-Comment Ingestion & Keyword Mining| RedditEngine[Reddit Live Ingestion & Grounding Engine]
         RedditEngine -->|Extract Comment Sentiment, Keywords & Permalinks| FlashLiteReason
-        FlashLiteDispatcher -->|Subreddit Intelligence: Top 10 Annual + 5 Hot Threads| RedditEngine
+        FlashLiteDispatcher -->|Subreddit Intelligence: Top 5 Annual + Top 5 Weekly Threads with Sentiment Enrichment| RedditEngine
         RedditEngine -->|Persist Analyzed Threads, Subreddits & Results| GCS
         FlashLiteDispatcher -->|Query Analyzed Reddit Threads & Subreddits Catalog| GCS
         FlashLiteDispatcher -->|Website Landing Page Conversion Audit| FlashLiteReason
