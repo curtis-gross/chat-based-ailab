@@ -1651,7 +1651,7 @@ app.get('/api/reddit/thread', async (req, res) => {
     }
 });
 
-// Ingest Subreddit Top 10 Threads (Past Year) and Top 5 Hot Threads
+// Ingest Subreddit Top 10 Threads (Past Year) and Top 5 Threads (Last 7 Days)
 app.get('/api/reddit/subreddit', async (req, res) => {
     let { subreddit } = req.query;
     if (!subreddit) return res.status(400).json({ error: "subreddit is required" });
@@ -1659,58 +1659,66 @@ app.get('/api/reddit/subreddit', async (req, res) => {
     let cleanSub = String(subreddit).trim().replace(/^r\//i, '').replace(/^\/r\//i, '').replace(/[^a-zA-Z0-9_]/g, '');
 
     try {
-        console.log(`\n--- [Reddit Subreddit Ingest] Ingesting r/${cleanSub} ---`);
+        console.log(`\n--- [Reddit Subreddit Ingest] Ingesting r/${cleanSub} (Top Year & Top Last 7 Days) ---`);
         const headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 MarkingAILab/1.0'
         };
 
-        const topUrl = `https://www.reddit.com/r/${cleanSub}/top.json?t=year&limit=15`;
-        const hotUrl = `https://www.reddit.com/r/${cleanSub}/hot.json?limit=10`;
+        const topYearUrl = `https://www.reddit.com/r/${cleanSub}/top.json?t=year&limit=15`;
+        const topWeekUrl = `https://www.reddit.com/r/${cleanSub}/top.json?t=week&limit=15`;
 
-        const [topRes, hotRes] = await Promise.allSettled([
-            fetch(topUrl, { headers }),
-            fetch(hotUrl, { headers })
+        const [yearRes, weekRes] = await Promise.allSettled([
+            fetch(topYearUrl, { headers }),
+            fetch(topWeekUrl, { headers })
         ]);
 
-        let topThreads = [];
-        let hotThreads = [];
+        let topThreadsYear = [];
+        let topThreadsWeek = [];
 
-        if (topRes.status === 'fulfilled' && topRes.value.ok) {
-            const topData = await topRes.value.json();
-            topThreads = (topData?.data?.children || []).map((c, idx) => ({
+        if (yearRes.status === 'fulfilled' && yearRes.value.ok) {
+            const yearData = await yearRes.value.json();
+            topThreadsYear = (yearData?.data?.children || []).map((c, idx) => ({
                 rank: idx + 1,
                 id: c.data.id,
                 title: c.data.title,
                 url: c.data.permalink ? `https://www.reddit.com${c.data.permalink}` : (c.data.url || `https://www.reddit.com/r/${cleanSub}`),
-                score: c.data.score || 0,
-                num_comments: c.data.num_comments || 0,
+                score: typeof c.data.score === 'number' ? c.data.score : 0,
+                num_comments: typeof c.data.num_comments === 'number' ? c.data.num_comments : 0,
+                is_verified_count: true,
                 selftext: (c.data.selftext || '').slice(0, 350),
                 author: c.data.author ? `u/${c.data.author}` : 'u/anonymous',
-                created_utc: c.data.created_utc
+                created_utc: c.data.created_utc,
+                timeframe: 'year'
             }));
         }
 
-        if (hotRes.status === 'fulfilled' && hotRes.value.ok) {
-            const hotData = await hotRes.value.json();
-            hotThreads = (hotData?.data?.children || []).map((c, idx) => ({
+        if (weekRes.status === 'fulfilled' && weekRes.value.ok) {
+            const weekData = await weekRes.value.json();
+            topThreadsWeek = (weekData?.data?.children || []).map((c, idx) => ({
                 rank: idx + 1,
                 id: c.data.id,
                 title: c.data.title,
                 url: c.data.permalink ? `https://www.reddit.com${c.data.permalink}` : (c.data.url || `https://www.reddit.com/r/${cleanSub}`),
-                score: c.data.score || 0,
-                num_comments: c.data.num_comments || 0,
+                score: typeof c.data.score === 'number' ? c.data.score : 0,
+                num_comments: typeof c.data.num_comments === 'number' ? c.data.num_comments : 0,
+                is_verified_count: true,
                 selftext: (c.data.selftext || '').slice(0, 350),
                 author: c.data.author ? `u/${c.data.author}` : 'u/anonymous',
-                created_utc: c.data.created_utc
+                created_utc: c.data.created_utc,
+                timeframe: 'week'
             }));
         }
 
-        console.log(`[Reddit Subreddit Ingest] Ingested ${topThreads.length} annual top threads and ${hotThreads.length} hot threads for r/${cleanSub}.`);
+        const isLive = topThreadsYear.length > 0 || topThreadsWeek.length > 0;
+        console.log(`[Reddit Subreddit Ingest] Ingested ${topThreadsYear.length} annual top threads and ${topThreadsWeek.length} weekly top threads for r/${cleanSub}. (Live API: ${isLive})`);
         res.json({
             success: true,
             subreddit: `r/${cleanSub}`,
-            topThreads: topThreads.slice(0, 10),
-            hotThreads: hotThreads.slice(0, 5)
+            topThreads: topThreadsYear.slice(0, 10),
+            topThreadsYear: topThreadsYear.slice(0, 10),
+            topThreadsWeek: topThreadsWeek.slice(0, 5),
+            hotThreads: topThreadsWeek.slice(0, 5), // Backwards compatibility alias
+            isLiveApi: isLive
         });
     } catch (err) {
         console.warn("[Reddit Subreddit Ingest] Live ingest error, fallback to grounding:", err.message);

@@ -134,8 +134,11 @@ export interface SubredditThreadItem {
   rank?: number;
   title: string;
   url: string;
+  search_url?: string;
   score?: number | string;
   num_comments?: number | string;
+  is_verified_count?: boolean;
+  timeframe?: 'year' | 'week';
   summary: string;
   marketer_takeaway: string;
   sentiment?: 'positive' | 'negative' | 'neutral';
@@ -148,7 +151,8 @@ export interface SubredditAnalysisResult {
   sentiment_score: number;
   summary: string;
   top_threads_past_year: SubredditThreadItem[];
-  hot_threads: SubredditThreadItem[];
+  top_threads_past_week?: SubredditThreadItem[];
+  hot_threads?: SubredditThreadItem[]; // Backwards compatibility alias
   recurring_themes?: string[];
   marketer_recommendations?: string[];
   analyzed_at?: string;
@@ -1670,7 +1674,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
     const rawSub = subredditQuery.replace(/^r\//i, '').replace(/https?:\/\/(?:www\.)?reddit\.com\/r\//i, '').split('/')[0].split('?')[0].trim();
     const cleanSubreddit = rawSub.replace(/[^a-zA-Z0-9_]/g, '') || 'drpepper';
     const subDisplayName = `r/${cleanSubreddit}`;
-    setStatusMessage(`Analyzing subreddit ${subDisplayName} for top 10 annual threads & top 5 hot discussions with Gemini 3.7 Flash...`);
+    setStatusMessage(`Analyzing subreddit ${subDisplayName} for top discussions (past year & last 7 days) with Gemini 3.7 Flash...`);
 
     try {
       let liveSubData: any = null;
@@ -1685,21 +1689,23 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       }
 
       // Prepare excerpt of live threads if available from Reddit API
-      const liveTopExcerpt = (liveSubData?.topThreads || []).map((t: any, idx: number) => ({
+      const liveTopYearExcerpt = (liveSubData?.topThreadsYear || liveSubData?.topThreads || []).map((t: any, idx: number) => ({
         rank: idx + 1,
         title: t.title,
         url: t.url,
         score: t.score,
         num_comments: t.num_comments,
+        is_verified_count: true,
         selftext: t.selftext ? t.selftext.substring(0, 200) : ''
       }));
 
-      const liveHotExcerpt = (liveSubData?.hotThreads || []).map((t: any, idx: number) => ({
+      const liveWeekExcerpt = (liveSubData?.topThreadsWeek || liveSubData?.hotThreads || []).map((t: any, idx: number) => ({
         rank: idx + 1,
         title: t.title,
         url: t.url,
         score: t.score,
         num_comments: t.num_comments,
+        is_verified_count: true,
         selftext: t.selftext ? t.selftext.substring(0, 200) : ''
       }));
 
@@ -1707,33 +1713,29 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       You are an elite brand & social media intelligence strategist for ${companyName}.
       Task: Conduct an exhaustive subreddit intelligence audit on the Reddit community ${subDisplayName}.
 
-      ${liveTopExcerpt.length > 0 ? `Live Ingested Top Threads from Reddit API:\n${JSON.stringify(liveTopExcerpt, null, 2)}` : ''}
-      ${liveHotExcerpt.length > 0 ? `Live Ingested Hot Discussions from Reddit API:\n${JSON.stringify(liveHotExcerpt, null, 2)}` : ''}
+      ${liveTopYearExcerpt.length > 0 ? `Live Ingested Top Threads from Past Year (from Reddit API):\n${JSON.stringify(liveTopYearExcerpt, null, 2)}` : ''}
+      ${liveWeekExcerpt.length > 0 ? `Live Ingested Top Threads from Last 7 Days (from Reddit API):\n${JSON.stringify(liveWeekExcerpt, null, 2)}` : ''}
 
       Instructions:
-      1. Search and identify the top 10 discussions on ${subDisplayName} from the past year (by upvotes, engagement, and community impact).
+      1. Search and identify the top 10 discussions on ${subDisplayName} from the past year (by engagement, cultural impact, and upvotes).
          For EACH of the 10 threads, provide:
          - "rank": 1 to 10
          - "title": Authentic thread title
-         - "url": REAL, clickable Reddit URL (e.g. "https://www.reddit.com/r/${cleanSubreddit}/comments/...")
-         - "score": Upvote score (e.g. 1420 or "1.4k")
-         - "num_comments": Comment count (e.g. 185)
          - "summary": 1-2 sentence concise summary of the discussion
          - "marketer_takeaway": Actionable strategic takeaway for brand marketers
          - "sentiment": "positive" | "negative" | "neutral"
-      2. Identify the top 5 most recent "hot" / trending discussions in ${subDisplayName} right now.
-         For EACH of the 5 hot threads, provide:
+      2. Search and identify the top 5 discussions on ${subDisplayName} from the last 7 days (past week).
+         For EACH of the 5 weekly threads, provide:
          - "rank": 1 to 5
-         - "title": Authentic trending thread title
-         - "url": REAL, clickable Reddit URL
-         - "score": Current score
-         - "num_comments": Comment count
-         - "summary": What the community is actively debating right now
-         - "marketer_takeaway": Immediate strategic insight or reactive opportunity
+         - "title": Authentic thread title from the last 7 days
+         - "summary": What the community debated over the past week
+         - "marketer_takeaway": Immediate reactive insight or weekly opportunity
          - "sentiment": "positive" | "negative" | "neutral"
-      3. Compute an overall subreddit sentiment score (0 to 10) for brand affinity.
-      4. Synthesize 3-5 recurring themes / cultural memes within the community.
-      5. Formulate 3-4 high-level strategic recommendations for ${companyName} marketing and community teams.
+      3. CRITICAL DATA ACCURACY RULE:
+         Do NOT fabricate, guess, or estimate numerical upvote counts or comment counts. Only output numerical "score" and "num_comments" fields if you have exact verified numbers from the provided Live Ingested Reddit data above. If numbers are not in the live data, omit the "score" and "num_comments" fields entirely or set them to null.
+      4. Compute an overall subreddit sentiment score (0 to 10) for brand affinity.
+      5. Synthesize 3-5 recurring themes / cultural memes within the community.
+      6. Formulate 3-4 high-level strategic recommendations for ${companyName} marketing and community teams.
 
       Return ONLY a raw valid JSON object without markdown fences:
       {
@@ -1745,22 +1747,16 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
           {
             "rank": 1,
             "title": "Discussion title...",
-            "url": "https://www.reddit.com/r/${cleanSubreddit}/comments/...",
-            "score": 1250,
-            "num_comments": 140,
             "summary": "Summary of thread...",
             "marketer_takeaway": "Takeaway for marketing...",
             "sentiment": "positive"
           }
         ],
-        "hot_threads": [
+        "top_threads_past_week": [
           {
             "rank": 1,
-            "title": "Trending thread title...",
-            "url": "https://www.reddit.com/r/${cleanSubreddit}/comments/...",
-            "score": 340,
-            "num_comments": 58,
-            "summary": "Summary of trending discussion...",
+            "title": "Weekly discussion title...",
+            "summary": "Summary of weekly discussion...",
             "marketer_takeaway": "Immediate takeaway...",
             "sentiment": "positive"
           }
@@ -1801,36 +1797,68 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
       parsed.analyzed_at = new Date().toISOString();
       parsed.is_grounded = true;
 
+      const makeSearchUrl = (threadTitle: string, timeframe: 'year' | 'week') => {
+        const cleanTitle = (threadTitle || '').replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+        return `https://www.reddit.com/r/${cleanSubreddit}/search/?q=${encodeURIComponent(cleanTitle || threadTitle)}&restrict_sr=1&t=${timeframe}&sort=top`;
+      };
+
+      const findLiveMatch = (title: string, list: any[]) => {
+        const cleanT = (title || '').toLowerCase().trim();
+        return list.find((l: any) => l.title && l.title.toLowerCase().trim() === cleanT);
+      };
+
+      // Past Year Threads
       if (!Array.isArray(parsed.top_threads_past_year)) {
         parsed.top_threads_past_year = [];
       } else {
-        parsed.top_threads_past_year = parsed.top_threads_past_year.map((item: any, idx: number) => ({
-          rank: item.rank || (idx + 1),
-          title: item.title || `Top Discussion #${idx + 1}`,
-          url: (item.url && item.url.startsWith('http')) ? item.url : `https://www.reddit.com/r/${cleanSubreddit}`,
-          score: item.score || 'High',
-          num_comments: item.num_comments || 'Active',
-          summary: item.summary || 'Community discussion on brand flavor and availability.',
-          marketer_takeaway: item.marketer_takeaway || 'High consumer passion points offer reactive marketing potential.',
-          sentiment: item.sentiment || 'positive'
-        }));
+        parsed.top_threads_past_year = parsed.top_threads_past_year.map((item: any, idx: number) => {
+          const rank = item.rank || (idx + 1);
+          const title = item.title || `Top Discussion #${rank}`;
+          const searchUrl = makeSearchUrl(title, 'year');
+          const liveMatch = findLiveMatch(title, liveTopYearExcerpt);
+          const hasVerifiedCount = liveMatch && typeof liveMatch.score === 'number' && liveMatch.is_verified_count;
+          const validDirectUrl = liveMatch?.url && liveMatch.url.includes('/comments/') ? liveMatch.url : null;
+          return {
+            rank,
+            title,
+            url: validDirectUrl || searchUrl,
+            search_url: searchUrl,
+            score: hasVerifiedCount ? liveMatch.score : undefined,
+            num_comments: hasVerifiedCount ? liveMatch.num_comments : undefined,
+            is_verified_count: Boolean(hasVerifiedCount),
+            timeframe: 'year' as const,
+            summary: item.summary || 'Community discussion on brand flavor and availability.',
+            marketer_takeaway: item.marketer_takeaway || 'High consumer passion points offer reactive marketing potential.',
+            sentiment: item.sentiment || 'positive'
+          };
+        });
       }
 
-      if (!Array.isArray(parsed.hot_threads)) {
-        parsed.hot_threads = [];
-      } else {
-        parsed.hot_threads = parsed.hot_threads.map((item: any, idx: number) => ({
-          rank: item.rank || (idx + 1),
-          title: item.title || `Trending Thread #${idx + 1}`,
-          url: (item.url && item.url.startsWith('http')) ? item.url : `https://www.reddit.com/r/${cleanSubreddit}`,
-          score: item.score || 'Trending',
-          num_comments: item.num_comments || 'Recent',
-          summary: item.summary || 'Active community debate currently underway.',
+      // Last 7 Days Threads
+      const rawWeek = parsed.top_threads_past_week || parsed.hot_threads || [];
+      const normalizedWeek = rawWeek.map((item: any, idx: number) => {
+        const rank = item.rank || (idx + 1);
+        const title = item.title || `Weekly Discussion #${rank}`;
+        const searchUrl = makeSearchUrl(title, 'week');
+        const liveMatch = findLiveMatch(title, liveWeekExcerpt);
+        const hasVerifiedCount = liveMatch && typeof liveMatch.score === 'number' && liveMatch.is_verified_count;
+        const validDirectUrl = liveMatch?.url && liveMatch.url.includes('/comments/') ? liveMatch.url : null;
+        return {
+          rank,
+          title,
+          url: validDirectUrl || searchUrl,
+          search_url: searchUrl,
+          score: hasVerifiedCount ? liveMatch.score : undefined,
+          num_comments: hasVerifiedCount ? liveMatch.num_comments : undefined,
+          is_verified_count: Boolean(hasVerifiedCount),
+          timeframe: 'week' as const,
+          summary: item.summary || 'Active community debate from the last 7 days.',
           marketer_takeaway: item.marketer_takeaway || 'Monitor emerging sentiment and product inquiries.',
-          sentiment: item.sentiment || 'positive',
-          is_hot: true
-        }));
-      }
+          sentiment: item.sentiment || 'positive'
+        };
+      });
+      parsed.top_threads_past_week = normalizedWeek;
+      parsed.hot_threads = normalizedWeek; // Backwards compatibility alias
 
       if (!parsed.summary) {
         parsed.summary = `In-depth analysis of ${subDisplayName} reveals an active, loyal community discussing product variants, availability, and brand loyalty.`;
@@ -1887,12 +1915,12 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         url: `https://www.reddit.com/r/${cleanSubreddit}`,
         subreddit: subDisplayName,
         dateAdded: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-        topic: `Subreddit Community Intelligence: Top 10 Annual & 5 Hot Threads`,
+        topic: `Subreddit Community Intelligence: Top Annual & Last 7 Days Discussions`,
         lastScore: parsed.sentiment_score,
         analysisSummary: parsed.summary,
         analysisId,
         analyzedAt: new Date().toISOString(),
-        topThreadsCount: (parsed.top_threads_past_year?.length || 0) + (parsed.hot_threads?.length || 0),
+        topThreadsCount: (parsed.top_threads_past_year?.length || 0) + (parsed.top_threads_past_week?.length || 0),
         analysisResult: parsed
       };
 
@@ -1915,7 +1943,7 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
         id: `assistant_${Date.now()}`,
         sender: 'assistant',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        text: `Here is the **Subreddit Intelligence Report** for **${subDisplayName}** featuring the top 10 annual discussions, top 5 hot threads, and strategic marketer takeaways:`,
+        text: `Here is the **Subreddit Intelligence Report** for **${subDisplayName}** featuring the top 10 discussions from the past year, top 5 discussions from the last 7 days, and strategic marketer takeaways:`,
         channelType: 'subreddit_analysis',
         subredditResult: parsed
       };
@@ -4259,8 +4287,8 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                               <Trophy size={14} className="text-amber-500" />
                               Top 10 Discussions From Past Year
                             </span>
-                            <span className="text-[10px] font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
-                              Ranked by Engagement & Upvotes
+                            <span className="text-[10px] font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-full">
+                              Past 12 Months
                             </span>
                           </div>
 
@@ -4269,6 +4297,10 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                               const rank = thread.rank || (idx + 1);
                               const isPos = thread.sentiment === 'positive';
                               const isNeg = thread.sentiment === 'negative';
+                              const cleanSub = (msg.subredditResult.subreddit || 'reddit').replace(/^r\//i, '');
+                              const defaultSearchUrl = thread.search_url || `https://www.reddit.com/r/${cleanSub}/search/?q=${encodeURIComponent(thread.title)}&restrict_sr=1&t=year&sort=top`;
+                              const safeUrl = (thread.url && !thread.url.includes('[post_id]') && !thread.url.endsWith(`/r/${cleanSub}`)) ? thread.url : defaultSearchUrl;
+                              const hasVerifiedCount = thread.is_verified_count === true && typeof thread.score === 'number';
 
                               return (
                                 <div
@@ -4276,34 +4308,51 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                                   className="p-3 bg-gray-50 hover:bg-purple-50/30 border border-gray-200 hover:border-purple-300 rounded-xl space-y-2 transition-all shadow-2xs"
                                 >
                                   <div className="flex items-start justify-between gap-2">
-                                    <div className="flex items-start gap-2 min-w-0">
+                                    <div className="flex items-start gap-2 min-w-0 flex-1">
                                       <span className="w-5 h-5 rounded-full bg-purple-100 text-purple-800 text-[11px] font-extrabold flex items-center justify-center shrink-0 mt-0.5 font-mono">
                                         #{rank}
                                       </span>
-                                      <div className="min-w-0">
-                                        <a
-                                          href={thread.url}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="text-xs font-bold text-gray-900 hover:text-purple-700 hover:underline flex items-center gap-1 group"
-                                        >
-                                          <span className="line-clamp-2">{thread.title}</span>
-                                          <ExternalLink size={11} className="text-gray-400 group-hover:text-purple-600 shrink-0" />
-                                        </a>
+                                      <div className="min-w-0 flex-1">
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                          <a
+                                            href={safeUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-xs font-bold text-gray-900 hover:text-purple-700 hover:underline flex items-center gap-1 group"
+                                          >
+                                            <span className="line-clamp-2">{thread.title}</span>
+                                            <ExternalLink size={11} className="text-gray-400 group-hover:text-purple-600 shrink-0" />
+                                          </a>
+                                          <a
+                                            href={defaultSearchUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-1 text-[10px] font-bold text-purple-700 hover:text-purple-900 bg-purple-100 hover:bg-purple-200 px-2 py-0.5 rounded-full transition-colors shrink-0"
+                                            title={`Open search for this discussion in r/${cleanSub} (Past Year)`}
+                                          >
+                                            <span>Open in r/{cleanSub}</span>
+                                            <ExternalLink size={9} />
+                                          </a>
+                                        </div>
                                       </div>
                                     </div>
 
                                     <div className="flex items-center gap-1.5 shrink-0 text-[10px]">
-                                      {thread.score && (
-                                        <span className="px-1.5 py-0.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-md font-bold">
-                                          ▲ {thread.score}
-                                        </span>
+                                      {hasVerifiedCount && (
+                                        <>
+                                          <span className="px-1.5 py-0.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-md font-bold">
+                                            ▲ {thread.score}
+                                          </span>
+                                          {typeof thread.num_comments === 'number' && (
+                                            <span className="px-1.5 py-0.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-md font-medium">
+                                              💬 {thread.num_comments}
+                                            </span>
+                                          )}
+                                        </>
                                       )}
-                                      {thread.num_comments && (
-                                        <span className="px-1.5 py-0.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-md font-medium">
-                                          💬 {thread.num_comments}
-                                        </span>
-                                      )}
+                                      <span className="px-1.5 py-0.5 bg-purple-100 text-purple-800 border border-purple-200 rounded-md font-medium">
+                                        Past Year
+                                      </span>
                                       <span
                                         className={`px-1.5 py-0.5 rounded-md font-bold ${
                                           isPos
@@ -4340,57 +4389,91 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                         </div>
                       )}
 
-                      {/* Top 5 Hot Discussions Right Now */}
-                      {msg.subredditResult.hot_threads && msg.subredditResult.hot_threads.length > 0 && (
-                        <div className="p-3.5 bg-gradient-to-br from-orange-50/40 via-amber-50/20 to-white border border-orange-200/90 rounded-2xl space-y-3 shadow-2xs">
+                      {/* Top 5 Discussions From Last 7 Days */}
+                      {(msg.subredditResult.top_threads_past_week || msg.subredditResult.hot_threads) && (msg.subredditResult.top_threads_past_week || msg.subredditResult.hot_threads).length > 0 && (
+                        <div className="p-3.5 bg-gradient-to-br from-blue-50/40 via-indigo-50/20 to-white border border-blue-200/90 rounded-2xl space-y-3 shadow-2xs">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-extrabold text-orange-950 flex items-center gap-1.5 uppercase tracking-wider">
-                              <Flame size={15} className="text-orange-600 fill-orange-500" />
-                              Top 5 Hot Discussions Trending Right Now
+                            <span className="text-xs font-extrabold text-blue-950 flex items-center gap-1.5 uppercase tracking-wider">
+                              <Clock size={15} className="text-blue-600" />
+                              Top 5 Discussions From Last 7 Days
                             </span>
-                            <span className="text-[10px] font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded-full">
-                              Real-Time Heat
+                            <span className="text-[10px] font-bold text-blue-800 bg-blue-100 border border-blue-200 px-2 py-0.5 rounded-full">
+                              Past 7 Days
                             </span>
                           </div>
 
                           <div className="space-y-2.5">
-                            {msg.subredditResult.hot_threads.map((thread: any, idx: number) => {
+                            {(msg.subredditResult.top_threads_past_week || msg.subredditResult.hot_threads).map((thread: any, idx: number) => {
                               const rank = thread.rank || (idx + 1);
+                              const isPos = thread.sentiment === 'positive';
+                              const isNeg = thread.sentiment === 'negative';
+                              const cleanSub = (msg.subredditResult.subreddit || 'reddit').replace(/^r\//i, '');
+                              const defaultSearchUrl = thread.search_url || `https://www.reddit.com/r/${cleanSub}/search/?q=${encodeURIComponent(thread.title)}&restrict_sr=1&t=week&sort=top`;
+                              const safeUrl = (thread.url && !thread.url.includes('[post_id]') && !thread.url.endsWith(`/r/${cleanSub}`)) ? thread.url : defaultSearchUrl;
+                              const hasVerifiedCount = thread.is_verified_count === true && typeof thread.score === 'number';
 
                               return (
                                 <div
                                   key={idx}
-                                  className="p-3 bg-white border border-orange-100 hover:border-orange-300 rounded-xl space-y-2 transition-all shadow-2xs"
+                                  className="p-3 bg-white border border-blue-100 hover:border-blue-300 rounded-xl space-y-2 transition-all shadow-2xs"
                                 >
                                   <div className="flex items-start justify-between gap-2">
-                                    <div className="flex items-start gap-2 min-w-0">
-                                      <span className="w-5 h-5 rounded-full bg-orange-100 text-orange-700 text-[11px] font-extrabold flex items-center justify-center shrink-0 mt-0.5 font-mono">
-                                        🔥{rank}
+                                    <div className="flex items-start gap-2 min-w-0 flex-1">
+                                      <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-700 text-[11px] font-extrabold flex items-center justify-center shrink-0 mt-0.5 font-mono">
+                                        #{rank}
                                       </span>
-                                      <div className="min-w-0">
-                                        <a
-                                          href={thread.url}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="text-xs font-bold text-gray-900 hover:text-orange-600 hover:underline flex items-center gap-1 group"
-                                        >
-                                          <span className="line-clamp-2">{thread.title}</span>
-                                          <ExternalLink size={11} className="text-gray-400 group-hover:text-orange-500 shrink-0" />
-                                        </a>
+                                      <div className="min-w-0 flex-1">
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                          <a
+                                            href={safeUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-xs font-bold text-gray-900 hover:text-blue-600 hover:underline flex items-center gap-1 group"
+                                          >
+                                            <span className="line-clamp-2">{thread.title}</span>
+                                            <ExternalLink size={11} className="text-gray-400 group-hover:text-blue-500 shrink-0" />
+                                          </a>
+                                          <a
+                                            href={defaultSearchUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-1 text-[10px] font-bold text-blue-800 hover:text-blue-950 bg-blue-100 hover:bg-blue-200 px-2 py-0.5 rounded-full transition-colors shrink-0"
+                                            title={`Open search for this discussion in r/${cleanSub} (Last 7 Days)`}
+                                          >
+                                            <span>Open in r/{cleanSub}</span>
+                                            <ExternalLink size={9} />
+                                          </a>
+                                        </div>
                                       </div>
                                     </div>
 
                                     <div className="flex items-center gap-1.5 shrink-0 text-[10px]">
-                                      {thread.score && (
-                                        <span className="px-1.5 py-0.5 bg-orange-50 text-orange-800 border border-orange-200 rounded-md font-bold">
-                                          ▲ {thread.score}
-                                        </span>
+                                      {hasVerifiedCount && (
+                                        <>
+                                          <span className="px-1.5 py-0.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-md font-bold">
+                                            ▲ {thread.score}
+                                          </span>
+                                          {typeof thread.num_comments === 'number' && (
+                                            <span className="px-1.5 py-0.5 bg-gray-100 text-gray-700 rounded-md font-medium">
+                                              💬 {thread.num_comments}
+                                            </span>
+                                          )}
+                                        </>
                                       )}
-                                      {thread.num_comments && (
-                                        <span className="px-1.5 py-0.5 bg-gray-100 text-gray-700 rounded-md font-medium">
-                                          💬 {thread.num_comments}
-                                        </span>
-                                      )}
+                                      <span className="px-1.5 py-0.5 bg-blue-100 text-blue-800 border border-blue-200 rounded-md font-medium">
+                                        Last 7 Days
+                                      </span>
+                                      <span
+                                        className={`px-1.5 py-0.5 rounded-md font-bold ${
+                                          isPos
+                                            ? 'bg-emerald-100 text-emerald-800'
+                                            : isNeg
+                                            ? 'bg-rose-100 text-rose-800'
+                                            : 'bg-gray-200 text-gray-700'
+                                        }`}
+                                      >
+                                        {thread.sentiment || 'neutral'}
+                                      </span>
                                     </div>
                                   </div>
 
@@ -4401,10 +4484,10 @@ export const InsightsChatAgent: React.FC<InsightsChatAgentProps> = ({ onNavigate
                                   )}
 
                                   {thread.marketer_takeaway && (
-                                    <div className="ml-7 p-2 bg-amber-50/70 border border-amber-200/80 rounded-lg text-xs text-amber-950 flex items-start gap-1.5">
-                                      <Sparkles size={13} className="text-amber-600 shrink-0 mt-0.5" />
+                                    <div className="ml-7 p-2 bg-blue-50/70 border border-blue-200/80 rounded-lg text-xs text-blue-950 flex items-start gap-1.5">
+                                      <Sparkles size={13} className="text-blue-600 shrink-0 mt-0.5" />
                                       <div>
-                                        <span className="font-bold text-amber-900">Reactive Opportunity: </span>
+                                        <span className="font-bold text-blue-900">Weekly Opportunity: </span>
                                         <span>{thread.marketer_takeaway}</span>
                                       </div>
                                     </div>
